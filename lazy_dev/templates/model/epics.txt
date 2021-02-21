@@ -1,0 +1,7 @@
+import { of } from "rxjs";
+import { combineEpics } from "redux-observable";
+import { start[%model%] } from "./actions";
+
+const startEpic = () => of(start[%model%]());
+
+export const [%model%]Epic = combineEpics(startEpic);

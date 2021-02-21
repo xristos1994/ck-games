@@ -1,0 +1,4 @@
+npm install rxjs
+npm install redux-observable
+npm install redux
+npm install redux-devtools-extension
