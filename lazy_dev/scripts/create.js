@@ -42,6 +42,50 @@ const writeFile = async (path, content) => {
   });
 };
 
+// --
+const getFilePathsOfAllFilesInDirectory = rootDir => {
+  if (rootDir.slice(-1) !== "/") {
+    rootDir = rootDir + "/";
+  }
+  let paths = [];
+  getFileNamesInDirectory(rootDir).forEach(f => {
+    if (fs.lstatSync(rootDir + f).isFile()) {
+      paths.push(rootDir + f);
+    } else if (fs.lstatSync(rootDir + f).isDirectory()) {
+      paths = paths.concat(getFilePathsOfAllFilesInDirectory(rootDir + f));
+    }
+  });
+  return paths;
+};
+
+// --
+const replaceAll = (initialString, oldString, newString) => {
+  let finalString = initialString;
+  while (finalString.indexOf(oldString) !== -1) {
+    finalString = finalString.replace(oldString, newString);
+  }
+  return finalString;
+};
+
+// --
+const renameEverythingInDirectory = (rootDir, variables) => {
+  if (rootDir.slice(-1) === "/") {
+    rootDir = rootDir.slice(0, -1);
+  }
+
+  getFileNamesInDirectory(rootDir).forEach(f => {
+    let newName = f;
+    for (let variable in variables) {
+      const forReplace = "[%" + variable + "%]";
+      newName = replaceAll(newName, forReplace, variables[variable]);
+    }
+    fs.renameSync(rootDir + "/" + f, rootDir + "/" + newName);
+  });
+  getFileNamesInDirectory(rootDir)
+    .filter(f => fs.lstatSync(rootDir + "/" + f).isDirectory())
+    .forEach(d => renameEverythingInDirectory(rootDir + "/" + d, variables));
+};
+
 //---------------------------------------------------------
 const prompts = require("prompts");
 const fse = require("fs-extra");
@@ -80,65 +124,59 @@ const fse = require("fs-extra");
   await fse.remove(templateRootPathNew);
   await fse.copy("./lazy_dev/templates/" + template + "/", templateRootPathNew);
 
-  const filesInTemplate = getFileNamesInDirectory(templateRootPathNew);
-
-  let variables = {};
-  let variableValues = {};
-
-  if (filesInTemplate.find(f => f === "__variables__.json")) {
-    const vars = await readFile(templateRootPathNew + "__variables__.json");
-    variables = JSON.parse(vars);
+  const filePathsInTemplate = getFilePathsOfAllFilesInDirectory(
+    templateRootPathNew
+  );
+  const variables = {};
+  for (let filePath of filePathsInTemplate) {
+    const data = await readFile(filePath);
+    filePath
+      .concat(data)
+      .split("%]")
+      .map(d => d.split("[%")[1])
+      .forEach(v => {
+        if (v) {
+          variables[v] = "";
+        }
+      });
   }
 
-  const variablesKeys = Object.keys(variables);
-
-  for (let i = 0; i < variablesKeys.length; i++) {
-    const v = variablesKeys[i];
-
+  for (let key of Object.keys(variables)) {
     const response = await prompts({
       type: "text",
       name: "value",
-      message: "What is the value of " + v + "?",
+      message: "What is the value of '" + key + "'?",
       validate: value =>
         value.trim().length === 0 ? `Must not be empty` : true,
     });
-    variableValues[v] = response.value;
+    variables[key] = response.value;
   }
 
-  const finalFiles = filesInTemplate.filter(
-    f =>
-      f !== "__variables__.json" &&
-      fs.lstatSync(templateRootPathNew + f).isFile()
-  );
+  const finalTemplateFilePaths = filePathsInTemplate.map(p => {
+    let finalPath = p;
+    for (let variable in variables) {
+      const forReplace = "[%" + variable + "%]";
+      finalPath = replaceAll(finalPath, forReplace, variables[variable]);
+    }
+    return finalPath;
+  });
 
-  for (let i = 0; i < finalFiles.length; i++) {
-    const f = finalFiles[i];
+  for (let i = 0; i < filePathsInTemplate.length; i++) {
+    const file = filePathsInTemplate[i];
+    const finalFileName = finalTemplateFilePaths[i];
 
-    let finalFileName = f;
-    let finalFileContent = await readFile(templateRootPathNew + f);
+    let finalFileContent = await readFile(file);
 
     for (let variable in variables) {
       const forReplace = "[%" + variable + "%]";
-      if (variables[variable].includes(f)) {
-        while (finalFileName.indexOf(forReplace) !== -1) {
-          finalFileName = finalFileName.replace(
-            forReplace,
-            variableValues[variable]
-          );
-        }
-        while (finalFileContent.indexOf(forReplace) !== -1) {
-          finalFileContent = finalFileContent.replace(
-            forReplace,
-            variableValues[variable]
-          );
-        }
-      }
+      finalFileContent = replaceAll(
+        finalFileContent,
+        forReplace,
+        variables[variable]
+      );
     }
-
-    await writeFile(templateRootPathNew + finalFileName, finalFileContent);
+    await writeFile(file, finalFileContent);
   }
-
-  await fse.remove(templateRootPathNew + "__variables__.json");
-
+  renameEverythingInDirectory(templateRootPathNew, variables);
   await fse.move(templateRootPathNew, "./src/models/" + rootDirName);
 })();
