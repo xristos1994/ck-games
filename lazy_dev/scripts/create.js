@@ -169,6 +169,30 @@ const fse = require("fs-extra");
     await writeFile(file, finalFileContent);
   }
   renameEverythingInDirectory(templateRootPathNew, variables);
-  await fse.move(templateRootPathNew, "./src/models/" + rootDirName);
+
+  let destinationPath = false;
+  do {
+    const response = await prompts({
+      type: "text",
+      name: "value",
+      message:
+        "Write the path of the new directory. (.src/ is considered as root)?",
+    });
+    destinationPath = response.value;
+    while (true) {
+      if (destinationPath[0] === "/") {
+        destinationPath = destinationPath.substring(1);
+      } else if (destinationPath.slice(-1) === "/") {
+        destinationPath = destinationPath.slice(0, -1);
+      } else {
+        break;
+      }
+    }
+  } while (destinationPath === false);
+
+  await fse.move(
+    templateRootPathNew,
+    "./src/" + destinationPath + "/" + rootDirName
+  );
   fse.emptyDirSync("./lazy_dev/__output__");
 })();
