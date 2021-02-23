@@ -4,8 +4,8 @@ import { Helmet } from "react-helmet";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { coreStarted } from "./../@core/models/core/props";
-import { websiteStarted } from "./../models/website/props";
+import { coreStarted } from "@core/models/core/props";
+import { websiteStarted } from "@models/website/props";
 const TestComponent = ({ websiteStarted, coreStarted }) => {
   return (
     <div>

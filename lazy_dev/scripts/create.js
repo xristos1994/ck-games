@@ -1,5 +1,4 @@
 const fs = require("fs");
-const util = require("util");
 
 // helper functions
 const getFileNamesInDirectory = directory => {
@@ -91,6 +90,8 @@ const prompts = require("prompts");
 const fse = require("fs-extra");
 
 (async () => {
+  fse.emptyDirSync("./lazy_dev/__output__");
+
   const templatesFolderPath = "./lazy_dev/templates/";
 
   const templates = getFileNamesInDirectory(templatesFolderPath).filter(f =>
@@ -120,7 +121,7 @@ const fse = require("fs-extra");
 
   const rootDirName = _rootDirName.value;
 
-  const templateRootPathNew = "./lazy_dev/" + rootDirName + "/";
+  const templateRootPathNew = "./lazy_dev/__output__" + rootDirName + "/";
   await fse.remove(templateRootPathNew);
   await fse.copy("./lazy_dev/templates/" + template + "/", templateRootPathNew);
 
@@ -152,18 +153,8 @@ const fse = require("fs-extra");
     variables[key] = response.value;
   }
 
-  const finalTemplateFilePaths = filePathsInTemplate.map(p => {
-    let finalPath = p;
-    for (let variable in variables) {
-      const forReplace = "[%" + variable + "%]";
-      finalPath = replaceAll(finalPath, forReplace, variables[variable]);
-    }
-    return finalPath;
-  });
-
   for (let i = 0; i < filePathsInTemplate.length; i++) {
     const file = filePathsInTemplate[i];
-    const finalFileName = finalTemplateFilePaths[i];
 
     let finalFileContent = await readFile(file);
 
@@ -179,4 +170,5 @@ const fse = require("fs-extra");
   }
   renameEverythingInDirectory(templateRootPathNew, variables);
   await fse.move(templateRootPathNew, "./src/models/" + rootDirName);
+  fse.emptyDirSync("./lazy_dev/__output__");
 })();

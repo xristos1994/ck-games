@@ -1,4 +1,4 @@
-import { Action } from "./../../@core/actions";
+import { Action } from "@core/actions";
 
 export const start[%model%] = Action("@@", "START_[%MODEL%]");
 
