@@ -1,10 +1,14 @@
 import React from "react";
+import "./layout.css";
+// import styles from "./styles.module.css";
+import { Header, Footer } from "./components";
 
 export const Layout = ({ children }) => {
   return (
     <>
-      <header style={{ height: 56, backgroundColor: "yellow" }}>Header</header>
+      <Header />
       {children}
+      <Footer />
     </>
   );
 };

@@ -1,4 +1,4 @@
 import { Action } from "@core/actions";
 
-export const start[%model%] = Action("@@", "START_[%MODEL%]");
+export const start[%Model%] = Action("@@", "START_[%MODEL%]");
 

@@ -1,16 +1,8 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Home } from "@page-components";
 
-const Home = ({ websiteStarted, coreStarted }) => {
-  return (
-    <div>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{`My Title ${websiteStarted + ""} ${coreStarted + ""}`}</title>
-      </Helmet>
-      Hello world!
-    </div>
-  );
+const HomePage = () => {
+  return <Home />;
 };
 
-export default Home;
+export default HomePage;

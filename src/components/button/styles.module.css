@@ -1,0 +1,21 @@
+button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  padding: 0.25rem;
+  background-color: red;
+  border: none;
+  border-radius: 1rem;
+  transition: filter 0.3s;
+}
+
+.button:hover {
+  filter: brightness(85%);
+  -webkit-filter: brightness(85%);
+}
+
+.button:focus {
+  outline: none;
+}
