@@ -37,6 +37,7 @@ import {
   assignScoreAfterRoundEnds,
   createNewPlayer,
   restartGameState,
+  assignWhoLost,
 } from "./utils";
 import { getRandomInteger } from "@utils/general";
 
@@ -261,25 +262,7 @@ const setWhoLostEpic = (action$, state$) => {
     map(([action, state]) => {
       const playerLostId = action.payload;
       const players = state.websiteRootReducer.tikTakBoom.players;
-      const activePlayers = players.filter(player => player.isActive);
-      const newPlayers = players.map(player => {
-        if (player.playsNow) {
-          return {
-            ...player,
-            playsNow: false,
-            isActive: true,
-            numOfBooms: player.numOfBooms + Number(activePlayers.length === 1),
-          };
-        } else if (player.id === playerLostId) {
-          return {
-            ...player,
-            playsNow: true,
-            isActive: false,
-            numOfBooms: player.numOfBooms - Number(activePlayers.length === 1),
-          };
-        }
-        return player;
-      });
+      const newPlayers = assignWhoLost(players, playerLostId);
 
       return updatePlayers(newPlayers);
     })

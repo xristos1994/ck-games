@@ -5,6 +5,7 @@ import { assignNextRoundStarter } from "./assignNextRoundStarter";
 import { assignScoreAfterRoundEnds } from "./assignScoreAfterRoundEnds";
 import { createNewPlayer } from "./createNewPlayer";
 import { restartGameState } from "./restartGameState";
+import { assignWhoLost } from "./assignWhoLost";
 
 export {
   findModeAndSyllable,
@@ -14,4 +15,5 @@ export {
   assignScoreAfterRoundEnds,
   createNewPlayer,
   restartGameState,
+  assignWhoLost,
 };
