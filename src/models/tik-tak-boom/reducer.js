@@ -7,12 +7,30 @@ import {
   updateRemainingTime,
   updateClockIsRunning,
   updatePlayers,
+  updateGameReduxState,
 } from "./actions";
 import { GameStates } from "./config";
 
-// players = { name: string, isActive: boolean, playsNow: boolean, numOfBooms: number }[]
+// players = { id: number, name: string, isActive: boolean, playsNow: boolean, numOfBooms: number }[]
 const initialState = {
-  players: [],
+  players: [
+    {
+      id: 0,
+      name: "",
+      isActive: true,
+      playsNow: null,
+      startsRound: null,
+      numOfBooms: 0,
+    },
+    {
+      id: 1,
+      name: "",
+      isActive: true,
+      playsNow: null,
+      startsRound: null,
+      numOfBooms: 0,
+    },
+  ],
   gameState: GameStates.setPlayers,
   mode: null,
   syllable: null,
@@ -30,6 +48,9 @@ const reducer = (
   const { type, payload } = action;
 
   switch (type) {
+    case updateGameReduxState.type:
+      return payload;
+
     case startTikTakBoom.type:
       return { ...state, tikTakBoomStarted: true, ...initialState };
 

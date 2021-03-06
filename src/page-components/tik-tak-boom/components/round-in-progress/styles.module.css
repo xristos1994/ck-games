@@ -1,0 +1,40 @@
+.roundInProgressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.roundInProgressContainer > .player {
+  font-size: 2rem;
+}
+
+.roundInProgressContainer > .mode {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.roundInProgressContainer > .modeDescription {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.roundInProgressContainer > .syllable {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.roundInProgressContainer > .goToPlayerButtonContainer {
+  margin-top: 1rem;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+}
+
+.roundInProgressContainer > .goToPlayerButtonContainer > .goToPlayerButton {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

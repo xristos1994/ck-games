@@ -1,0 +1,22 @@
+.endGameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
+.endGameContainer > .gameEndTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.endGameContainer > .restartButton {
+  margin-top: 2rem;
+  max-width: 20rem;
+}
+
+.endGameContainer > a > .homeButton {
+  margin-top: 2rem;
+  max-width: 20rem;
+}

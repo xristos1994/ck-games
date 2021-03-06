@@ -1,5 +1,4 @@
 button {
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,11 +10,12 @@ button {
   transition: filter 0.3s;
 }
 
-.button:hover {
+.button:hover:not([disabled]) {
+  cursor: pointer;
   filter: brightness(85%);
   -webkit-filter: brightness(85%);
 }
 
-.button:focus {
+.button:focus:not([disabled]) {
   outline: none;
 }

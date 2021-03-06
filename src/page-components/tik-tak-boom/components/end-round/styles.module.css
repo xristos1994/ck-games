@@ -1,0 +1,31 @@
+.endRoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
+.endRoundContainer > .whoLost {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.endRoundContainer > .playersContainer {
+  margin-top: 1rem;
+}
+
+.endRoundContainer > .playersContainer > .player {
+  margin-top: 0.5rem;
+  border: 0.125rem solid black;
+  cursor: pointer;
+}
+
+.endRoundContainer > .playersContainer > .playerLost {
+  background-color: red;
+}
+
+.endRoundContainer > .proceedButton {
+  margin-top: 2rem;
+  max-width: 20rem;
+}

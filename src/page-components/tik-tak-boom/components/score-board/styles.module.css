@@ -1,0 +1,43 @@
+.scoreBoardContainer {
+  background-color: bisque;
+  width: 100%;
+  min-width: 20rem;
+  padding: 1rem;
+}
+
+.scoreBoardContainer > .scoreBoard {
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.scoreBoardContainer > .scoreBoard > .scoreBoardTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.scoreBoardContainer > .scoreBoard > tbody > .playerRow {
+  border-bottom: 1px solid black;
+}
+
+.scoreBoardContainer > .scoreBoard > tbody > .inactive {
+  color: grey;
+}
+
+.scoreBoardContainer > .scoreBoard > tbody > .playerRow > .indexCell {
+  width: 1px;
+  padding-right: 0.5rem;
+}
+
+.scoreBoardContainer > .scoreBoard > tbody > .playerRow > .nameCell {
+  margin-left: 0.5rem;
+}
+
+.scoreBoardContainer > .scoreBoard > tbody > .playerRow > .scoreCell {
+  margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 480px) {
+  .scoreBoardContainer {
+    min-width: 95%;
+  }
+}
