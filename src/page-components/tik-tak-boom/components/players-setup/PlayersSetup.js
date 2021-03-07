@@ -26,7 +26,7 @@ const _PlayersSetup = ({
             "main-color"
           )}
         >
-          Players's Setup
+          Players' Setup
         </div>
         <div className={styles.playersContainer}>
           {players.map(player => (
