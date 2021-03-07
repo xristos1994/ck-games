@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { classnames } from "@utils/component-utils";
 import { ElevatedWithBlurBackGround, Button } from "@components";
 import { scoreTarget, isScoreTargetValid } from "@models/tik-tak-boom/props";
 import styles from "./styles.module.css";
@@ -23,9 +24,18 @@ const _ScoreSetup = ({
 
   return (
     <ElevatedWithBlurBackGround>
-      <div className={styles.scoreSetupContainer}>
+      <div className={classnames(styles.scoreSetupContainer, "main-bg-color")}>
+        <div
+          className={classnames(
+            styles.scoreSetupTitle,
+            "extraLargeText",
+            "main-color"
+          )}
+        >
+          Set winning score
+        </div>
         <input
-          className={styles.scoreTargetInput}
+          className={classnames(styles.scoreTargetInput, "largeText")}
           type="number"
           value={scoreTarget}
           onChange={onScoreTargetChange}
@@ -33,9 +43,13 @@ const _ScoreSetup = ({
         <Button
           disabled={!isScoreTargetValid}
           onClick={() => scoreSetupSubmit()}
-          className={styles.scoreTargetSetupSubmitButton}
+          className={classnames(
+            styles.scoreTargetSetupSubmitButton,
+            "extraLargeText",
+            "primary-dark"
+          )}
         >
-          OK
+          PROCEED
         </Button>
       </div>
     </ElevatedWithBlurBackGround>

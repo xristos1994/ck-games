@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
 import { setPlayerById, removePlayerById } from "@models/tik-tak-boom/actions";
-import { gameState } from "@models/tik-tak-boom/props";
+import { players } from "@models/tik-tak-boom/props";
 import styles from "./styles.module.css";
 
-const _Player = ({ player, setPlayerById, gameState, removePlayerById }) => {
+const _Player = ({ player, setPlayerById, numOfPlayers, removePlayerById }) => {
   const onChangeName = e => {
     setPlayerById({ ...player, name: e.target.value });
   };
@@ -25,13 +26,21 @@ const _Player = ({ player, setPlayerById, gameState, removePlayerById }) => {
     <div className={styles.playerContainer}>
       <input
         key="name"
-        className={styles.playerNameInput}
+        className={classnames(styles.playerNameInput, "largeText")}
         type="text"
         value={player.name}
         onChange={onChangeName}
         onBlur={onBlurName}
       />
-      <Button onClick={removePlayer} className={styles.removePlayerButton}>
+      <Button
+        disabled={numOfPlayers === 2}
+        onClick={removePlayer}
+        className={classnames(
+          styles.removePlayerButton,
+          "normalText",
+          "secondary"
+        )}
+      >
         Remove
       </Button>
     </div>
@@ -40,7 +49,7 @@ const _Player = ({ player, setPlayerById, gameState, removePlayerById }) => {
 
 const Player = connect(
   createStructuredSelector({
-    gameState,
+    numOfPlayers: state => players(state).length,
   }),
   { setPlayerById: setPlayerById, removePlayerById }
 )(_Player);

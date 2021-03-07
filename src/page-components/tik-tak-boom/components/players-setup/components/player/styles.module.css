@@ -1,5 +1,5 @@
 .playerContainer {
-  margin-top: 1rem;
+  margin-top: 1.7384vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,13 +7,10 @@
 }
 
 .playerContainer > .removePlayerButton {
-  font-size: unset;
-  padding: unset;
-  border-radius: 0.2rem;
-  padding: 0 0.5rem;
-  margin-left: 0.5rem;
+  border-radius: 0.34768vh;
+  margin-left: 0.8692vh;
 }
 
 .playerContainer > .playerNameInput {
-  min-width: 1rem;
+  min-width: 1.7384vh;
 }

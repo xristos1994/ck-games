@@ -31,9 +31,6 @@ export const syllable = state => state.websiteRootReducer.tikTakBoom.syllable;
 export const scoreTarget = state =>
   state.websiteRootReducer.tikTakBoom.scoreTarget;
 
-export const remainingTime = state =>
-  state.websiteRootReducer.tikTakBoom.clock.remainingTime;
-
 export const isClockRunning = state =>
   state.websiteRootReducer.tikTakBoom.clock.isRunning;
 

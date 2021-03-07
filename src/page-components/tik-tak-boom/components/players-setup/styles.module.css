@@ -1,29 +1,32 @@
-.playersSetUpContainer {
-  background-color: red;
+.playersSetupContainer {
   width: 90vw;
-  max-width: 35rem;
+  max-width: 60.844vh;
   height: 70vh;
-  background-color: cornsilk;
-  border-radius: 1rem;
+  border-radius: 1.7384vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.playersContainer {
-  background-color: aquamarine;
+.playersSetupContainer > .playersSetupTitle {
+  margin-top: 1.7384vh;
+}
+
+.playersSetupContainer > .playersContainer {
   width: 90%;
-  max-width: 33rem;
+  max-width: 57.3672vh;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.playersSetUpContainer > .addPlayerButton {
-  margin-top: 1rem;
+.playersSetupContainer > .addPlayerButton {
+  margin-top: 1.7384vh;
+  min-width: 20.861vh;
 }
 
-.playersSetUpContainer > .playersSetupSubmitButton {
-  margin-top: 1rem;
+.playersSetupContainer > .playersSetupSubmitButton {
+  margin-top: 3.4768vh;
+  margin-bottom: 3.4768vh;
 }

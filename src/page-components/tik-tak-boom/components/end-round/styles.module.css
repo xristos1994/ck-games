@@ -2,22 +2,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 1rem;
-  margin: 1rem 0;
+  padding: 0 1.7384vh;
+  margin: 1.7384vh 0;
 }
 
 .endRoundContainer > .whoLost {
-  margin-top: 1rem;
-  font-size: 2rem;
+  margin-top: 1.7384vh;
 }
 
 .endRoundContainer > .playersContainer {
-  margin-top: 1rem;
+  margin-top: 1.7384vh;
 }
 
 .endRoundContainer > .playersContainer > .player {
-  margin-top: 0.5rem;
-  border: 0.125rem solid black;
+  margin-top: 0.8692vh;
+  border: 0.2173vh solid black;
   cursor: pointer;
 }
 
@@ -26,6 +25,6 @@
 }
 
 .endRoundContainer > .proceedButton {
-  margin-top: 2rem;
-  max-width: 20rem;
+  margin-top: 3.4768vh;
+  max-width: 27.8144vh;
 }

@@ -1,10 +1,8 @@
 .scoreSetupContainer {
-  background-color: red;
   width: 90vw;
-  max-width: 35rem;
+  max-width: 60.844vh;
   height: 30vh;
-  background-color: cornsilk;
-  border-radius: 1rem;
+  border-radius: 1.7384vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -12,10 +10,16 @@
   justify-content: center;
 }
 
-.scoreSetupContainer > .scoreTargetSetupSubmitButton {
-  margin-top: 1rem;
+.scoreSetupContainer > .scoreSetupTitle {
+  margin-top: 1.7384vh;
 }
 
 .scoreSetupContainer > .scoreTargetInput {
-  min-width: 1rem;
+  margin-top: 3.4768vh;
+  min-width: 1.7384vh;
+}
+
+.scoreSetupContainer > .scoreTargetSetupSubmitButton {
+  margin-top: 3.4768vh;
+  min-width: 20.861vh;
 }

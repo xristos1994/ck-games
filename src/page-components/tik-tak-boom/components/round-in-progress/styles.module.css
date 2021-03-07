@@ -2,39 +2,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.7384vh;
+  margin-bottom: 1.7384vh;
 }
 
 .roundInProgressContainer > .player {
-  font-size: 2rem;
+  margin-top: 1.7384vh;
 }
 
 .roundInProgressContainer > .mode {
-  margin-top: 1rem;
-  font-size: 2rem;
+  margin-top: 3.4768vh;
 }
 
 .roundInProgressContainer > .modeDescription {
-  margin-top: 1rem;
-  font-size: 2rem;
+  margin-top: 0.34768vh;
 }
 
 .roundInProgressContainer > .syllable {
-  margin-top: 1rem;
-  font-size: 2rem;
+  margin-top: 1.7384vh;
 }
 
-.roundInProgressContainer > .goToPlayerButtonContainer {
-  margin-top: 1rem;
-  font-size: 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap-reverse;
+.roundInProgressContainer > .goToNextPlayerButton {
+  margin-top: 3.4768vh;
+  width: 34.768vh;
+  height: 34.768vh;
+  border-radius: 17.384vh;
 }
 
-.roundInProgressContainer > .goToPlayerButtonContainer > .goToPlayerButton {
-  margin-left: 1rem;
-  margin-right: 1rem;
+.roundInProgressContainer > .goToPreviousPlayerButton {
+  margin-top: 6.9536vh;
+  align-self: flex-start;
 }

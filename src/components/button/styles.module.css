@@ -2,20 +2,23 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
-  padding: 0.25rem;
-  background-color: red;
+  padding: 0.8692vh;
   border: none;
-  border-radius: 1rem;
+  border-radius: 0.8692vh;
   transition: filter 0.3s;
 }
 
-.button:hover:not([disabled]) {
+button:hover:not([disabled]) {
   cursor: pointer;
   filter: brightness(85%);
   -webkit-filter: brightness(85%);
 }
 
-.button:focus:not([disabled]) {
+button:focus:not([disabled]) {
   outline: none;
+}
+
+button:disabled {
+  filter: brightness(65%);
+  -webkit-filter: brightness(65%);
 }

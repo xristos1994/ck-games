@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { classnames } from "@utils/component-utils";
 import { useScrollDirection } from "@hooks";
-import { Button } from "@components";
 import styles from "./styles.module.css";
 
 const HeightClasses = {
@@ -23,13 +21,12 @@ const Header = () => {
       : HeightClasses.shrinked;
 
   return (
-    <header className={classnames(styles.header, styles[heightClass])}>
-      <Link to="/" className={styles.title}>
+    <header
+      className={classnames(styles.header, styles[heightClass], "primary-dark")}
+    >
+      <Link to="/" className={classnames(styles.title, "extraLargeText")}>
         My Games
       </Link>
-      <Button className={styles.menuButton}>
-        <GiHamburgerMenu />
-      </Button>
     </header>
   );
 };

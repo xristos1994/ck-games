@@ -41,6 +41,40 @@ const initialState = {
   },
 };
 
+// const initialState = {
+//   tikTakBoomStarted: true,
+//   players: [
+//     {
+//       id: 0,
+//       name: "dafa",
+//       isActive: true,
+//       playsNow: true,
+//       startsRound: true,
+//       numOfBooms: 0,
+//     },
+//     {
+//       id: 1,
+//       name: "fff",
+//       isActive: true,
+//       playsNow: false,
+//       startsRound: false,
+//       numOfBooms: 0,
+//     },
+//   ],
+//   gameState: "roundInProgress",
+//   mode: {
+//     id: "tak",
+//     name: "...Tak",
+//     description: "Word must ends with syllable",
+//   },
+//   syllable: "ΤΡΩ",
+//   scoreTarget: 10,
+//   clock: {
+//     remainingTime: 0,
+//     isRunning: true,
+//   },
+// };
+
 const reducer = (
   state = { tikTakBoomStarted: false, ...initialState },
   action

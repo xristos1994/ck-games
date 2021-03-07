@@ -13,7 +13,8 @@ const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
   return (
     <div className={styles.endRoundContainer}>
       <div className={styles.whoLost}>
-        Bomb boomed on {playerNow.name}'s hands
+        Bomb boomed on {playerNow.name}'
+        {playerNow.name.slice(-1).toLowerCase() === "s" ? "" : "s"} hands
       </div>
       <div className={styles.playersContainer}>
         {players.map(player => (

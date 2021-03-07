@@ -7,46 +7,58 @@ import styles from "./styles.module.css";
 
 const _ScoreBoard = ({ players }) => {
   return (
-    <div className={styles.scoreBoardContainer}>
-      <table className={styles.scoreBoard}>
-        <caption className={styles.scoreBoardTitle}>Score board</caption>
-        <tbody>
-          {[...players]
-            .sort((p1, p2) =>
-              p1.numOfBooms < p2.numOfBooms
-                ? 1
-                : p1.numOfBooms > p2.numOfBooms
-                ? -1
-                : 0
-            )
-
-            .map((player, index) => (
-              <tr
-                key={player.id}
-                className={classnames(styles.playerRow, {
-                  [styles.inactive]: !player.isActive,
-                })}
-              >
-                <td key="index" className={styles.indexCell}>
-                  {index + 1}.
-                </td>
-                <td key="name" className={styles.nameCell}>
-                  {player.name}
-                </td>
-                <td key="score" className={styles.scoreCell}>
-                  {player.numOfBooms}
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+    <div className={classnames(styles.scoreBoardContainer, "second-bg-color")}>
+      <div
+        className={classnames(
+          styles.scoreBoardTitle,
+          "extraLargeText",
+          "main-color"
+        )}
+      >
+        Score board
+      </div>
+      <div className={classnames(styles.scoreBoard, "largeText", "main-color")}>
+        {players.map((player, index) => [
+          <div
+            key={`index_${player.id}`}
+            className={classnames(styles.indexCell, "main-border-color", {
+              [styles.inactive]: !player.isActive,
+            })}
+          >
+            {index + 1}.
+          </div>,
+          <div
+            key={`name_${player.id}`}
+            className={classnames(styles.nameCell, "main-border-color", {
+              [styles.inactive]: !player.isActive,
+            })}
+          >
+            {player.name}
+          </div>,
+          <div
+            key={`score_${player.id}`}
+            className={classnames(styles.scoreCell, "main-border-color", {
+              [styles.inactive]: !player.isActive,
+            })}
+          >
+            {player.numOfBooms}
+          </div>,
+        ])}
+      </div>
     </div>
   );
 };
 
 const ScoreBoard = connect(
   createStructuredSelector({
-    players,
+    players: state =>
+      [...players(state)].sort((p1, p2) =>
+        p1.numOfBooms < p2.numOfBooms
+          ? 1
+          : p1.numOfBooms > p2.numOfBooms
+          ? -1
+          : 0
+      ),
   })
 )(_ScoreBoard);
 

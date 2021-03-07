@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import { classnames } from "@utils/component-utils";
 import { ElevatedWithBlurBackGround, Button } from "@components";
 import { players, isPlayersSetupValid } from "@models/tik-tak-boom/props";
 import { Player } from "./components";
@@ -15,22 +16,40 @@ const _PlayersSetup = ({
 }) => {
   return (
     <ElevatedWithBlurBackGround>
-      <div className={styles.playersSetUpContainer}>
+      <div
+        className={classnames(styles.playersSetupContainer, "main-bg-color")}
+      >
+        <div
+          className={classnames(
+            styles.playersSetupTitle,
+            "extraLargeText",
+            "main-color"
+          )}
+        >
+          Players's Setup
+        </div>
         <div className={styles.playersContainer}>
           {players.map(player => (
             <Player key={player.id} player={player} />
           ))}
         </div>
-        <Button onClick={addPlayer} className={styles.addPlayerButton}>
+        <Button
+          onClick={addPlayer}
+          className={classnames(styles.addPlayerButton, "largeText", "primary")}
+        >
           Add Player
         </Button>
 
         <Button
           disabled={!isPlayersSetupValid}
           onClick={() => playersSetupSubmit()}
-          className={styles.playersSetupSubmitButton}
+          className={classnames(
+            styles.playersSetupSubmitButton,
+            "extraLargeText",
+            "primary-dark"
+          )}
         >
-          OK
+          PROCEED
         </Button>
       </div>
     </ElevatedWithBlurBackGround>

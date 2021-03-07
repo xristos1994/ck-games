@@ -1,10 +1,11 @@
 import React from "react";
+import { classnames } from "@utils/component-utils";
 import styles from "./styles.module.css";
 
 const Button = ({ children, onClick, className = "", ...other }) => {
   return (
     <button
-      className={`${styles.button} ${className}`}
+      className={classnames(styles.button, className)}
       {...other}
       onClick={onClick}
     >

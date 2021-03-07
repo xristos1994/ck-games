@@ -1,39 +1,25 @@
 .scoreBoardContainer {
-  background-color: bisque;
+  border-radius: 1.7384vh;
   width: 100%;
-  min-width: 20rem;
-  padding: 1rem;
+  min-width: 34.768vh;
+  padding: 3.4768vh 1.7384vh;
+}
+
+.scoreBoardContainer > .scoreBoardTitle {
+  width: 100%;
+  text-align: center;
 }
 
 .scoreBoardContainer > .scoreBoard {
-  font-size: 1.5rem;
-  width: 100%;
+  margin-top: 0.8692vh;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
 }
 
-.scoreBoardContainer > .scoreBoard > .scoreBoardTitle {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.scoreBoardContainer > .scoreBoard > tbody > .playerRow {
-  border-bottom: 1px solid black;
-}
-
-.scoreBoardContainer > .scoreBoard > tbody > .inactive {
-  color: grey;
-}
-
-.scoreBoardContainer > .scoreBoard > tbody > .playerRow > .indexCell {
-  width: 1px;
-  padding-right: 0.5rem;
-}
-
-.scoreBoardContainer > .scoreBoard > tbody > .playerRow > .nameCell {
-  margin-left: 0.5rem;
-}
-
-.scoreBoardContainer > .scoreBoard > tbody > .playerRow > .scoreCell {
-  margin-left: 0.5rem;
+.scoreBoardContainer > .scoreBoard > * {
+  margin-top: 0.8692vh;
+  margin-bottom: 0.8692vh;
+  border-bottom: 2px solid;
 }
 
 @media screen and (max-width: 480px) {
