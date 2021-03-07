@@ -1,24 +1,20 @@
 import { isPositiveInteger } from "@utils/general";
+import { GameStates } from "./config";
 
 export const tikTakBoomStarted = state =>
   state.websiteRootReducer.tikTakBoom.tikTakBoomStarted;
 
 export const players = state => state.websiteRootReducer.tikTakBoom.players;
 
-export const playerById = state => id =>
-  state.websiteRootReducer.tikTakBoom.players.find(p => p.id === id);
+export const playerById = state => id => players(state).find(p => p.id === id);
 
 export const playerNameThatPlaysNow = state => {
-  const player = state.websiteRootReducer.tikTakBoom.players.find(
-    player => player.playsNow
-  );
+  const player = players(state).find(player => player.playsNow);
   return player ? player.name : null;
 };
 
 export const playerNameThatStartsRound = state => {
-  const player = state.websiteRootReducer.tikTakBoom.players.find(
-    player => player.startsRound
-  );
+  const player = players(state).find(player => player.startsRound);
   return player ? player.name : null;
 };
 
@@ -35,18 +31,29 @@ export const isClockRunning = state =>
   state.websiteRootReducer.tikTakBoom.clock.isRunning;
 
 export const isPlayersSetupValid = state => {
-  const players = state.websiteRootReducer.tikTakBoom.players;
+  const _players = players(state);
 
   return (
-    !players.find(player => player.name.trim().length === 0) &&
-    players.filter(player => player.isActive).length >= 2
+    !_players.find(player => player.name.trim().length === 0) &&
+    _players.filter(player => player.isActive).length >= 2
   );
 };
 
 export const isScoreTargetValid = state => {
-  const scoreTarget = state.websiteRootReducer.tikTakBoom.scoreTarget;
-  if (!isPositiveInteger(`${scoreTarget}`)) {
+  const _scoreTarget = scoreTarget(state);
+  if (!isPositiveInteger(`${_scoreTarget}`)) {
     return false;
   }
-  return scoreTarget > 0;
+  return _scoreTarget > 0;
+};
+
+export const canGoBack = state => {
+  const _gameState = gameState(state);
+  const hasGameStarted =
+    !!players(state).find(player => !player.isActive) ||
+    !!players(state).find(player => player.numOfBooms > 0);
+  return (
+    _gameState === GameStates.setScoreTarget ||
+    (_gameState === GameStates.waitForRoundStart && !hasGameStarted)
+  );
 };

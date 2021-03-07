@@ -3,13 +3,23 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { ElevatedWithBlurBackGround, Button } from "@components";
-import { scoreTarget, isScoreTargetValid } from "@models/tik-tak-boom/props";
+import {
+  scoreTarget,
+  isScoreTargetValid,
+  canGoBack,
+} from "@models/tik-tak-boom/props";
 import styles from "./styles.module.css";
-import { setScoreTarget, scoreSetupSubmit } from "@models/tik-tak-boom/actions";
+import {
+  setScoreTarget,
+  scoreSetupSubmit,
+  goBack,
+} from "@models/tik-tak-boom/actions";
 
 const _ScoreSetup = ({
   scoreTarget,
   isScoreTargetValid,
+  canGoBack,
+  goBack,
   setScoreTarget,
   scoreSetupSubmit,
 }) => {
@@ -51,6 +61,14 @@ const _ScoreSetup = ({
         >
           PROCEED
         </Button>
+        {canGoBack && (
+          <Button
+            onClick={() => goBack()}
+            className={classnames(styles.backButton, "largeText", "secondary")}
+          >
+            BACK
+          </Button>
+        )}
       </div>
     </ElevatedWithBlurBackGround>
   );
@@ -60,8 +78,9 @@ const ScoreSetup = connect(
   createStructuredSelector({
     scoreTarget,
     isScoreTargetValid,
+    canGoBack,
   }),
-  { setScoreTarget, scoreSetupSubmit }
+  { setScoreTarget, scoreSetupSubmit, goBack }
 )(_ScoreSetup);
 
 export { ScoreSetup };

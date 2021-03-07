@@ -59,3 +59,5 @@ export const updateGameReduxState = Action(
 export const setWhoLost = Action("TIK_TAK_BOOM", "SET_WHO_LOST");
 
 export const initializeGame = Action("TIK_TAK_BOOM", "INITIALIZE_GAME");
+
+export const goBack = Action("TIK_TAK_BOOM", "GO_BACK");

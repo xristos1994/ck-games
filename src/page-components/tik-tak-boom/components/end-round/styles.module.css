@@ -12,16 +12,12 @@
 
 .endRoundContainer > .playersContainer {
   margin-top: 1.7384vh;
+  min-width: 35vh;
 }
 
 .endRoundContainer > .playersContainer > .player {
   margin-top: 0.8692vh;
-  border: 0.2173vh solid black;
-  cursor: pointer;
-}
-
-.endRoundContainer > .playersContainer > .playerLost {
-  background-color: red;
+  width: 100%;
 }
 
 .endRoundContainer > .proceedButton {

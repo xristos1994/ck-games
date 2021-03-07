@@ -14,3 +14,7 @@
   margin-top: 3.4768vh;
   max-width: 34.768vh;
 }
+
+.startRoundContainer > .backButton {
+  margin-top: 3vh;
+}

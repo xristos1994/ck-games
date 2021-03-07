@@ -4,11 +4,19 @@ import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
 import styles from "./styles.module.css";
-import { startRound } from "@models/tik-tak-boom/actions";
-import { playerNameThatStartsRound } from "@models/tik-tak-boom/props";
+import { startRound, goBack } from "@models/tik-tak-boom/actions";
+import {
+  playerNameThatStartsRound,
+  canGoBack,
+} from "@models/tik-tak-boom/props";
 import { ScoreBoard } from "./../";
 
-const _StartRound = ({ startRound, playerNameThatStartsRound }) => {
+const _StartRound = ({
+  startRound,
+  playerNameThatStartsRound,
+  canGoBack,
+  goBack,
+}) => {
   return (
     <div className={styles.startRoundContainer}>
       <div
@@ -31,6 +39,14 @@ const _StartRound = ({ startRound, playerNameThatStartsRound }) => {
       >
         PROCEED
       </Button>
+      {canGoBack && (
+        <Button
+          onClick={() => goBack()}
+          className={classnames(styles.backButton, "largeText", "secondary")}
+        >
+          BACK
+        </Button>
+      )}
     </div>
   );
 };
@@ -38,8 +54,9 @@ const _StartRound = ({ startRound, playerNameThatStartsRound }) => {
 const StartRound = connect(
   createStructuredSelector({
     playerNameThatStartsRound,
+    canGoBack,
   }),
-  { startRound }
+  { startRound, goBack }
 )(_StartRound);
 
 export { StartRound };

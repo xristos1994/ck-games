@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { connect } from "react-redux";
+import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
 import styles from "./styles.module.css";
 import { restartGame } from "@models/tik-tak-boom/actions";
@@ -9,13 +10,32 @@ import { ScoreBoard } from "./../";
 const _EndGame = ({ restartGame }) => {
   return (
     <div className={styles.endGameContainer}>
-      <div className={styles.gameEndTitle}>Game Completed</div>
+      <div
+        className={classnames(
+          styles.gameEndTitle,
+          "main-color",
+          "extraLargeText"
+        )}
+      >
+        Game Completed
+      </div>
       <ScoreBoard />
-      <Button onClick={() => restartGame()} className={styles.restartButton}>
+      <Button
+        onClick={() => restartGame()}
+        className={classnames(
+          styles.restartButton,
+          "extraLargeText",
+          "primary"
+        )}
+      >
         Restart Game
       </Button>
       <Link to={"/"}>
-        <Button className={styles.homeButton}>Home</Button>
+        <Button
+          className={classnames(styles.homeButton, "secondary", "largeText")}
+        >
+          Home
+        </Button>
       </Link>
     </div>
   );

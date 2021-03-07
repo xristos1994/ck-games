@@ -27,6 +27,7 @@ import {
   updateGameReduxState,
   initializeGame,
   setWhoLost,
+  goBack,
 } from "./actions";
 import { GameStates, BoomTimer } from "./config";
 import {
@@ -269,6 +270,24 @@ const setWhoLostEpic = (action$, state$) => {
   );
 };
 
+const goBackEpic = (action$, state$) => {
+  return action$.pipe(
+    ofType(goBack.type),
+    withLatestFrom(state$),
+    map(([action, state]) => {
+      const gameState = state.websiteRootReducer.tikTakBoom.gameState;
+      const newGameState =
+        gameState === GameStates.setScoreTarget
+          ? GameStates.setPlayers
+          : gameState === GameStates.waitForRoundStart
+          ? GameStates.setScoreTarget
+          : gameState;
+
+      return updateGameState(newGameState);
+    })
+  );
+};
+
 export const tikTakBoomEpic = combineEpics(
   startEpic,
   setPlayerByIdEpic,
@@ -284,5 +303,6 @@ export const tikTakBoomEpic = combineEpics(
   endRoundEpic,
   goToNextRoundEpic,
   restartGameEpic,
-  setWhoLostEpic
+  setWhoLostEpic,
+  goBackEpic
 );

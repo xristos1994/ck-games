@@ -12,7 +12,9 @@ const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
 
   return (
     <div className={styles.endRoundContainer}>
-      <div className={styles.whoLost}>
+      <div
+        className={classnames(styles.whoLost, "extraLargeText", "main-color")}
+      >
         Bomb boomed on {playerNow.name}'
         {playerNow.name.slice(-1).toLowerCase() === "s" ? "" : "s"} hands
       </div>
@@ -21,8 +23,9 @@ const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
           <Button
             key={player.id}
             disabled={!player.isActive}
-            className={classnames(styles.player, {
-              [styles.playerLost]: playerNow.id === player.id,
+            className={classnames(styles.player, "largeText", {
+              ["secondary-light"]: playerNow.id === player.id,
+              ["secondary-dark"]: playerNow.id !== player.id,
             })}
             onClick={() => player.isActive && setWhoLost(player.id)}
           >
@@ -30,7 +33,14 @@ const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
           </Button>
         ))}
       </div>
-      <Button onClick={() => goToNextRound()} className={styles.proceedButton}>
+      <Button
+        onClick={() => goToNextRound()}
+        className={classnames(
+          styles.proceedButton,
+          "primary",
+          "extraLargeText"
+        )}
+      >
         PROCEED
       </Button>
     </div>
