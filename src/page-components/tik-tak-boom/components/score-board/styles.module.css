@@ -22,6 +22,10 @@
   border-bottom: 2px solid;
 }
 
+.scoreBoardContainer > .scoreBoard > .inactive {
+  opacity: 0.5;
+}
+
 @media screen and (max-width: 480px) {
   .scoreBoardContainer {
     min-width: 95%;

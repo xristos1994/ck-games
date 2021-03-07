@@ -1,6 +1,6 @@
 import React from "react";
 import { SEO, AvailableGames } from "./components";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 
 const Home = () => {
   return (

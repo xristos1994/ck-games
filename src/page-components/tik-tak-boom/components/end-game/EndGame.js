@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { connect } from "react-redux";
 import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 import { restartGame } from "@models/tik-tak-boom/actions";
 import { ScoreBoard } from "./../";
 

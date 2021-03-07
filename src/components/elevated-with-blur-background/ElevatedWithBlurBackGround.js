@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 
 const ElevatedWithBlurBackGround = ({ children }) => {
   return <div className={styles.container}>{children}</div>;

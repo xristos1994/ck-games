@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { players } from "@models/tik-tak-boom/props";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 
 const _ScoreBoard = ({ players }) => {
   return (
@@ -21,7 +21,7 @@ const _ScoreBoard = ({ players }) => {
         {players.map((player, index) => [
           <div
             key={`index_${player.id}`}
-            className={classnames(styles.indexCell, "main-border-color", {
+            className={classnames("main-border-color", {
               [styles.inactive]: !player.isActive,
             })}
           >
@@ -29,7 +29,7 @@ const _ScoreBoard = ({ players }) => {
           </div>,
           <div
             key={`name_${player.id}`}
-            className={classnames(styles.nameCell, "main-border-color", {
+            className={classnames("main-border-color", {
               [styles.inactive]: !player.isActive,
             })}
           >
@@ -37,7 +37,7 @@ const _ScoreBoard = ({ players }) => {
           </div>,
           <div
             key={`score_${player.id}`}
-            className={classnames(styles.scoreCell, "main-border-color", {
+            className={classnames("main-border-color", {
               [styles.inactive]: !player.isActive,
             })}
           >

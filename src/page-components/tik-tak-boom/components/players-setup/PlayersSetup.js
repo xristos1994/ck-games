@@ -5,7 +5,7 @@ import { classnames } from "@utils/component-utils";
 import { ElevatedWithBlurBackGround, Button } from "@components";
 import { players, isPlayersSetupValid } from "@models/tik-tak-boom/props";
 import { Player } from "./components";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 import { addPlayer, playersSetupSubmit } from "@models/tik-tak-boom/actions";
 
 const _PlayersSetup = ({

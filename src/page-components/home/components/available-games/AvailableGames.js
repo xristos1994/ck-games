@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { classnames } from "@utils/component-utils";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 import { Button } from "@components";
 
 const availableGames = [{ name: "tik tak boom", url: "/tik-tak-boom" }];

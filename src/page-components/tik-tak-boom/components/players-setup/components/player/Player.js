@@ -5,7 +5,7 @@ import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
 import { setPlayerById, removePlayerById } from "@models/tik-tak-boom/actions";
 import { players } from "@models/tik-tak-boom/props";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 
 const _Player = ({ player, setPlayerById, numOfPlayers, removePlayerById }) => {
   const onChangeName = e => {

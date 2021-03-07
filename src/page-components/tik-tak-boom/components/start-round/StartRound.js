@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 import { startRound, goBack } from "@models/tik-tak-boom/actions";
 import {
   playerNameThatStartsRound,

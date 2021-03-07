@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { Button } from "@components";
 import { classnames } from "@utils/component-utils";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 import { goToNextRound, setWhoLost } from "@models/tik-tak-boom/actions";
 import { players } from "@models/tik-tak-boom/props";
 

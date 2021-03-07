@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { classnames } from "@utils/component-utils";
 import { useScrollDirection } from "@hooks";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 
 const HeightClasses = {
   normal: "normal",
@@ -24,7 +24,7 @@ const Header = () => {
     <header
       className={classnames(styles.header, styles[heightClass], "primary-dark")}
     >
-      <Link to="/" className={classnames(styles.title, "extraLargeText")}>
+      <Link to="/" className={classnames("extraLargeText")}>
         My Games
       </Link>
     </header>

@@ -10,7 +10,7 @@ import {
   EndRound,
   EndGame,
 } from "./components";
-import styles from "./styles.module.css";
+import * as styles from "./styles.module.css";
 import { gameState } from "@models/tik-tak-boom/props";
 import { initializeGame } from "@models/tik-tak-boom/actions";
 import { GameStates } from "@models/tik-tak-boom/config";
