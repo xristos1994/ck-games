@@ -24,8 +24,8 @@ const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
             key={player.id}
             disabled={!player.isActive}
             className={classnames(styles.player, "largeText", {
-              ["secondary-light"]: playerNow.id === player.id,
-              ["secondary-dark"]: playerNow.id !== player.id,
+              "secondary-light": playerNow.id === player.id,
+              "secondary-dark": playerNow.id !== player.id,
             })}
             onClick={() => player.isActive && setWhoLost(player.id)}
           >
