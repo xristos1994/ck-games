@@ -13,7 +13,7 @@ const _createStore = () => {
           createReducer(),
           composeWithDevTools(applyMiddleware(epicMiddleware))
         )
-      : createStore(createReducer());
+      : createStore(createReducer(), applyMiddleware(epicMiddleware));
   store.asyncReducers = {};
   store.injectReducer = (key, reducer) => {
     store.asyncReducers[key] = reducer;
