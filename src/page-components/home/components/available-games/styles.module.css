@@ -1,0 +1,9 @@
+.availableGamesContainer {
+  width: 90%;
+  max-width: 60.844vh;
+}
+
+.availableGamesContainer > a > .gameButton {
+  width: 100%;
+  margin: 1.7384vh 0;
+}

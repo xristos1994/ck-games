@@ -1,0 +1,32 @@
+.playersSetupContainer {
+  width: 90vw;
+  max-width: 60.844vh;
+  height: 70vh;
+  border-radius: 1.7384vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playersSetupContainer > .playersSetupTitle {
+  margin-top: 1.7384vh;
+}
+
+.playersSetupContainer > .playersContainer {
+  width: 90%;
+  max-width: 57.3672vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.playersSetupContainer > .addPlayerButton {
+  margin-top: 1.7384vh;
+  min-width: 20.861vh;
+}
+
+.playersSetupContainer > .playersSetupSubmitButton {
+  margin-top: 3.4768vh;
+  margin-bottom: 3.4768vh;
+}

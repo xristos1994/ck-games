@@ -1,0 +1,29 @@
+.scoreSetupContainer {
+  width: 90vw;
+  max-width: 60.844vh;
+  height: 40vh;
+  border-radius: 1.7384vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.scoreSetupContainer > .scoreSetupTitle {
+  margin-top: 1.7384vh;
+}
+
+.scoreSetupContainer > .scoreTargetInput {
+  margin-top: 3.4768vh;
+  min-width: 1.7384vh;
+}
+
+.scoreSetupContainer > .scoreTargetSetupSubmitButton {
+  margin-top: 3.4768vh;
+  min-width: 20.861vh;
+}
+
+.scoreSetupContainer > .backButton {
+  margin-top: 3vh;
+}

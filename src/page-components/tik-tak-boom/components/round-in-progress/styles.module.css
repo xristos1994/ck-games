@@ -1,0 +1,35 @@
+.roundInProgressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.7384vh;
+  margin-bottom: 1.7384vh;
+}
+
+.roundInProgressContainer > .player {
+  margin-top: 1.7384vh;
+}
+
+.roundInProgressContainer > .mode {
+  margin-top: 3.4768vh;
+}
+
+.roundInProgressContainer > .modeDescription {
+  margin-top: 0.34768vh;
+}
+
+.roundInProgressContainer > .syllable {
+  margin-top: 1.7384vh;
+}
+
+.roundInProgressContainer > .goToNextPlayerButton {
+  margin-top: 3.4768vh;
+  width: 34.768vh;
+  height: 34.768vh;
+  border-radius: 17.384vh;
+}
+
+.roundInProgressContainer > .goToPreviousPlayerButton {
+  margin-top: 6.9536vh;
+  align-self: flex-start;
+}

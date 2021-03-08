@@ -1,0 +1,26 @@
+.endRoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.7384vh;
+  margin: 1.7384vh 0;
+}
+
+.endRoundContainer > .whoLost {
+  margin-top: 1.7384vh;
+}
+
+.endRoundContainer > .playersContainer {
+  margin-top: 1.7384vh;
+  min-width: 35vh;
+}
+
+.endRoundContainer > .playersContainer > .player {
+  margin-top: 0.8692vh;
+  width: 100%;
+}
+
+.endRoundContainer > .proceedButton {
+  margin-top: 3.4768vh;
+  max-width: 27.8144vh;
+}
