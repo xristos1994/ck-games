@@ -2,9 +2,9 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.8692vh;
+  padding: 1vh;
   border: none;
-  border-radius: 0.8692vh;
+  border-radius: 1vh;
   transition: filter 0.3s;
 }
 

@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header
-      className={classnames(styles.header, styles[heightClass], "primary-dark")}
+      className={classnames(styles.header, styles[heightClass], "primary")}
     >
       <Link to="/" className={classnames("extraLargeText")}>
         My Games

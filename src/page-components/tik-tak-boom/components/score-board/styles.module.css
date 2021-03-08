@@ -1,8 +1,8 @@
 .scoreBoardContainer {
-  border-radius: 1.7384vh;
+  border-radius: 2vh;
   width: 100%;
-  min-width: 34.768vh;
-  padding: 3.4768vh 1.7384vh;
+  min-width: 35vh;
+  padding: 3.5vh 2vh;
 }
 
 .scoreBoardContainer > .scoreBoardTitle {
@@ -11,14 +11,14 @@
 }
 
 .scoreBoardContainer > .scoreBoard {
-  margin-top: 0.8692vh;
+  margin-top: 1vh;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
 }
 
 .scoreBoardContainer > .scoreBoard > * {
-  margin-top: 0.8692vh;
-  margin-bottom: 0.8692vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   border-bottom: 2px solid;
 }
 
