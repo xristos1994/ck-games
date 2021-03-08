@@ -1,4 +1,4 @@
 export const BoomTimer = {
-  minSeconds: 5,
-  maxSeconds: 6,
+  minSeconds: 25,
+  maxSeconds: 40,
 };
