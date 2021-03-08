@@ -15,13 +15,13 @@
 }
 
 .shrinked {
-  height: 6.3vh;
+  height: 6vh;
   transition: height 0.6s;
 }
 
 @media screen and (max-width: 768px) {
   .header {
     justify-content: space-between;
-    padding: 0 1.7384vh;
+    padding: 0 2vh;
   }
 }
