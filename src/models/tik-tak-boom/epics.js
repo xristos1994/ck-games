@@ -41,6 +41,7 @@ import {
   assignWhoLost,
   audios,
 } from "./utils";
+import { vibrate } from "@utils/hardware";
 import { getRandomInteger } from "@utils/general";
 
 const startEpic = () => of(startTikTakBoom());
@@ -196,6 +197,7 @@ const reduceRemainingTimeEpic = (action$, state$) => {
           audios.tikTak.play();
         }
         if (newRemainingTime === 0) {
+          vibrate(200);
           audios.boom.play();
         }
       }
