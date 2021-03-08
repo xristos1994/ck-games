@@ -197,7 +197,7 @@ const reduceRemainingTimeEpic = (action$, state$) => {
           audios.tikTak.play();
         }
         if (newRemainingTime === 0) {
-          vibrate(200);
+          vibrate([200, 100, 200, 100, 200]);
           audios.boom.play();
         }
       }
