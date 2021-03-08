@@ -46,6 +46,8 @@ module.exports = {
           "@utils": path.resolve(__dirname, "src/utils"),
           "@hooks": path.resolve(__dirname, "src/hooks"),
           "@page-components": path.resolve(__dirname, "src/page-components"),
+          "@images": path.resolve(__dirname, "src/images"),
+          "@sounds": path.resolve(__dirname, "src/sounds"),
         },
         extensions: [],
       },

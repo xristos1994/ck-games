@@ -39,7 +39,9 @@ import {
   createNewPlayer,
   restartGameState,
   assignWhoLost,
+  audios,
 } from "./utils";
+import { vibrate } from "@utils/hardware";
 import { getRandomInteger } from "@utils/general";
 
 const startEpic = () => of(startTikTakBoom());
@@ -189,6 +191,17 @@ const reduceRemainingTimeEpic = (action$, state$) => {
         state.websiteRootReducer.tikTakBoom.clock.remainingTime - 1;
       const clockIsRunning =
         state.websiteRootReducer.tikTakBoom.clock.isRunning;
+
+      if (clockIsRunning) {
+        if (clockIsRunning && newRemainingTime) {
+          audios.tikTak.play();
+        }
+        if (newRemainingTime === 0) {
+          vibrate([200, 100, 200, 100, 200]);
+          audios.boom.play();
+        }
+      }
+
       if (newRemainingTime === 0) {
         return [updateRemainingTime(newRemainingTime), endRound()];
       }
