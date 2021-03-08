@@ -39,6 +39,7 @@ import {
   createNewPlayer,
   restartGameState,
   assignWhoLost,
+  audios,
 } from "./utils";
 import { getRandomInteger } from "@utils/general";
 
@@ -189,6 +190,16 @@ const reduceRemainingTimeEpic = (action$, state$) => {
         state.websiteRootReducer.tikTakBoom.clock.remainingTime - 1;
       const clockIsRunning =
         state.websiteRootReducer.tikTakBoom.clock.isRunning;
+
+      if (clockIsRunning) {
+        if (clockIsRunning && newRemainingTime) {
+          audios.tikTak.play();
+        }
+        if (newRemainingTime === 0) {
+          audios.boom.play();
+        }
+      }
+
       if (newRemainingTime === 0) {
         return [updateRemainingTime(newRemainingTime), endRound()];
       }

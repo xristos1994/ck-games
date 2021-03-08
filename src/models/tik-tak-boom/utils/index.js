@@ -6,6 +6,7 @@ import { assignScoreAfterRoundEnds } from "./assignScoreAfterRoundEnds";
 import { createNewPlayer } from "./createNewPlayer";
 import { restartGameState } from "./restartGameState";
 import { assignWhoLost } from "./assignWhoLost";
+import { audios } from "./audios";
 
 export {
   findModeAndSyllable,
@@ -16,4 +17,5 @@ export {
   createNewPlayer,
   restartGameState,
   assignWhoLost,
+  audios,
 };
