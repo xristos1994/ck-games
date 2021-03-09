@@ -1,4 +1,16 @@
-export const Modes = {
+interface ISingleMode {
+  id: string;
+  name: String;
+  description: String;
+}
+
+interface IModes {
+  tik: ISingleMode;
+  tak: ISingleMode;
+  tikTak: ISingleMode;
+}
+
+export const Modes: IModes = {
   tik: {
     id: "tik",
     name: "Tik...",

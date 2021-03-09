@@ -1,4 +1,10 @@
-export const Syllables = {
+interface ISyllables {
+  start: string[];
+  end: string[];
+  everywhere: string[];
+}
+
+export const Syllables: ISyllables = {
   start: [
     "ΑΤΑ",
     "ΜΕΛ",
