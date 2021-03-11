@@ -1,4 +1,9 @@
-export const assignNextRoundStarter = (players, activateAll) => {
+import { IPlayer } from "./../interfaces";
+
+export const assignNextRoundStarter: (
+  players: IPlayer[],
+  activateAll: boolean
+) => IPlayer[] = (players, activateAll) => {
   const idOfCurrentRoundStarter = (
     players.find(player => player.startsRound) || {}
   ).id;

@@ -1,5 +1,10 @@
-import { of } from "rxjs";
-import { combineEpics, ofType } from "redux-observable";
+import { Observable, of } from "rxjs";
+import {
+  ActionsObservable,
+  combineEpics,
+  ofType,
+  StateObservable,
+} from "redux-observable";
 import { debounceTime, map, mergeMap, withLatestFrom } from "rxjs/operators";
 import {
   noAction,
@@ -41,12 +46,21 @@ import {
   assignWhoLost,
   audios,
 } from "./utils";
-import { vibrate } from "@utils/hardware";
-import { getRandomInteger } from "@utils/general";
+import { vibrate } from "./../../utils/hardware"; //Alias "@utils/hardware";
+import { getRandomInteger } from "./../../utils/general"; //Alias "@utils/general";
+import { IPlayer, IScoreTarget } from "./interfaces";
+import { IState } from "./../../models/interfaces"; //Alias "@models/interfaces";
+import {
+  IActionWithPayload,
+  IActionWithoutPayload,
+} from "./../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
 
 const startEpic = () => of(startTikTakBoom());
 
-const setPlayerByIdEpic = (action$, state$) => {
+const setPlayerByIdEpic = (
+  action$: ActionsObservable<IActionWithPayload<IPlayer>>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(setPlayerById.type),
     withLatestFrom(state$),
@@ -63,7 +77,10 @@ const setPlayerByIdEpic = (action$, state$) => {
   );
 };
 
-const removePlayerByIdEpic = (action$, state$) => {
+const removePlayerByIdEpic = (
+  action$: ActionsObservable<IActionWithPayload<IPlayer["id"]>>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(removePlayerById.type),
     withLatestFrom(state$),
@@ -81,7 +98,10 @@ const removePlayerByIdEpic = (action$, state$) => {
   );
 };
 
-const addPlayerByIdEpic = (action$, state$) => {
+const addPlayerByIdEpic = (
+  action$: ActionsObservable<IActionWithoutPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(addPlayer.type),
     withLatestFrom(state$),
@@ -92,21 +112,27 @@ const addPlayerByIdEpic = (action$, state$) => {
   );
 };
 
-const playersSetupSubmitEpic = (action$, state$) => {
+const playersSetupSubmitEpic = (
+  action$: ActionsObservable<IActionWithoutPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<GameStates>> => {
   return action$.pipe(
     ofType(playersSetupSubmit.type),
     withLatestFrom(state$),
     map(([action, state]) => {
       const gameState = state.websiteRootReducer.tikTakBoom.gameState;
       if (gameState === GameStates.setPlayers) {
-        return updateGameState(GameStates.setScoreTarget);
+        return updateGameState("setScoreTarget" as GameStates);
       }
-      return updateGameState(GameStates.waitForRoundStart);
+      return updateGameState("waitForRoundStart" as GameStates);
     })
   );
 };
 
-const setScoreTargetEpic = (action$, state$) => {
+const setScoreTargetEpic = (
+  action$: ActionsObservable<IActionWithPayload<IScoreTarget>>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IScoreTarget>> => {
   return action$.pipe(
     ofType(setScoreTarget.type),
     withLatestFrom(state$),
@@ -116,7 +142,12 @@ const setScoreTargetEpic = (action$, state$) => {
   );
 };
 
-const scoreSetupSubmitEpic = (action$, state$) => {
+const scoreSetupSubmitEpic = (
+  action$: ActionsObservable<IActionWithoutPayload>,
+  state$: StateObservable<IState>
+):
+  | Observable<IActionWithPayload<IPlayer[]>>
+  | Observable<IActionWithPayload<GameStates>> => {
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
     withLatestFrom(state$),
@@ -206,7 +237,7 @@ const reduceRemainingTimeEpic = (action$, state$) => {
         return [updateRemainingTime(newRemainingTime), endRound()];
       }
       if (!clockIsRunning) {
-        return updateRemainingTime(newRemainingTime);
+        return [updateRemainingTime(newRemainingTime)];
       }
       return [updateRemainingTime(newRemainingTime), reduceRemainingTime()];
     })

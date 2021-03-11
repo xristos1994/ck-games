@@ -1,4 +1,9 @@
-export const assignWhoLost = (players, playerLostId) => {
+import { IPlayer } from "./../interfaces";
+
+export const assignWhoLost: (
+  players: IPlayer[],
+  playerLostId: IPlayer["id"]
+) => IPlayer[] = (players, playerLostId) => {
   const activePlayers = players.filter(player => player.isActive);
   return players.map(player => {
     if (player.playsNow) {

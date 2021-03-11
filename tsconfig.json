@@ -1,0 +1,15 @@
+{
+  "baseUrl": "./src",
+  "paths": {
+    "@core/*": ["@core/*"],
+    "@components/*": ["components/*"],
+    "@models/*": ["models/*"],
+    "@store/*": ["store/*"],
+    "@utils/*": ["utils/*"],
+    "@hooks/*": ["hooks/*"],
+    "@page-components/*": ["page-components/*"],
+    "@images/*": ["images/*"],
+    "@sounds/*": ["sounds/*"],
+    "@interfaces/*": ["interfaces/*"]
+  }
+}

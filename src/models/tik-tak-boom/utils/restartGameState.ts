@@ -1,6 +1,7 @@
 import { GameStates } from "./../config";
+import { IState } from "./../interfaces";
 
-export const restartGameState = state => {
+export const restartGameState: (state: IState) => IState = state => {
   const newState = { ...state };
   newState.players = newState.players.map(player => ({
     ...player,

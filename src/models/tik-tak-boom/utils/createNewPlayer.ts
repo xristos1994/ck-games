@@ -1,4 +1,6 @@
-export const createNewPlayer = id => {
+import { IPlayer } from "./../interfaces";
+
+export const createNewPlayer: (id: IPlayer["id"]) => IPlayer = id => {
   return {
     id,
     name: "",

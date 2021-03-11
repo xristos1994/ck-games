@@ -1,4 +1,8 @@
-export const assignPreviousPlayer = players => {
+import { IPlayer } from "./../interfaces";
+
+export const assignPreviousPlayer: (
+  players: IPlayer[]
+) => IPlayer[] = players => {
   const idOfPlayerThatPlaysNow = (players.find(player => player.playsNow) || {})
     .id;
 

@@ -1,9 +1,21 @@
-import { getRandomInteger } from "@utils/general";
+import { getRandomInteger } from "../../../utils/general"; //Alias "@utils/general";
 import { Modes, Syllables } from "./../config";
+import { IMode } from "./../config/interfaces";
+import { ISyllable } from "./../../../models/tik-tak-boom/interfaces"; //Alias "@models/tik-tak-boom/interfaces";
 
-export const findModeAndSyllable = () => {
-  const result = {};
+interface IResult {
+  mode: IMode;
+  syllable: ISyllable;
+}
+
+export const findModeAndSyllable: () => IResult = () => {
   const modeKeys = Object.keys(Modes);
+
+  const result: IResult = {
+    mode: Modes[modeKeys[0]],
+    syllable: "",
+  };
+
   result.mode = Modes[modeKeys[getRandomInteger(0, modeKeys.length - 1)]];
 
   if (result.mode.id === Modes.tik.id) {
