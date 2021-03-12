@@ -122,9 +122,9 @@ const playersSetupSubmitEpic = (
     map(([action, state]) => {
       const gameState = state.websiteRootReducer.tikTakBoom.gameState;
       if (gameState === GameStates.setPlayers) {
-        return updateGameState("setScoreTarget" as GameStates);
+        return updateGameState(GameStates.setScoreTarget);
       }
-      return updateGameState("waitForRoundStart" as GameStates);
+      return updateGameState(GameStates.waitForRoundStart);
     })
   );
 };
