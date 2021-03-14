@@ -93,7 +93,7 @@ const removePlayerByIdEpic = (
     map(([{ payload }, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       if (players.length === 2) {
-        return noAction();
+        return noAction(null);
       }
       return updatePlayers(
         players
