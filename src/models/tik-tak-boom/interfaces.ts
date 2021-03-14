@@ -1,4 +1,5 @@
 import { GameStates } from "./config";
+import { IMode as IModeObj } from "./config/interfaces";
 
 export interface IPlayer {
   id: number;
@@ -10,24 +11,23 @@ export interface IPlayer {
 }
 
 export interface IClock {
-  remainingTime: number | null;
+  remainingTime: IRemainingTime;
   isRunning: boolean;
 }
 
+export type ISyllable = string | null;
+
+export type IScoreTarget = number;
+
+export type IRemainingTime = number | null;
+
+export type IMode = IModeObj | null;
 export interface IState {
   tikTakBoomStarted: boolean;
   players: IPlayer[];
   gameState: GameStates;
-  mode: string | null;
-  syllable: string | null;
-  scoreTarget: number;
+  mode: IMode;
+  syllable: ISyllable;
+  scoreTarget: IScoreTarget;
   clock: IClock;
 }
-
-export type ISyllable = string;
-
-export type IScoreTarget = string;
-
-export type IRemainingTime = number;
-
-export type IIsClockRunning = boolean;

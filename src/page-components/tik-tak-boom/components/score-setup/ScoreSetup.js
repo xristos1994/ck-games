@@ -26,7 +26,7 @@ const _ScoreSetup = ({
   const onScoreTargetChange = e => {
     const value = e.target.value;
     if (!value.trim()) {
-      setScoreTarget("");
+      setScoreTarget(null);
     } else {
       setScoreTarget(Number(e.target.value));
     }

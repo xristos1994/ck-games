@@ -44,18 +44,24 @@ import {
   createNewPlayer,
   restartGameState,
   assignWhoLost,
-  audios,
+  getAudio,
 } from "./utils";
 import { vibrate } from "./../../utils/hardware"; //Alias "@utils/hardware";
 import { getRandomInteger } from "./../../utils/general"; //Alias "@utils/general";
-import { IPlayer, IScoreTarget } from "./interfaces";
-import { IState } from "./../../models/interfaces"; //Alias "@models/interfaces";
 import {
-  IActionWithPayload,
-  IActionWithoutPayload,
-} from "./../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
+  IClock,
+  IMode,
+  IPlayer,
+  IRemainingTime,
+  IScoreTarget,
+  ISyllable,
+} from "./interfaces";
+import { IState } from "./../../models/interfaces"; //Alias "@models/interfaces";
+import { IActionWithPayload } from "./../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
+import { IState as IModelState } from "./interfaces";
 
-const startEpic = () => of(startTikTakBoom());
+const startEpic = (): Observable<IActionWithPayload> =>
+  of(startTikTakBoom(null));
 
 const setPlayerByIdEpic = (
   action$: ActionsObservable<IActionWithPayload<IPlayer>>,
@@ -99,7 +105,7 @@ const removePlayerByIdEpic = (
 };
 
 const addPlayerByIdEpic = (
-  action$: ActionsObservable<IActionWithoutPayload>,
+  action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
 ): Observable<IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
@@ -113,7 +119,7 @@ const addPlayerByIdEpic = (
 };
 
 const playersSetupSubmitEpic = (
-  action$: ActionsObservable<IActionWithoutPayload>,
+  action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
 ): Observable<IActionWithPayload<GameStates>> => {
   return action$.pipe(
@@ -143,11 +149,11 @@ const setScoreTargetEpic = (
 };
 
 const scoreSetupSubmitEpic = (
-  action$: ActionsObservable<IActionWithoutPayload>,
+  action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-):
-  | Observable<IActionWithPayload<IPlayer[]>>
-  | Observable<IActionWithPayload<GameStates>> => {
+): Observable<
+  IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>
+> => {
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
     withLatestFrom(state$),
@@ -162,7 +168,17 @@ const scoreSetupSubmitEpic = (
   );
 };
 
-const startRoundEpic = (action$, state$) => {
+const startRoundEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<
+  | IActionWithPayload<IPlayer[]>
+  | IActionWithPayload<IMode>
+  | IActionWithPayload<ISyllable>
+  | IActionWithPayload<GameStates>
+  | IActionWithPayload<IClock["isRunning"]>
+  | IActionWithPayload<IRemainingTime>
+> => {
   return action$.pipe(
     ofType(startRound.type),
     withLatestFrom(state$),
@@ -180,13 +196,16 @@ const startRoundEpic = (action$, state$) => {
         updateRemainingTime(
           getRandomInteger(BoomTimer.minSeconds, BoomTimer.maxSeconds)
         ),
-        reduceRemainingTime(),
+        reduceRemainingTime(null),
       ];
     })
   );
 };
 
-const goToNextPlayerEpic = (action$, state$) => {
+const goToNextPlayerEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(goToNextPlayer.type),
     withLatestFrom(state$),
@@ -199,7 +218,10 @@ const goToNextPlayerEpic = (action$, state$) => {
   );
 };
 
-const goToPreviousPlayerEpic = (action$, state$) => {
+const goToPreviousPlayerEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(goToPreviousPlayer.type),
     withLatestFrom(state$),
@@ -212,7 +234,10 @@ const goToPreviousPlayerEpic = (action$, state$) => {
   );
 };
 
-const reduceRemainingTimeEpic = (action$, state$) => {
+const reduceRemainingTimeEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IRemainingTime> | IActionWithPayload> => {
   return action$.pipe(
     ofType(reduceRemainingTime.type),
     debounceTime(1000),
@@ -225,26 +250,36 @@ const reduceRemainingTimeEpic = (action$, state$) => {
 
       if (clockIsRunning) {
         if (clockIsRunning && newRemainingTime) {
-          audios.tikTak.play();
+          const audio = getAudio("tikTak");
+          audio && audio.play();
         }
         if (newRemainingTime === 0) {
           vibrate([200, 100, 200, 100, 200]);
-          audios.boom.play();
+          const audio = getAudio("boom");
+          audio && audio.play();
         }
       }
 
       if (newRemainingTime === 0) {
-        return [updateRemainingTime(newRemainingTime), endRound()];
+        return [updateRemainingTime(newRemainingTime), endRound(null)];
       }
       if (!clockIsRunning) {
         return [updateRemainingTime(newRemainingTime)];
       }
-      return [updateRemainingTime(newRemainingTime), reduceRemainingTime()];
+      return [updateRemainingTime(newRemainingTime), reduceRemainingTime(null)];
     })
   );
 };
 
-const endRoundEpic = (action$, state$) => {
+const endRoundEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<
+  | IActionWithPayload<IClock["remainingTime"]>
+  | IActionWithPayload<IClock["isRunning"]>
+  | IActionWithPayload<GameStates>
+  | IActionWithPayload<IPlayer[]>
+> => {
   return action$.pipe(
     ofType(endRound.type),
     withLatestFrom(state$),
@@ -262,7 +297,12 @@ const endRoundEpic = (action$, state$) => {
   );
 };
 
-const goToNextRoundEpic = (action$, state$) => {
+const goToNextRoundEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<
+  IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>
+> => {
   return action$.pipe(
     ofType(goToNextRound.type),
     withLatestFrom(state$),
@@ -287,7 +327,10 @@ const goToNextRoundEpic = (action$, state$) => {
   );
 };
 
-const restartGameEpic = (action$, state$) => {
+const restartGameEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IModelState>> => {
   return action$.pipe(
     ofType(restartGame.type, initializeGame.type),
     withLatestFrom(state$),
@@ -300,7 +343,10 @@ const restartGameEpic = (action$, state$) => {
   );
 };
 
-const setWhoLostEpic = (action$, state$) => {
+const setWhoLostEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(setWhoLost.type),
     withLatestFrom(state$),
@@ -314,7 +360,10 @@ const setWhoLostEpic = (action$, state$) => {
   );
 };
 
-const goBackEpic = (action$, state$) => {
+const goBackEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<GameStates>> => {
   return action$.pipe(
     ofType(goBack.type),
     withLatestFrom(state$),

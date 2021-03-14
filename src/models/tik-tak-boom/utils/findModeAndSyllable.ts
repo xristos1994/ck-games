@@ -1,6 +1,6 @@
 import { getRandomInteger } from "../../../utils/general"; //Alias "@utils/general";
 import { Modes, Syllables } from "./../config";
-import { IMode } from "./../config/interfaces";
+import { IMode } from "./../interfaces";
 import { ISyllable } from "./../../../models/tik-tak-boom/interfaces"; //Alias "@models/tik-tak-boom/interfaces";
 
 interface IResult {

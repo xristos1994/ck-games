@@ -9,7 +9,7 @@ import {
   ISyllable,
   IScoreTarget,
   IRemainingTime,
-  IIsClockRunning,
+  IClock,
 } from "./interfaces";
 
 export { noAction };
@@ -52,10 +52,9 @@ export const updateRemainingTime: IAction<IRemainingTime> = Action<IRemainingTim
   "TIK_TAK_BOOM",
   "UPDATE_REMAINING_TIME"
 );
-export const updateClockIsRunning: IAction<IIsClockRunning> = Action<IIsClockRunning>(
-  "TIK_TAK_BOOM",
-  "UPDATE_CLOCK_IS_RUNNING"
-);
+export const updateClockIsRunning: IAction<IClock["isRunning"]> = Action<
+  IClock["isRunning"]
+>("TIK_TAK_BOOM", "UPDATE_CLOCK_IS_RUNNING");
 
 export const setPlayers: IAction<IPlayer[]> = Action<IPlayer[]>(
   "TIK_TAK_BOOM",

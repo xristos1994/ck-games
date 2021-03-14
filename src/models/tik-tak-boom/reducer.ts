@@ -1,3 +1,4 @@
+import { IActionWithPayload } from "./../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
 import {
   startTikTakBoom,
   updateGameState,
@@ -42,7 +43,10 @@ const initialState: IState = {
   },
 };
 
-const reducer = (state: IState = initialState, action: any): IState => {
+const reducer = (
+  state: IState = initialState,
+  action: IActionWithPayload
+): IState => {
   const { type, payload } = action;
 
   switch (type) {
