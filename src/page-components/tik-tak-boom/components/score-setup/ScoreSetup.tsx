@@ -1,28 +1,39 @@
-import React from "react";
+import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
-import { ElevatedWithBlurBackGround, Button } from "@components";
+import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
+import { ElevatedWithBlurBackGround, Button } from "./../../../../components"; //Alias "@components";
 import {
   scoreTarget,
   isScoreTargetValid,
   canGoBack,
-} from "@models/tik-tak-boom/props";
-import * as styles from "./styles.module.css";
+} from "./../../../../models/tik-tak-boom/props"; // Alias "@models/tik-tak-boom/props";
 import {
   setScoreTarget,
   scoreSetupSubmit,
   goBack,
-} from "@models/tik-tak-boom/actions";
+} from "./../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
+import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
 
-const _ScoreSetup = ({
+const styles = require("./styles.module.css");
+
+interface IProps {
+  scoreTarget: number;
+  isScoreTargetValid: boolean;
+  canGoBack: boolean;
+  goBack: () => void;
+  setScoreTarget: (scoreTarget: number | null) => void;
+  scoreSetupSubmit: () => void;
+}
+
+const _ScoreSetup: FC<IProps> = ({
   scoreTarget,
   isScoreTargetValid,
   canGoBack,
   goBack,
   setScoreTarget,
   scoreSetupSubmit,
-}) => {
+}): ReactElement => {
   const onScoreTargetChange = e => {
     const value = e.target.value;
     if (!value.trim()) {
@@ -51,7 +62,7 @@ const _ScoreSetup = ({
           onChange={onScoreTargetChange}
         />
         <Button
-          disabled={!isScoreTargetValid}
+          other={{ disabled: !isScoreTargetValid }}
           onClick={() => scoreSetupSubmit()}
           className={classnames(
             styles.scoreTargetSetupSubmitButton,
@@ -75,7 +86,19 @@ const _ScoreSetup = ({
 };
 
 const ScoreSetup = connect(
-  createStructuredSelector({
+  createStructuredSelector<
+    IState,
+    {
+      scoreTarget: IProps["scoreTarget"];
+      isScoreTargetValid: IProps["isScoreTargetValid"];
+      canGoBack: IProps["canGoBack"];
+    },
+    {
+      scoreTarget: IProps["scoreTarget"];
+      isScoreTargetValid: IProps["isScoreTargetValid"];
+      canGoBack: IProps["canGoBack"];
+    }
+  >({
     scoreTarget,
     isScoreTargetValid,
     canGoBack,

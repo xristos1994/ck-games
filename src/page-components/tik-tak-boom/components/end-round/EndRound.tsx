@@ -1,13 +1,33 @@
-import React from "react";
+import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { Button } from "@components";
-import { classnames } from "@utils/component-utils";
-import * as styles from "./styles.module.css";
-import { goToNextRound, setWhoLost } from "@models/tik-tak-boom/actions";
-import { players } from "@models/tik-tak-boom/props";
+import { Button } from "./../../../../components"; //Alias "@components";
+import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
+import {
+  goToNextRound,
+  setWhoLost,
+} from "./../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
+import { players } from "./../../../../models/tik-tak-boom/props"; // Actions "@models/tik-tak-boom/props";
+import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
+const styles = require("./styles.module.css");
 
-const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
+interface IProps {
+  players: {
+    id: number;
+    isActive: boolean;
+    numOfBooms: number;
+    name: string;
+    playsNow: boolean | null;
+  }[];
+  goToNextRound: () => void;
+  setWhoLost: (id: number) => void;
+}
+
+const _EndRound: FC<IProps> = ({
+  players,
+  goToNextRound,
+  setWhoLost,
+}): ReactElement => {
   const playerNow = players.find(player => player.playsNow);
 
   return (
@@ -22,7 +42,7 @@ const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
         {players.map(player => (
           <Button
             key={player.id}
-            disabled={!player.isActive}
+            other={{ disabled: !player.isActive }}
             className={classnames(styles.player, "largeText", {
               "secondary-light": playerNow.id === player.id,
               "secondary-dark": playerNow.id !== player.id,
@@ -48,7 +68,15 @@ const _EndRound = ({ players, goToNextRound, setWhoLost }) => {
 };
 
 const EndRound = connect(
-  createStructuredSelector({
+  createStructuredSelector<
+    IState,
+    {
+      players: IProps["players"];
+    },
+    {
+      players: IProps["players"];
+    }
+  >({
     players,
   }),
   { goToNextRound, setWhoLost }

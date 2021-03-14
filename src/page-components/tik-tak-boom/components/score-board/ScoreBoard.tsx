@@ -1,11 +1,21 @@
-import React from "react";
+import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
-import { players } from "@models/tik-tak-boom/props";
-import * as styles from "./styles.module.css";
+import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
+import { players } from "./../../../../models/tik-tak-boom/props"; // Alias "@models/tik-tak-boom/props";
+import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
+const styles = require("./styles.module.css");
 
-const _ScoreBoard = ({ players }) => {
+interface IProps {
+  players: {
+    id: number;
+    isActive: boolean;
+    numOfBooms: number;
+    name: string;
+  }[];
+}
+
+const _ScoreBoard: FC<IProps> = ({ players }): ReactElement => {
   return (
     <div className={classnames(styles.scoreBoardContainer, "second-bg-color")}>
       <div
@@ -50,15 +60,30 @@ const _ScoreBoard = ({ players }) => {
 };
 
 const ScoreBoard = connect(
-  createStructuredSelector({
-    players: state =>
-      [...players(state)].sort((p1, p2) =>
-        p1.numOfBooms < p2.numOfBooms
-          ? 1
-          : p1.numOfBooms > p2.numOfBooms
-          ? -1
-          : 0
-      ),
+  createStructuredSelector<
+    IState,
+    {
+      players: IProps["players"];
+    },
+    {
+      players: IProps["players"];
+    }
+  >({
+    players: (state: IState): IProps["players"] =>
+      [...players(state)]
+        .sort((p1, p2) =>
+          p1.numOfBooms < p2.numOfBooms
+            ? 1
+            : p1.numOfBooms > p2.numOfBooms
+            ? -1
+            : 0
+        )
+        .map(({ id, isActive, numOfBooms, name }) => ({
+          id,
+          isActive,
+          numOfBooms,
+          name,
+        })),
   })
 )(_ScoreBoard);
 

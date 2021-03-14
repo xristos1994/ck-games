@@ -1,15 +1,15 @@
-import React from "react";
+import React, { FC, ReactElement } from "react";
 import { Link } from "gatsby";
-import { classnames } from "@utils/component-utils";
-import { useScrollDirection } from "@hooks";
-import * as styles from "./styles.module.css";
+import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
+import { useScrollDirection } from "./../../../../hooks"; // Alias "@hooks";
+const styles = require("./styles.module.css");
 
-const HeightClasses = {
-  normal: "normal",
-  shrinked: "shrinked",
-};
+enum HeightClasses {
+  normal = "normal",
+  shrinked = "shrinked",
+}
 
-const Header = () => {
+const Header: FC = (): ReactElement => {
   const scrollDirection = useScrollDirection({
     initialDirection: useScrollDirection.ScrollDirections.up,
     thresholdPixels: 40,

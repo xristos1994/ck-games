@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { FC, ReactElement, useEffect } from "react";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { createStructuredSelector, Selector } from "reselect";
 import {
   SEO,
   PlayersSetup,
@@ -10,12 +10,21 @@ import {
   EndRound,
   EndGame,
 } from "./components";
-import * as styles from "./styles.module.css";
-import { gameState } from "@models/tik-tak-boom/props";
-import { initializeGame } from "@models/tik-tak-boom/actions";
-import { GameStates } from "@models/tik-tak-boom/config";
+import { gameState } from "./../../models/tik-tak-boom/props"; // Alias "@models/tik-tak-boom/props";
+import { initializeGame } from "./../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
+import { GameStates } from "./../../models/tik-tak-boom/config"; // Alias "@models/tik-tak-boom/config";
+import { IState } from "./../../models/interfaces"; // Alias @models/interfaces
+const styles = require("./styles.module.css");
 
-const _TikTakBoom = ({ gameState, initializeGame }) => {
+interface IProps {
+  gameState: GameStates;
+  initializeGame: () => void;
+}
+
+const _TikTakBoom: FC<IProps> = ({
+  gameState,
+  initializeGame,
+}): ReactElement => {
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);
@@ -51,7 +60,11 @@ const _TikTakBoom = ({ gameState, initializeGame }) => {
 };
 
 const TikTakBoom = connect(
-  createStructuredSelector({
+  createStructuredSelector<
+    IState,
+    { gameState: IProps["gameState"] },
+    { gameState: IProps["gameState"] }
+  >({
     gameState,
   }),
   { initializeGame }

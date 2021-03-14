@@ -12,8 +12,11 @@
  * const concatWithUnderscore = strConcat('_');
  * concatWithUnderscore('a', { 'b': true }, { 'c': false }, 'd', 'e'); // ->'a_b_d_e'
  */
-export const strConcat = separator => {
-  return (...items) => {
+export const strConcat = (
+  separator?: string
+): ((items: (string | number | object)[]) => string) => {
+  const _seperator = separator || " ";
+  return (...items: (string | number | object)[]): string => {
     const hasOwnProperty = Object.prototype.hasOwnProperty;
     const itemsLength = items.length;
     let result = "";
@@ -30,11 +33,11 @@ export const strConcat = separator => {
       }
 
       if (typeof item === "string" || typeof item === "number") {
-        result += (result ? separator : "") + item;
+        result += (result ? _seperator : "") + item;
       } else if (typeof item === "object") {
         for (let key in item) {
           if (hasOwnProperty.call(item, key) && item[key]) {
-            result += (result ? separator : "") + key;
+            result += (result ? _seperator : "") + key;
           }
         }
       }

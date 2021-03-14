@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC, ReactElement } from "react";
 import { SEO, AvailableGames } from "./components";
-import * as styles from "./styles.module.css";
+const styles = require("./styles.module.css");
 
-const Home = () => {
+const Home: FC = (): ReactElement => {
   return (
     <div className={styles.pageBody}>
       <SEO />

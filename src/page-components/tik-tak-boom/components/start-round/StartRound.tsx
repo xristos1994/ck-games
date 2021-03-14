@@ -1,22 +1,30 @@
-import React from "react";
+import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
-import { Button } from "@components";
-import * as styles from "./styles.module.css";
-import { startRound, goBack } from "@models/tik-tak-boom/actions";
+import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
+import { Button } from "./../../../../components"; // Alias "@components";
+import { startRound, goBack } from "./../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
 import {
   playerNameThatStartsRound,
   canGoBack,
-} from "@models/tik-tak-boom/props";
+} from "./../../../../models/tik-tak-boom/props"; // Alias"@models/tik-tak-boom/props";
+import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
 import { ScoreBoard } from "./../";
+const styles = require("./styles.module.css");
 
-const _StartRound = ({
+interface IProps {
+  canGoBack: boolean;
+  playerNameThatStartsRound: string;
+  startRound: () => void;
+  goBack: () => void;
+}
+
+const _StartRound: FC<IProps> = ({
   startRound,
   playerNameThatStartsRound,
   canGoBack,
   goBack,
-}) => {
+}): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
       <div
@@ -52,7 +60,17 @@ const _StartRound = ({
 };
 
 const StartRound = connect(
-  createStructuredSelector({
+  createStructuredSelector<
+    IState,
+    {
+      canGoBack: IProps["canGoBack"];
+      playerNameThatStartsRound: IProps["playerNameThatStartsRound"];
+    },
+    {
+      canGoBack: IProps["canGoBack"];
+      playerNameThatStartsRound: IProps["playerNameThatStartsRound"];
+    }
+  >({
     playerNameThatStartsRound,
     canGoBack,
   }),
