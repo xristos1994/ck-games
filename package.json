@@ -1,9 +1,10 @@
 {
   "name": "christos-korompokis-games",
+  "author": "Christos Korompokis <xristos.korompokis@gmail.com>",
   "private": true,
   "description": "Some games for friends",
   "version": "0.1.0",
-  "license": "0BSD",
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
