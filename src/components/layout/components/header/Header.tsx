@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from "react";
 import { Link } from "gatsby";
-import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { useScrollDirection } from "./../../../../hooks"; // Alias "@hooks";
+import { classnames } from "@utils/component-utils";
+import { useScrollDirection } from "@hooks";
 const styles = require("./styles.module.css");
 
 enum HeightClasses {

@@ -1,4 +1,4 @@
-import { strConcat } from "./../general"; // Alias "@utils/general";
+import { strConcat } from "@utils/general";
 /**
  * Join classnames together conditionally
  *

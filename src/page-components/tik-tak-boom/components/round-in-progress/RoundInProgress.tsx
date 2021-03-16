@@ -1,18 +1,18 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { Button } from "./../../../../components"; // Alias "@components";
+import { classnames } from "@utils/component-utils";
+import { Button } from "@components";
 import {
   mode,
   syllable,
   playerNameThatPlaysNow,
-} from "./../../../../models/tik-tak-boom/props"; // Alias "@models/tik-tak-boom/props";
+} from "@models/tik-tak-boom/props";
 import {
   goToNextPlayer,
   goToPreviousPlayer,
-} from "./../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
-import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
+} from "@models/tik-tak-boom/actions";
+import { IState } from "@models/interfaces";
 
 const styles = require("./styles.module.css");
 

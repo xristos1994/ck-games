@@ -1,5 +1,5 @@
-import { GameStates } from "./../config";
-import { IState } from "./../interfaces";
+import { GameStates } from "./../config"; // Alias "models/tik-tak-boom/config";
+import { IState } from "models/tik-tak-boom/interfaces";
 
 export const restartGameState: (state: IState) => IState = state => {
   const newState = { ...state };

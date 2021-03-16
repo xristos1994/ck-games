@@ -1,4 +1,4 @@
-import { IState } from "../../models/interfaces"; //Alias "@models/interfaces";
+import { IState } from "@models/interfaces";
 import { IState as IModelState } from "./interfaces";
 
 export const websiteStarted: (

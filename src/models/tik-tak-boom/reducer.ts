@@ -1,4 +1,4 @@
-import { IActionWithPayload } from "./../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
+import { IActionWithPayload } from "@core/actions/interfaces";
 import {
   startTikTakBoom,
   updateGameState,

@@ -1,6 +1,6 @@
 import { startWebsite } from "./actions";
 import { IState } from "./interfaces";
-import { IActionWithPayload } from "./../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
+import { IActionWithPayload } from "@core/actions/interfaces";
 
 const initialState: IState = {
   websiteStarted: false,

@@ -1,7 +1,7 @@
 import UIfx from "uifx";
 
-const tikTakAudio = require("../../../sounds/tik-tak.mp3").default; //Alias "@sounds/tik-tak.mp3";
-const boomAudio = require("../../../sounds/boom.mp3").default; //Alias "@sounds/boom.mp3";
+const tikTakAudio = require("@sounds/tik-tak.mp3").default;
+const boomAudio = require("@sounds/boom.mp3").default;
 
 export const getAudio = (audioKey: string): UIfx | undefined => {
   return {

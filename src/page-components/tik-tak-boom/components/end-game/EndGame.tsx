@@ -1,10 +1,10 @@
 import React, { FC, ReactElement } from "react";
 import { Link } from "gatsby";
 import { connect } from "react-redux";
-import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { Button } from "./../../../../components"; // Alias "@components";
-import { restartGame } from "./../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
-import { ScoreBoard } from "./../";
+import { classnames } from "@utils/component-utils";
+import { Button } from "@components";
+import { restartGame } from "@models/tik-tak-boom/actions";
+import { ScoreBoard } from "./../score-board"; // Alias "page-components/tik-tak-boom/components";
 const styles = require("./styles.module.css");
 
 interface IProps {

@@ -1,15 +1,15 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { Button } from "./../../../../components"; // Alias "@components";
-import { startRound, goBack } from "./../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
+import { classnames } from "@utils/component-utils";
+import { Button } from "@components";
+import { startRound, goBack } from "@models/tik-tak-boom/actions";
 import {
   playerNameThatStartsRound,
   canGoBack,
-} from "./../../../../models/tik-tak-boom/props"; // Alias"@models/tik-tak-boom/props";
-import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
-import { ScoreBoard } from "./../";
+} from "@models/tik-tak-boom/props";
+import { IState } from "@models/interfaces";
+import { ScoreBoard } from "./../score-board"; // Alias "page-components/tik-tak-boom/components";
 const styles = require("./styles.module.css");
 
 interface IProps {

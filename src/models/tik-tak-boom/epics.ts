@@ -46,8 +46,8 @@ import {
   assignWhoLost,
   getAudio,
 } from "./utils";
-import { vibrate } from "./../../utils/hardware"; //Alias "@utils/hardware";
-import { getRandomInteger } from "./../../utils/general"; //Alias "@utils/general";
+import { vibrate } from "@utils/hardware";
+import { getRandomInteger } from "@utils/general";
 import {
   IClock,
   IMode,
@@ -56,8 +56,8 @@ import {
   IScoreTarget,
   ISyllable,
 } from "./interfaces";
-import { IState } from "./../../models/interfaces"; //Alias "@models/interfaces";
-import { IActionWithPayload } from "./../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
+import { IState } from "@models/interfaces";
+import { IActionWithPayload } from "@core/actions/interfaces";
 import { IState as IModelState } from "./interfaces";
 
 const startEpic = (): Observable<IActionWithPayload> =>

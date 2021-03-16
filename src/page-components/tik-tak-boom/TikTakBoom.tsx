@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, useEffect } from "react";
 import { connect } from "react-redux";
-import { createStructuredSelector, Selector } from "reselect";
+import { createStructuredSelector } from "reselect";
 import {
   SEO,
   PlayersSetup,
@@ -10,10 +10,10 @@ import {
   EndRound,
   EndGame,
 } from "./components";
-import { gameState } from "./../../models/tik-tak-boom/props"; // Alias "@models/tik-tak-boom/props";
-import { initializeGame } from "./../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
-import { GameStates } from "./../../models/tik-tak-boom/config"; // Alias "@models/tik-tak-boom/config";
-import { IState } from "./../../models/interfaces"; // Alias @models/interfaces
+import { gameState } from "@models/tik-tak-boom/props";
+import { initializeGame } from "@models/tik-tak-boom/actions";
+import { GameStates } from "@models/tik-tak-boom/config";
+import { IState } from "@models/interfaces";
 const styles = require("./styles.module.css");
 
 interface IProps {

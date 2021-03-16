@@ -1,19 +1,38 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "esModuleInterop": true
-  },
-  "baseUrl": "./src",
-  "paths": {
-    "@core/*": ["@core/*"],
-    "@components/*": ["components/*"],
-    "@models/*": ["models/*"],
-    "@store/*": ["store/*"],
-    "@utils/*": ["utils/*"],
-    "@hooks/*": ["hooks/*"],
-    "@page-components/*": ["page-components/*"],
-    "@images/*": ["images/*"],
-    "@sounds/*": ["sounds/*"],
-    "@interfaces/*": ["interfaces/*"]
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@core/*": ["@core/*"],
+      "@core": ["@core/index.ts"],
+
+      "@components/*": ["components/*"],
+      "@components": ["components/index.ts"],
+
+      "@models/*": ["models/*"],
+      "@models": ["models/index.ts"],
+
+      "@store/*": ["store/*"],
+      "@store": ["store/index.ts"],
+
+      "@utils/*": ["utils/*"],
+      "@utils": ["utils/index.ts"],
+
+      "@hooks/*": ["hooks/*"],
+      "@hooks": ["hooks/index.ts"],
+
+      "@page-components/*": ["page-components/*"],
+      "@page-components": ["page-components/index.ts"],
+
+      "@images/*": ["images/*"],
+      "@images": ["images/index.ts"],
+
+      "@sounds/*": ["sounds/*"],
+      "@sounds": ["sounds/index.ts"],
+
+      "@interfaces/*": ["interfaces/*"],
+      "@interfaces": ["interfaces/index.ts"]
+    }
   }
 }

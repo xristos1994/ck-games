@@ -1,6 +1,6 @@
-import { Action } from "../../@core/actions"; //Alias "@core/actions";
-import { IAction } from "../../@core/actions/interfaces"; //Alias "@core/actions/interfaces";
-import { noAction } from "../../@core/models/core/actions"; //Alias "@core/models/core/actions";
+import { Action } from "@core/actions";
+import { IAction } from "@core/actions/interfaces";
+import { noAction } from "@core/models/core/actions";
 import { IMode } from "./config/interfaces";
 import { GameStates } from "./config";
 import {

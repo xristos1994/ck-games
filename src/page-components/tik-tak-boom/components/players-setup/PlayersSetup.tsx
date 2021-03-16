@@ -1,18 +1,12 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { ElevatedWithBlurBackGround, Button } from "./../../../../components"; //Alias "@components";
-import {
-  players,
-  isPlayersSetupValid,
-} from "./../../../../models/tik-tak-boom/props"; // Actions "@models/tik-tak-boom/props";
+import { classnames } from "@utils/component-utils";
+import { ElevatedWithBlurBackGround, Button } from "@components";
+import { players, isPlayersSetupValid } from "@models/tik-tak-boom/props";
 import { Player } from "./components";
-import {
-  addPlayer,
-  playersSetupSubmit,
-} from "./../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
-import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
+import { addPlayer, playersSetupSubmit } from "@models/tik-tak-boom/actions";
+import { IState } from "@models/interfaces";
 
 const styles = require("./styles.module.css");
 

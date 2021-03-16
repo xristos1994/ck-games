@@ -1,14 +1,11 @@
 import React, { FC, ReactElement, ChangeEvent } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "./../../../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { Button } from "./../../../../../../components"; //Alias "@components";
-import {
-  setPlayerById,
-  removePlayerById,
-} from "./../../../../../../models/tik-tak-boom/actions"; // Alias "@models/tik-tak-boom/actions";
-import { players } from "./../../../../../../models/tik-tak-boom/props"; // Actions "@models/tik-tak-boom/props";
-import { IState } from "./../../../../../../models/interfaces"; // Alias @models/interfaces
+import { classnames } from "@utils/component-utils";
+import { Button } from "@components";
+import { setPlayerById, removePlayerById } from "@models/tik-tak-boom/actions";
+import { players } from "@models/tik-tak-boom/props";
+import { IState } from "@models/interfaces";
 const styles = require("./styles.module.css");
 
 interface IProps {

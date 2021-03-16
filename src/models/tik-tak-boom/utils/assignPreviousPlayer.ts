@@ -1,4 +1,4 @@
-import { IPlayer } from "./../interfaces";
+import { IPlayer } from "models/tik-tak-boom/interfaces";
 
 export const assignPreviousPlayer: (
   players: IPlayer[]

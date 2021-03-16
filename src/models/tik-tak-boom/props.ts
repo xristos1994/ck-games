@@ -1,6 +1,6 @@
-import { isPositiveInteger } from "../../utils/general"; //Alias "@utils/general";
+import { isPositiveInteger } from "@utils/general";
 import { GameStates } from "./config";
-import { IState } from "../../models/interfaces"; //Alias "@models/interfaces";
+import { IState } from "@models/interfaces";
 import { IPlayer, IState as IModelState } from "./interfaces";
 
 export const tikTakBoomStarted: (

@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from "react";
 import { Link } from "gatsby";
-import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { Button } from "./../../../../components"; // Alias "@components";
+import { classnames } from "@utils/component-utils";
+import { Button } from "@components";
 import { availableGames } from "./config";
 const styles = require("./styles.module.css");
 

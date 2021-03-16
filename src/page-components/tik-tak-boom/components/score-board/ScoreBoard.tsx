@@ -1,9 +1,9 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "./../../../../utils/component-utils"; // Alias "@utils/component-utils";
-import { players } from "./../../../../models/tik-tak-boom/props"; // Alias "@models/tik-tak-boom/props";
-import { IState } from "./../../../../models/interfaces"; // Alias @models/interfaces
+import { classnames } from "@utils/component-utils";
+import { players } from "@models/tik-tak-boom/props";
+import { IState } from "@models/interfaces";
 const styles = require("./styles.module.css");
 
 interface IProps {

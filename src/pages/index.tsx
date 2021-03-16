@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from "react";
-import { Home } from "./../page-components"; // Alias "@page-components";
+import { Home } from "@page-components";
 
 const HomePage: FC = (): ReactElement => {
   return <Home />;

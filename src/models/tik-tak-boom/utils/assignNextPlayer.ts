@@ -1,4 +1,4 @@
-import { IPlayer } from "./../interfaces";
+import { IPlayer } from "models/tik-tak-boom/interfaces";
 
 export const assignNextPlayer: (players: IPlayer[]) => IPlayer[] = players => {
   const idOfPlayerThatPlaysNow = (players.find(player => player.playsNow) || {})
