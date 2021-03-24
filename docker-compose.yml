@@ -1,13 +1,13 @@
 version: "3.7"
+
 services:
-  gatsby:
+  ck-games:
+    container_name: ck-games
     build:
       context: .
-      dockerfile: gatsby.Dockerfile
-    working_dir: /app
-    command: ./docker-entrypoint.sh
-    ports:
-      - "8000:8000"
+      dockerfile: Dockerfile
     volumes:
-      - .:/app
-      - /app/node_modules/
+      - ".:/app"
+      - "/app/node_modules"
+    ports:
+      - 8000:8000
