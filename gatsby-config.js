@@ -48,6 +48,7 @@ module.exports = {
           "@page-components": path.resolve(__dirname, "src/page-components"),
           "@images": path.resolve(__dirname, "src/images"),
           "@sounds": path.resolve(__dirname, "src/sounds"),
+          "@interfaces": path.resolve(__dirname, "src/interfaces"),
         },
         extensions: [],
       },
