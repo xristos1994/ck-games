@@ -1,13 +1,9 @@
-interface ISingleMode {
-  id: string;
-  name: String;
-  description: String;
-}
+import { IMode } from "./interfaces";
 
 interface IModes {
-  tik: ISingleMode;
-  tak: ISingleMode;
-  tikTak: ISingleMode;
+  tik: IMode;
+  tak: IMode;
+  tikTak: IMode;
 }
 
 export const Modes: IModes = {
