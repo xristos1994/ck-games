@@ -1,0 +1,15 @@
+# build env
+FROM node:12-alpine as ck-games-builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --global gatsby-cli && gatsby telemetry --disable
+RUN npm install
+
+RUN gatsby build
+COPY . ./
+
+# production env
+FROM nginx:stable-alpine
+COPY --from=ck-games-builder app/public /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

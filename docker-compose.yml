@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  ck-games:
+    container_name: ck-games
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+    ports:
+      - 8000:8000
