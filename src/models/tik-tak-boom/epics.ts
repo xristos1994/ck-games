@@ -5,7 +5,7 @@ import {
   ofType,
   StateObservable,
 } from "redux-observable";
-import { debounceTime, map, mergeMap, withLatestFrom } from "rxjs/operators";
+import { map, mergeMap, withLatestFrom } from "rxjs/operators";
 import {
   noAction,
   startTikTakBoom,
@@ -69,7 +69,7 @@ const setPlayerByIdEpic = (
       return updatePlayers(
         state.websiteRootReducer.tikTakBoom.players.map(player => {
           if (player.id === payload.id) {
-            return payload;
+            return { ...player, ...payload };
           }
           return player;
         })
@@ -238,10 +238,6 @@ const clockRemainingTimeBecameZeroEpic = (
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {
-        if (clockIsRunning && newRemainingTime) {
-          const audio = getAudio("tikTak");
-          audio && audio.play();
-        }
         if (newRemainingTime === 0) {
           vibrate([200, 100, 200, 100, 200]);
           const audio = getAudio("boom");
@@ -273,8 +269,7 @@ const endRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
 ): Observable<
-  | IActionWithPayload<IClock["remainingTime"]>
-  | IActionWithPayload<IClock["isRunning"]>
+  | IActionWithPayload
   | IActionWithPayload<GameStates>
   | IActionWithPayload<IPlayer[]>
 > => {

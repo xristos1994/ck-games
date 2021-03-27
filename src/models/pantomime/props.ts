@@ -1,0 +1,64 @@
+import { isPositiveInteger } from "@utils/general";
+import { GameStates, AvailableTimes } from "./config";
+import { IState } from "@models/interfaces";
+import { IState as IModelState, ITeam } from "./interfaces";
+
+export const pantomimeStarted: (
+  state: IState
+) => IModelState["pantomimeStarted"] = state =>
+  state.websiteRootReducer.pantomime.pantomimeStarted;
+
+export const teams: (state: IState) => IModelState["teams"] = state =>
+  state.websiteRootReducer.pantomime.teams;
+
+export const playerById: (
+  state: IState
+) => (id: ITeam["id"]) => ITeam = state => id =>
+  teams(state).find(team => team.id === id);
+
+export const teamNameThatPlaysNow: (
+  state: IState
+) => ITeam["name"] | null = state => {
+  const team = teams(state).find(team => team.playsNow);
+  return team ? team.name : null;
+};
+
+export const gameState: (state: IState) => IModelState["gameState"] = state =>
+  state.websiteRootReducer.pantomime.gameState;
+
+export const movie: (state: IState) => IModelState["movie"] = state =>
+  state.websiteRootReducer.pantomime.movie;
+
+export const scoreTarget: (
+  state: IState
+) => IModelState["scoreTarget"] = state =>
+  state.websiteRootReducer.tikTakBoom.scoreTarget;
+
+export const isTeamsSetupValid: (state: IState) => boolean = state => {
+  const _teams = teams(state);
+
+  return (
+    !_teams.find(team => team.name.trim().length === 0) && _teams.length >= 2
+  );
+};
+
+export const isScoreTargetValid: (state: IState) => boolean = state => {
+  const _scoreTarget = scoreTarget(state);
+  if (!isPositiveInteger(`${_scoreTarget}`)) {
+    return false;
+  }
+  return _scoreTarget > 0;
+};
+
+export const canGoBack: (state: IState) => boolean = state => {
+  const _gameState = gameState(state);
+  const hasGameStarted = !!teams(state).find(team => team.score > 0);
+  return (
+    _gameState === GameStates.setScoreTarget ||
+    _gameState === GameStates.setAvailableTime ||
+    (_gameState === GameStates.waitForRoundStart && !hasGameStarted)
+  );
+};
+
+export const availableTimes: () => IModelState["availableTime"][] = () =>
+  AvailableTimes.allTimes;

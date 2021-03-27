@@ -12,12 +12,10 @@ interface IProps {
   player: {
     id: number;
     isActive: boolean;
-    numOfBooms: number;
     name: string;
-    playsNow: boolean | null;
   };
   setPlayerById: (player: IProps["player"]) => void;
-  numOfPlayers: IProps["player"]["id"];
+  numOfPlayers: number;
   removePlayerById: (id: IProps["player"]["id"]) => void;
 }
 

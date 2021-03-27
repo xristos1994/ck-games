@@ -14,7 +14,7 @@ export const players: (state: IState) => IModelState["players"] = state =>
 export const playerById: (
   state: IState
 ) => (id: IPlayer["id"]) => IPlayer = state => id =>
-  players(state).find(p => p.id === id);
+  players(state).find(player => player.id === id);
 
 export const playerNameThatPlaysNow: (
   state: IState
