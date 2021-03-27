@@ -42,11 +42,6 @@ export const scoreTarget: (
 ) => IModelState["scoreTarget"] = state =>
   state.websiteRootReducer.tikTakBoom.scoreTarget;
 
-export const isClockRunning: (
-  state: IState
-) => IModelState["clock"]["isRunning"] = state =>
-  state.websiteRootReducer.tikTakBoom.clock.isRunning;
-
 export const isPlayersSetupValid: (state: IState) => boolean = state => {
   const _players = players(state);
 

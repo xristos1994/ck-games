@@ -3,16 +3,22 @@ import { IAction } from "@core/actions/interfaces";
 import { noAction } from "@core/models/core/actions";
 import { IMode } from "./config/interfaces";
 import { GameStates } from "./config";
-import {
-  IPlayer,
-  IState,
-  ISyllable,
-  IScoreTarget,
-  IRemainingTime,
-  IClock,
-} from "./interfaces";
+import { IPlayer, IState, ISyllable, IScoreTarget } from "./interfaces";
 
-export { noAction };
+import {
+  startClock,
+  resetClock,
+  clockRemainingTimeBecameZero,
+  clockTriggerTikTakSound,
+} from "@models/clock/actions";
+
+export {
+  noAction,
+  startClock,
+  resetClock,
+  clockRemainingTimeBecameZero,
+  clockTriggerTikTakSound,
+};
 
 export const startTikTakBoom: IAction = Action("@@", "START_TIK_TAK_BOOM");
 
@@ -43,18 +49,6 @@ export const updateScoreTarget: IAction<IScoreTarget> = Action<IScoreTarget>(
   "TIK_TAK_BOOM",
   "UPDATE_SCORE_TARGET"
 );
-
-export const reduceRemainingTime: IAction = Action(
-  "TIK_TAK_BOOM",
-  "REDUCE_REMAINING_TIME"
-);
-export const updateRemainingTime: IAction<IRemainingTime> = Action<IRemainingTime>(
-  "TIK_TAK_BOOM",
-  "UPDATE_REMAINING_TIME"
-);
-export const updateClockIsRunning: IAction<IClock["isRunning"]> = Action<
-  IClock["isRunning"]
->("TIK_TAK_BOOM", "UPDATE_CLOCK_IS_RUNNING");
 
 export const setPlayers: IAction<IPlayer[]> = Action<IPlayer[]>(
   "TIK_TAK_BOOM",
