@@ -11,6 +11,7 @@ export const restartGameState: (state: IState) => IState = state => {
 
   newState.gameState = GameStates.setTeams;
   newState.movie = "";
+  newState.selectedMovieIndex = -1;
 
   return newState;
 };

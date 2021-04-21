@@ -33,8 +33,9 @@ import {
   setIfMovieFound,
   updateMovie,
   goBack,
+  updateSelectedMovieIndex,
 } from "./actions";
-import { GameStates } from "./config";
+import { GameStates, Movies } from "./config";
 import {
   findMovie,
   assignNextTeam,
@@ -111,16 +112,29 @@ const addTeamByIdEpic = (
 const teamsSetupSubmitEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<GameStates>> => {
+): Observable<
+  | IActionWithPayload<GameStates>
+  | IActionWithPayload<IModelState["movie"]>
+  | IActionWithPayload<IModelState["selectedMovieIndex"]>
+> => {
   return action$.pipe(
     ofType(teamsSetupSubmit.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    mergeMap(([action, state]) => {
       const gameState = state.websiteRootReducer.pantomime.gameState;
       if (gameState === GameStates.setTeams) {
-        return updateGameState(GameStates.setScoreTarget);
+        return [updateGameState(GameStates.setScoreTarget)];
       }
-      return updateGameState(GameStates.waitForRoundStart);
+
+      const newMovie = findMovie(
+        state.websiteRootReducer.pantomime.selectedMovieIndex
+      );
+
+      return [
+        updateGameState(GameStates.waitForRoundStart),
+        updateMovie(newMovie.movie),
+        updateSelectedMovieIndex(newMovie.index),
+      ];
     })
   );
 };
@@ -167,21 +181,35 @@ const availableTimeSetupSubmitEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
 ): Observable<
-  IActionWithPayload<IModelState["teams"]> | IActionWithPayload<GameStates>
+  | IActionWithPayload<IModelState["teams"]>
+  | IActionWithPayload<GameStates>
+  | IActionWithPayload<IModelState["movie"]>
+  | IActionWithPayload<IModelState["selectedMovieIndex"]>
 > => {
   return action$.pipe(
-    // TODO --> Na elegxw oti exoun pai3ei oloi.
     ofType(availableTimeSetupSubmit.type, goToNextRound.type),
     withLatestFrom(state$),
     mergeMap(([action, state]) => {
       const newTeams = assignNextTeam(state.websiteRootReducer.pantomime.teams);
       const scoreTarget = state.websiteRootReducer.pantomime.scoreTarget;
-      const gameEnded = !!newTeams.find(team => team.score === scoreTarget);
+      const gameEnded =
+        !!newTeams.find(team => team.score === scoreTarget) &&
+        newTeams[0].playsNow;
+      const newMovie = findMovie(
+        state.websiteRootReducer.pantomime.selectedMovieIndex
+      );
+
       return [
         updateTeams(newTeams),
         updateGameState(
           gameEnded ? GameStates.gameEnded : GameStates.waitForRoundStart
         ),
+        ...(gameEnded
+          ? []
+          : [
+              updateMovie(newMovie.movie),
+              updateSelectedMovieIndex(newMovie.index),
+            ]),
       ];
     })
   );
@@ -191,19 +219,13 @@ const startRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
 ): Observable<
-  | IActionWithPayload<IModelState["movie"]>
-  | IActionWithPayload<GameStates>
-  | IActionWithPayload<IClock["remainingTime"]>
+  IActionWithPayload<GameStates> | IActionWithPayload<IClock["remainingTime"]>
 > => {
   return action$.pipe(
     ofType(startRound.type),
     withLatestFrom(state$),
     mergeMap(([action, state]) => {
-      const teams = state.websiteRootReducer.pantomime.teams;
-      const movie = findMovie();
-
       return [
-        updateMovie(movie),
         updateGameState(GameStates.roundInProgress),
         startClock(state.websiteRootReducer.pantomime.availableTime),
       ];
@@ -214,7 +236,7 @@ const startRoundEpic = (
 const clockRemainingTimeBecameZeroEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload> => {
+): Observable<IActionWithPayload<ITeam["movieFound"]>> => {
   return action$.pipe(
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
@@ -230,7 +252,7 @@ const clockRemainingTimeBecameZeroEpic = (
         }
       }
 
-      return endRound(null);
+      return setIfMovieFound(false);
     })
   );
 };
@@ -244,11 +266,7 @@ const endRoundEpic = (
   return action$.pipe(
     ofType(endRound.type),
     mergeMap(() => {
-      return [
-        resetClock(null),
-        updateGameState(GameStates.roundEnded),
-        setIfMovieFound(false),
-      ];
+      return [resetClock(null), updateGameState(GameStates.roundEnded)];
     })
   );
 };
@@ -280,13 +298,18 @@ const setIfMovieFoundEpic = (
     withLatestFrom(state$),
     mergeMap(([{ payload }, state]) => {
       const teams = state.websiteRootReducer.pantomime.teams;
-      const newTeams = assignIfMovieFound(teams, payload);
+      const shouldReduceScore =
+        !payload &&
+        state.websiteRootReducer.pantomime.gameState === GameStates.roundEnded;
+      const newTeams = assignIfMovieFound(teams, payload, shouldReduceScore);
 
-      if (state.websiteRootReducer.clock.isRunning) {
-        return [updateTeams(newTeams), resetClock(null)];
-      }
-
-      return [updateTeams(newTeams)];
+      return [
+        updateTeams(newTeams),
+        ...(state.websiteRootReducer.pantomime.gameState ===
+        GameStates.roundInProgress
+          ? [endRound(null)]
+          : []),
+      ];
     })
   );
 };

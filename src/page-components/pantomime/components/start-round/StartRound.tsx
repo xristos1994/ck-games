@@ -4,14 +4,19 @@ import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
 import { startRound, goBack } from "@models/pantomime/actions";
-import { teamNameThatPlaysNow, canGoBack } from "@models/pantomime/props";
+import {
+  teamNameThatPlaysNow,
+  canGoBack,
+  movie,
+} from "@models/pantomime/props";
 import { IState } from "@models/interfaces";
-import { ScoreBoard } from "./../score-board"; // Alias "page-components/pantomime/components";
+// import { ScoreBoard } from "./../score-board"; // Alias "page-components/pantomime/components";
 const styles = require("./styles.module.css");
 
 interface IProps {
   canGoBack: boolean;
   teamNameThatPlaysNow: string;
+  movie: string;
   startRound: () => void;
   goBack: () => void;
 }
@@ -19,6 +24,7 @@ interface IProps {
 const _StartRound: FC<IProps> = ({
   startRound,
   teamNameThatPlaysNow,
+  movie,
   canGoBack,
   goBack,
 }): ReactElement => {
@@ -29,7 +35,11 @@ const _StartRound: FC<IProps> = ({
       >
         {teamNameThatPlaysNow} plays now
       </div>
-      <ScoreBoard />
+      {/* <ScoreBoard /> */}
+      <div className={classnames(styles.movie, "main-color", "extraLargeText")}>
+        {movie}
+      </div>
+      Add movie Choice between two
       <Button
         onClick={() => startRound()}
         className={classnames(
@@ -58,14 +68,17 @@ const StartRound = connect(
     {
       canGoBack: IProps["canGoBack"];
       teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+      movie: IProps["movie"];
     },
     {
       canGoBack: IProps["canGoBack"];
       teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+      movie: IProps["movie"];
     }
   >({
     teamNameThatPlaysNow,
     canGoBack,
+    movie,
   }),
   { startRound, goBack }
 )(_StartRound);

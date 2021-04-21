@@ -6,8 +6,10 @@ import {
   updateAvailableTime,
   updateTeams,
   updateGameReduxState,
+  updateMovie,
+  updateSelectedMovieIndex,
 } from "./actions";
-import { GameStates, AvailableTimes } from "./config";
+import { GameStates, AvailableTimes, AvailableScoreTargets } from "./config";
 import { IState } from "./interfaces";
 
 const initialState: IState = {
@@ -29,9 +31,10 @@ const initialState: IState = {
     },
   ],
   gameState: GameStates.setTeams,
-  scoreTarget: 10,
+  scoreTarget: AvailableScoreTargets.default,
   availableTime: AvailableTimes.default,
   movie: "",
+  selectedMovieIndex: -1,
 };
 
 const reducer = (
@@ -58,6 +61,12 @@ const reducer = (
 
     case updateTeams.type:
       return { ...state, teams: payload };
+
+    case updateMovie.type:
+      return { ...state, movie: payload };
+
+    case updateSelectedMovieIndex.type:
+      return { ...state, selectedMovieIndex: payload };
 
     default:
       return state;

@@ -8,7 +8,7 @@ import {
   updatePlayers,
   updateGameReduxState,
 } from "./actions";
-import { GameStates } from "./config";
+import { GameStates, AvailableScoreTargets } from "./config";
 import { IState } from "./interfaces";
 
 const initialState: IState = {
@@ -34,7 +34,7 @@ const initialState: IState = {
   gameState: GameStates.setPlayers,
   mode: null,
   syllable: null,
-  scoreTarget: 10,
+  scoreTarget: AvailableScoreTargets.default,
 };
 
 const reducer = (

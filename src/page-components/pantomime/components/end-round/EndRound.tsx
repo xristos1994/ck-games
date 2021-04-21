@@ -6,6 +6,7 @@ import { classnames } from "@utils/component-utils";
 import { goToNextRound, setIfMovieFound } from "@models/pantomime/actions";
 import { teams } from "@models/pantomime/props";
 import { IState } from "@models/interfaces";
+import { ScoreBoard } from "../score-board";
 const styles = require("./styles.module.css");
 
 interface IProps {
@@ -30,8 +31,9 @@ const _EndRound: FC<IProps> = ({
   return (
     <div className={styles.endRoundContainer}>
       <div className={classnames("extraLargeText", "main-color")}>
-        Time of {teamNow.name} ended
+        Turn of {teamNow.name} ended
       </div>
+      <ScoreBoard />
       <div className={styles.movieFoundButtons}>
         <Button
           key="movieFound"

@@ -4,13 +4,13 @@ import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { ElevatedWithBlurBackGround, Button } from "@components";
 import {
-  scoreTarget,
+  availableTime,
+  availableTimes,
   canGoBack,
-  availableScoreTargets,
 } from "@models/pantomime/props";
 import {
-  setScoreTarget,
-  scoreSetupSubmit,
+  setAvailableTime,
+  availableTimeSetupSubmit,
   goBack,
 } from "@models/pantomime/actions";
 import { IState } from "@models/interfaces";
@@ -18,53 +18,58 @@ import { IState } from "@models/interfaces";
 const styles = require("./styles.module.css");
 
 interface IProps {
-  scoreTarget: number;
+  availableTime: number;
+  availableTimes: number[];
   canGoBack: boolean;
-  availableScoreTargets: number[];
   goBack: () => void;
-  setScoreTarget: (scoreTarget: number | null) => void;
-  scoreSetupSubmit: () => void;
+  setAvailableTime: (availableTime: number) => void;
+  availableTimeSetupSubmit: () => void;
 }
 
-const _ScoreSetup: FC<IProps> = ({
-  scoreTarget,
+const _AvailableTimeSetup: FC<IProps> = ({
+  availableTime,
+  availableTimes,
   canGoBack,
-  availableScoreTargets,
+  setAvailableTime,
+  availableTimeSetupSubmit,
   goBack,
-  setScoreTarget,
-  scoreSetupSubmit,
 }): ReactElement => {
-  const onScoreTargetChange = e => {
-    setScoreTarget(e.target.value);
+  const onAvailableTimeChange = e => {
+    setAvailableTime(e.target.value);
   };
 
   return (
     <ElevatedWithBlurBackGround>
-      <div className={classnames(styles.scoreSetupContainer, "main-bg-color")}>
+      <div
+        className={classnames(
+          styles.availableTimeSetupContainer,
+          "main-bg-color"
+        )}
+      >
         <div
           className={classnames(
-            styles.scoreSetupTitle,
+            styles.availableTimeSetupTitle,
             "extraLargeText",
             "main-color"
           )}
         >
-          Set winning score
+          Set available Time
         </div>
         <select
-          className={classnames(styles.scoreTargetInput, "largeText")}
-          value={scoreTarget}
-          onChange={onScoreTargetChange}
+          className={classnames(styles.availableTimeTargetInput, "largeText")}
+          value={availableTime}
+          onChange={onAvailableTimeChange}
         >
-          {availableScoreTargets.map(score => (
-            <option key={score} value={score}>
-              {score}
+          {availableTimes.map(time => (
+            <option key={time} value={time}>
+              {time}
             </option>
           ))}
         </select>
         <Button
-          onClick={() => scoreSetupSubmit()}
+          onClick={() => availableTimeSetupSubmit()}
           className={classnames(
-            styles.scoreTargetSetupSubmitButton,
+            styles.availableTimeTargetSetupSubmitButton,
             "extraLargeText",
             "primary-dark"
           )}
@@ -84,25 +89,25 @@ const _ScoreSetup: FC<IProps> = ({
   );
 };
 
-const ScoreSetup = connect(
+const AvailableTimeSetup = connect(
   createStructuredSelector<
     IState,
     {
-      scoreTarget: IProps["scoreTarget"];
+      availableTime: IProps["availableTime"];
+      availableTimes: IProps["availableTimes"];
       canGoBack: IProps["canGoBack"];
-      availableScoreTargets: IProps["availableScoreTargets"];
     },
     {
-      scoreTarget: IProps["scoreTarget"];
+      availableTime: IProps["availableTime"];
+      availableTimes: IProps["availableTimes"];
       canGoBack: IProps["canGoBack"];
-      availableScoreTargets: IProps["availableScoreTargets"];
     }
   >({
-    scoreTarget,
+    availableTime,
+    availableTimes,
     canGoBack,
-    availableScoreTargets,
   }),
-  { setScoreTarget, scoreSetupSubmit, goBack }
-)(_ScoreSetup);
+  { setAvailableTime, availableTimeSetupSubmit, goBack }
+)(_AvailableTimeSetup);
 
-export { ScoreSetup };
+export { AvailableTimeSetup };

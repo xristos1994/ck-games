@@ -3,16 +3,17 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import {
   SEO,
-  PlayersSetup,
+  TeamsSetup,
   ScoreSetup,
+  AvailableTimeSetup,
   StartRound,
   RoundInProgress,
   EndRound,
   EndGame,
 } from "./components";
-import { gameState } from "@models/tik-tak-boom/props";
-import { initializeGame } from "@models/tik-tak-boom/actions";
-import { GameStates } from "@models/tik-tak-boom/config";
+import { gameState } from "@models/pantomime/props";
+import { initializeGame } from "@models/pantomime/actions";
+import { GameStates } from "@models/pantomime/config";
 import { IState } from "@models/interfaces";
 const styles = require("./styles.module.css");
 
@@ -29,10 +30,13 @@ const _Pantomime: FC<IProps> = ({
     initializeGame();
   }, [initializeGame]);
 
-  const playerSetup = (gameState === GameStates.setPlayers ||
-    gameState === GameStates.setPlayersWhileInProgress) && <PlayersSetup />;
+  const playerSetup = gameState === GameStates.setTeams && <TeamsSetup />;
 
   const scoreSetup = gameState === GameStates.setScoreTarget && <ScoreSetup />;
+
+  const availableTimeSetup = gameState === GameStates.setAvailableTime && (
+    <AvailableTimeSetup />
+  );
 
   const startRound = gameState === GameStates.waitForRoundStart && (
     <StartRound />
@@ -51,6 +55,7 @@ const _Pantomime: FC<IProps> = ({
       <SEO />
       {playerSetup}
       {scoreSetup}
+      {availableTimeSetup}
       {startRound}
       {roundInProgress}
       {endRound}

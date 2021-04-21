@@ -1,5 +1,5 @@
 import { isPositiveInteger } from "@utils/general";
-import { GameStates } from "./config";
+import { GameStates, AvailableScoreTargets } from "./config";
 import { IState } from "@models/interfaces";
 import { IPlayer, IState as IModelState } from "./interfaces";
 
@@ -51,14 +51,6 @@ export const isPlayersSetupValid: (state: IState) => boolean = state => {
   );
 };
 
-export const isScoreTargetValid: (state: IState) => boolean = state => {
-  const _scoreTarget = scoreTarget(state);
-  if (!isPositiveInteger(`${_scoreTarget}`)) {
-    return false;
-  }
-  return _scoreTarget > 0;
-};
-
 export const canGoBack: (state: IState) => boolean = state => {
   const _gameState = gameState(state);
   const hasGameStarted =
@@ -69,3 +61,6 @@ export const canGoBack: (state: IState) => boolean = state => {
     (_gameState === GameStates.waitForRoundStart && !hasGameStarted)
   );
 };
+
+export const availableScoreTargets: () => IModelState["scoreTarget"][] = () =>
+  AvailableScoreTargets.allScoreTargets;

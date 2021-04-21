@@ -101,3 +101,10 @@ export const setIfMovieFound: IAction<ITeam["movieFound"]> = Action<
 export const initializeGame: IAction = Action("PANTOMIME", "INITIALIZE_GAME");
 
 export const goBack: IAction = Action("TIK_TAK_BOOM", "GO_BACK");
+
+export const updateSelectedMovieIndex: IAction<
+  IState["selectedMovieIndex"]
+> = Action<IState["selectedMovieIndex"]>(
+  "PANTOMIME",
+  "UPDATE_SELECTED_MOVIE_INDEX"
+);

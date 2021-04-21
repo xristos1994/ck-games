@@ -1,0 +1,29 @@
+.availableTimeSetupContainer {
+  width: 90vw;
+  max-width: 60vh;
+  height: 40vh;
+  border-radius: 2vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.availableTimeSetupContainer > .availableTimeSetupTitle {
+  margin-top: 2vh;
+}
+
+.availableTimeSetupContainer > .availableTimeTargetInput {
+  margin-top: 3.5vh;
+  min-width: 2vh;
+}
+
+.availableTimeSetupContainer > .availableTimeTargetSetupSubmitButton {
+  margin-top: 3.5vh;
+  min-width: 20vh;
+}
+
+.availableTimeSetupContainer > .backButton {
+  margin-top: 3vh;
+}

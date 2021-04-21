@@ -20,4 +20,5 @@ export interface IState {
   scoreTarget: IScoreTarget;
   availableTime: AvailableTime;
   movie: IMovie;
+  selectedMovieIndex: number;
 }

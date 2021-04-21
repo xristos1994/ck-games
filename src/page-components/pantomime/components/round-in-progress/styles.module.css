@@ -6,30 +6,26 @@
   margin-bottom: 2vh;
 }
 
-.roundInProgressContainer > .player {
+.roundInProgressContainer > .team {
   margin-top: 2vh;
 }
 
-.roundInProgressContainer > .mode {
-  margin-top: 3.5vh;
-}
-
-.roundInProgressContainer > .modeDescription {
-  margin-top: 0.5vh;
-}
-
-.roundInProgressContainer > .syllable {
+.roundInProgressContainer > .movie {
   margin-top: 2vh;
 }
 
-.roundInProgressContainer > .goToNextPlayerButton {
+.roundInProgressContainer > .remainingTime {
+  margin-top: 2vh;
+}
+
+.roundInProgressContainer > .movieFoundButton {
   margin-top: 3.5vh;
   width: 35vh;
   height: 35vh;
   border-radius: 17.5vh;
 }
 
-.roundInProgressContainer > .goToPreviousPlayerButton {
+.roundInProgressContainer > .movieNotFoundButton {
   margin-top: 7vh;
   align-self: flex-start;
 }

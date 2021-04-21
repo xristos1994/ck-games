@@ -3,75 +3,62 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
-import {
-  mode,
-  syllable,
-  playerNameThatPlaysNow,
-} from "@models/tik-tak-boom/props";
-import {
-  goToNextPlayer,
-  goToPreviousPlayer,
-} from "@models/tik-tak-boom/actions";
+import { movie, teamNameThatPlaysNow } from "@models/pantomime/props";
+import { clockRemainingTime } from "@models/clock/props";
+import { setIfMovieFound } from "@models/pantomime/actions";
 import { IState } from "@models/interfaces";
 
 const styles = require("./styles.module.css");
 
 interface IProps {
-  goToNextPlayer: () => void;
-  goToPreviousPlayer: () => void;
-  mode: { id: string; name: string; description: string } | null;
-  syllable: string;
-  playerNameThatPlaysNow: string;
+  setIfMovieFound: (boolean) => void;
+  movie: string;
+  clockRemainingTime: number;
+  teamNameThatPlaysNow: string;
 }
 
 const _RoundInProgress: FC<IProps> = ({
-  goToNextPlayer,
-  goToPreviousPlayer,
-  mode,
-  syllable,
-  playerNameThatPlaysNow,
+  setIfMovieFound,
+  movie,
+  clockRemainingTime,
+  teamNameThatPlaysNow,
 }): ReactElement => {
   return (
     <div className={styles.roundInProgressContainer}>
-      <div className={classnames(styles.player, "main-color", "largeText")}>
-        {playerNameThatPlaysNow} is playing now
+      <div className={classnames(styles.team, "main-color", "largeText")}>
+        {teamNameThatPlaysNow} is playing now
       </div>
-      <div className={classnames(styles.mode, "main-color", "extraLargeText")}>
-        {mode.name}
+      <div className={classnames(styles.movie, "main-color", "extraLargeText")}>
+        {movie}
       </div>
       <div
         className={classnames(
-          styles.modeDescription,
+          styles.remainingTime,
           "main-color",
-          "normalText"
+          "extraLargeText"
         )}
       >
-        *{mode.description}
-      </div>
-      <div
-        className={classnames(styles.syllable, "main-color", "extraLargeText")}
-      >
-        {syllable}
+        {clockRemainingTime}
       </div>
       <Button
-        onClick={() => goToNextPlayer()}
+        onClick={() => setIfMovieFound(true)}
         className={classnames(
-          styles.goToNextPlayerButton,
+          styles.movieFoundButton,
           "primary",
           "extraLargeText"
         )}
       >
-        NEXT
+        Movie Found
       </Button>
       <Button
-        onClick={() => goToPreviousPlayer()}
+        onClick={() => setIfMovieFound(false)}
         className={classnames(
-          styles.goToPreviousPlayerButton,
+          styles.movieNotFoundButton,
           "secondary",
           "largeText"
         )}
       >
-        Previous
+        Movie Not Found
       </Button>
     </div>
   );
@@ -81,21 +68,21 @@ const RoundInProgress = connect(
   createStructuredSelector<
     IState,
     {
-      mode: IProps["mode"];
-      syllable: IProps["syllable"];
-      playerNameThatPlaysNow: IProps["playerNameThatPlaysNow"];
+      movie: IProps["movie"];
+      teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+      clockRemainingTime: IProps["clockRemainingTime"];
     },
     {
-      mode: IProps["mode"];
-      syllable: IProps["syllable"];
-      playerNameThatPlaysNow: IProps["playerNameThatPlaysNow"];
+      movie: IProps["movie"];
+      teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+      clockRemainingTime: IProps["clockRemainingTime"];
     }
   >({
-    mode,
-    syllable,
-    playerNameThatPlaysNow,
+    movie,
+    teamNameThatPlaysNow,
+    clockRemainingTime,
   }),
-  { goToNextPlayer, goToPreviousPlayer }
+  { setIfMovieFound }
 )(_RoundInProgress);
 
 export { RoundInProgress };

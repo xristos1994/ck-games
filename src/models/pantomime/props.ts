@@ -1,5 +1,5 @@
 import { isPositiveInteger } from "@utils/general";
-import { GameStates, AvailableTimes } from "./config";
+import { GameStates, AvailableTimes, AvailableScoreTargets } from "./config";
 import { IState } from "@models/interfaces";
 import { IState as IModelState, ITeam } from "./interfaces";
 
@@ -32,7 +32,7 @@ export const movie: (state: IState) => IModelState["movie"] = state =>
 export const scoreTarget: (
   state: IState
 ) => IModelState["scoreTarget"] = state =>
-  state.websiteRootReducer.tikTakBoom.scoreTarget;
+  state.websiteRootReducer.pantomime.scoreTarget;
 
 export const isTeamsSetupValid: (state: IState) => boolean = state => {
   const _teams = teams(state);
@@ -40,14 +40,6 @@ export const isTeamsSetupValid: (state: IState) => boolean = state => {
   return (
     !_teams.find(team => team.name.trim().length === 0) && _teams.length >= 2
   );
-};
-
-export const isScoreTargetValid: (state: IState) => boolean = state => {
-  const _scoreTarget = scoreTarget(state);
-  if (!isPositiveInteger(`${_scoreTarget}`)) {
-    return false;
-  }
-  return _scoreTarget > 0;
 };
 
 export const canGoBack: (state: IState) => boolean = state => {
@@ -62,3 +54,11 @@ export const canGoBack: (state: IState) => boolean = state => {
 
 export const availableTimes: () => IModelState["availableTime"][] = () =>
   AvailableTimes.allTimes;
+
+export const availableScoreTargets: () => IModelState["scoreTarget"][] = () =>
+  AvailableScoreTargets.allScoreTargets;
+
+export const availableTime: (
+  state: IState
+) => IModelState["availableTime"] = state =>
+  state.websiteRootReducer.pantomime.availableTime;
