@@ -31,13 +31,15 @@ import {
   updateGameReduxState,
   initializeGame,
   setIfMovieFound,
+  setMovie,
   updateMovie,
   goBack,
   updateSelectedMovieIndex,
+  updateAvailableMovies,
 } from "./actions";
-import { GameStates, Movies } from "./config";
+import { GameStates } from "./config";
 import {
-  findMovie,
+  findMovies,
   assignNextTeam,
   createNewTeam,
   restartGameState,
@@ -114,7 +116,7 @@ const teamsSetupSubmitEpic = (
   state$: StateObservable<IState>
 ): Observable<
   | IActionWithPayload<GameStates>
-  | IActionWithPayload<IModelState["movie"]>
+  | IActionWithPayload<IModelState["availableMovies"]>
   | IActionWithPayload<IModelState["selectedMovieIndex"]>
 > => {
   return action$.pipe(
@@ -126,14 +128,14 @@ const teamsSetupSubmitEpic = (
         return [updateGameState(GameStates.setScoreTarget)];
       }
 
-      const newMovie = findMovie(
+      const newMovies = findMovies(
         state.websiteRootReducer.pantomime.selectedMovieIndex
       );
 
       return [
         updateGameState(GameStates.waitForRoundStart),
-        updateMovie(newMovie.movie),
-        updateSelectedMovieIndex(newMovie.index),
+        updateAvailableMovies(newMovies.movies),
+        updateSelectedMovieIndex(newMovies.index),
       ];
     })
   );
@@ -183,7 +185,7 @@ const availableTimeSetupSubmitEpic = (
 ): Observable<
   | IActionWithPayload<IModelState["teams"]>
   | IActionWithPayload<GameStates>
-  | IActionWithPayload<IModelState["movie"]>
+  | IActionWithPayload<IModelState["availableMovies"]>
   | IActionWithPayload<IModelState["selectedMovieIndex"]>
 > => {
   return action$.pipe(
@@ -195,7 +197,7 @@ const availableTimeSetupSubmitEpic = (
       const gameEnded =
         !!newTeams.find(team => team.score === scoreTarget) &&
         newTeams[0].playsNow;
-      const newMovie = findMovie(
+      const newMovies = findMovies(
         state.websiteRootReducer.pantomime.selectedMovieIndex
       );
 
@@ -207,8 +209,8 @@ const availableTimeSetupSubmitEpic = (
         ...(gameEnded
           ? []
           : [
-              updateMovie(newMovie.movie),
-              updateSelectedMovieIndex(newMovie.index),
+              updateAvailableMovies(newMovies.movies),
+              updateSelectedMovieIndex(newMovies.index),
             ]),
       ];
     })
@@ -245,9 +247,9 @@ const clockRemainingTimeBecameZeroEpic = (
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {
-        if (newRemainingTime === 0) {
+        if (newRemainingTime <= 0) {
           vibrate([200, 100, 200, 100, 200]);
-          const audio = getAudio("boom");
+          const audio = getAudio("endOfTime");
           audio && audio.play();
         }
       }
@@ -283,6 +285,19 @@ const restartGameEpic = (
       const newPantomimeState = restartGameState(pantomimeState);
 
       return [updateGameReduxState(newPantomimeState), resetClock(null)];
+    })
+  );
+};
+
+const setMovieEpic = (
+  action$: ActionsObservable<IActionWithPayload<IModelState["movie"]>>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IModelState["movie"]>> => {
+  return action$.pipe(
+    ofType(setMovie.type),
+    withLatestFrom(state$),
+    map(([{ payload }]) => {
+      return updateMovie(payload);
     })
   );
 };
@@ -347,6 +362,7 @@ export const pantomimeEpic = combineEpics(
   scoreSetupSubmitEpic,
   setAvailableTimeEpic,
   availableTimeSetupSubmitEpic,
+  setMovieEpic,
   startRoundEpic,
   clockRemainingTimeBecameZeroEpic,
   endRoundEpic,

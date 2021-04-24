@@ -84,6 +84,10 @@ export const endRound: IAction = Action("PANTOMIME", "END_ROUND");
 export const goToNextRound: IAction = Action("PANTOMIME", "GO_TO_NEXT_ROUND");
 export const restartGame: IAction = Action("PANTOMIME", "RESTART_GAME");
 
+export const setMovie: IAction<IState["movie"]> = Action<IState["movie"]>(
+  "PANTOMIME",
+  "SET_MOVIE"
+);
 export const updateMovie: IAction<IState["movie"]> = Action<IState["movie"]>(
   "PANTOMIME",
   "UPDATE_MOVIE"
@@ -108,3 +112,7 @@ export const updateSelectedMovieIndex: IAction<
   "PANTOMIME",
   "UPDATE_SELECTED_MOVIE_INDEX"
 );
+
+export const updateAvailableMovies: IAction<IState["availableMovies"]> = Action<
+  IState["availableMovies"]
+>("PANTOMIME", "UPDATE_AVAILABLE_MOVIES");

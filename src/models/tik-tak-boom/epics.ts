@@ -54,6 +54,7 @@ import { IState } from "@models/interfaces";
 import { IActionWithPayload } from "@core/actions/interfaces";
 import { IState as IModelState } from "./interfaces";
 import { IState as IClock } from "@models/clock/interfaces";
+import { AvailableGames } from "@models/website/interfaces";
 
 const startEpic = (): Observable<IActionWithPayload> =>
   of(startTikTakBoom(null));
@@ -256,9 +257,15 @@ const clockTriggerTikTakSoundEpic = (
 ): Observable<IActionWithPayload> => {
   return action$.pipe(
     ofType(clockTriggerTikTakSound.type),
-    map(() => {
-      const audio = getAudio("tikTak");
-      audio && audio.play();
+    withLatestFrom(state$),
+    map(([action, state]) => {
+      if (
+        state.websiteRootReducer.website.selectedGame ===
+        AvailableGames.tikTakBoom
+      ) {
+        const audio = getAudio("tikTak");
+        audio && audio.play();
+      }
 
       return noAction(null);
     })

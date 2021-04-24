@@ -3,30 +3,35 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
 import { Button } from "@components";
-import { startRound, goBack } from "@models/pantomime/actions";
+import { startRound, goBack, setMovie } from "@models/pantomime/actions";
 import {
   teamNameThatPlaysNow,
   canGoBack,
+  availableMovies,
   movie,
 } from "@models/pantomime/props";
 import { IState } from "@models/interfaces";
-// import { ScoreBoard } from "./../score-board"; // Alias "page-components/pantomime/components";
+
 const styles = require("./styles.module.css");
 
 interface IProps {
   canGoBack: boolean;
   teamNameThatPlaysNow: string;
+  availableMovies: [string, string];
   movie: string;
   startRound: () => void;
   goBack: () => void;
+  setMovie: (movie: string) => void;
 }
 
 const _StartRound: FC<IProps> = ({
   startRound,
   teamNameThatPlaysNow,
+  availableMovies,
   movie,
   canGoBack,
   goBack,
+  setMovie,
 }): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
@@ -35,12 +40,21 @@ const _StartRound: FC<IProps> = ({
       >
         {teamNameThatPlaysNow} plays now
       </div>
-      {/* <ScoreBoard /> */}
-      <div className={classnames(styles.movie, "main-color", "extraLargeText")}>
-        {movie}
-      </div>
-      Add movie Choice between two
+      {availableMovies.map(_movie => (
+        <Button
+          key={_movie}
+          other={{ disabled: _movie === movie }}
+          onClick={() => setMovie(_movie)}
+          className={classnames("small", {
+            "secondary-dark": _movie === movie,
+            "secondary-light": _movie === movie,
+          })}
+        >
+          {_movie}
+        </Button>
+      ))}
       <Button
+        other={{ disabled: availableMovies.indexOf(movie) === -1 }}
         onClick={() => startRound()}
         className={classnames(
           styles.startRoundButton,
@@ -68,19 +82,22 @@ const StartRound = connect(
     {
       canGoBack: IProps["canGoBack"];
       teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+      availableMovies: IProps["availableMovies"];
       movie: IProps["movie"];
     },
     {
       canGoBack: IProps["canGoBack"];
       teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+      availableMovies: IProps["availableMovies"];
       movie: IProps["movie"];
     }
   >({
     teamNameThatPlaysNow,
     canGoBack,
+    availableMovies,
     movie,
   }),
-  { startRound, goBack }
+  { startRound, goBack, setMovie }
 )(_StartRound);
 
 export { StartRound };

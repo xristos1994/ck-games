@@ -62,3 +62,8 @@ export const availableTime: (
   state: IState
 ) => IModelState["availableTime"] = state =>
   state.websiteRootReducer.pantomime.availableTime;
+
+export const availableMovies: (
+  state: IState
+) => IModelState["availableMovies"] = state =>
+  state.websiteRootReducer.pantomime.availableMovies;

@@ -3,7 +3,7 @@ import { createNewTeam } from "./createNewTeam";
 import { restartGameState } from "./restartGameState";
 import { assignIfMovieFound } from "./assignIfMovieFound";
 import { getAudio } from "./getAudio";
-import { findMovie } from "./findMovie";
+import { findMovies } from "./findMovies";
 
 export {
   assignNextTeam,
@@ -11,5 +11,5 @@ export {
   restartGameState,
   assignIfMovieFound,
   getAudio,
-  findMovie,
+  findMovies,
 };

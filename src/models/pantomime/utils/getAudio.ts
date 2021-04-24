@@ -1,10 +1,10 @@
 import UIfx from "uifx";
 
-const boomAudio = require("@sounds/boom.mp3").default;
+const endOfTimeAudio = require("@sounds/end_of_time.mp3").default;
 
-export const getAudio = (audioKey: string): UIfx | undefined => {
+export const getAudio = (audioKey: "endOfTime"): UIfx | undefined => {
   return {
-    boom: new UIfx(boomAudio, {
+    endOfTime: new UIfx(endOfTimeAudio, {
       volume: 1,
     }),
   }[audioKey];
