@@ -1,12 +1,21 @@
 import React, { FC, ReactElement } from "react";
-import { Helmet } from "react-helmet";
+import { GlobalSEO, LocalSEO } from "@components";
+import { getCanonicalBaseUrl } from "@utils/general";
+
+const title = "CK-Games: Tik-Tak-Boom";
+const canonicalUrl = `${getCanonicalBaseUrl()}/tik-tak-boom`;
+const description = "Have fun with your friend playing Tik-Tak-Boom.";
+const keywords = "games, fun, friends, tik-tak-boom";
+const ogImage = `${getCanonicalBaseUrl()}${
+  require("@images/og/tikTakBoom.png").default
+}`;
 
 const SEO: FC = (): ReactElement => {
   return (
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>{`Tik Tak Boom`}</title>
-    </Helmet>
+    <>
+      <GlobalSEO />
+      <LocalSEO {...{ title, canonicalUrl, description, keywords, ogImage }} />
+    </>
   );
 };
 
