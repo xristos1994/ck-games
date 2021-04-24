@@ -5,12 +5,10 @@ import {
   updateMode,
   updateSyllable,
   updateScoreTarget,
-  updateRemainingTime,
-  updateClockIsRunning,
   updatePlayers,
   updateGameReduxState,
 } from "./actions";
-import { GameStates } from "./config";
+import { GameStates, AvailableScoreTargets } from "./config";
 import { IState } from "./interfaces";
 
 const initialState: IState = {
@@ -36,11 +34,7 @@ const initialState: IState = {
   gameState: GameStates.setPlayers,
   mode: null,
   syllable: null,
-  scoreTarget: 10,
-  clock: {
-    remainingTime: null,
-    isRunning: false,
-  },
+  scoreTarget: AvailableScoreTargets.default,
 };
 
 const reducer = (
@@ -67,12 +61,6 @@ const reducer = (
 
     case updateScoreTarget.type:
       return { ...state, scoreTarget: payload };
-
-    case updateRemainingTime.type:
-      return { ...state, clock: { ...state.clock, remainingTime: payload } };
-
-    case updateClockIsRunning.type:
-      return { ...state, clock: { ...state.clock, isRunning: payload } };
 
     case updatePlayers.type:
       return { ...state, players: payload };

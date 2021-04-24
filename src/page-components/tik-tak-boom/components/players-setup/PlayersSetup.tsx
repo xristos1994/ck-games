@@ -21,9 +21,6 @@ interface IProps {
   playersSetupSubmit: () => void;
   addPlayer: () => void;
   isPlayersSetupValid: boolean;
-
-  goToNextRound: () => void;
-  setWhoLost: (id: number) => void;
 }
 
 const _PlayersSetup: FC<IProps> = ({

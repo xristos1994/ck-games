@@ -1,0 +1,16 @@
+.teamContainer {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.teamContainer > .removeTeamButton {
+  border-radius: 0.5vh;
+  margin-left: 1vh;
+}
+
+.teamContainer > .teamNameInput {
+  min-width: 2vh;
+}

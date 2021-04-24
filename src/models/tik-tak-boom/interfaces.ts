@@ -10,16 +10,9 @@ export interface IPlayer {
   numOfBooms: number;
 }
 
-export interface IClock {
-  remainingTime: IRemainingTime;
-  isRunning: boolean;
-}
-
 export type ISyllable = string | null;
 
 export type IScoreTarget = number;
-
-export type IRemainingTime = number | null;
 
 export type IMode = IModeObj | null;
 export interface IState {
@@ -29,5 +22,4 @@ export interface IState {
   mode: IMode;
   syllable: ISyllable;
   scoreTarget: IScoreTarget;
-  clock: IClock;
 }

@@ -14,10 +14,6 @@ export const restartGameState: (state: IState) => IState = state => {
   newState.gameState = GameStates.setPlayers;
   newState.mode = null;
   newState.syllable = null;
-  newState.clock = {
-    remainingTime: null,
-    isRunning: false,
-  };
 
   return newState;
 };

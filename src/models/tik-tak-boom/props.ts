@@ -1,5 +1,5 @@
 import { isPositiveInteger } from "@utils/general";
-import { GameStates } from "./config";
+import { GameStates, AvailableScoreTargets } from "./config";
 import { IState } from "@models/interfaces";
 import { IPlayer, IState as IModelState } from "./interfaces";
 
@@ -14,7 +14,7 @@ export const players: (state: IState) => IModelState["players"] = state =>
 export const playerById: (
   state: IState
 ) => (id: IPlayer["id"]) => IPlayer = state => id =>
-  players(state).find(p => p.id === id);
+  players(state).find(player => player.id === id);
 
 export const playerNameThatPlaysNow: (
   state: IState
@@ -42,11 +42,6 @@ export const scoreTarget: (
 ) => IModelState["scoreTarget"] = state =>
   state.websiteRootReducer.tikTakBoom.scoreTarget;
 
-export const isClockRunning: (
-  state: IState
-) => IModelState["clock"]["isRunning"] = state =>
-  state.websiteRootReducer.tikTakBoom.clock.isRunning;
-
 export const isPlayersSetupValid: (state: IState) => boolean = state => {
   const _players = players(state);
 
@@ -54,14 +49,6 @@ export const isPlayersSetupValid: (state: IState) => boolean = state => {
     !_players.find(player => player.name.trim().length === 0) &&
     _players.filter(player => player.isActive).length >= 2
   );
-};
-
-export const isScoreTargetValid: (state: IState) => boolean = state => {
-  const _scoreTarget = scoreTarget(state);
-  if (!isPositiveInteger(`${_scoreTarget}`)) {
-    return false;
-  }
-  return _scoreTarget > 0;
 };
 
 export const canGoBack: (state: IState) => boolean = state => {
@@ -74,3 +61,6 @@ export const canGoBack: (state: IState) => boolean = state => {
     (_gameState === GameStates.waitForRoundStart && !hasGameStarted)
   );
 };
+
+export const availableScoreTargets: () => IModelState["scoreTarget"][] = () =>
+  AvailableScoreTargets.allScoreTargets;
