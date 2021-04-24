@@ -5,8 +5,8 @@ import { classnames } from "@utils/component-utils";
 import { ElevatedWithBlurBackGround, Button } from "@components";
 import {
   scoreTarget,
-  isScoreTargetValid,
   canGoBack,
+  availableScoreTargets,
 } from "@models/tik-tak-boom/props";
 import {
   setScoreTarget,
@@ -19,8 +19,8 @@ const styles = require("./styles.module.css");
 
 interface IProps {
   scoreTarget: number;
-  isScoreTargetValid: boolean;
   canGoBack: boolean;
+  availableScoreTargets: number[];
   goBack: () => void;
   setScoreTarget: (scoreTarget: number | null) => void;
   scoreSetupSubmit: () => void;
@@ -28,19 +28,14 @@ interface IProps {
 
 const _ScoreSetup: FC<IProps> = ({
   scoreTarget,
-  isScoreTargetValid,
   canGoBack,
+  availableScoreTargets,
   goBack,
   setScoreTarget,
   scoreSetupSubmit,
 }): ReactElement => {
   const onScoreTargetChange = e => {
-    const value = e.target.value;
-    if (!value.trim()) {
-      setScoreTarget(null);
-    } else {
-      setScoreTarget(Number(e.target.value));
-    }
+    setScoreTarget(e.target.value);
   };
 
   return (
@@ -55,14 +50,18 @@ const _ScoreSetup: FC<IProps> = ({
         >
           Set winning score
         </div>
-        <input
+        <select
           className={classnames(styles.scoreTargetInput, "largeText")}
-          type="number"
           value={scoreTarget}
           onChange={onScoreTargetChange}
-        />
+        >
+          {availableScoreTargets.map(score => (
+            <option key={score} value={score}>
+              {score}
+            </option>
+          ))}
+        </select>
         <Button
-          other={{ disabled: !isScoreTargetValid }}
           onClick={() => scoreSetupSubmit()}
           className={classnames(
             styles.scoreTargetSetupSubmitButton,
@@ -90,17 +89,17 @@ const ScoreSetup = connect(
     IState,
     {
       scoreTarget: IProps["scoreTarget"];
-      isScoreTargetValid: IProps["isScoreTargetValid"];
       canGoBack: IProps["canGoBack"];
+      availableScoreTargets: IProps["availableScoreTargets"];
     },
     {
       scoreTarget: IProps["scoreTarget"];
-      isScoreTargetValid: IProps["isScoreTargetValid"];
       canGoBack: IProps["canGoBack"];
+      availableScoreTargets: IProps["availableScoreTargets"];
     }
   >({
     scoreTarget,
-    isScoreTargetValid,
+    availableScoreTargets,
     canGoBack,
   }),
   { setScoreTarget, scoreSetupSubmit, goBack }

@@ -1,0 +1,31 @@
+.roundInProgressContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.roundInProgressContainer > .team {
+  margin-top: 2vh;
+}
+
+.roundInProgressContainer > .movie {
+  margin-top: 2vh;
+}
+
+.roundInProgressContainer > .remainingTime {
+  margin-top: 2vh;
+}
+
+.roundInProgressContainer > .movieFoundButton {
+  margin-top: 3.5vh;
+  width: 35vh;
+  height: 35vh;
+  border-radius: 17.5vh;
+}
+
+.roundInProgressContainer > .movieNotFoundButton {
+  margin-top: 7vh;
+  align-self: flex-start;
+}

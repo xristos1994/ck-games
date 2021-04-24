@@ -1,0 +1,32 @@
+.teamsSetupContainer {
+  width: 90vw;
+  max-width: 60vh;
+  height: 70vh;
+  border-radius: 2vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teamsSetupContainer > .teamsSetupTitle {
+  margin-top: 2vh;
+}
+
+.teamsSetupContainer > .teamsContainer {
+  width: 90%;
+  max-width: 60vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.teamsSetupContainer > .addTeamButton {
+  margin-top: 2vh;
+  min-width: 20vh;
+}
+
+.teamsSetupContainer > .teamsSetupSubmitButton {
+  margin-top: 3.5vh;
+  margin-bottom: 3.5vh;
+}

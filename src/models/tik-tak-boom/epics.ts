@@ -5,7 +5,7 @@ import {
   ofType,
   StateObservable,
 } from "redux-observable";
-import { debounceTime, map, mergeMap, withLatestFrom } from "rxjs/operators";
+import { map, mergeMap, withLatestFrom } from "rxjs/operators";
 import {
   noAction,
   startTikTakBoom,
@@ -23,9 +23,10 @@ import {
   updateSyllable,
   goToNextPlayer,
   goToPreviousPlayer,
-  updateClockIsRunning,
-  updateRemainingTime,
-  reduceRemainingTime,
+  startClock,
+  resetClock,
+  clockRemainingTimeBecameZero,
+  clockTriggerTikTakSound,
   endRound,
   goToNextRound,
   restartGame,
@@ -48,17 +49,12 @@ import {
 } from "./utils";
 import { vibrate } from "@utils/hardware";
 import { getRandomInteger } from "@utils/general";
-import {
-  IClock,
-  IMode,
-  IPlayer,
-  IRemainingTime,
-  IScoreTarget,
-  ISyllable,
-} from "./interfaces";
+import { IMode, IPlayer, IScoreTarget, ISyllable } from "./interfaces";
 import { IState } from "@models/interfaces";
 import { IActionWithPayload } from "@core/actions/interfaces";
 import { IState as IModelState } from "./interfaces";
+import { IState as IClock } from "@models/clock/interfaces";
+import { AvailableGames } from "@models/website/interfaces";
 
 const startEpic = (): Observable<IActionWithPayload> =>
   of(startTikTakBoom(null));
@@ -74,7 +70,7 @@ const setPlayerByIdEpic = (
       return updatePlayers(
         state.websiteRootReducer.tikTakBoom.players.map(player => {
           if (player.id === payload.id) {
-            return payload;
+            return { ...player, ...payload };
           }
           return player;
         })
@@ -176,8 +172,7 @@ const startRoundEpic = (
   | IActionWithPayload<IMode>
   | IActionWithPayload<ISyllable>
   | IActionWithPayload<GameStates>
-  | IActionWithPayload<IClock["isRunning"]>
-  | IActionWithPayload<IRemainingTime>
+  | IActionWithPayload<IClock["remainingTime"]>
 > => {
   return action$.pipe(
     ofType(startRound.type),
@@ -192,11 +187,9 @@ const startRoundEpic = (
         updateMode(mode),
         updateSyllable(syllable),
         updateGameState(GameStates.roundInProgress),
-        updateClockIsRunning(true),
-        updateRemainingTime(
+        startClock(
           getRandomInteger(BoomTimer.minSeconds, BoomTimer.maxSeconds)
         ),
-        reduceRemainingTime(null),
       ];
     })
   );
@@ -234,25 +227,18 @@ const goToPreviousPlayerEpic = (
   );
 };
 
-const reduceRemainingTimeEpic = (
+const clockRemainingTimeBecameZeroEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<IRemainingTime> | IActionWithPayload> => {
+): Observable<IActionWithPayload> => {
   return action$.pipe(
-    ofType(reduceRemainingTime.type),
-    debounceTime(1000),
+    ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
-      const newRemainingTime =
-        state.websiteRootReducer.tikTakBoom.clock.remainingTime - 1;
-      const clockIsRunning =
-        state.websiteRootReducer.tikTakBoom.clock.isRunning;
+    map(([action, state]) => {
+      const newRemainingTime = state.websiteRootReducer.clock.remainingTime - 1;
+      const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {
-        if (clockIsRunning && newRemainingTime) {
-          const audio = getAudio("tikTak");
-          audio && audio.play();
-        }
         if (newRemainingTime === 0) {
           vibrate([200, 100, 200, 100, 200]);
           const audio = getAudio("boom");
@@ -260,13 +246,28 @@ const reduceRemainingTimeEpic = (
         }
       }
 
-      if (newRemainingTime === 0) {
-        return [updateRemainingTime(newRemainingTime), endRound(null)];
+      return noAction(null);
+    })
+  );
+};
+
+const clockTriggerTikTakSoundEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload> => {
+  return action$.pipe(
+    ofType(clockTriggerTikTakSound.type),
+    withLatestFrom(state$),
+    map(([action, state]) => {
+      if (
+        state.websiteRootReducer.website.selectedGame ===
+        AvailableGames.tikTakBoom
+      ) {
+        const audio = getAudio("tikTak");
+        audio && audio.play();
       }
-      if (!clockIsRunning) {
-        return [updateRemainingTime(newRemainingTime)];
-      }
-      return [updateRemainingTime(newRemainingTime), reduceRemainingTime(null)];
+
+      return noAction(null);
     })
   );
 };
@@ -275,8 +276,7 @@ const endRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
 ): Observable<
-  | IActionWithPayload<IClock["remainingTime"]>
-  | IActionWithPayload<IClock["isRunning"]>
+  | IActionWithPayload
   | IActionWithPayload<GameStates>
   | IActionWithPayload<IPlayer[]>
 > => {
@@ -289,8 +289,7 @@ const endRoundEpic = (
 
       return [
         updatePlayers(newPlayers),
-        updateRemainingTime(null),
-        updateClockIsRunning(false),
+        resetClock(null),
         updateGameState(GameStates.roundEnded),
       ];
     })
@@ -330,15 +329,15 @@ const goToNextRoundEpic = (
 const restartGameEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState>> => {
+): Observable<IActionWithPayload<IModelState> | IActionWithPayload> => {
   return action$.pipe(
     ofType(restartGame.type, initializeGame.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    mergeMap(([action, state]) => {
       const tikTakBoomState = state.websiteRootReducer.tikTakBoom;
       const newTikTakBoomState = restartGameState(tikTakBoomState);
 
-      return updateGameReduxState(newTikTakBoomState);
+      return [updateGameReduxState(newTikTakBoomState), resetClock(null)];
     })
   );
 };
@@ -392,7 +391,8 @@ export const tikTakBoomEpic = combineEpics(
   startRoundEpic,
   goToNextPlayerEpic,
   goToPreviousPlayerEpic,
-  reduceRemainingTimeEpic,
+  clockRemainingTimeBecameZeroEpic,
+  clockTriggerTikTakSoundEpic,
   endRoundEpic,
   goToNextRoundEpic,
   restartGameEpic,

@@ -7,12 +7,12 @@ interface IProps {
   className: string;
   other?: object;
 }
-
+const x = { disabled: true };
 const Button: FC<IProps> = ({
   children,
   onClick,
   className = "",
-  ...other
+  other,
 }): ReactElement => {
   return (
     <button className={className} {...other} onClick={onClick}>
