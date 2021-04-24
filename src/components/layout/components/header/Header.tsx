@@ -25,7 +25,7 @@ const Header: FC = (): ReactElement => {
       className={classnames(styles.header, styles[heightClass], "primary")}
     >
       <Link to="/" className={classnames("extraLargeText")}>
-        My Games
+        CK-Games
       </Link>
     </header>
   );
