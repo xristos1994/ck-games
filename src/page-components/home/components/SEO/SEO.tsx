@@ -3,7 +3,7 @@ import { GlobalSEO, LocalSEO } from "@components";
 import { getCanonicalBaseUrl } from "@utils/general";
 
 const title = "CK-Games";
-const canonicalUrl = getCanonicalBaseUrl();
+const canonicalUrl = `${getCanonicalBaseUrl()}/`;
 const description =
   "You can choose how you will have fun with your friend. Pantomime or Tik-Tak-Boom?";
 const keywords = "games, fun, friends, pantomime, tik-tak-boom";
