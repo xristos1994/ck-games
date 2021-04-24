@@ -3,7 +3,7 @@ import { GlobalSEO, LocalSEO } from "@components";
 import { getCanonicalBaseUrl } from "@utils/general";
 
 const title = "CK-Games: Pantomime";
-const canonicalUrl = `${getCanonicalBaseUrl()}/pantomime`;
+const canonicalUrl = `${getCanonicalBaseUrl()}/pantomime/`;
 const description = "Have fun with your friend playing Pantomime.";
 const keywords = "games, fun, friends, pantomime";
 const ogImage = `${getCanonicalBaseUrl()}${
