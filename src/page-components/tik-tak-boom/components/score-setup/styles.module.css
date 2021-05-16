@@ -14,11 +14,13 @@
 .scoreSetupContainer > .scoreSetupTitle {
   margin-top: 2vh;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .scoreSetupContainer > .scoreTargetInput {
   margin-top: 3.5vh;
   min-width: 2vh;
+  font-size: var(--text-large);
 }
 
 .scoreSetupContainer > .scoreTargetSetupSubmitButton {
@@ -26,10 +28,12 @@
   min-width: 20vh;
   background-color: var(--primary-dark);
   color: var(--text-light);
+  font-size: var(--text-extra-large);
 }
 
 .scoreSetupContainer > .backButton {
   margin-top: 3vh;
   background-color: var(--secondary);
   color: var(--text-dark);
+  font-size: var(--text-large);
 }

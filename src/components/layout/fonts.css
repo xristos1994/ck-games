@@ -1,19 +1,7 @@
-.normalText {
-  font-size: 1.5vh;
-}
-
-.extraSmallText {
-  font-size: 0.9vh;
-}
-
-.smallText {
-  font-size: 1.2vh;
-}
-
-.largeText {
-  font-size: 3vh;
-}
-
-.extraLargeText {
-  font-size: 4vh;
+:root {
+  --text-normal: 1.5vh;
+  --text-extra-small: 0.9vh;
+  --text-small: 1.2vh;
+  --text-large: 3vh;
+  --text-extra-large: 4vh;
 }

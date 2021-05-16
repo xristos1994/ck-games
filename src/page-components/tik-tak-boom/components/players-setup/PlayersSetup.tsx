@@ -32,7 +32,7 @@ const _PlayersSetup: FC<IProps> = ({
   return (
     <ElevatedWithBlurBackGround>
       <div className={classnames(styles.playersSetupContainer)}>
-        <div className={classnames(styles.playersSetupTitle, "extraLargeText")}>
+        <div className={classnames(styles.playersSetupTitle)}>
           Players' Setup
         </div>
         <div className={styles.playersContainer}>
@@ -42,7 +42,7 @@ const _PlayersSetup: FC<IProps> = ({
         </div>
         <Button
           onClick={() => addPlayer()}
-          className={classnames(styles.addPlayerButton, "largeText")}
+          className={classnames(styles.addPlayerButton)}
         >
           Add Player
         </Button>
@@ -50,10 +50,7 @@ const _PlayersSetup: FC<IProps> = ({
         <Button
           other={{ disabled: !isPlayersSetupValid }}
           onClick={() => playersSetupSubmit()}
-          className={classnames(
-            styles.playersSetupSubmitButton,
-            "extraLargeText"
-          )}
+          className={classnames(styles.playersSetupSubmitButton)}
         >
           PROCEED
         </Button>

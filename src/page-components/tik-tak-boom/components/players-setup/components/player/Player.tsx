@@ -43,7 +43,7 @@ const _Player: FC<IProps> = ({
     <div className={styles.playerContainer}>
       <input
         key="name"
-        className={classnames(styles.playerNameInput, "largeText")}
+        className={classnames(styles.playerNameInput)}
         type="text"
         value={player.name}
         onChange={onChangeName}
@@ -52,7 +52,7 @@ const _Player: FC<IProps> = ({
       <Button
         other={{ disabled: numOfPlayers === 2 }}
         onClick={removePlayer}
-        className={classnames(styles.removePlayerButton, "normalText")}
+        className={classnames(styles.removePlayerButton)}
       >
         Remove
       </Button>

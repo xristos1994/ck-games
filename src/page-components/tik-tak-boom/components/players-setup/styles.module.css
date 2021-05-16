@@ -13,6 +13,7 @@
 .playersSetupContainer > .playersSetupTitle {
   margin-top: 2vh;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .playersSetupContainer > .playersContainer {
@@ -28,6 +29,7 @@
   min-width: 20vh;
   background-color: var(--primary);
   color: var(--text-light);
+  font-size: var(--text-large);
 }
 
 .playersSetupContainer > .playersSetupSubmitButton {
@@ -35,4 +37,5 @@
   margin-bottom: 3.5vh;
   background-color: var(--primary-dark);
   color: var(--text-light);
+  font-size: var(--text-extra-large);
 }

@@ -9,8 +9,12 @@
 .teamContainer > .removeTeamButton {
   border-radius: 0.5vh;
   margin-left: 1vh;
+  background-color: var(--secondary);
+  color: var(--text-dark);
+  font-size: var(--text-normal);
 }
 
 .teamContainer > .teamNameInput {
   min-width: 2vh;
+  font-size: var(--text-large);
 }

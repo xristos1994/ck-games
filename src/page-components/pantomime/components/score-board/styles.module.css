@@ -10,6 +10,7 @@
   width: 100%;
   text-align: center;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .scoreBoardContainer > .scoreBoard {
@@ -17,6 +18,7 @@
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .scoreBoardContainer > .scoreBoard > * {
@@ -24,6 +26,7 @@
   margin-bottom: 1vh;
   border-bottom: 2px solid;
   border-color: var(--main-border-color);
+  font-size: var(--text-large);
 }
 
 @media screen and (max-width: 480px) {

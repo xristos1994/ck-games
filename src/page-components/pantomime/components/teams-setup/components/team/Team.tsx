@@ -43,7 +43,7 @@ const _Team: FC<IProps> = ({
     <div className={styles.teamContainer}>
       <input
         key="name"
-        className={classnames(styles.teamNameInput, "largeText")}
+        className={classnames(styles.teamNameInput)}
         type="text"
         value={team.name}
         onChange={onChangeName}
@@ -52,11 +52,7 @@ const _Team: FC<IProps> = ({
       <Button
         other={{ disabled: numOfTeams === 2 }}
         onClick={removeTeam}
-        className={classnames(
-          styles.removeTeamButton,
-          "normalText",
-          "secondary"
-        )}
+        className={classnames(styles.removeTeamButton)}
       >
         Remove
       </Button>

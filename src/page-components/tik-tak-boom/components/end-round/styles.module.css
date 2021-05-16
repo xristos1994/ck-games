@@ -9,6 +9,7 @@
 .endRoundContainer > .whoLost {
   margin-top: 2vh;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .endRoundContainer > .playersContainer {
@@ -19,6 +20,7 @@
 .endRoundContainer > .playersContainer > .player {
   margin-top: 1vh;
   width: 100%;
+  font-size: var(--text-large);
 }
 
 .endRoundContainer > .playersContainer > .playerNow {
@@ -36,4 +38,5 @@
   max-width: 28vh;
   background-color: var(--primary);
   color: var(--text-light);
+  font-size: var(--text-extra-large);
 }

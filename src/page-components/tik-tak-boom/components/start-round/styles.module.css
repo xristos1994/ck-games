@@ -9,6 +9,7 @@
 .startRoundContainer > .playsFirst {
   margin-bottom: 2vh;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .startRoundContainer > .startRoundButton {
@@ -16,10 +17,12 @@
   max-width: 35vh;
   background-color: var(--primary-dark);
   color: var(--text-light);
+  font-size: var(--text-extra-large);
 }
 
 .startRoundContainer > .backButton {
   margin-top: 3vh;
   background-color: var(--secondary);
   color: var(--text-dark);
+  font-size: var(--text-large);
 }

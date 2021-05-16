@@ -30,15 +30,7 @@ const _TeamsSetup: FC<IProps> = ({
   return (
     <ElevatedWithBlurBackGround>
       <div className={classnames(styles.teamsSetupContainer)}>
-        <div
-          className={classnames(
-            styles.teamsSetupTitle,
-            "extraLargeText",
-            "main-color"
-          )}
-        >
-          Teams' Setup
-        </div>
+        <div className={classnames(styles.teamsSetupTitle)}>Teams' Setup</div>
         <div className={styles.teamsContainer}>
           {teams.map(team => (
             <Team key={team.id} team={team} />
@@ -46,7 +38,7 @@ const _TeamsSetup: FC<IProps> = ({
         </div>
         <Button
           onClick={() => addTeam()}
-          className={classnames(styles.addTeamButton, "largeText")}
+          className={classnames(styles.addTeamButton)}
         >
           Add Team
         </Button>
@@ -54,10 +46,7 @@ const _TeamsSetup: FC<IProps> = ({
         <Button
           other={{ disabled: !isTeamsSetupValid }}
           onClick={() => teamsSetupSubmit()}
-          className={classnames(
-            styles.teamsSetupSubmitButton,
-            "extraLargeText"
-          )}
+          className={classnames(styles.teamsSetupSubmitButton)}
         >
           PROCEED
         </Button>

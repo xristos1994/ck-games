@@ -8,6 +8,7 @@
 
 .endRoundContainer > .title {
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .endRoundContainer > .movieFoundButtons {
@@ -15,11 +16,8 @@
   min-width: 35vh;
 }
 
-.endRoundContainer > .proceedButton {
-  margin-top: 3.5vh;
-  max-width: 28vh;
-  background-color: var(--primary);
-  color: var(--text-light);
+.endRoundContainer > .movieFoundButtons > button {
+  font-size: var(--text-large);
 }
 
 .endRoundContainer > .movieActionSelected {
@@ -30,4 +28,12 @@
 .endRoundContainer > .movieActionNotSelected {
   background-color: var(--secondary-light);
   color: var(--text-dark);
+}
+
+.endRoundContainer > .proceedButton {
+  margin-top: 3.5vh;
+  max-width: 28vh;
+  background-color: var(--primary);
+  color: var(--text-light);
+  font-size: var(--text-extra-large);
 }

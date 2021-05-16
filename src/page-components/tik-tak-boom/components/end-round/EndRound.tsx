@@ -29,7 +29,7 @@ const _EndRound: FC<IProps> = ({
 
   return (
     <div className={styles.endRoundContainer}>
-      <div className={classnames(styles.whoLost, "extraLargeText")}>
+      <div className={classnames(styles.whoLost)}>
         Bomb boomed on {playerNow.name}'
         {playerNow.name.slice(-1).toLowerCase() === "s" ? "" : "s"} hands
       </div>
@@ -38,7 +38,7 @@ const _EndRound: FC<IProps> = ({
           <Button
             key={player.id}
             other={{ disabled: !player.isActive }}
-            className={classnames(styles.player, "largeText", {
+            className={classnames(styles.player, {
               [styles.playerNow]: playerNow.id === player.id,
               [styles.playerNotNow]: playerNow.id !== player.id,
             })}
@@ -50,7 +50,7 @@ const _EndRound: FC<IProps> = ({
       </div>
       <Button
         onClick={() => goToNextRound()}
-        className={classnames(styles.proceedButton, "extraLargeText")}
+        className={classnames(styles.proceedButton)}
       >
         PROCEED
       </Button>

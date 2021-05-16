@@ -9,16 +9,19 @@
 .roundInProgressContainer > .team {
   margin-top: 2vh;
   color: var(--main-color);
+  font-size: var(--text-large);
 }
 
 .roundInProgressContainer > .movie {
   margin-top: 2vh;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .remainingTime {
   margin-top: 2vh;
   color: var(--main-color);
+  font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .movieFoundButton {
@@ -28,6 +31,7 @@
   border-radius: 17.5vh;
   background-color: var(--primary);
   color: var(--text-light);
+  font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .movieNotFoundButton {
@@ -35,4 +39,5 @@
   align-self: flex-start;
   background-color: var(--secondary);
   color: var(--text-dark);
+  font-size: var(--text-large);
 }

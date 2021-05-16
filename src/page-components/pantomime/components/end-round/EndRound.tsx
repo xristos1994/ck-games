@@ -30,7 +30,7 @@ const _EndRound: FC<IProps> = ({
 
   return (
     <div className={styles.endRoundContainer}>
-      <div className={classnames(styles.title, "extraLargeText")}>
+      <div className={classnames(styles.title)}>
         Turn of {teamNow.name} ended
       </div>
       <ScoreBoard />
@@ -38,7 +38,7 @@ const _EndRound: FC<IProps> = ({
         <Button
           key="movieFound"
           other={{ disabled: teamNow.movieFound }}
-          className={classnames("largeText", {
+          className={classnames({
             [styles.movieActionSelected]: teamNow.movieFound,
             [styles.movieNotFoundSelected]: !teamNow.movieFound,
           })}
@@ -49,7 +49,7 @@ const _EndRound: FC<IProps> = ({
         <Button
           key="movieNotFound"
           other={{ disabled: !teamNow.movieFound }}
-          className={classnames(styles.player, "largeText", {
+          className={classnames({
             [styles.movieActionSelected]: !teamNow.movieFound,
             [styles.movieFoundNotSelected]: teamNow.movieFound,
           })}
@@ -60,7 +60,7 @@ const _EndRound: FC<IProps> = ({
       </div>
       <Button
         onClick={() => goToNextRound()}
-        className={classnames(styles.proceedButton, "extraLargeText")}
+        className={classnames(styles.proceedButton)}
       >
         PROCEED
       </Button>

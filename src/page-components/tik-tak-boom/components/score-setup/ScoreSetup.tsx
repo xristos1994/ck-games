@@ -41,11 +41,11 @@ const _ScoreSetup: FC<IProps> = ({
   return (
     <ElevatedWithBlurBackGround>
       <div className={classnames(styles.scoreSetupContainer)}>
-        <div className={classnames(styles.scoreSetupTitle, "extraLargeText")}>
+        <div className={classnames(styles.scoreSetupTitle)}>
           Set winning score
         </div>
         <select
-          className={classnames(styles.scoreTargetInput, "largeText")}
+          className={classnames(styles.scoreTargetInput)}
           value={scoreTarget}
           onChange={onScoreTargetChange}
         >
@@ -57,17 +57,14 @@ const _ScoreSetup: FC<IProps> = ({
         </select>
         <Button
           onClick={() => scoreSetupSubmit()}
-          className={classnames(
-            styles.scoreTargetSetupSubmitButton,
-            "extraLargeText"
-          )}
+          className={classnames(styles.scoreTargetSetupSubmitButton)}
         >
           PROCEED
         </Button>
         {canGoBack && (
           <Button
             onClick={() => goBack()}
-            className={classnames(styles.backButton, "largeText")}
+            className={classnames(styles.backButton)}
           >
             BACK
           </Button>
