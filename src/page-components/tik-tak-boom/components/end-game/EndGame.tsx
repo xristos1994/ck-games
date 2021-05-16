@@ -14,30 +14,18 @@ interface IProps {
 const _EndGame: FC<IProps> = ({ restartGame }): ReactElement => {
   return (
     <div className={styles.endGameContainer}>
-      <div
-        className={classnames(
-          styles.gameEndTitle,
-          "main-color",
-          "extraLargeText"
-        )}
-      >
+      <div className={classnames(styles.gameEndTitle, "extraLargeText")}>
         Game Completed
       </div>
       <ScoreBoard />
       <Button
         onClick={() => restartGame()}
-        className={classnames(
-          styles.restartButton,
-          "extraLargeText",
-          "primary"
-        )}
+        className={classnames(styles.restartButton, "extraLargeText")}
       >
         Restart Game
       </Button>
       <Link to={"/"}>
-        <Button
-          className={classnames(styles.homeButton, "secondary", "largeText")}
-        >
+        <Button className={classnames(styles.homeButton, "largeText")}>
           Home
         </Button>
       </Link>

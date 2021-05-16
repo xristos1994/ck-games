@@ -29,7 +29,7 @@ const _TeamsSetup: FC<IProps> = ({
 }): ReactElement => {
   return (
     <ElevatedWithBlurBackGround>
-      <div className={classnames(styles.teamsSetupContainer, "main-bg-color")}>
+      <div className={classnames(styles.teamsSetupContainer)}>
         <div
           className={classnames(
             styles.teamsSetupTitle,
@@ -46,7 +46,7 @@ const _TeamsSetup: FC<IProps> = ({
         </div>
         <Button
           onClick={() => addTeam()}
-          className={classnames(styles.addTeamButton, "largeText", "primary")}
+          className={classnames(styles.addTeamButton, "largeText")}
         >
           Add Team
         </Button>
@@ -56,8 +56,7 @@ const _TeamsSetup: FC<IProps> = ({
           onClick={() => teamsSetupSubmit()}
           className={classnames(
             styles.teamsSetupSubmitButton,
-            "extraLargeText",
-            "primary-dark"
+            "extraLargeText"
           )}
         >
           PROCEED

@@ -29,9 +29,7 @@ const _EndRound: FC<IProps> = ({
 
   return (
     <div className={styles.endRoundContainer}>
-      <div
-        className={classnames(styles.whoLost, "extraLargeText", "main-color")}
-      >
+      <div className={classnames(styles.whoLost, "extraLargeText")}>
         Bomb boomed on {playerNow.name}'
         {playerNow.name.slice(-1).toLowerCase() === "s" ? "" : "s"} hands
       </div>
@@ -41,8 +39,8 @@ const _EndRound: FC<IProps> = ({
             key={player.id}
             other={{ disabled: !player.isActive }}
             className={classnames(styles.player, "largeText", {
-              "secondary-light": playerNow.id === player.id,
-              "secondary-dark": playerNow.id !== player.id,
+              [styles.playerNow]: playerNow.id === player.id,
+              [styles.playerNotNow]: playerNow.id !== player.id,
             })}
             onClick={() => player.isActive && setWhoLost(player.id)}
           >
@@ -52,11 +50,7 @@ const _EndRound: FC<IProps> = ({
       </div>
       <Button
         onClick={() => goToNextRound()}
-        className={classnames(
-          styles.proceedButton,
-          "primary",
-          "extraLargeText"
-        )}
+        className={classnames(styles.proceedButton, "extraLargeText")}
       >
         PROCEED
       </Button>

@@ -6,6 +6,10 @@
   margin: 2vh 0;
 }
 
+.endRoundContainer > .title {
+  color: var(--main-color);
+}
+
 .endRoundContainer > .movieFoundButtons {
   margin-top: 2vh;
   min-width: 35vh;
@@ -14,4 +18,16 @@
 .endRoundContainer > .proceedButton {
   margin-top: 3.5vh;
   max-width: 28vh;
+  background-color: var(--primary);
+  color: var(--text-light);
+}
+
+.endRoundContainer > .movieActionSelected {
+  background-color: var(--secondary-dark);
+  color: var(--text-light);
+}
+
+.endRoundContainer > .movieActionNotSelected {
+  background-color: var(--secondary-light);
+  color: var(--text-dark);
 }

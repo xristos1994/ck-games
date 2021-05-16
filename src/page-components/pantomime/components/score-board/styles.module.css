@@ -3,23 +3,27 @@
   width: 100%;
   min-width: 35vh;
   padding: 3.5vh 2vh;
+  background-color: var(--second-bg-color);
 }
 
 .scoreBoardContainer > .scoreBoardTitle {
   width: 100%;
   text-align: center;
+  color: var(--main-color);
 }
 
 .scoreBoardContainer > .scoreBoard {
   margin-top: 1vh;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
+  color: var(--main-color);
 }
 
 .scoreBoardContainer > .scoreBoard > * {
   margin-top: 1vh;
   margin-bottom: 1vh;
   border-bottom: 2px solid;
+  border-color: var(--main-border-color);
 }
 
 @media screen and (max-width: 480px) {

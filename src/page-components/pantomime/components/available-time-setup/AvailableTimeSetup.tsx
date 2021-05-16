@@ -40,17 +40,11 @@ const _AvailableTimeSetup: FC<IProps> = ({
 
   return (
     <ElevatedWithBlurBackGround>
-      <div
-        className={classnames(
-          styles.availableTimeSetupContainer,
-          "main-bg-color"
-        )}
-      >
+      <div className={classnames(styles.availableTimeSetupContainer)}>
         <div
           className={classnames(
             styles.availableTimeSetupTitle,
-            "extraLargeText",
-            "main-color"
+            "extraLargeText"
           )}
         >
           Set available Time
@@ -70,8 +64,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
           onClick={() => availableTimeSetupSubmit()}
           className={classnames(
             styles.availableTimeTargetSetupSubmitButton,
-            "extraLargeText",
-            "primary-dark"
+            "extraLargeText"
           )}
         >
           PROCEED
@@ -79,7 +72,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
         {canGoBack && (
           <Button
             onClick={() => goBack()}
-            className={classnames(styles.backButton, "largeText", "secondary")}
+            className={classnames(styles.backButton, "largeText")}
           >
             BACK
           </Button>

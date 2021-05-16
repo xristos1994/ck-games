@@ -9,6 +9,8 @@
 .playerContainer > .removePlayerButton {
   border-radius: 0.5vh;
   margin-left: 1vh;
+  background-color: var(--secondary);
+  color: var(--text-dark);
 }
 
 .playerContainer > .playerNameInput {

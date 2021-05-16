@@ -52,11 +52,7 @@ const _Player: FC<IProps> = ({
       <Button
         other={{ disabled: numOfPlayers === 2 }}
         onClick={removePlayer}
-        className={classnames(
-          styles.removePlayerButton,
-          "normalText",
-          "secondary"
-        )}
+        className={classnames(styles.removePlayerButton, "normalText")}
       >
         Remove
       </Button>

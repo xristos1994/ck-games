@@ -16,7 +16,9 @@ const Button: FC<IProps> = ({
 }): ReactElement => {
   return (
     <button className={className} {...other} onClick={onClick}>
+      <div className="left"></div>
       {children}
+      <div className="right"></div>
     </button>
   );
 };

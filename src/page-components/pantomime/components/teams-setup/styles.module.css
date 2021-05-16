@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--main-bg-color);
 }
 
 .teamsSetupContainer > .teamsSetupTitle {
@@ -24,9 +25,13 @@
 .teamsSetupContainer > .addTeamButton {
   margin-top: 2vh;
   min-width: 20vh;
+  background-color: var(--primary);
+  color: var(--text-light);
 }
 
 .teamsSetupContainer > .teamsSetupSubmitButton {
   margin-top: 3.5vh;
   margin-bottom: 3.5vh;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
 }

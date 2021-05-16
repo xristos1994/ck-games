@@ -16,27 +16,15 @@ interface IProps {
 
 const _ScoreBoard: FC<IProps> = ({ teams }): ReactElement => {
   return (
-    <div className={classnames(styles.scoreBoardContainer, "second-bg-color")}>
-      <div
-        className={classnames(
-          styles.scoreBoardTitle,
-          "extraLargeText",
-          "main-color"
-        )}
-      >
+    <div className={classnames(styles.scoreBoardContainer)}>
+      <div className={classnames(styles.scoreBoardTitle, "extraLargeText")}>
         Score board
       </div>
-      <div className={classnames(styles.scoreBoard, "largeText", "main-color")}>
+      <div className={classnames(styles.scoreBoard, "largeText")}>
         {teams.map((team, index) => [
-          <div key={`index_${team.id}`} className="main-border-color">
-            {index + 1}.
-          </div>,
-          <div key={`name_${team.id}`} className="main-border-color">
-            {team.name}
-          </div>,
-          <div key={`score_${team.id}`} className="main-border-color">
-            {team.score}
-          </div>,
+          <div key={`index_${team.id}`}>{index + 1}.</div>,
+          <div key={`name_${team.id}`}>{team.name}</div>,
+          <div key={`score_${team.id}`}>{team.score}</div>,
         ])}
       </div>
     </div>

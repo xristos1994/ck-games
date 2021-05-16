@@ -35,9 +35,7 @@ const _StartRound: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
-      <div
-        className={classnames(styles.playsNow, "extraLargeText", "main-color")}
-      >
+      <div className={classnames(styles.playsNow, "extraLargeText")}>
         {teamNameThatPlaysNow} plays now
       </div>
       {availableMovies.map(_movie => (
@@ -46,8 +44,8 @@ const _StartRound: FC<IProps> = ({
           other={{ disabled: _movie === movie }}
           onClick={() => setMovie(_movie)}
           className={classnames("small", {
-            "secondary-dark": _movie === movie,
-            "secondary-light": _movie === movie,
+            [styles.selectedMovieButton]: _movie === movie,
+            [styles.notSelectedMovieButton]: _movie !== movie,
           })}
         >
           {_movie}
@@ -56,18 +54,14 @@ const _StartRound: FC<IProps> = ({
       <Button
         other={{ disabled: availableMovies.indexOf(movie) === -1 }}
         onClick={() => startRound()}
-        className={classnames(
-          styles.startRoundButton,
-          "extraLargeText",
-          "primary-dark"
-        )}
+        className={classnames(styles.startRoundButton, "extraLargeText")}
       >
         PROCEED
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
-          className={classnames(styles.backButton, "largeText", "secondary")}
+          className={classnames(styles.backButton, "largeText")}
         >
           BACK
         </Button>

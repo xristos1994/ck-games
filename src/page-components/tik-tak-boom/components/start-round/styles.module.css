@@ -8,13 +8,18 @@
 
 .startRoundContainer > .playsFirst {
   margin-bottom: 2vh;
+  color: var(--main-color);
 }
 
 .startRoundContainer > .startRoundButton {
   margin-top: 3.5vh;
   max-width: 35vh;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
 }
 
 .startRoundContainer > .backButton {
   margin-top: 3vh;
+  background-color: var(--secondary);
+  color: var(--text-dark);
 }

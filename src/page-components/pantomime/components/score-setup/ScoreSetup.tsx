@@ -40,14 +40,8 @@ const _ScoreSetup: FC<IProps> = ({
 
   return (
     <ElevatedWithBlurBackGround>
-      <div className={classnames(styles.scoreSetupContainer, "main-bg-color")}>
-        <div
-          className={classnames(
-            styles.scoreSetupTitle,
-            "extraLargeText",
-            "main-color"
-          )}
-        >
+      <div className={classnames(styles.scoreSetupContainer)}>
+        <div className={classnames(styles.scoreSetupTitle, "extraLargeText")}>
           Set winning score
         </div>
         <select
@@ -65,8 +59,7 @@ const _ScoreSetup: FC<IProps> = ({
           onClick={() => scoreSetupSubmit()}
           className={classnames(
             styles.scoreTargetSetupSubmitButton,
-            "extraLargeText",
-            "primary-dark"
+            "extraLargeText"
           )}
         >
           PROCEED
@@ -74,7 +67,7 @@ const _ScoreSetup: FC<IProps> = ({
         {canGoBack && (
           <Button
             onClick={() => goBack()}
-            className={classnames(styles.backButton, "largeText", "secondary")}
+            className={classnames(styles.backButton, "largeText")}
           >
             BACK
           </Button>

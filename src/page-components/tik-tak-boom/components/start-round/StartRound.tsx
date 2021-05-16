@@ -27,23 +27,13 @@ const _StartRound: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
-      <div
-        className={classnames(
-          styles.playsFirst,
-          "extraLargeText",
-          "main-color"
-        )}
-      >
+      <div className={classnames(styles.playsFirst, "extraLargeText")}>
         {playerNameThatStartsRound} plays first
       </div>
       <ScoreBoard />
       <Button
         onClick={() => startRound()}
-        className={classnames(
-          styles.startRoundButton,
-          "extraLargeText",
-          "primary-dark"
-        )}
+        className={classnames(styles.startRoundButton, "extraLargeText")}
       >
         PROCEED
       </Button>

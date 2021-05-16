@@ -33,24 +33,16 @@ const _RoundInProgress: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={styles.roundInProgressContainer}>
-      <div className={classnames(styles.player, "main-color", "largeText")}>
+      <div className={classnames(styles.player, "largeText")}>
         {playerNameThatPlaysNow} is playing now
       </div>
-      <div className={classnames(styles.mode, "main-color", "extraLargeText")}>
+      <div className={classnames(styles.mode, "extraLargeText")}>
         {mode.name}
       </div>
-      <div
-        className={classnames(
-          styles.modeDescription,
-          "main-color",
-          "normalText"
-        )}
-      >
+      <div className={classnames(styles.modeDescription, "normalText")}>
         *{mode.description}
       </div>
-      <div
-        className={classnames(styles.syllable, "main-color", "extraLargeText")}
-      >
+      <div className={classnames(styles.syllable, "extraLargeText")}>
         {syllable}
       </div>
       <Button
@@ -65,11 +57,7 @@ const _RoundInProgress: FC<IProps> = ({
       </Button>
       <Button
         onClick={() => goToPreviousPlayer()}
-        className={classnames(
-          styles.goToPreviousPlayerButton,
-          "secondary",
-          "largeText"
-        )}
+        className={classnames(styles.goToPreviousPlayerButton, "largeText")}
       >
         Previous
       </Button>
