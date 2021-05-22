@@ -1,6 +1,5 @@
 .teamsSetupContainer {
   width: 90vw;
-  max-width: 60vh;
   height: 70vh;
   border-radius: 2vh;
   overflow-y: auto;
@@ -11,13 +10,12 @@
 
 .teamsSetupContainer > .teamsSetupTitle {
   margin-top: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .teamsSetupContainer > .teamsContainer {
   width: 90%;
-  max-width: 60vh;
   display: flex;
   align-items: center;
   flex-direction: column;

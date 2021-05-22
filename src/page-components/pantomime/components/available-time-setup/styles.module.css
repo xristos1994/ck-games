@@ -1,6 +1,5 @@
 .availableTimeSetupContainer {
   width: 90vw;
-  max-width: 60vh;
   height: 40vh;
   border-radius: 2vh;
   overflow-y: auto;
@@ -12,19 +11,30 @@
 
 .availableTimeSetupContainer > .availableTimeSetupTitle {
   margin-top: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .availableTimeSetupContainer > .availableTimeTargetInput {
   margin-top: 3.5vh;
-  min-width: 2vh;
+  width: 100%;
+  max-width: var(--input-max-width);
   font-size: var(--text-large);
+  padding: var(--padding-small);
+  background-color: var(--input-bg-color);
+  color: var(--input-font-color);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--border-radius-small);
+}
+
+.availableTimeSetupContainer > .availableTimeTargetInput:focus {
+  background-color: var(--input-bg-color-focus);
+  color: var(--input-font-color-focus);
+  border: var(--input-border-width-focus) solid var(--input-border-color-focus);
 }
 
 .availableTimeSetupContainer > .availableTimeTargetSetupSubmitButton {
   margin-top: 3.5vh;
-  min-width: 20vh;
   background-color: var(--primary-dark);
   color: var(--text-light);
   font-size: var(--text-extra-large);

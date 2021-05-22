@@ -43,7 +43,7 @@ const _StartRound: FC<IProps> = ({
           key={_movie}
           other={{ disabled: _movie === movie }}
           onClick={() => setMovie(_movie)}
-          className={classnames([styles.movieButton], {
+          className={classnames(styles.movieButton, {
             [styles.selectedMovieButton]: _movie === movie,
             [styles.notSelectedMovieButton]: _movie !== movie,
           })}

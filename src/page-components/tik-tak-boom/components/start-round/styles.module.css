@@ -4,17 +4,18 @@
   align-items: center;
   padding: 0 2vh;
   margin: 2vh 0;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .startRoundContainer > .playsFirst {
   margin-bottom: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .startRoundContainer > .startRoundButton {
   margin-top: 3.5vh;
-  max-width: 35vh;
   background-color: var(--primary-dark);
   color: var(--text-light);
   font-size: var(--text-extra-large);

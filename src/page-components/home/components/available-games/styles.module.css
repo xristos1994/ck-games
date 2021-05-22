@@ -1,6 +1,6 @@
 .availableGamesContainer {
   width: 90%;
-  max-width: 60vh;
+  max-width: 500px;
 }
 
 .availableGamesContainer > a > .gameButton {

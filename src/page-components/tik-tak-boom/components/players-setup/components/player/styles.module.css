@@ -1,20 +1,38 @@
 .playerContainer {
-  margin-top: 2vh;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  margin-top: 2vh;
+  width: 90%;
+  max-width: var(--input-max-width);
+  text-align: center;
 }
 
 .playerContainer > .removePlayerButton {
-  border-radius: 0.5vh;
-  margin-left: 1vh;
+  position: absolute;
+  top: -10px;
+  right: -10px;
   background-color: var(--secondary);
   color: var(--text-dark);
   font-size: var(--text-normal);
+  width: calc(var(--text-normal) + 10px);
+  height: calc(var(--text-normal) + 10px);
+  border-radius: 50%;
 }
 
 .playerContainer > .playerNameInput {
-  min-width: 2vh;
   font-size: var(--text-large);
+  width: 100%;
+  padding: var(--padding-small);
+  background-color: var(--input-bg-color);
+  color: var(--input-font-color);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--border-radius-small);
+}
+
+.playerContainer > .playerNameInput:focus {
+  background-color: var(--input-bg-color-focus);
+  color: var(--input-font-color-focus);
+  border: var(--input-border-width-focus) solid var(--input-border-color-focus);
 }

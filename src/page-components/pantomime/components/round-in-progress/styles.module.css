@@ -4,31 +4,33 @@
   align-items: center;
   margin-top: 2vh;
   margin-bottom: 2vh;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .roundInProgressContainer > .team {
   margin-top: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-large);
 }
 
 .roundInProgressContainer > .movie {
   margin-top: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .remainingTime {
   margin-top: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .movieFoundButton {
   margin-top: 3.5vh;
-  width: 35vh;
   height: 35vh;
-  border-radius: 17.5vh;
+  width: 80%;
+  border-radius: var(--border-radius-large);
   background-color: var(--primary);
   color: var(--text-light);
   font-size: var(--text-extra-large);

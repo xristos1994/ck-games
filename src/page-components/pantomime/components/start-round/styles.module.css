@@ -4,17 +4,20 @@
   align-items: center;
   padding: 0 2vh;
   margin: 2vh 0;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .startRoundContainer > .playsNow {
   margin-bottom: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .startRoundContainer > .movieButton {
   margin-top: 3vh;
-  font-size: var(--text-normal);
+  font-size: var(--text-large);
+  width: 100%;
 }
 
 .startRoundContainer > .selectedMovieButton {
@@ -29,7 +32,6 @@
 
 .startRoundContainer > .startRoundButton {
   margin-top: 3.5vh;
-  max-width: 35vh;
   background-color: var(--primary-dark);
   color: var(--text-light);
   font-size: var(--text-extra-large);

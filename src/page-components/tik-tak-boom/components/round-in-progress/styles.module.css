@@ -4,37 +4,39 @@
   align-items: center;
   margin-top: 2vh;
   margin-bottom: 2vh;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .roundInProgressContainer > .player {
   margin-top: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-large);
 }
 
 .roundInProgressContainer > .mode {
   margin-top: 3.5vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .modeDescription {
   margin-top: 0.5vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-normal);
 }
 
 .roundInProgressContainer > .syllable {
   margin-top: 2vh;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .goToNextPlayerButton {
   margin-top: 3.5vh;
-  width: 35vh;
   height: 35vh;
-  border-radius: 17.5vh;
+  width: 80%;
+  border-radius: var(--border-radius-large);
   background-color: var(--primary);
   color: var(--text-light);
   font-size: var(--text-extra-large);

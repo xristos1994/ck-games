@@ -1,14 +1,13 @@
 .scoreBoardContainer {
   border-radius: 2vh;
   width: 100%;
-  min-width: 35vh;
   padding: 3.5vh 2vh;
 }
 
 .scoreBoardContainer > .scoreBoardTitle {
   width: 100%;
   text-align: center;
-  color: var(--main-color);
+  color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
@@ -16,20 +15,13 @@
   margin-top: 1vh;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
-  color: var(--main-color);
-  font-size: var(--text-extra-large);
+  color: var(--primary);
 }
 
 .scoreBoardContainer > .scoreBoard > * {
   margin-top: 1vh;
   margin-bottom: 1vh;
   border-bottom: 2px solid;
-  border-color: var(--main-border-color);
+  border-color: var(--primary);
   font-size: var(--text-large);
-}
-
-@media screen and (max-width: 480px) {
-  .scoreBoardContainer {
-    min-width: 95%;
-  }
 }

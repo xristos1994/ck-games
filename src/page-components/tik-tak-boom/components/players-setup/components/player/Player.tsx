@@ -49,13 +49,17 @@ const _Player: FC<IProps> = ({
         onChange={onChangeName}
         onBlur={onBlurName}
       />
-      <Button
-        other={{ disabled: numOfPlayers === 2 }}
-        onClick={removePlayer}
-        className={classnames(styles.removePlayerButton)}
-      >
-        Remove
-      </Button>
+      {numOfPlayers === 2 ? null : (
+        <Button
+          onClick={removePlayer}
+          className={classnames(
+            "main-button-hover-effect",
+            styles.removePlayerButton
+          )}
+        >
+          X
+        </Button>
+      )}
     </div>
   );
 };

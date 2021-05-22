@@ -49,13 +49,14 @@ const _Team: FC<IProps> = ({
         onChange={onChangeName}
         onBlur={onBlurName}
       />
-      <Button
-        other={{ disabled: numOfTeams === 2 }}
-        onClick={removeTeam}
-        className={classnames(styles.removeTeamButton)}
-      >
-        Remove
-      </Button>
+      {numOfTeams === 2 ? null : (
+        <Button
+          onClick={removeTeam}
+          className={classnames(styles.removeTeamButton)}
+        >
+          X
+        </Button>
+      )}
     </div>
   );
 };

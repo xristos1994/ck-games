@@ -12,7 +12,7 @@ const starClasses: Record<string, string> = {
 const Background: FC = (): ReactElement => {
   return (
     <div className={styles.backgroundContainer}>
-      {Array.from(" ".repeat(screen.width / 10)).map(() => {
+      {Array.from(" ".repeat(screen.width / 10)).map((item, index) => {
         const randomNumber = Math.random();
         const starClass =
           randomNumber < 0.1
@@ -23,6 +23,7 @@ const Background: FC = (): ReactElement => {
 
         return (
           <div
+            key={index}
             className={classnames(styles.star, styles[starClass])}
             style={{
               left: Math.random() * screen.width,

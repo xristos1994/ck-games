@@ -4,6 +4,7 @@ import "./layout.css";
 import "./colors.css";
 import "./fonts.css";
 import "./button.css";
+import "./variables.css";
 
 interface IProps {
   children: ReactChild | ReactChild[];

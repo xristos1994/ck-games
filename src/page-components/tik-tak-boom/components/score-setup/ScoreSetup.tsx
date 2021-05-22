@@ -35,7 +35,7 @@ const _ScoreSetup: FC<IProps> = ({
   scoreSetupSubmit,
 }): ReactElement => {
   const onScoreTargetChange = e => {
-    setScoreTarget(e.target.value);
+    setScoreTarget(Number(e.target.value));
   };
 
   return (

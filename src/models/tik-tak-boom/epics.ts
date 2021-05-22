@@ -235,18 +235,26 @@ const clockRemainingTimeBecameZeroEpic = (
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
     map(([action, state]) => {
+      const isTikTakBoomSelected =
+        state.websiteRootReducer.website.selectedGame ===
+        AvailableGames.tikTakBoom;
+
+      if (!isTikTakBoomSelected) {
+        return noAction(null);
+      }
+
       const newRemainingTime = state.websiteRootReducer.clock.remainingTime - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {
-        if (newRemainingTime === 0) {
+        if (newRemainingTime <= 0) {
           vibrate([200, 100, 200, 100, 200]);
           const audio = getAudio("boom");
           audio && audio.play();
         }
       }
 
-      return noAction(null);
+      return endRound(null);
     })
   );
 };
@@ -308,10 +316,14 @@ const goToNextRoundEpic = (
     mergeMap(([action, state]) => {
       const scoreTarget = state.websiteRootReducer.tikTakBoom.scoreTarget;
       const players = state.websiteRootReducer.tikTakBoom.players;
+
       let newPlayers = players.map(player => ({ ...player, playsNow: null }));
+
       const shouldActivateAllPlayers =
         newPlayers.filter(player => player.isActive).length === 1;
+
       newPlayers = assignNextRoundStarter(newPlayers, shouldActivateAllPlayers);
+
       const gameEnded = !!newPlayers.find(
         player => player.numOfBooms === scoreTarget
       );
