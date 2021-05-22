@@ -1,4 +1,5 @@
 import React, { FC, MouseEventHandler, ReactElement, ReactChild } from "react";
+import { classnames } from "@utils/component-utils";
 import "./styles.module.css";
 
 interface IProps {
@@ -7,7 +8,7 @@ interface IProps {
   className: string;
   other?: object;
 }
-const x = { disabled: true };
+
 const Button: FC<IProps> = ({
   children,
   onClick,
@@ -15,10 +16,14 @@ const Button: FC<IProps> = ({
   other,
 }): ReactElement => {
   return (
-    <button className={className} {...other} onClick={onClick}>
-      <div className="left"></div>
+    <button
+      className={classnames("main-button-hover-effect", {
+        [className]: !!className,
+      })}
+      {...other}
+      onClick={onClick}
+    >
       {children}
-      <div className="right"></div>
     </button>
   );
 };

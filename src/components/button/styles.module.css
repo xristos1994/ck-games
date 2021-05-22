@@ -10,8 +10,6 @@ button {
 
 button:hover:not([disabled]) {
   cursor: pointer;
-  filter: brightness(85%);
-  -webkit-filter: brightness(85%);
 }
 
 button:focus:not([disabled]) {

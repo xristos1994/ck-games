@@ -40,7 +40,7 @@ const _EndRound: FC<IProps> = ({
           other={{ disabled: teamNow.movieFound }}
           className={classnames({
             [styles.movieActionSelected]: teamNow.movieFound,
-            [styles.movieNotFoundSelected]: !teamNow.movieFound,
+            [styles.movieActionNotSelected]: !teamNow.movieFound,
           })}
           onClick={() => setIfMovieFound(true)}
         >
@@ -51,7 +51,7 @@ const _EndRound: FC<IProps> = ({
           other={{ disabled: !teamNow.movieFound }}
           className={classnames({
             [styles.movieActionSelected]: !teamNow.movieFound,
-            [styles.movieFoundNotSelected]: teamNow.movieFound,
+            [styles.movieActionNotSelected]: teamNow.movieFound,
           })}
           onClick={() => setIfMovieFound(false)}
         >

@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
-import { ElevatedWithBlurBackGround, Button } from "@components";
+import { Button } from "@components";
 import {
   scoreTarget,
   canGoBack,
@@ -39,38 +39,36 @@ const _ScoreSetup: FC<IProps> = ({
   };
 
   return (
-    <ElevatedWithBlurBackGround>
-      <div className={classnames(styles.scoreSetupContainer)}>
-        <div className={classnames(styles.scoreSetupTitle)}>
-          Set winning score
-        </div>
-        <select
-          className={classnames(styles.scoreTargetInput)}
-          value={scoreTarget}
-          onChange={onScoreTargetChange}
-        >
-          {availableScoreTargets.map(score => (
-            <option key={score} value={score}>
-              {score}
-            </option>
-          ))}
-        </select>
-        <Button
-          onClick={() => scoreSetupSubmit()}
-          className={classnames(styles.scoreTargetSetupSubmitButton)}
-        >
-          PROCEED
-        </Button>
-        {canGoBack && (
-          <Button
-            onClick={() => goBack()}
-            className={classnames(styles.backButton)}
-          >
-            BACK
-          </Button>
-        )}
+    <div className={classnames(styles.scoreSetupContainer)}>
+      <div className={classnames(styles.scoreSetupTitle)}>
+        Set winning score
       </div>
-    </ElevatedWithBlurBackGround>
+      <select
+        className={classnames(styles.scoreTargetInput)}
+        value={scoreTarget}
+        onChange={onScoreTargetChange}
+      >
+        {availableScoreTargets.map(score => (
+          <option key={score} value={score}>
+            {score}
+          </option>
+        ))}
+      </select>
+      <Button
+        onClick={() => scoreSetupSubmit()}
+        className={classnames(styles.scoreTargetSetupSubmitButton)}
+      >
+        PROCEED
+      </Button>
+      {canGoBack && (
+        <Button
+          onClick={() => goBack()}
+          className={classnames(styles.backButton)}
+        >
+          BACK
+        </Button>
+      )}
+    </div>
   );
 };
 

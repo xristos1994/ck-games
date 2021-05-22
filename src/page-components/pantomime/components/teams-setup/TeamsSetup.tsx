@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
-import { ElevatedWithBlurBackGround, Button } from "@components";
+import { Button } from "@components";
 import { teams, isTeamsSetupValid } from "@models/pantomime/props";
 import { Team } from "./components";
 import { addTeam, teamsSetupSubmit } from "@models/pantomime/actions";
@@ -28,30 +28,28 @@ const _TeamsSetup: FC<IProps> = ({
   isTeamsSetupValid,
 }): ReactElement => {
   return (
-    <ElevatedWithBlurBackGround>
-      <div className={classnames(styles.teamsSetupContainer)}>
-        <div className={classnames(styles.teamsSetupTitle)}>Teams' Setup</div>
-        <div className={styles.teamsContainer}>
-          {teams.map(team => (
-            <Team key={team.id} team={team} />
-          ))}
-        </div>
-        <Button
-          onClick={() => addTeam()}
-          className={classnames(styles.addTeamButton)}
-        >
-          Add Team
-        </Button>
-
-        <Button
-          other={{ disabled: !isTeamsSetupValid }}
-          onClick={() => teamsSetupSubmit()}
-          className={classnames(styles.teamsSetupSubmitButton)}
-        >
-          PROCEED
-        </Button>
+    <div className={classnames(styles.teamsSetupContainer)}>
+      <div className={classnames(styles.teamsSetupTitle)}>Teams' Setup</div>
+      <div className={styles.teamsContainer}>
+        {teams.map(team => (
+          <Team key={team.id} team={team} />
+        ))}
       </div>
-    </ElevatedWithBlurBackGround>
+      <Button
+        onClick={() => addTeam()}
+        className={classnames(styles.addTeamButton)}
+      >
+        Add Team
+      </Button>
+
+      <Button
+        other={{ disabled: !isTeamsSetupValid }}
+        onClick={() => teamsSetupSubmit()}
+        className={classnames(styles.teamsSetupSubmitButton)}
+      >
+        PROCEED
+      </Button>
+    </div>
   );
 };
 

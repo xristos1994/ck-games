@@ -20,12 +20,12 @@
   font-size: var(--text-large);
 }
 
-.endRoundContainer > .movieActionSelected {
+.endRoundContainer > .movieFoundButtons > .movieActionSelected {
   background-color: var(--secondary-dark);
   color: var(--text-light);
 }
 
-.endRoundContainer > .movieActionNotSelected {
+.endRoundContainer > .movieFoundButtons > .movieActionNotSelected {
   background-color: var(--secondary-light);
   color: var(--text-dark);
 }

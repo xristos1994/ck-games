@@ -1,3 +1,16 @@
+:root {
+  --min-mobile: 320px;
+  --max-mobile: 480px;
+  --min-tablet: 7481px;
+  --max-tablet: 768px;
+  --min-small-laptop: 769px;
+  --max-small-laptop: 1024px;
+  --min-desktop: 1025px;
+  --max-desktop: 1200px;
+  --min-large-screen: 1201px;
+  --max-large-screen: 20000px;
+}
+
 /* Breakpoints
   320px — 480px: Mobile devices.
   481px — 768px: iPads, Tablets.

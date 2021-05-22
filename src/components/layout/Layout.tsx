@@ -3,6 +3,7 @@ import { Background, Header } from "./components";
 import "./layout.css";
 import "./colors.css";
 import "./fonts.css";
+import "./button.css";
 
 interface IProps {
   children: ReactChild | ReactChild[];
