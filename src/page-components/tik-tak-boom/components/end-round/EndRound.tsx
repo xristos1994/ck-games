@@ -46,11 +46,11 @@ const _EndRound: FC<IProps> = ({
             onClick={() => player.isActive && setWhoLost(player.id)}
           >
             {playerNow.id === player.id ? (
-              <BombIcon class={styles.icon} />
+              <BombIcon className={styles.icon} />
             ) : null}
             {player.name}
             {playerNow.id === player.id ? (
-              <BombIcon class={styles.icon} />
+              <BombIcon className={styles.icon} />
             ) : null}
           </Button>
         ))}
