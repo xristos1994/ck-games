@@ -12,6 +12,7 @@
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .teamsSetupContainer > .teamsContainer {
