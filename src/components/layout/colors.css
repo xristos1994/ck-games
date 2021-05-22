@@ -5,16 +5,16 @@ body {
 :root {
   --blured-bg: #000000c7;
 
-  --primary: #673ab7;
-  --primary-light: #9a67ea;
-  --primary-dark: #320b86;
+  --primary: white;
+  --secondary: #857dff;
 
-  --secondary: #b55bb7;
-  --secondary-light: #e98bea;
-  --secondary-dark: #832b87;
+  --bg-color-of-not-selected: red;
+  --bg-color-of-selected: green;
+  --font-color-of-not-selected: white;
+  --font-color-of-selected: white;
 
-  --text-light: #fff;
-  --text-dark: #000;
+  --text-on-primary-background: #001a9e;
+  --text-on-secondary-background: #001a9e;
 
   --input-bg-color: rgb(208 194 194 / 10%);
   --input-font-color: var(--primary);
@@ -22,7 +22,7 @@ body {
   --input-border-width: 1px;
 
   --input-bg-color-focus: rgb(208 194 194 / 40%);
-  --input-font-color-focus: var(--primary-dark);
-  --input-border-color-focus: var(--primary-dark);
+  --input-font-color-focus: var(--primary);
+  --input-border-color-focus: var(--primary);
   --input-border-width-focus: 2px;
 }

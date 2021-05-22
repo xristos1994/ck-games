@@ -6,6 +6,7 @@ import { classnames } from "@utils/component-utils";
 import { goToNextRound, setWhoLost } from "@models/tik-tak-boom/actions";
 import { players } from "@models/tik-tak-boom/props";
 import { IState } from "@models/interfaces";
+import BombIcon from "@images/svg/bomb.svg";
 const styles = require("./styles.module.css");
 
 interface IProps {
@@ -44,7 +45,13 @@ const _EndRound: FC<IProps> = ({
             })}
             onClick={() => player.isActive && setWhoLost(player.id)}
           >
+            {playerNow.id === player.id ? (
+              <BombIcon class={styles.icon} />
+            ) : null}
             {player.name}
+            {playerNow.id === player.id ? (
+              <BombIcon class={styles.icon} />
+            ) : null}
           </Button>
         ))}
       </div>

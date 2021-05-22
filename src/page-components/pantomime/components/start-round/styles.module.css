@@ -22,25 +22,25 @@
 }
 
 .startRoundContainer > .selectedMovieButton {
-  background-color: var(--secondary-dark);
-  color: var(--text-light);
+  background-color: var(--bg-color-of-selected);
+  color: var(--font-color-of-selected);
 }
 
 .startRoundContainer > .notSelectedMovieButton {
-  background-color: var(--secondary-light);
-  color: var(--text-dark);
+  background-color: var(--bg-color-of-not-selected);
+  color: var(--font-color-of-not-selected);
 }
 
 .startRoundContainer > .startRoundButton {
   margin-top: 3.5vh;
-  background-color: var(--primary-dark);
-  color: var(--text-light);
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }
 
 .startRoundContainer > .backButton {
   margin-top: 3vh;
   background-color: var(--secondary);
-  color: var(--text-dark);
+  color: var(--text-on-secondary-background);
   font-size: var(--text-large);
 }

@@ -33,7 +33,7 @@
   width: 80%;
   border-radius: var(--border-radius-large);
   background-color: var(--primary);
-  color: var(--text-light);
+  color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }
 
@@ -41,6 +41,6 @@
   margin-top: 7vh;
   align-self: flex-start;
   background-color: var(--secondary);
-  color: var(--text-dark);
+  color: var(--text-on-secondary-background);
   font-size: var(--text-large);
 }

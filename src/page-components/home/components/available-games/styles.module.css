@@ -7,6 +7,6 @@
   width: 100%;
   margin: 6vh 0;
   background-color: var(--primary);
-  color: var(--text-light);
+  color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }

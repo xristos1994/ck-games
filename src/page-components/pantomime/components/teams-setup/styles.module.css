@@ -26,14 +26,14 @@
   margin-top: 2vh;
   min-width: 20vh;
   background-color: var(--primary);
-  color: var(--text-light);
+  color: var(--text-on-primary-background);
   font-size: var(--text-large);
 }
 
 .teamsSetupContainer > .teamsSetupSubmitButton {
   margin-top: 3.5vh;
   margin-bottom: 3.5vh;
-  background-color: var(--primary-dark);
-  color: var(--text-light);
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }

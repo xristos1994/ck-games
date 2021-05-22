@@ -25,14 +25,14 @@
 .playersSetupContainer > .addPlayerButton {
   margin-top: 2vh;
   background-color: var(--primary);
-  color: var(--text-light);
+  color: var(--text-on-primary-background);
   font-size: var(--text-large);
 }
 
 .playersSetupContainer > .playersSetupSubmitButton {
   margin-top: 3.5vh;
   margin-bottom: 3.5vh;
-  background-color: var(--primary-dark);
-  color: var(--text-light);
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }
