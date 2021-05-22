@@ -9,6 +9,7 @@
   text-align: center;
   color: var(--primary);
   font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .scoreBoardContainer > .scoreBoard {
