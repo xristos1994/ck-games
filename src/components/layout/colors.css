@@ -24,5 +24,6 @@ body {
   --input-bg-color-focus: rgb(208 194 194 / 40%);
   --input-font-color-focus: var(--primary);
   --input-border-color-focus: var(--primary);
-  --input-border-width-focus: 2px;
+
+  --logo-color: var(--primary);
 }

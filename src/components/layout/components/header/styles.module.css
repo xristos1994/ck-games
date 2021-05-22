@@ -14,5 +14,8 @@
 }
 
 .header > .logoContainer > .logo {
+  height: 100%;
+  width: auto;
+  color: var(--logo-color);
   background-color: inherit !important;
 }

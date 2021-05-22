@@ -6,7 +6,7 @@ import { classnames } from "@utils/component-utils";
 import { goToNextRound, setWhoLost } from "@models/tik-tak-boom/actions";
 import { players } from "@models/tik-tak-boom/props";
 import { IState } from "@models/interfaces";
-import BombIcon from "@images/svg/bomb.svg";
+import { BombIcon } from "@components/icons";
 const styles = require("./styles.module.css");
 
 interface IProps {
