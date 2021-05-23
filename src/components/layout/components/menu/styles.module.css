@@ -1,29 +1,62 @@
-.menu {
+.menuContainer {
+  --menu-button-height: 6vh;
+  --menu-topbar-height: calc(var(--menu-button-height) + var(--padding-medium));
+  --open-menu-height: calc(100vh - var(--header-height));
+  --menu-content-margin-top: calc(
+    var(--menu-button-height) + 1vh + var(--padding-medium)
+  );
+  --open-menu-content-height: calc(
+    var(--open-menu-height) - var(--menu-content-margin-top) ;
+  );
+
   position: fixed;
   width: 100%;
   bottom: 0;
-  display: flex;
-  justify-content: center;
   z-index: var(--menu-z-index);
-  height: 6vh;
+  height: var(--menu-topbar-height);
   -moz-transition: height 1s ease;
   -webkit-transition: height 1s ease;
   -o-transition: height 1s ease;
   transition: height 1s ease;
 }
 
-.menu.openMenu {
-  height: calc(100vh - var(--header-height));
+.menuContainer.openMenu {
+  height: var(--open-menu-height);
   background: var(--sky-color);
-  overflow-y: auto;
 }
 
-.menu > .menuButton {
+.menuContainer > .menuButton {
   border-radius: 50%;
-  height: 6vh;
+  height: var(--menu-button-height);
+  float: right;
+  margin-right: var(--padding-medium);
+  margin-bottom: var(--padding-medium);
 }
 
-.menu > .menuButton > .arrowIcon {
+.menuContainer.openMenu > .menuButton {
+  margin-top: 0;
+}
+
+.menuContainer > .menuButton > .arrowIcon {
   height: 4vh;
   width: auto;
+}
+
+.menuContainer.openMenu > .menuContent {
+  margin-top: var(--menu-content-margin-top);
+  overflow-y: auto;
+  height: var(--open-menu-content-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menuContainer.openMenu > .menuContent > .content {
+  width: 100%;
+  max-width: var(--input-max-width);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: var(--padding-medium);
 }

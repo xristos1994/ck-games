@@ -1,5 +1,5 @@
 export enum AvailableGames {
-  pantomime = "puntomime",
+  pantomime = "pantomime",
   tikTakBoom = "tikTakBoom",
 }
 export interface IState {

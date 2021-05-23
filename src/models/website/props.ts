@@ -5,3 +5,8 @@ export const websiteStarted: (
   state: IState
 ) => IModelState["websiteStarted"] = state =>
   state.websiteRootReducer.website.websiteStarted;
+
+export const selectedGame: (
+  state: IState
+) => IModelState["selectedGame"] = state =>
+  state.websiteRootReducer.website.selectedGame;
