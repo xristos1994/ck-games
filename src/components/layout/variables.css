@@ -1,4 +1,8 @@
 :root {
+  --background-z-index: -1;
+
+  --menu-z-index: 10;
+
   --input-border-width-focus: 2px;
 
   --border-radius-small: 4px;
@@ -10,4 +14,6 @@
   --padding-large: 16px;
 
   --input-max-width: 500px;
+
+  --header-height: 9vh;
 }

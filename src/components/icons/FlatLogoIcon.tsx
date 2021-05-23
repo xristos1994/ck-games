@@ -1,11 +1,5 @@
 import React, { FC, ReactElement, SVGProps } from "react";
 
-interface IProps {
-  width?: string;
-  height?: string;
-  className?: string;
-}
-
 const FlatLogoIcon: FC<SVGProps<SVGSVGElement>> = (props): ReactElement => {
   return (
     <svg

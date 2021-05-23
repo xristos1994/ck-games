@@ -57,11 +57,17 @@ const initializeTikTakBoomEpic = (
 const restartAllGamesEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload> => {
+): Observable<
+  IActionWithPayload | IActionWithPayload<IState["selectedGame"]>
+> => {
   return action$.pipe(
     ofType(restartAllGames.type),
     mergeMap(() => {
-      return [restartPantomime(null), restartTikTakBoom(null)];
+      return [
+        restartPantomime(null),
+        restartTikTakBoom(null),
+        updateSelectedGame(null),
+      ];
     })
   );
 };

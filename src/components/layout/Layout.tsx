@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, ReactChild } from "react";
-import { Background, Header } from "./components";
+import { Background, Header, Menu } from "./components";
 import "./layout.css";
 import "./colors.css";
 import "./fonts.css";
@@ -15,6 +15,7 @@ export const Layout: FC<IProps> = ({ children }): ReactElement => {
     <>
       <Background />
       <Header />
+      <Menu />
       {children}
     </>
   );
