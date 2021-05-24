@@ -144,6 +144,7 @@ const _Menu: FC<IProps> = ({
         (selectedGame === AvailableGames.tikTakBoom || !selectedGame))
         ? tikTakBoomDescription
         : null}
+      {isMenuOpen && !selectedGame ? <hr /> : null}
       {isSSR ||
       (isMenuOpen &&
         (selectedGame === AvailableGames.pantomime || !selectedGame))
