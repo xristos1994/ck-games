@@ -12,6 +12,8 @@ import { IActionWithPayload } from "@core/actions/interfaces";
 import { IState as IModelState } from "./interfaces";
 import { IState as IClockState } from "@models/clock/interfaces";
 import { setClockIsRunning, reduceRemainingTime } from "@models/clock/actions";
+import { GameStates as PantomimeGameStates } from "@models/pantomime/config";
+import { GameStates as TikTakBoomGameStates } from "@models/tik-tak-boom/config";
 
 const startEpic = (): Observable<IActionWithPayload> => of(startLayout(null));
 
@@ -27,11 +29,21 @@ const setIsMenuOpenEpic = (
     ofType(setIsMenuOpen.type),
     withLatestFrom(state$),
     mergeMap(([{ payload }, state]) => {
+      const isRoundInProgress =
+        state.websiteRootReducer.pantomime.gameState ===
+          PantomimeGameStates.roundInProgress ||
+        state.websiteRootReducer.tikTakBoom.gameState ===
+          TikTakBoomGameStates.roundInProgress;
+
       return [
-        ...(payload && !!state.websiteRootReducer.website.selectedGame
+        ...(payload &&
+        !!state.websiteRootReducer.website.selectedGame &&
+        isRoundInProgress
           ? [setClockIsRunning(false)]
           : []),
-        ...(!payload && !!state.websiteRootReducer.website.selectedGame
+        ...(!payload &&
+        !!state.websiteRootReducer.website.selectedGame &&
+        isRoundInProgress
           ? [setClockIsRunning(true), reduceRemainingTime(null)]
           : []),
         updateIsMenuOpen(payload),

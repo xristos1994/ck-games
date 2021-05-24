@@ -50,7 +50,7 @@ const reducer = (
       return payload;
 
     case startPantomime.type:
-      return { ...state, pantomimeStarted: true, ...initialState };
+      return { ...state, ...initialState, pantomimeStarted: true };
 
     case updateGameState.type:
       return { ...state, gameState: payload };
