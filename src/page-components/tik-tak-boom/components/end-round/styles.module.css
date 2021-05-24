@@ -4,23 +4,45 @@
   align-items: center;
   padding: 0 2vh;
   margin: 2vh 0;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .endRoundContainer > .whoLost {
   margin-top: 2vh;
+  color: var(--primary);
+  font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .endRoundContainer > .playersContainer {
   margin-top: 2vh;
-  min-width: 35vh;
+  width: 100%;
 }
 
 .endRoundContainer > .playersContainer > .player {
   margin-top: 1vh;
   width: 100%;
+  font-size: var(--text-large);
+}
+
+.endRoundContainer > .playersContainer > .playerNow {
+  background-color: var(--bg-color-of-not-selected);
+  color: var(--font-color-of-not-selected);
+}
+
+.endRoundContainer > .playersContainer > .playerNow > .icon {
+  height: var(--text-extra-large);
+}
+
+.endRoundContainer > .playersContainer > .playerNotNow {
+  background-color: var(--bg-color-of-selected);
+  color: var(--font-color-of-selected);
 }
 
 .endRoundContainer > .proceedButton {
   margin-top: 3.5vh;
-  max-width: 28vh;
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-extra-large);
 }

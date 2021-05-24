@@ -1,16 +1,38 @@
 .teamContainer {
+  position: relative;
   margin-top: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 90%;
+  max-width: var(--input-max-width);
+  text-align: center;
 }
 
 .teamContainer > .removeTeamButton {
-  border-radius: 0.5vh;
-  margin-left: 1vh;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--secondary);
+  color: var(--text-on-secondary-background);
+  font-size: var(--text-normal);
+  width: calc(var(--text-normal) + 10px);
+  height: calc(var(--text-normal) + 10px);
+  border-radius: 50%;
 }
 
 .teamContainer > .teamNameInput {
-  min-width: 2vh;
+  font-size: var(--text-large);
+  width: 100%;
+  padding: var(--padding-small);
+  background-color: var(--input-bg-color);
+  color: var(--input-font-color);
+  border: var(--input-border-width) solid var(--input-border-color);
+  border-radius: var(--border-radius-small);
+}
+
+.teamContainer > .teamNameInput:focus {
+  background-color: var(--input-bg-color-focus);
+  color: var(--input-font-color-focus);
+  border: var(--input-border-width-focus) solid var(--input-border-color-focus);
 }

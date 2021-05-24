@@ -1,6 +1,5 @@
 .playersSetupContainer {
   width: 90vw;
-  max-width: 60vh;
   height: 70vh;
   border-radius: 2vh;
   overflow-y: auto;
@@ -11,11 +10,13 @@
 
 .playersSetupContainer > .playersSetupTitle {
   margin-top: 2vh;
+  color: var(--primary);
+  font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .playersSetupContainer > .playersContainer {
   width: 90%;
-  max-width: 60vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -23,10 +24,15 @@
 
 .playersSetupContainer > .addPlayerButton {
   margin-top: 2vh;
-  min-width: 20vh;
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-large);
 }
 
 .playersSetupContainer > .playersSetupSubmitButton {
   margin-top: 3.5vh;
   margin-bottom: 3.5vh;
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-extra-large);
 }

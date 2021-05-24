@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
-import { ElevatedWithBlurBackGround, Button } from "@components";
+import { Button } from "@components";
 import {
   scoreTarget,
   canGoBack,
@@ -35,52 +35,40 @@ const _ScoreSetup: FC<IProps> = ({
   scoreSetupSubmit,
 }): ReactElement => {
   const onScoreTargetChange = e => {
-    setScoreTarget(e.target.value);
+    setScoreTarget(Number(e.target.value));
   };
 
   return (
-    <ElevatedWithBlurBackGround>
-      <div className={classnames(styles.scoreSetupContainer, "main-bg-color")}>
-        <div
-          className={classnames(
-            styles.scoreSetupTitle,
-            "extraLargeText",
-            "main-color"
-          )}
-        >
-          Set winning score
-        </div>
-        <select
-          className={classnames(styles.scoreTargetInput, "largeText")}
-          value={scoreTarget}
-          onChange={onScoreTargetChange}
-        >
-          {availableScoreTargets.map(score => (
-            <option key={score} value={score}>
-              {score}
-            </option>
-          ))}
-        </select>
-        <Button
-          onClick={() => scoreSetupSubmit()}
-          className={classnames(
-            styles.scoreTargetSetupSubmitButton,
-            "extraLargeText",
-            "primary-dark"
-          )}
-        >
-          PROCEED
-        </Button>
-        {canGoBack && (
-          <Button
-            onClick={() => goBack()}
-            className={classnames(styles.backButton, "largeText", "secondary")}
-          >
-            BACK
-          </Button>
-        )}
+    <div className={classnames(styles.scoreSetupContainer)}>
+      <div className={classnames(styles.scoreSetupTitle)}>
+        Set winning score
       </div>
-    </ElevatedWithBlurBackGround>
+      <select
+        className={classnames(styles.scoreTargetInput)}
+        value={scoreTarget}
+        onChange={onScoreTargetChange}
+      >
+        {availableScoreTargets.map(score => (
+          <option key={score} value={score}>
+            {score}
+          </option>
+        ))}
+      </select>
+      <Button
+        onClick={() => scoreSetupSubmit()}
+        className={classnames(styles.scoreTargetSetupSubmitButton)}
+      >
+        PROCEED
+      </Button>
+      {canGoBack && (
+        <Button
+          onClick={() => goBack()}
+          className={classnames(styles.backButton)}
+        >
+          BACK
+        </Button>
+      )}
+    </div>
   );
 };
 

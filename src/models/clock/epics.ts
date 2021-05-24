@@ -5,10 +5,11 @@ import {
   ofType,
   StateObservable,
 } from "redux-observable";
-import { debounceTime, mergeMap, withLatestFrom } from "rxjs/operators";
+import { debounceTime, mergeMap, map, withLatestFrom } from "rxjs/operators";
 import {
   updateRemainingTime,
   updateClockIsRunning,
+  setClockIsRunning,
   reduceRemainingTime,
   clockRemainingTimeBecameZero,
   resetClock,
@@ -73,6 +74,18 @@ const reduceRemainingTimeEpic = (
   );
 };
 
+const setClockIsRunningEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IModelState["isRunning"]>> => {
+  return action$.pipe(
+    ofType(setClockIsRunning.type),
+    map(action => {
+      return updateClockIsRunning(action.payload);
+    })
+  );
+};
+
 const resetClockEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
@@ -91,5 +104,6 @@ const resetClockEpic = (
 export const clockEpic = combineEpics(
   startClockEpic,
   resetClockEpic,
+  setClockIsRunningEpic,
   reduceRemainingTimeEpic
 );

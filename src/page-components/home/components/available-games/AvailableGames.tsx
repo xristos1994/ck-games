@@ -8,11 +8,7 @@ const styles = require("./styles.module.css");
 const AvailableGames: FC = (): ReactElement => {
   const games = availableGames.map(({ url, name }) => (
     <Link to={url} key={name}>
-      <Button
-        className={classnames(styles.gameButton, "primary", "extraLargeText")}
-      >
-        {name}
-      </Button>
+      <Button className={classnames(styles.gameButton)}>{name}</Button>
     </Link>
   ));
 

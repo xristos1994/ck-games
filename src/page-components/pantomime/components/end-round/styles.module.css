@@ -4,14 +4,40 @@
   align-items: center;
   padding: 0 2vh;
   margin: 2vh 0;
+  width: 90%;
+  max-width: var(--input-max-width);
+}
+
+.endRoundContainer > .title {
+  color: var(--primary);
+  font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .endRoundContainer > .movieFoundButtons {
   margin-top: 2vh;
-  min-width: 35vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.endRoundContainer > .movieFoundButtons > button {
+  font-size: var(--text-large);
+  margin-top: 2vh;
+}
+
+.endRoundContainer > .movieFoundButtons > .movieActionSelected {
+  background-color: var(--bg-color-of-selected);
+  color: var(--font-color-of-selected);
+}
+
+.endRoundContainer > .movieFoundButtons > .movieActionNotSelected {
+  background-color: var(--bg-color-of-not-selected);
+  color: var(--font-color-of-not-selected);
 }
 
 .endRoundContainer > .proceedButton {
   margin-top: 3.5vh;
-  max-width: 28vh;
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-extra-large);
 }

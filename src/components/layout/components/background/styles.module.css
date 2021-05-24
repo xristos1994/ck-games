@@ -1,0 +1,70 @@
+.backgroundContainer {
+  background: var(--sky-color);
+  z-index: var(--background-z-index);
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.backgroundContainer > .star {
+  position: absolute;
+  top: 0;
+  background-color: var(--star-color);
+}
+
+.backgroundContainer > .smallStar {
+  width: 0.0625rem;
+  height: 0.0625rem;
+  animation: starAnimation 50s linear infinite;
+}
+
+.backgroundContainer > .smallStar::after {
+  content: " ";
+  position: absolute;
+  top: 100vh;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  background-color: var(--star-color);
+}
+
+.backgroundContainer > .mediumStar {
+  width: 0.125rem;
+  height: 0.125rem;
+  animation: starAnimation 100s linear infinite;
+}
+
+.backgroundContainer > .mediumStar::after {
+  content: " ";
+  position: absolute;
+  top: 100vh;
+  width: 0.125rem;
+  height: 0.125rem;
+  background-color: var(--star-color);
+}
+
+.backgroundContainer > .bigStar {
+  width: 0.1875rem;
+  height: 0.1875rem;
+  animation: starAnimation 150s linear infinite;
+}
+
+.backgroundContainer > .bigStar::after {
+  content: " ";
+  position: absolute;
+  top: 100vh;
+  width: 0.1875rem;
+  height: 0.1875rem;
+  background-color: var(--star-color);
+}
+
+@keyframes starAnimation {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-100vh);
+  }
+}

@@ -5,23 +5,36 @@ import {
   StateObservable,
   ofType,
 } from "redux-observable";
-import { map } from "rxjs/operators";
+import { mergeMap } from "rxjs/operators";
 import { IActionWithPayload } from "@core/actions/interfaces";
-import { startWebsite, updateSelectedGame } from "./actions";
+import { startWebsite, updateSelectedGame, restartAllGames } from "./actions";
 import { IState, AvailableGames } from "./interfaces";
-import { initializeGame as initializePantomime } from "@models/pantomime/actions";
-import { initializeGame as initializeTikTakBoom } from "@models/tik-tak-boom/actions";
+import { IState as ILayoutState } from "@models/layout/interfaces";
+import {
+  initializeGame as initializePantomime,
+  restartGame as restartPantomime,
+} from "@models/pantomime/actions";
+import {
+  initializeGame as initializeTikTakBoom,
+  restartGame as restartTikTakBoom,
+} from "@models/tik-tak-boom/actions";
+import { setIsMenuOpen } from "@models/layout/actions";
 
 const startEpic = (): Observable<IActionWithPayload> => of(startWebsite(null));
 
 const initializePantomimeEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<IState["selectedGame"]>> => {
+): Observable<
+  IActionWithPayload | IActionWithPayload<IState["selectedGame"]>
+> => {
   return action$.pipe(
     ofType(initializePantomime.type),
-    map(() => {
-      return updateSelectedGame(AvailableGames.pantomime);
+    mergeMap(() => {
+      return [
+        restartTikTakBoom(null),
+        updateSelectedGame(AvailableGames.pantomime),
+      ];
     })
   );
 };
@@ -29,11 +42,37 @@ const initializePantomimeEpic = (
 const initializeTikTakBoomEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<IState["selectedGame"]>> => {
+): Observable<
+  IActionWithPayload | IActionWithPayload<IState["selectedGame"]>
+> => {
   return action$.pipe(
     ofType(initializeTikTakBoom.type),
-    map(() => {
-      return updateSelectedGame(AvailableGames.tikTakBoom);
+    mergeMap(() => {
+      return [
+        restartPantomime(null),
+        updateSelectedGame(AvailableGames.tikTakBoom),
+      ];
+    })
+  );
+};
+
+const restartAllGamesEpic = (
+  action$: ActionsObservable<IActionWithPayload>,
+  state$: StateObservable<IState>
+): Observable<
+  | IActionWithPayload
+  | IActionWithPayload<IState["selectedGame"]>
+  | IActionWithPayload<ILayoutState["isMenuOpen"]>
+> => {
+  return action$.pipe(
+    ofType(restartAllGames.type),
+    mergeMap(() => {
+      return [
+        restartPantomime(null),
+        restartTikTakBoom(null),
+        updateSelectedGame(null),
+        setIsMenuOpen(false),
+      ];
     })
   );
 };
@@ -41,5 +80,6 @@ const initializeTikTakBoomEpic = (
 export const websiteEpic = combineEpics(
   startEpic,
   initializePantomimeEpic,
-  initializeTikTakBoomEpic
+  initializeTikTakBoomEpic,
+  restartAllGamesEpic
 );
