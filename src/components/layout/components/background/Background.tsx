@@ -10,6 +10,10 @@ const starClasses: Record<string, string> = {
 };
 
 const Background: FC = (): ReactElement => {
+  if (typeof screen === "undefined") {
+    return null;
+  }
+
   return (
     <div className={styles.backgroundContainer}>
       {Array.from(" ".repeat(screen.width / 10)).map((item, index) => {
