@@ -6,6 +6,7 @@ import { classnames } from "@utils/component-utils";
 import { goToNextRound, setWhoLost } from "@models/tik-tak-boom/actions";
 import { players } from "@models/tik-tak-boom/props";
 import { IState } from "@models/interfaces";
+import { BombIcon } from "@components/icons";
 const styles = require("./styles.module.css");
 
 interface IProps {
@@ -29,9 +30,7 @@ const _EndRound: FC<IProps> = ({
 
   return (
     <div className={styles.endRoundContainer}>
-      <div
-        className={classnames(styles.whoLost, "extraLargeText", "main-color")}
-      >
+      <div className={classnames(styles.whoLost)}>
         Bomb boomed on {playerNow.name}'
         {playerNow.name.slice(-1).toLowerCase() === "s" ? "" : "s"} hands
       </div>
@@ -40,23 +39,25 @@ const _EndRound: FC<IProps> = ({
           <Button
             key={player.id}
             other={{ disabled: !player.isActive }}
-            className={classnames(styles.player, "largeText", {
-              "secondary-light": playerNow.id === player.id,
-              "secondary-dark": playerNow.id !== player.id,
+            className={classnames(styles.player, {
+              [styles.playerNow]: playerNow.id === player.id,
+              [styles.playerNotNow]: playerNow.id !== player.id,
             })}
             onClick={() => player.isActive && setWhoLost(player.id)}
           >
+            {playerNow.id === player.id ? (
+              <BombIcon className={styles.icon} />
+            ) : null}
             {player.name}
+            {playerNow.id === player.id ? (
+              <BombIcon className={styles.icon} />
+            ) : null}
           </Button>
         ))}
       </div>
       <Button
         onClick={() => goToNextRound()}
-        className={classnames(
-          styles.proceedButton,
-          "primary",
-          "extraLargeText"
-        )}
+        className={classnames(styles.proceedButton)}
       >
         PROCEED
       </Button>

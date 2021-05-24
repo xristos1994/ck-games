@@ -52,6 +52,7 @@ import { IState } from "@models/interfaces";
 import { IActionWithPayload } from "@core/actions/interfaces";
 import { IState as IModelState } from "./interfaces";
 import { IState as IClock } from "@models/clock/interfaces";
+import { AvailableGames } from "@models/website/interfaces";
 
 const startEpic = (): Observable<IActionWithPayload> =>
   of(startPantomime(null));
@@ -243,6 +244,14 @@ const clockRemainingTimeBecameZeroEpic = (
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
     map(([action, state]) => {
+      const isPantomimeSelected =
+        state.websiteRootReducer.website.selectedGame ===
+        AvailableGames.pantomime;
+
+      if (!isPantomimeSelected) {
+        return noAction(null);
+      }
+
       const newRemainingTime = state.websiteRootReducer.clock.remainingTime - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 

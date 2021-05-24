@@ -4,18 +4,27 @@
   align-items: center;
   padding: 0 2vh;
   margin: 2vh 0;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .endGameContainer > .gameEndTitle {
   margin-bottom: 2vh;
+  color: var(--primary);
+  font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .endGameContainer > .restartButton {
   margin-top: 3.5vh;
-  max-width: 35vh;
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-extra-large);
 }
 
 .endGameContainer > a > .homeButton {
   margin-top: 3.5vh;
-  max-width: 35vh;
+  background-color: var(--secondary);
+  color: var(--text-on-secondary-background);
+  font-size: var(--text-large);
 }

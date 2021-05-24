@@ -48,7 +48,7 @@ const reducer = (
       return payload;
 
     case startTikTakBoom.type:
-      return { ...state, tikTakBoomStarted: true, ...initialState };
+      return { ...state, ...initialState, tikTakBoomStarted: true };
 
     case updateGameState.type:
       return { ...state, gameState: payload };

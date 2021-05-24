@@ -1,9 +1,12 @@
 .availableGamesContainer {
   width: 90%;
-  max-width: 60vh;
+  max-width: 500px;
 }
 
 .availableGamesContainer > a > .gameButton {
   width: 100%;
-  margin: 2vh 0;
+  margin: 6vh 0;
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-extra-large);
 }

@@ -4,17 +4,43 @@
   align-items: center;
   padding: 0 2vh;
   margin: 2vh 0;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .startRoundContainer > .playsNow {
   margin-bottom: 2vh;
+  color: var(--primary);
+  font-size: var(--text-extra-large);
+  text-align: center;
+}
+
+.startRoundContainer > .movieButton {
+  margin-top: 3vh;
+  font-size: var(--text-large);
+  width: 100%;
+}
+
+.startRoundContainer > .selectedMovieButton {
+  background-color: var(--bg-color-of-selected);
+  color: var(--font-color-of-selected);
+}
+
+.startRoundContainer > .notSelectedMovieButton {
+  background-color: var(--bg-color-of-not-selected);
+  color: var(--font-color-of-not-selected);
 }
 
 .startRoundContainer > .startRoundButton {
   margin-top: 3.5vh;
-  max-width: 35vh;
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-extra-large);
 }
 
 .startRoundContainer > .backButton {
   margin-top: 3vh;
+  background-color: var(--secondary);
+  color: var(--text-on-secondary-background);
+  font-size: var(--text-large);
 }

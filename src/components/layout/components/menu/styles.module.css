@@ -1,0 +1,107 @@
+.menuContainer {
+  --menu-button-height: 6vh;
+  --menu-topbar-height: calc(var(--menu-button-height) + var(--padding-medium));
+  --open-menu-height: calc(100vh - var(--header-height));
+  --menu-content-margin-top: calc(
+    var(--menu-button-height) + 1vh + var(--padding-medium)
+  );
+  --open-menu-content-height: calc(
+    var(--open-menu-height) - var(--menu-content-margin-top)
+  );
+
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: var(--menu-z-index);
+  height: var(--menu-topbar-height);
+  -moz-transition: height 1s ease;
+  -webkit-transition: height 1s ease;
+  -o-transition: height 1s ease;
+  transition: height 1s ease;
+}
+
+.menuContainer.openMenu {
+  height: var(--open-menu-height);
+  background: var(--sky-color);
+}
+
+.menuContainer > .menuButton {
+  border-radius: 50%;
+  height: var(--menu-button-height);
+  float: right;
+  margin-right: var(--padding-medium);
+  margin-bottom: var(--padding-medium);
+}
+
+.menuContainer.openMenu > .menuButton {
+  margin-top: 0;
+  color: var(--text-on-primary-background);
+}
+
+.menuContainer > .menuButton > .arrowIcon {
+  height: 4vh;
+  width: auto;
+}
+
+.menuContainer.openMenu > .menuContent {
+  margin-top: var(--menu-content-margin-top);
+  overflow-y: auto;
+  height: var(--open-menu-content-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: var(--primary);
+}
+
+.menuContainer.openMenu > .menuContent > .content {
+  width: 100%;
+  max-width: var(--input-max-width);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: var(--padding-medium);
+  padding-bottom: 32px;
+}
+
+.menuContainer.openMenu > .menuContent > .content > hr {
+  margin-left: 0;
+  margin-right: 0;
+  align-self: stretch;
+}
+
+.menuContainer.openMenu > .menuContent > .content > h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.menuContainer.openMenu > .menuContent > .content > a {
+  margin-top: 24px;
+}
+
+.menuContainer.openMenu > .menuContent > .content > a > .homeButton {
+  font-size: 24px;
+  color: var(--text-on-primary-background);
+  min-width: 200px;
+  margin-bottom: 16px;
+}
+
+.menuContainer.openMenu > .menuContent > .content > .gameDescription > p {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 12px;
+}
+
+.menuContainer.openMenu > .menuContent > .content > .gameDescription > h2 {
+  font-size: 24px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.menuContainer.openMenu > .menuContent > .content > .gameDescription > ul > li {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 8px;
+  list-style: disc;
+  list-style-position: inside;
+}

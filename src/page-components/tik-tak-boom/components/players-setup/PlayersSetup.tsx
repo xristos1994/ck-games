@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
-import { ElevatedWithBlurBackGround, Button } from "@components";
+import { Button } from "@components";
 import { players, isPlayersSetupValid } from "@models/tik-tak-boom/props";
 import { Player } from "./components";
 import { addPlayer, playersSetupSubmit } from "@models/tik-tak-boom/actions";
@@ -30,44 +30,28 @@ const _PlayersSetup: FC<IProps> = ({
   isPlayersSetupValid,
 }): ReactElement => {
   return (
-    <ElevatedWithBlurBackGround>
-      <div
-        className={classnames(styles.playersSetupContainer, "main-bg-color")}
-      >
-        <div
-          className={classnames(
-            styles.playersSetupTitle,
-            "extraLargeText",
-            "main-color"
-          )}
-        >
-          Players' Setup
-        </div>
-        <div className={styles.playersContainer}>
-          {players.map(player => (
-            <Player key={player.id} player={player} />
-          ))}
-        </div>
-        <Button
-          onClick={() => addPlayer()}
-          className={classnames(styles.addPlayerButton, "largeText", "primary")}
-        >
-          Add Player
-        </Button>
-
-        <Button
-          other={{ disabled: !isPlayersSetupValid }}
-          onClick={() => playersSetupSubmit()}
-          className={classnames(
-            styles.playersSetupSubmitButton,
-            "extraLargeText",
-            "primary-dark"
-          )}
-        >
-          PROCEED
-        </Button>
+    <div className={classnames(styles.playersSetupContainer)}>
+      <div className={classnames(styles.playersSetupTitle)}>Players' Setup</div>
+      <div className={styles.playersContainer}>
+        {players.map(player => (
+          <Player key={player.id} player={player} />
+        ))}
       </div>
-    </ElevatedWithBlurBackGround>
+      <Button
+        onClick={() => addPlayer()}
+        className={classnames(styles.addPlayerButton)}
+      >
+        Add Player
+      </Button>
+
+      <Button
+        other={{ disabled: !isPlayersSetupValid }}
+        onClick={() => playersSetupSubmit()}
+        className={classnames(styles.playersSetupSubmitButton)}
+      >
+        PROCEED
+      </Button>
+    </div>
   );
 };
 

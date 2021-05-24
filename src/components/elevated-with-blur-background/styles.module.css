@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #000000c7;
+  background-color: var(--blured-bg);
   display: flex;
   justify-content: center;
   align-items: center;

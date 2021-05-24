@@ -1,5 +1,5 @@
 .header {
-  height: 9vh;
+  height: var(--header-height);
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -9,19 +9,13 @@
   align-items: center;
 }
 
-.normal {
-  height: 9vh;
-  transition: height 0.6s;
+.header > .logoContainer {
+  height: 100%;
 }
 
-.shrinked {
-  height: 6vh;
-  transition: height 0.6s;
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    justify-content: space-between;
-    padding: 0 2vh;
-  }
+.header > .logoContainer > .logo {
+  height: 100%;
+  width: auto;
+  color: var(--logo-color);
+  background-color: inherit !important;
 }

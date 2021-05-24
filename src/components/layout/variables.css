@@ -1,0 +1,19 @@
+:root {
+  --background-z-index: -1;
+
+  --menu-z-index: 10;
+
+  --input-border-width-focus: 2px;
+
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 16px;
+
+  --padding-small: 4px;
+  --padding-medium: 8px;
+  --padding-large: 16px;
+
+  --input-max-width: 500px;
+
+  --header-height: 9vh;
+}

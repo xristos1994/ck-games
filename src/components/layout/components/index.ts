@@ -1,4 +1,5 @@
 import { Header } from "./header";
-import { Footer } from "./footer";
+import { Background } from "./background";
+import { Menu } from "./menu";
 
-export { Header, Footer };
+export { Header, Background, Menu };

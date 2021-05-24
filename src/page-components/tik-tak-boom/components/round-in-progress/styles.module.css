@@ -4,32 +4,52 @@
   align-items: center;
   margin-top: 2vh;
   margin-bottom: 2vh;
+  width: 90%;
+  max-width: var(--input-max-width);
 }
 
 .roundInProgressContainer > .player {
   margin-top: 2vh;
+  color: var(--primary);
+  font-size: var(--text-large);
+  text-align: center;
 }
 
 .roundInProgressContainer > .mode {
   margin-top: 3.5vh;
+  color: var(--primary);
+  font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .roundInProgressContainer > .modeDescription {
   margin-top: 0.5vh;
+  color: var(--primary);
+  font-size: var(--text-normal);
+  text-align: center;
 }
 
 .roundInProgressContainer > .syllable {
   margin-top: 2vh;
+  color: var(--primary);
+  font-size: var(--text-extra-large);
+  text-align: center;
 }
 
 .roundInProgressContainer > .goToNextPlayerButton {
   margin-top: 3.5vh;
-  width: 35vh;
   height: 35vh;
-  border-radius: 17.5vh;
+  width: 80%;
+  border-radius: var(--border-radius-large);
+  background-color: var(--primary);
+  color: var(--text-on-primary-background);
+  font-size: var(--text-extra-large);
 }
 
 .roundInProgressContainer > .goToPreviousPlayerButton {
   margin-top: 7vh;
   align-self: flex-start;
+  background-color: var(--secondary);
+  color: var(--text-on-secondary-background);
+  font-size: var(--text-large);
 }

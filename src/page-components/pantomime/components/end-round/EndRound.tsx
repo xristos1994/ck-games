@@ -30,7 +30,7 @@ const _EndRound: FC<IProps> = ({
 
   return (
     <div className={styles.endRoundContainer}>
-      <div className={classnames("extraLargeText", "main-color")}>
+      <div className={classnames(styles.title)}>
         Turn of {teamNow.name} ended
       </div>
       <ScoreBoard />
@@ -38,9 +38,9 @@ const _EndRound: FC<IProps> = ({
         <Button
           key="movieFound"
           other={{ disabled: teamNow.movieFound }}
-          className={classnames("largeText", {
-            "secondary-light": teamNow.movieFound,
-            "secondary-dark": !teamNow.movieFound,
+          className={classnames({
+            [styles.movieActionSelected]: teamNow.movieFound,
+            [styles.movieActionNotSelected]: !teamNow.movieFound,
           })}
           onClick={() => setIfMovieFound(true)}
         >
@@ -49,9 +49,9 @@ const _EndRound: FC<IProps> = ({
         <Button
           key="movieNotFound"
           other={{ disabled: !teamNow.movieFound }}
-          className={classnames(styles.player, "largeText", {
-            "secondary-light": !teamNow.movieFound,
-            "secondary-dark": teamNow.movieFound,
+          className={classnames({
+            [styles.movieActionSelected]: !teamNow.movieFound,
+            [styles.movieActionNotSelected]: teamNow.movieFound,
           })}
           onClick={() => setIfMovieFound(false)}
         >
@@ -60,11 +60,7 @@ const _EndRound: FC<IProps> = ({
       </div>
       <Button
         onClick={() => goToNextRound()}
-        className={classnames(
-          styles.proceedButton,
-          "primary",
-          "extraLargeText"
-        )}
+        className={classnames(styles.proceedButton)}
       >
         PROCEED
       </Button>

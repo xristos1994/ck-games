@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames } from "@utils/component-utils";
-import { ElevatedWithBlurBackGround, Button } from "@components";
+import { Button } from "@components";
 import {
   availableTime,
   availableTimes,
@@ -39,53 +39,36 @@ const _AvailableTimeSetup: FC<IProps> = ({
   };
 
   return (
-    <ElevatedWithBlurBackGround>
-      <div
-        className={classnames(
-          styles.availableTimeSetupContainer,
-          "main-bg-color"
-        )}
-      >
-        <div
-          className={classnames(
-            styles.availableTimeSetupTitle,
-            "extraLargeText",
-            "main-color"
-          )}
-        >
-          Set available Time
-        </div>
-        <select
-          className={classnames(styles.availableTimeTargetInput, "largeText")}
-          value={availableTime}
-          onChange={onAvailableTimeChange}
-        >
-          {availableTimes.map(time => (
-            <option key={time} value={time}>
-              {time}
-            </option>
-          ))}
-        </select>
-        <Button
-          onClick={() => availableTimeSetupSubmit()}
-          className={classnames(
-            styles.availableTimeTargetSetupSubmitButton,
-            "extraLargeText",
-            "primary-dark"
-          )}
-        >
-          PROCEED
-        </Button>
-        {canGoBack && (
-          <Button
-            onClick={() => goBack()}
-            className={classnames(styles.backButton, "largeText", "secondary")}
-          >
-            BACK
-          </Button>
-        )}
+    <div className={classnames(styles.availableTimeSetupContainer)}>
+      <div className={classnames(styles.availableTimeSetupTitle)}>
+        Set available Time
       </div>
-    </ElevatedWithBlurBackGround>
+      <select
+        className={classnames(styles.availableTimeTargetInput)}
+        value={availableTime}
+        onChange={onAvailableTimeChange}
+      >
+        {availableTimes.map(time => (
+          <option key={time} value={time}>
+            {time}
+          </option>
+        ))}
+      </select>
+      <Button
+        onClick={() => availableTimeSetupSubmit()}
+        className={classnames(styles.availableTimeTargetSetupSubmitButton)}
+      >
+        PROCEED
+      </Button>
+      {canGoBack && (
+        <Button
+          onClick={() => goBack()}
+          className={classnames(styles.backButton)}
+        >
+          BACK
+        </Button>
+      )}
+    </div>
   );
 };
 
