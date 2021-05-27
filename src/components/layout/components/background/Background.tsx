@@ -11,7 +11,7 @@ const starClasses: Record<string, string> = {
 
 const Background: FC = (): ReactElement => {
   if (typeof window === "undefined") {
-    return null;
+    return <div className={styles.backgroundContainer} />;
   }
 
   return (
