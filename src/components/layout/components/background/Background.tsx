@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactElement, useEffect, useState } from "react";
 import { classnames } from "@utils/component-utils";
 
 const styles = require("./styles.module.css");
@@ -10,7 +10,13 @@ const starClasses: Record<string, string> = {
 };
 
 const Background: FC = (): ReactElement => {
-  if (typeof window === "undefined") {
+  const [renderedOnce, setRenderedOnce] = useState(false);
+
+  useEffect(() => {
+    setRenderedOnce(true);
+  }, [setRenderedOnce]);
+
+  if (!renderedOnce) {
     return <div className={styles.backgroundContainer} />;
   }
 

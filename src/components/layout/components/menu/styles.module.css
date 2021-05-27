@@ -43,6 +43,10 @@
   width: auto;
 }
 
+.menuContainer > .menuContent {
+  display: none;
+}
+
 .menuContainer.openMenu > .menuContent {
   margin-top: var(--menu-content-margin-top);
   overflow-y: auto;
