@@ -16,13 +16,14 @@ const Background: FC = (): ReactElement => {
     setRenderedOnce(true);
   }, [setRenderedOnce]);
 
-  if (!renderedOnce) {
-    return <div className={styles.backgroundContainer} />;
-  }
+  const width =
+    typeof window !== "undefined" && renderedOnce ? window.innerWidth : 1024;
+  const height =
+    typeof window !== "undefined" && renderedOnce ? window.innerHeight : 720;
 
   return (
     <div className={styles.backgroundContainer}>
-      {Array.from(" ".repeat(window.innerWidth / 10)).map((item, index) => {
+      {Array.from(" ".repeat(width / 10)).map((item, index) => {
         const randomNumber = Math.random();
         const starClass =
           randomNumber < 0.1
@@ -36,8 +37,8 @@ const Background: FC = (): ReactElement => {
             key={index}
             className={classnames(styles.star, styles[starClass])}
             style={{
-              left: Math.random() * window.innerWidth,
-              top: Math.random() * window.innerHeight,
+              left: Math.random() * width,
+              top: Math.random() * height,
             }}
           ></div>
         );
