@@ -41,7 +41,7 @@ const _ScoreSetup: FC<IProps> = ({
   return (
     <div className={classnames(styles.scoreSetupContainer)}>
       <div className={classnames(styles.scoreSetupTitle)}>
-        Set winning score
+        Επιλέξτε το σκορ νίκης
       </div>
       <select
         className={classnames(styles.scoreTargetInput)}
@@ -58,14 +58,14 @@ const _ScoreSetup: FC<IProps> = ({
         onClick={() => scoreSetupSubmit()}
         className={classnames(styles.scoreTargetSetupSubmitButton)}
       >
-        PROCEED
+        ΣΥΝΕΧΕΙΑ
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
           className={classnames(styles.backButton)}
         >
-          BACK
+          ΠΙΣΩ
         </Button>
       )}
     </div>

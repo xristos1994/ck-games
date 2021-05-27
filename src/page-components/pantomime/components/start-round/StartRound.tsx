@@ -36,7 +36,7 @@ const _StartRound: FC<IProps> = ({
   return (
     <div className={styles.startRoundContainer}>
       <div className={classnames(styles.playsNow)}>
-        {teamNameThatPlaysNow} plays now
+        {teamNameThatPlaysNow}, είναι η σειρά σας!
       </div>
       {availableMovies.map(_movie => (
         <Button
@@ -56,14 +56,14 @@ const _StartRound: FC<IProps> = ({
         onClick={() => startRound()}
         className={classnames(styles.startRoundButton)}
       >
-        PROCEED
+        ΣΥΝΕΧΕΙΑ
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
           className={classnames(styles.backButton)}
         >
-          BACK
+          ΠΙΣΩ
         </Button>
       )}
     </div>

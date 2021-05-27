@@ -5,8 +5,9 @@ import { getCanonicalBaseUrl } from "@utils/general";
 const title = "CK-Games";
 const canonicalUrl = `${getCanonicalBaseUrl()}/`;
 const description =
-  "You can choose how you will have fun with your friend. Pantomime or Tik-Tak-Boom?";
-const keywords = "games, fun, friends, pantomime, tik-tak-boom";
+  "Εσύ επιλέγεις πως θα διασκεδάσεις με την παρέα σου. Παίξτε Παντομίμα ή Tik-Tak-Boom?";
+const keywords =
+  "παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα";
 const ogImage = `${getCanonicalBaseUrl()}${
   require("@images/og/home.png").default
 }`;

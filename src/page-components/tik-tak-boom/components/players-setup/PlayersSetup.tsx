@@ -31,7 +31,9 @@ const _PlayersSetup: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={classnames(styles.playersSetupContainer)}>
-      <div className={classnames(styles.playersSetupTitle)}>Players' Setup</div>
+      <div className={classnames(styles.playersSetupTitle)}>
+        Εισαγωγή Παικτών
+      </div>
       <div className={styles.playersContainer}>
         {players.map(player => (
           <Player key={player.id} player={player} />
@@ -41,7 +43,7 @@ const _PlayersSetup: FC<IProps> = ({
         onClick={() => addPlayer()}
         className={classnames(styles.addPlayerButton)}
       >
-        Add Player
+        Προσθήκη Παίκτη
       </Button>
 
       <Button
@@ -49,7 +51,7 @@ const _PlayersSetup: FC<IProps> = ({
         onClick={() => playersSetupSubmit()}
         className={classnames(styles.playersSetupSubmitButton)}
       >
-        PROCEED
+        ΣΥΝΕΧΕΙΑ
       </Button>
     </div>
   );

@@ -18,7 +18,7 @@ interface IProps {
 const _ScoreBoard: FC<IProps> = ({ players }): ReactElement => {
   return (
     <div className={classnames(styles.scoreBoardContainer)}>
-      <div className={classnames(styles.scoreBoardTitle)}>Score board</div>
+      <div className={classnames(styles.scoreBoardTitle)}>Βαθμολογία</div>
       <div className={classnames(styles.scoreBoard)}>
         {players.map((player, index) => [
           <div

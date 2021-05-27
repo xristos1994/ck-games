@@ -28,21 +28,21 @@ const _StartRound: FC<IProps> = ({
   return (
     <div className={styles.startRoundContainer}>
       <div className={classnames(styles.playsFirst)}>
-        {playerNameThatStartsRound} plays first
+        {playerNameThatStartsRound}, είναι η σειρά σου!
       </div>
       <ScoreBoard />
       <Button
         onClick={() => startRound()}
         className={classnames(styles.startRoundButton)}
       >
-        PROCEED
+        ΣΥΝΕΧΕΙΑ
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
           className={classnames(styles.backButton)}
         >
-          BACK
+          ΠΙΣΩ
         </Button>
       )}
     </div>

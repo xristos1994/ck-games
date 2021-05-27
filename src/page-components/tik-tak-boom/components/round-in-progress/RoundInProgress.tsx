@@ -34,7 +34,7 @@ const _RoundInProgress: FC<IProps> = ({
   return (
     <div className={styles.roundInProgressContainer}>
       <div className={classnames(styles.player)}>
-        {playerNameThatPlaysNow} is playing now
+        {playerNameThatPlaysNow}, είναι η σειρά σου!
       </div>
       <div className={classnames(styles.mode)}>{mode.name}</div>
       <div className={classnames(styles.modeDescription)}>
@@ -45,13 +45,13 @@ const _RoundInProgress: FC<IProps> = ({
         onClick={() => goToNextPlayer()}
         className={classnames(styles.goToNextPlayerButton)}
       >
-        NEXT
+        Επόμενος Παίκτης
       </Button>
       <Button
         onClick={() => goToPreviousPlayer()}
         className={classnames(styles.goToPreviousPlayerButton)}
       >
-        Previous
+        Προηγούμενος Παίκτης
       </Button>
     </div>
   );
