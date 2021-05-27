@@ -29,7 +29,7 @@ const _TeamsSetup: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={classnames(styles.teamsSetupContainer)}>
-      <div className={classnames(styles.teamsSetupTitle)}>Teams' Setup</div>
+      <div className={classnames(styles.teamsSetupTitle)}>Εισαγωγή Ομάδων</div>
       <div className={styles.teamsContainer}>
         {teams.map(team => (
           <Team key={team.id} team={team} />
@@ -39,7 +39,7 @@ const _TeamsSetup: FC<IProps> = ({
         onClick={() => addTeam()}
         className={classnames(styles.addTeamButton)}
       >
-        Add Team
+        Προσθήκη Ομάδας
       </Button>
 
       <Button
@@ -47,7 +47,7 @@ const _TeamsSetup: FC<IProps> = ({
         onClick={() => teamsSetupSubmit()}
         className={classnames(styles.teamsSetupSubmitButton)}
       >
-        PROCEED
+        Συνέχεια
       </Button>
     </div>
   );

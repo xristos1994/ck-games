@@ -41,7 +41,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
   return (
     <div className={classnames(styles.availableTimeSetupContainer)}>
       <div className={classnames(styles.availableTimeSetupTitle)}>
-        Set available Time
+        Επιλέξτε τον διαθέσιμο χρόνο
       </div>
       <select
         className={classnames(styles.availableTimeTargetInput)}
@@ -50,7 +50,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
       >
         {availableTimes.map(time => (
           <option key={time} value={time}>
-            {time}
+            {time} Δευτερόλεπτα
           </option>
         ))}
       </select>
@@ -58,14 +58,14 @@ const _AvailableTimeSetup: FC<IProps> = ({
         onClick={() => availableTimeSetupSubmit()}
         className={classnames(styles.availableTimeTargetSetupSubmitButton)}
       >
-        PROCEED
+        ΣΥΝΕΧΕΙΑ
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
           className={classnames(styles.backButton)}
         >
-          BACK
+          ΠΙΣΩ
         </Button>
       )}
     </div>

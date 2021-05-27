@@ -2,10 +2,11 @@ import React, { FC, ReactElement } from "react";
 import { GlobalSEO, LocalSEO } from "@components";
 import { getCanonicalBaseUrl } from "@utils/general";
 
-const title = "CK-Games: Pantomime";
+const title = "CK-Games: Παντομίμα";
 const canonicalUrl = `${getCanonicalBaseUrl()}/pantomime/`;
-const description = "Have fun with your friend playing Pantomime.";
-const keywords = "games, fun, friends, pantomime";
+const description = "Διασκέδασε με την παρέα σου παίζοντας παντομίμα.";
+const keywords =
+  "παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία";
 const ogImage = `${getCanonicalBaseUrl()}${
   require("@images/og/pantomime.png").default
 }`;

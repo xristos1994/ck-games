@@ -31,7 +31,7 @@ const _EndRound: FC<IProps> = ({
   return (
     <div className={styles.endRoundContainer}>
       <div className={classnames(styles.title)}>
-        Turn of {teamNow.name} ended
+        {teamNow.name}, η σειρά σας ολοκληρώθηκε!
       </div>
       <ScoreBoard />
       <div className={styles.movieFoundButtons}>
@@ -44,7 +44,7 @@ const _EndRound: FC<IProps> = ({
           })}
           onClick={() => setIfMovieFound(true)}
         >
-          Movie Found
+          Η Ταινία Βρέθηκε
         </Button>
         <Button
           key="movieNotFound"
@@ -55,14 +55,14 @@ const _EndRound: FC<IProps> = ({
           })}
           onClick={() => setIfMovieFound(false)}
         >
-          Movie Not Found
+          Η Ταινία Δε Βρέθηκε
         </Button>
       </div>
       <Button
         onClick={() => goToNextRound()}
         className={classnames(styles.proceedButton)}
       >
-        PROCEED
+        ΣΥΝΕΧΕΙΑ
       </Button>
     </div>
   );

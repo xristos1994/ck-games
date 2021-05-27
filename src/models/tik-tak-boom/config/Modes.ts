@@ -10,16 +10,16 @@ export const Modes: IModes = {
   tik: {
     id: "tik",
     name: "Tik...",
-    description: "Word must starts with syllable",
+    description: "Η λέξη πρέπει να ξεκινά με την επιλεγμένη συλλαβή",
   },
   tak: {
     id: "tak",
     name: "...Tak",
-    description: "Word must ends with syllable",
+    description: "Η λέξη πρέπει να τελειώνει με την επιλεγμένη συλλαβή",
   },
   tikTak: {
     id: "Tik...Tak",
     name: "Tik...Tak",
-    description: "Word must contain syllable",
+    description: "Η λέξη πρέπει απλά να περιέχει την επιλεγμένη συλλαβή",
   },
 };

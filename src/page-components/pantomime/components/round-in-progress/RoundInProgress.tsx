@@ -26,7 +26,7 @@ const _RoundInProgress: FC<IProps> = ({
   return (
     <div className={styles.roundInProgressContainer}>
       <div className={classnames(styles.team)}>
-        {teamNameThatPlaysNow} is playing now
+        {teamNameThatPlaysNow}, είναι η σειρά σας!
       </div>
       <div className={classnames(styles.movie)}>{movie}</div>
       <div className={classnames(styles.remainingTime)}>
@@ -36,13 +36,13 @@ const _RoundInProgress: FC<IProps> = ({
         onClick={() => setIfMovieFound(true)}
         className={classnames(styles.movieFoundButton)}
       >
-        Movie Found
+        Η Ταινία Βρέθηκε
       </Button>
       <Button
         onClick={() => setIfMovieFound(false)}
         className={classnames(styles.movieNotFoundButton)}
       >
-        Movie Not Found
+        Η Ταινία Δε Βρέθηκε
       </Button>
     </div>
   );

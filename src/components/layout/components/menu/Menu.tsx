@@ -29,9 +29,9 @@ const _Menu: FC<IProps> = ({
   const h1Title = (
     <h1 className={styles.menuTitle}>
       {isSSR
-        ? "CK-Games Pantomime Tik-Tak-Boom"
+        ? "CK-Games Παντομίμα Tik-Tak-Boom"
         : isMenuOpen && selectedGame === AvailableGames.pantomime
-        ? "Pantomime"
+        ? "Παντομίμα"
         : isMenuOpen && selectedGame === AvailableGames.tikTakBoom
         ? "Tik-Tak-Boom"
         : isMenuOpen && !selectedGame
@@ -89,17 +89,17 @@ const _Menu: FC<IProps> = ({
 
   const tikTakBoomDescription = (
     <div className={styles.gameDescription}>
-      {isSSR || (!selectedGame && isMenuOpen) ? <h2>Τικ-Τακ-Μπουμ</h2> : null}
+      {isSSR || (!selectedGame && isMenuOpen) ? <h2>Tik-Tak-Boom</h2> : null}
       <p>
         Μάζεψε τους φίλους σου και διασκεδάστε παίζοντας{" "}
-        <strong>Τικ-Τακ-Μπουμ</strong>.
+        <strong>Tik-Tak-Boom</strong>.
       </p>
       <p>
-        To Τικ-Τακ-Μπουμ είναι ένα ξεκαρδιστικό παιχνίδι που περιλαμβάνεται στα
+        To Tik-Tak-Boom είναι ένα ξεκαρδιστικό παιχνίδι που περιλαμβάνεται στα
         <strong>CK-Games</strong>. όπου σκοπός είναι να πεις την κατάλληλη λέξη
         πρωτού σκάσει η βόμβα στα χέρια σου.
       </p>
-      <h2>Πώς παίζεται το Τικ-Τακ-Μπουμ?</h2>
+      <h2>Πώς παίζεται το Tik-Tak-Boom?</h2>
       <ul>
         <li>Καταχωρίστε τα ονόματά σας</li>
         <li>

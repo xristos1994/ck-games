@@ -31,8 +31,7 @@ const _EndRound: FC<IProps> = ({
   return (
     <div className={styles.endRoundContainer}>
       <div className={classnames(styles.whoLost)}>
-        Bomb boomed on {playerNow.name}'
-        {playerNow.name.slice(-1).toLowerCase() === "s" ? "" : "s"} hands
+        {playerNow.name}, η βόμβα έσκασε στα χέρια σου!
       </div>
       <div className={styles.playersContainer}>
         {players.map(player => (
@@ -59,7 +58,7 @@ const _EndRound: FC<IProps> = ({
         onClick={() => goToNextRound()}
         className={classnames(styles.proceedButton)}
       >
-        PROCEED
+        Συνέχεια
       </Button>
     </div>
   );
