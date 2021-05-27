@@ -16,8 +16,8 @@ module.exports = {
         name: `MyGames`,
         short_name: `MyGames`,
         start_url: `/`,
-        background_color: `#673ab7`,
-        theme_color: `#673ab7`,
+        background_color: `#001a9e`,
+        theme_color: `#001a9e`,
         display: `standalone`,
         icon: `src/images/favicons/icon.png`,
         icons: [
