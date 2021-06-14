@@ -6,10 +6,13 @@ import { Button } from "@components";
 import { isMenuOpen } from "@models/layout/props";
 import { selectedGame } from "@models/website/props";
 import { setIsMenuOpen } from "@models/layout/actions";
+import { availableLangs, lang } from "@models/i18n/props";
+import { setLang } from "@models/i18n/actions";
 import { IState } from "@models/interfaces";
 import { ArrowUpIcon, ArrowDownIcon } from "@components/icons";
 import { AvailableGames } from "@models/website/interfaces";
 import { Link } from "gatsby";
+import { LangFlagMap } from "@models/i18n/utils";
 
 const styles = require("./styles.module.css");
 
@@ -17,12 +20,18 @@ interface IProps {
   selectedGame: string;
   isMenuOpen: boolean;
   setIsMenuOpen: (isMenuOpen: boolean) => void;
+  availableLangs: { code: string; label: string }[];
+  lang: { code: string; label: string };
+  setLang: (lang: IProps["lang"]) => void;
 }
 
 const _Menu: FC<IProps> = ({
   isMenuOpen,
   setIsMenuOpen,
   selectedGame,
+  availableLangs,
+  lang,
+  setLang,
 }): ReactElement => {
   const isSSR = typeof window === "undefined";
 
@@ -165,6 +174,23 @@ const _Menu: FC<IProps> = ({
         [styles.openMenu]: isMenuOpen,
       })}
     >
+      {(isMenuOpen || !selectedGame) && (
+        <div className={styles.langSelector}>
+          {availableLangs.map(_lang => {
+            const isSelectedLang = _lang.code === lang.code;
+            return (
+              <Button
+                other={{ disabled: isSelectedLang }}
+                onClick={() => setLang(_lang)}
+                key={_lang.code}
+                className={styles.lang}
+              >
+                <LangFlagMap langCode={_lang.code} />
+              </Button>
+            );
+          })}
+        </div>
+      )}
       <Button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         className={styles.menuButton}
@@ -175,7 +201,6 @@ const _Menu: FC<IProps> = ({
           <ArrowUpIcon className={styles.arrowIcon} />
         )}
       </Button>
-
       <div className={styles.menuContent}>
         <div className={styles.content}>
           {h1Title}
@@ -193,16 +218,22 @@ const Menu = connect(
     {
       isMenuOpen: IProps["isMenuOpen"];
       selectedGame: IProps["selectedGame"];
+      availableLangs: IProps["availableLangs"];
+      lang: IProps["lang"];
     },
     {
       isMenuOpen: IProps["isMenuOpen"];
       selectedGame: IProps["selectedGame"];
+      availableLangs: IProps["availableLangs"];
+      lang: IProps["lang"];
     }
   >({
     isMenuOpen,
     selectedGame,
+    availableLangs,
+    lang,
   }),
-  { setIsMenuOpen }
+  { setIsMenuOpen, setLang }
 )(_Menu);
 
 export { Menu };

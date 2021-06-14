@@ -25,6 +25,23 @@
   background: var(--sky-color);
 }
 
+.menuContainer > .langSelector {
+  display: flex;
+  flex-direction: row;
+  height: var(--menu-button-height);
+  float: left;
+  margin-left: var(--padding-medium);
+  margin-bottom: var(--padding-medium);
+}
+
+.menuContainer > .langSelector > a > .lang,
+.menuContainer > .langSelector > .lang {
+  width: var(--menu-button-height);
+  margin-right: var(--padding-medium);
+  border-radius: 50%;
+  padding: 0;
+}
+
 .menuContainer > .menuButton {
   border-radius: 50%;
   height: var(--menu-button-height);
