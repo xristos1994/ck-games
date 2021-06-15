@@ -1,13 +1,14 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
 import { Button } from "@components";
 import { startRound, goBack } from "@models/tik-tak-boom/actions";
 import {
   playerNameThatStartsRound,
   canGoBack,
 } from "@models/tik-tak-boom/props";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { IState } from "@models/interfaces";
 import { ScoreBoard } from "./../score-board"; // Alias "page-components/tik-tak-boom/components";
 const styles = require("./styles.module.css");
@@ -17,6 +18,7 @@ interface IProps {
   playerNameThatStartsRound: string;
   startRound: () => void;
   goBack: () => void;
+  t: ITranslate;
 }
 
 const _StartRound: FC<IProps> = ({
@@ -24,47 +26,51 @@ const _StartRound: FC<IProps> = ({
   playerNameThatStartsRound,
   canGoBack,
   goBack,
+  t,
 }): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
       <div className={classnames(styles.playsFirst)}>
-        {playerNameThatStartsRound}, είναι η σειρά σου!
+        {t("Player, it is your turn", [playerNameThatStartsRound])}
       </div>
       <ScoreBoard />
       <Button
         onClick={() => startRound()}
         className={classnames(styles.startRoundButton)}
       >
-        ΣΥΝΕΧΕΙΑ
+        {t("CONTINUE")}
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
           className={classnames(styles.backButton)}
         >
-          ΠΙΣΩ
+          {t("BACK")}
         </Button>
       )}
     </div>
   );
 };
 
-const StartRound = connect(
-  createStructuredSelector<
-    IState,
-    {
-      canGoBack: IProps["canGoBack"];
-      playerNameThatStartsRound: IProps["playerNameThatStartsRound"];
-    },
-    {
-      canGoBack: IProps["canGoBack"];
-      playerNameThatStartsRound: IProps["playerNameThatStartsRound"];
-    }
-  >({
-    playerNameThatStartsRound,
-    canGoBack,
-  }),
-  { startRound, goBack }
+const StartRound = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        canGoBack: IProps["canGoBack"];
+        playerNameThatStartsRound: IProps["playerNameThatStartsRound"];
+      },
+      {
+        canGoBack: IProps["canGoBack"];
+        playerNameThatStartsRound: IProps["playerNameThatStartsRound"];
+      }
+    >({
+      playerNameThatStartsRound,
+      canGoBack,
+    }),
+    { startRound, goBack }
+  ),
+  withTranslation
 )(_StartRound);
 
 export { StartRound };
