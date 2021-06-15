@@ -15,6 +15,7 @@ import {
   availableLangs,
   setLocalStorageLang,
   getLocalStorageLang,
+  getlangFromPathname,
 } from "./utils";
 
 const startEpic = (): Observable<IActionWithPayload> => of(initI18n(null));
@@ -26,7 +27,7 @@ const initI18nEpic = (
   return action$.pipe(
     ofType(initI18n.type),
     map(() => {
-      const langInLocalStorage = getLocalStorageLang();
+      const langInLocalStorage = getlangFromPathname() || getLocalStorageLang();
       const selectedLang =
         availableLangs[langInLocalStorage] || availableLangs.default;
 

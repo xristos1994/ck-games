@@ -37,11 +37,11 @@ const _Menu: FC<IProps> = ({
 
   const h1Title = (
     <h1 className={styles.menuTitle}>
-      {isSSR
+      {isSSR && !selectedGame
         ? "CK-Games Παντομίμα Tik-Tak-Boom"
-        : isMenuOpen && selectedGame === AvailableGames.pantomime
+        : (isMenuOpen || isSSR) && selectedGame === AvailableGames.pantomime
         ? "Παντομίμα"
-        : isMenuOpen && selectedGame === AvailableGames.tikTakBoom
+        : (isMenuOpen || isSSR) && selectedGame === AvailableGames.tikTakBoom
         ? "Tik-Tak-Boom"
         : isMenuOpen && !selectedGame
         ? "CK-Games"
@@ -51,6 +51,7 @@ const _Menu: FC<IProps> = ({
 
   const pantomimeDescription = (
     <div className={styles.gameDescription}>
+      Xristos {lang.label}
       {isSSR || (!selectedGame && isMenuOpen) ? <h2>Παντομίμα</h2> : null}
       <p>
         Μάζεψε τους φίλους σου και διασκεδάστε παίζοντας{" "}
