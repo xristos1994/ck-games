@@ -1,4 +1,3 @@
-import { isPositiveInteger } from "@utils/general";
 import { GameStates, AvailableScoreTargets } from "./config";
 import { IState } from "@models/interfaces";
 import { IPlayer, IState as IModelState } from "./interfaces";
@@ -34,8 +33,16 @@ export const gameState: (state: IState) => IModelState["gameState"] = state =>
 export const mode: (state: IState) => IModelState["mode"] = state =>
   state.websiteRootReducer.tikTakBoom.mode;
 
-export const syllable: (state: IState) => IModelState["syllable"] = state =>
-  state.websiteRootReducer.tikTakBoom.syllable;
+export const syllable: (state: IState) => IModelState["syllable"] = state => {
+  let result = state.websiteRootReducer.tikTakBoom.syllable;
+  try {
+    result = JSON.parse(result)[state.websiteRootReducer.i18n.lang.code];
+  } catch (e) {
+    // fail silently
+  }
+
+  return result;
+};
 
 export const scoreTarget: (
   state: IState
