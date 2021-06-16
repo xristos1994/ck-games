@@ -2,13 +2,13 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { Button } from "@components";
 import { startRound, goBack } from "@models/tik-tak-boom/actions";
 import {
   playerNameThatStartsRound,
   canGoBack,
 } from "@models/tik-tak-boom/props";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { IState } from "@models/interfaces";
 import { ScoreBoard } from "./../score-board"; // Alias "page-components/tik-tak-boom/components";
 const styles = require("./styles.module.css");

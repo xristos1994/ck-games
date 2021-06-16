@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { players } from "@models/tik-tak-boom/props";
 import { IState } from "@models/interfaces";
 const styles = require("./styles.module.css");
@@ -13,12 +14,15 @@ interface IProps {
     numOfBooms: number;
     name: string;
   }[];
+  t: ITranslate;
 }
 
-const _ScoreBoard: FC<IProps> = ({ players }): ReactElement => {
+const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
   return (
     <div className={classnames(styles.scoreBoardContainer)}>
-      <div className={classnames(styles.scoreBoardTitle)}>Βαθμολογία</div>
+      <div className={classnames(styles.scoreBoardTitle)}>
+        {t("Scoreboard")}
+      </div>
       <div className={classnames(styles.scoreBoard)}>
         {players.map((player, index) => [
           <div
@@ -51,32 +55,35 @@ const _ScoreBoard: FC<IProps> = ({ players }): ReactElement => {
   );
 };
 
-const ScoreBoard = connect(
-  createStructuredSelector<
-    IState,
-    {
-      players: IProps["players"];
-    },
-    {
-      players: IProps["players"];
-    }
-  >({
-    players: (state: IState): IProps["players"] =>
-      [...players(state)]
-        .sort((p1, p2) =>
-          p1.numOfBooms < p2.numOfBooms
-            ? 1
-            : p1.numOfBooms > p2.numOfBooms
-            ? -1
-            : 0
-        )
-        .map(({ id, isActive, numOfBooms, name }) => ({
-          id,
-          isActive,
-          numOfBooms,
-          name,
-        })),
-  })
+const ScoreBoard = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        players: IProps["players"];
+      },
+      {
+        players: IProps["players"];
+      }
+    >({
+      players: (state: IState): IProps["players"] =>
+        [...players(state)]
+          .sort((p1, p2) =>
+            p1.numOfBooms < p2.numOfBooms
+              ? 1
+              : p1.numOfBooms > p2.numOfBooms
+              ? -1
+              : 0
+          )
+          .map(({ id, isActive, numOfBooms, name }) => ({
+            id,
+            isActive,
+            numOfBooms,
+            name,
+          })),
+    })
+  ),
+  withTranslation
 )(_ScoreBoard);
 
 export { ScoreBoard };

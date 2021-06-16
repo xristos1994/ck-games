@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { Button } from "@components";
 import { teams, isTeamsSetupValid } from "@models/pantomime/props";
 import { Team } from "./components";
@@ -19,6 +20,7 @@ interface IProps {
   teamsSetupSubmit: () => void;
   addTeam: () => void;
   isTeamsSetupValid: boolean;
+  t: ITranslate;
 }
 
 const _TeamsSetup: FC<IProps> = ({
@@ -26,10 +28,13 @@ const _TeamsSetup: FC<IProps> = ({
   teamsSetupSubmit,
   addTeam,
   isTeamsSetupValid,
+  t,
 }): ReactElement => {
   return (
     <div className={classnames(styles.teamsSetupContainer)}>
-      <div className={classnames(styles.teamsSetupTitle)}>Εισαγωγή Ομάδων</div>
+      <div className={classnames(styles.teamsSetupTitle)}>
+        {t("Team Setup")}
+      </div>
       <div className={styles.teamsContainer}>
         {teams.map(team => (
           <Team key={team.id} team={team} />
@@ -39,7 +44,7 @@ const _TeamsSetup: FC<IProps> = ({
         onClick={() => addTeam()}
         className={classnames(styles.addTeamButton)}
       >
-        Προσθήκη Ομάδας
+        {t("Add Team")}
       </Button>
 
       <Button
@@ -47,28 +52,31 @@ const _TeamsSetup: FC<IProps> = ({
         onClick={() => teamsSetupSubmit()}
         className={classnames(styles.teamsSetupSubmitButton)}
       >
-        Συνέχεια
+        {t("CONTINUE")}
       </Button>
     </div>
   );
 };
 
-const TeamsSetup = connect(
-  createStructuredSelector<
-    IState,
-    {
-      teams: IProps["teams"];
-      isTeamsSetupValid: IProps["isTeamsSetupValid"];
-    },
-    {
-      teams: IProps["teams"];
-      isTeamsSetupValid: IProps["isTeamsSetupValid"];
-    }
-  >({
-    teams,
-    isTeamsSetupValid,
-  }),
-  { teamsSetupSubmit, addTeam }
+const TeamsSetup = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        teams: IProps["teams"];
+        isTeamsSetupValid: IProps["isTeamsSetupValid"];
+      },
+      {
+        teams: IProps["teams"];
+        isTeamsSetupValid: IProps["isTeamsSetupValid"];
+      }
+    >({
+      teams,
+      isTeamsSetupValid,
+    }),
+    { teamsSetupSubmit, addTeam }
+  ),
+  withTranslation
 )(_TeamsSetup);
 
 export { TeamsSetup };
