@@ -1,13 +1,11 @@
 .menuContainer {
   --menu-button-height: 6vh;
   --menu-topbar-height: calc(var(--menu-button-height) + var(--padding-medium));
-  --open-menu-height: calc(100vh - var(--header-height));
+  --open-menu-height: calc(100% - var(--header-height));
   --menu-content-margin-top: calc(
     var(--menu-button-height) + 1vh + var(--padding-medium)
   );
-  --open-menu-content-height: calc(
-    var(--open-menu-height) - var(--menu-content-margin-top)
-  );
+  --open-menu-content-height: calc(var(--open-menu-height));
 
   position: fixed;
   width: 100%;
