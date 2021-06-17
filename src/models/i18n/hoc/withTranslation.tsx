@@ -133,6 +133,12 @@ const translationsEN = {
     "game, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw",
   "Team Setup": "Teams' setup",
   "Add Team": "Add Team",
+  "Home Meta Title": "CK-Games",
+  "Home Meta Canonical Pathname": "en",
+  "Home Meta Description":
+    "You choose how you will have fun with your friends. Play Pantomime or Tik-Tak-Boom.",
+  "Home Meta Keywords":
+    "games, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb",
 };
 
 const translationsEL = {
@@ -268,6 +274,12 @@ const translationsEL = {
     "παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία",
   "Team Setup": "Εισαγωγή Ομάδων",
   "Add Team": "Προσθήκη Ομάδας",
+  "Home Meta Title": "CK-Games",
+  "Home Meta Canonical Pathname": "",
+  "Home Meta Description":
+    "Εσύ επιλέγεις πως θα διασκεδάσεις με την παρέα σου. Παίξτε Παντομίμα ή Tik-Tak-Boom.",
+  "Home Meta Keywords":
+    "παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα",
 };
 
 interface IProps {

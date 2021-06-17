@@ -1,18 +1,25 @@
 import React, { FC, ReactElement } from "react";
 import { GlobalSEO, LocalSEO } from "@components";
 import { getCanonicalBaseUrl } from "@utils/general";
+import { compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 
-const title = "CK-Games";
-const canonicalUrl = `${getCanonicalBaseUrl()}/`;
-const description =
-  "Εσύ επιλέγεις πως θα διασκεδάσεις με την παρέα σου. Παίξτε Παντομίμα ή Tik-Tak-Boom.";
-const keywords =
-  "παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα";
+interface IProps {
+  t: ITranslate;
+}
+
 const ogImage = `${getCanonicalBaseUrl()}${
   require("@images/og/home.png").default
 }`;
 
-const SEO: FC = (): ReactElement => {
+const _SEO: FC<IProps> = ({ t }): ReactElement => {
+  const title = t("Home Meta Title");
+  const canonicalUrl = `${getCanonicalBaseUrl()}/${t(
+    "Home Meta Canonical Pathname"
+  )}`;
+  const description = t("Home Meta Description");
+  const keywords = t("Home Meta Keywords");
+
   return (
     <>
       <GlobalSEO />
@@ -20,5 +27,7 @@ const SEO: FC = (): ReactElement => {
     </>
   );
 };
+
+const SEO = compose(withTranslation)(_SEO);
 
 export { SEO };
