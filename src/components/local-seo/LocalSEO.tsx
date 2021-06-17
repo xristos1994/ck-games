@@ -24,12 +24,16 @@ const LocalSEO: FC<IProps> = ({
       {description && <meta name="description" content={description} />}
       {keywords && <meta name="keywords" content={keywords} />}
 
-      {/* Open Graph meta tags */}
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
       {title && <meta property="og:type" content="website" />}
       {title && <meta property="og:title" content={title} />}
       {description && <meta property="og:description" content={description} />}
       {ogImage && <meta property="og:image" content={ogImage} />}
+
+      {title && <meta name="twitter:card" content="summary" />}
+      {description && <meta name="twitter:description" content={description} />}
+      {title && <meta name="twitter:title" content={title} />}
+      {ogImage && <meta name="twitter:image" content={ogImage} />}
     </Helmet>
   );
 };
