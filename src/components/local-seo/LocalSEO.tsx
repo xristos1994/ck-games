@@ -9,7 +9,6 @@ interface IProps {
   ogImage: string;
 }
 
-// TODO To add locale meta tags when internationalization is done
 const LocalSEO: FC<IProps> = ({
   title,
   canonicalUrl,

@@ -7,7 +7,6 @@ interface IProps {
   t: ITranslate;
 }
 
-// TODO To add locale meta tags when internationalization is done
 const _GlobalSEO: FC<IProps> = ({ t }): ReactElement => {
   return (
     <Helmet>
