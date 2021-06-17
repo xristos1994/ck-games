@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { Button } from "@components";
 import { movie, teamNameThatPlaysNow } from "@models/pantomime/props";
 import { clockRemainingTime } from "@models/clock/props";
@@ -15,6 +16,7 @@ interface IProps {
   movie: string;
   clockRemainingTime: number;
   teamNameThatPlaysNow: string;
+  t: ITranslate;
 }
 
 const _RoundInProgress: FC<IProps> = ({
@@ -22,11 +24,12 @@ const _RoundInProgress: FC<IProps> = ({
   movie,
   clockRemainingTime,
   teamNameThatPlaysNow,
+  t,
 }): ReactElement => {
   return (
     <div className={styles.roundInProgressContainer}>
       <div className={classnames(styles.team)}>
-        {teamNameThatPlaysNow}, είναι η σειρά σας!
+        {t("Team, it is your turn", [teamNameThatPlaysNow])}
       </div>
       <div className={classnames(styles.movie)}>{movie}</div>
       <div className={classnames(styles.remainingTime)}>
@@ -36,37 +39,40 @@ const _RoundInProgress: FC<IProps> = ({
         onClick={() => setIfMovieFound(true)}
         className={classnames(styles.movieFoundButton)}
       >
-        Η Ταινία Βρέθηκε
+        {t("Movie Found")}
       </Button>
       <Button
         onClick={() => setIfMovieFound(false)}
         className={classnames(styles.movieNotFoundButton)}
       >
-        Η Ταινία Δε Βρέθηκε
+        {t("Movie Not Found")}
       </Button>
     </div>
   );
 };
 
-const RoundInProgress = connect(
-  createStructuredSelector<
-    IState,
-    {
-      movie: IProps["movie"];
-      teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
-      clockRemainingTime: IProps["clockRemainingTime"];
-    },
-    {
-      movie: IProps["movie"];
-      teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
-      clockRemainingTime: IProps["clockRemainingTime"];
-    }
-  >({
-    movie,
-    teamNameThatPlaysNow,
-    clockRemainingTime,
-  }),
-  { setIfMovieFound }
+const RoundInProgress = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        movie: IProps["movie"];
+        teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+        clockRemainingTime: IProps["clockRemainingTime"];
+      },
+      {
+        movie: IProps["movie"];
+        teamNameThatPlaysNow: IProps["teamNameThatPlaysNow"];
+        clockRemainingTime: IProps["clockRemainingTime"];
+      }
+    >({
+      movie,
+      teamNameThatPlaysNow,
+      clockRemainingTime,
+    }),
+    { setIfMovieFound }
+  ),
+  withTranslation
 )(_RoundInProgress);
 
 export { RoundInProgress };

@@ -2,7 +2,8 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { Button } from "@components";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { goToNextRound, setWhoLost } from "@models/tik-tak-boom/actions";
 import { players } from "@models/tik-tak-boom/props";
 import { IState } from "@models/interfaces";
@@ -19,19 +20,21 @@ interface IProps {
   }[];
   goToNextRound: () => void;
   setWhoLost: (id: number) => void;
+  t: ITranslate;
 }
 
 const _EndRound: FC<IProps> = ({
   players,
   goToNextRound,
   setWhoLost,
+  t,
 }): ReactElement => {
   const playerNow = players.find(player => player.playsNow);
 
   return (
     <div className={styles.endRoundContainer}>
       <div className={classnames(styles.whoLost)}>
-        {playerNow.name}, η βόμβα έσκασε στα χέρια σου!
+        {t("Player, bomb exploded in your hands", [playerNow.name])}
       </div>
       <div className={styles.playersContainer}>
         {players.map(player => (
@@ -58,25 +61,28 @@ const _EndRound: FC<IProps> = ({
         onClick={() => goToNextRound()}
         className={classnames(styles.proceedButton)}
       >
-        Συνέχεια
+        {t("CONTINUE")}
       </Button>
     </div>
   );
 };
 
-const EndRound = connect(
-  createStructuredSelector<
-    IState,
-    {
-      players: IProps["players"];
-    },
-    {
-      players: IProps["players"];
-    }
-  >({
-    players,
-  }),
-  { goToNextRound, setWhoLost }
+const EndRound = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        players: IProps["players"];
+      },
+      {
+        players: IProps["players"];
+      }
+    >({
+      players,
+    }),
+    { goToNextRound, setWhoLost }
+  ),
+  withTranslation
 )(_EndRound);
 
 export { EndRound };

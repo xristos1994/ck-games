@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { Button } from "@components";
 import { players, isPlayersSetupValid } from "@models/tik-tak-boom/props";
 import { Player } from "./components";
@@ -21,6 +22,7 @@ interface IProps {
   playersSetupSubmit: () => void;
   addPlayer: () => void;
   isPlayersSetupValid: boolean;
+  t: ITranslate;
 }
 
 const _PlayersSetup: FC<IProps> = ({
@@ -28,11 +30,12 @@ const _PlayersSetup: FC<IProps> = ({
   playersSetupSubmit,
   addPlayer,
   isPlayersSetupValid,
+  t,
 }): ReactElement => {
   return (
     <div className={classnames(styles.playersSetupContainer)}>
       <div className={classnames(styles.playersSetupTitle)}>
-        Εισαγωγή Παικτών
+        {t("Player Setup")}
       </div>
       <div className={styles.playersContainer}>
         {players.map(player => (
@@ -43,7 +46,7 @@ const _PlayersSetup: FC<IProps> = ({
         onClick={() => addPlayer()}
         className={classnames(styles.addPlayerButton)}
       >
-        Προσθήκη Παίκτη
+        {t("Add Player")}
       </Button>
 
       <Button
@@ -51,28 +54,31 @@ const _PlayersSetup: FC<IProps> = ({
         onClick={() => playersSetupSubmit()}
         className={classnames(styles.playersSetupSubmitButton)}
       >
-        ΣΥΝΕΧΕΙΑ
+        {t("CONTINUE")}
       </Button>
     </div>
   );
 };
 
-const PlayersSetup = connect(
-  createStructuredSelector<
-    IState,
-    {
-      players: IProps["players"];
-      isPlayersSetupValid: IProps["isPlayersSetupValid"];
-    },
-    {
-      players: IProps["players"];
-      isPlayersSetupValid: IProps["isPlayersSetupValid"];
-    }
-  >({
-    players,
-    isPlayersSetupValid,
-  }),
-  { playersSetupSubmit, addPlayer }
+const PlayersSetup = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        players: IProps["players"];
+        isPlayersSetupValid: IProps["isPlayersSetupValid"];
+      },
+      {
+        players: IProps["players"];
+        isPlayersSetupValid: IProps["isPlayersSetupValid"];
+      }
+    >({
+      players,
+      isPlayersSetupValid,
+    }),
+    { playersSetupSubmit, addPlayer }
+  ),
+  withTranslation
 )(_PlayersSetup);
 
 export { PlayersSetup };

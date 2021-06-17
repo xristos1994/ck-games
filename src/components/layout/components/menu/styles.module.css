@@ -1,13 +1,11 @@
 .menuContainer {
   --menu-button-height: 6vh;
   --menu-topbar-height: calc(var(--menu-button-height) + var(--padding-medium));
-  --open-menu-height: calc(100vh - var(--header-height));
+  --open-menu-height: calc(100% - var(--header-height));
   --menu-content-margin-top: calc(
     var(--menu-button-height) + 1vh + var(--padding-medium)
   );
-  --open-menu-content-height: calc(
-    var(--open-menu-height) - var(--menu-content-margin-top)
-  );
+  --open-menu-content-height: calc(var(--open-menu-height));
 
   position: fixed;
   width: 100%;
@@ -23,6 +21,23 @@
 .menuContainer.openMenu {
   height: var(--open-menu-height);
   background: var(--sky-color);
+}
+
+.menuContainer > .langSelector {
+  display: flex;
+  flex-direction: row;
+  height: var(--menu-button-height);
+  float: left;
+  margin-left: var(--padding-medium);
+  margin-bottom: var(--padding-medium);
+}
+
+.menuContainer > .langSelector > a > .lang,
+.menuContainer > .langSelector > .lang {
+  width: var(--menu-button-height);
+  margin-right: var(--padding-medium);
+  border-radius: 50%;
+  padding: 0;
 }
 
 .menuContainer > .menuButton {

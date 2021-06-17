@@ -2,7 +2,8 @@ import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { Button } from "@components";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { goToNextRound, setIfMovieFound } from "@models/pantomime/actions";
 import { teams } from "@models/pantomime/props";
 import { IState } from "@models/interfaces";
@@ -19,19 +20,21 @@ interface IProps {
   }[];
   goToNextRound: () => void;
   setIfMovieFound: (boolean) => void;
+  t: ITranslate;
 }
 
 const _EndRound: FC<IProps> = ({
   teams,
   goToNextRound,
   setIfMovieFound,
+  t,
 }): ReactElement => {
   const teamNow = teams.find(team => team.playsNow);
 
   return (
     <div className={styles.endRoundContainer}>
       <div className={classnames(styles.title)}>
-        {teamNow.name}, η σειρά σας ολοκληρώθηκε!
+        {t("Team, your turn completed", [teamNow.name])}
       </div>
       <ScoreBoard />
       <div className={styles.movieFoundButtons}>
@@ -44,7 +47,7 @@ const _EndRound: FC<IProps> = ({
           })}
           onClick={() => setIfMovieFound(true)}
         >
-          Η Ταινία Βρέθηκε
+          {t("Movie Found")}
         </Button>
         <Button
           key="movieNotFound"
@@ -55,32 +58,35 @@ const _EndRound: FC<IProps> = ({
           })}
           onClick={() => setIfMovieFound(false)}
         >
-          Η Ταινία Δε Βρέθηκε
+          {t("Movie Not Found")}
         </Button>
       </div>
       <Button
         onClick={() => goToNextRound()}
         className={classnames(styles.proceedButton)}
       >
-        ΣΥΝΕΧΕΙΑ
+        {t("CONTINUE")}
       </Button>
     </div>
   );
 };
 
-const EndRound = connect(
-  createStructuredSelector<
-    IState,
-    {
-      teams: IProps["teams"];
-    },
-    {
-      teams: IProps["teams"];
-    }
-  >({
-    teams,
-  }),
-  { goToNextRound, setIfMovieFound }
+const EndRound = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        teams: IProps["teams"];
+      },
+      {
+        teams: IProps["teams"];
+      }
+    >({
+      teams,
+    }),
+    { goToNextRound, setIfMovieFound }
+  ),
+  withTranslation
 )(_EndRound);
 
 export { EndRound };

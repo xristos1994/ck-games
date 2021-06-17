@@ -1,7 +1,14 @@
 import { GameStates } from "./GameStates";
 import { Modes } from "./Modes";
-import { Syllables } from "./Syllables";
+import { SyllablesEN, SyllablesEL } from "./Syllables";
 import { BoomTimer } from "./BoomTimer";
 import { AvailableScoreTargets } from "./AvailableScoreTargets";
 
-export { GameStates, Modes, Syllables, BoomTimer, AvailableScoreTargets };
+export {
+  GameStates,
+  Modes,
+  SyllablesEN,
+  SyllablesEL,
+  BoomTimer,
+  AvailableScoreTargets,
+};

@@ -1,7 +1,9 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
+
 import { Button } from "@components";
 import {
   scoreTarget,
@@ -24,6 +26,7 @@ interface IProps {
   goBack: () => void;
   setScoreTarget: (scoreTarget: number | null) => void;
   scoreSetupSubmit: () => void;
+  t: ITranslate;
 }
 
 const _ScoreSetup: FC<IProps> = ({
@@ -33,6 +36,7 @@ const _ScoreSetup: FC<IProps> = ({
   goBack,
   setScoreTarget,
   scoreSetupSubmit,
+  t,
 }): ReactElement => {
   const onScoreTargetChange = e => {
     setScoreTarget(Number(e.target.value));
@@ -41,7 +45,7 @@ const _ScoreSetup: FC<IProps> = ({
   return (
     <div className={classnames(styles.scoreSetupContainer)}>
       <div className={classnames(styles.scoreSetupTitle)}>
-        Επιλέξτε το σκορ νίκης
+        {t("Choose Winning Score")}
       </div>
       <select
         className={classnames(styles.scoreTargetInput)}
@@ -58,39 +62,42 @@ const _ScoreSetup: FC<IProps> = ({
         onClick={() => scoreSetupSubmit()}
         className={classnames(styles.scoreTargetSetupSubmitButton)}
       >
-        ΣΥΝΕΧΕΙΑ
+        {t("CONTINUE")}
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
           className={classnames(styles.backButton)}
         >
-          ΠΙΣΩ
+          {t("BACK")}
         </Button>
       )}
     </div>
   );
 };
 
-const ScoreSetup = connect(
-  createStructuredSelector<
-    IState,
-    {
-      scoreTarget: IProps["scoreTarget"];
-      canGoBack: IProps["canGoBack"];
-      availableScoreTargets: IProps["availableScoreTargets"];
-    },
-    {
-      scoreTarget: IProps["scoreTarget"];
-      canGoBack: IProps["canGoBack"];
-      availableScoreTargets: IProps["availableScoreTargets"];
-    }
-  >({
-    scoreTarget,
-    canGoBack,
-    availableScoreTargets,
-  }),
-  { setScoreTarget, scoreSetupSubmit, goBack }
+const ScoreSetup = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        scoreTarget: IProps["scoreTarget"];
+        canGoBack: IProps["canGoBack"];
+        availableScoreTargets: IProps["availableScoreTargets"];
+      },
+      {
+        scoreTarget: IProps["scoreTarget"];
+        canGoBack: IProps["canGoBack"];
+        availableScoreTargets: IProps["availableScoreTargets"];
+      }
+    >({
+      scoreTarget,
+      canGoBack,
+      availableScoreTargets,
+    }),
+    { setScoreTarget, scoreSetupSubmit, goBack }
+  ),
+  withTranslation
 )(_ScoreSetup);
 
 export { ScoreSetup };
