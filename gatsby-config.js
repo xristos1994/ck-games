@@ -9,6 +9,7 @@ const path = require("path");
 module.exports = {
   /* Your site config here */
   plugins: [
+    `gatsby-plugin-polyfill-io`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,

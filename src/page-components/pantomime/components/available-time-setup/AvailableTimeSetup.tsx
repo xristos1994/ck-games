@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
+import { classnames, compose } from "@utils/component-utils";
+import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { Button } from "@components";
 import {
   availableTime,
@@ -24,6 +25,7 @@ interface IProps {
   goBack: () => void;
   setAvailableTime: (availableTime: number) => void;
   availableTimeSetupSubmit: () => void;
+  t: ITranslate;
 }
 
 const _AvailableTimeSetup: FC<IProps> = ({
@@ -33,6 +35,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
   setAvailableTime,
   availableTimeSetupSubmit,
   goBack,
+  t,
 }): ReactElement => {
   const onAvailableTimeChange = e => {
     setAvailableTime(e.target.value);
@@ -41,7 +44,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
   return (
     <div className={classnames(styles.availableTimeSetupContainer)}>
       <div className={classnames(styles.availableTimeSetupTitle)}>
-        Επιλέξτε τον διαθέσιμο χρόνο
+        {t("Choose Available Time")}
       </div>
       <select
         className={classnames(styles.availableTimeTargetInput)}
@@ -50,7 +53,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
       >
         {availableTimes.map(time => (
           <option key={time} value={time}>
-            {time} Δευτερόλεπτα
+            {`${time} ${t("Seconds")}`}
           </option>
         ))}
       </select>
@@ -58,39 +61,42 @@ const _AvailableTimeSetup: FC<IProps> = ({
         onClick={() => availableTimeSetupSubmit()}
         className={classnames(styles.availableTimeTargetSetupSubmitButton)}
       >
-        ΣΥΝΕΧΕΙΑ
+        {t("CONTINUE")}
       </Button>
       {canGoBack && (
         <Button
           onClick={() => goBack()}
           className={classnames(styles.backButton)}
         >
-          ΠΙΣΩ
+          {t("BACK")}
         </Button>
       )}
     </div>
   );
 };
 
-const AvailableTimeSetup = connect(
-  createStructuredSelector<
-    IState,
-    {
-      availableTime: IProps["availableTime"];
-      availableTimes: IProps["availableTimes"];
-      canGoBack: IProps["canGoBack"];
-    },
-    {
-      availableTime: IProps["availableTime"];
-      availableTimes: IProps["availableTimes"];
-      canGoBack: IProps["canGoBack"];
-    }
-  >({
-    availableTime,
-    availableTimes,
-    canGoBack,
-  }),
-  { setAvailableTime, availableTimeSetupSubmit, goBack }
+const AvailableTimeSetup = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        availableTime: IProps["availableTime"];
+        availableTimes: IProps["availableTimes"];
+        canGoBack: IProps["canGoBack"];
+      },
+      {
+        availableTime: IProps["availableTime"];
+        availableTimes: IProps["availableTimes"];
+        canGoBack: IProps["canGoBack"];
+      }
+    >({
+      availableTime,
+      availableTimes,
+      canGoBack,
+    }),
+    { setAvailableTime, availableTimeSetupSubmit, goBack }
+  ),
+  withTranslation
 )(_AvailableTimeSetup);
 
 export { AvailableTimeSetup };

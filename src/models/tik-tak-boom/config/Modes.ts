@@ -10,16 +10,16 @@ export const Modes: IModes = {
   tik: {
     id: "tik",
     name: "Tik...",
-    description: "Η λέξη πρέπει να ξεκινά με την επιλεγμένη συλλαβή",
+    description: "Tik Mode Description",
   },
   tak: {
     id: "tak",
     name: "...Tak",
-    description: "Η λέξη πρέπει να τελειώνει με την επιλεγμένη συλλαβή",
+    description: "Tak Mode Description",
   },
   tikTak: {
     id: "Tik...Tak",
     name: "Tik...Tak",
-    description: "Η λέξη πρέπει απλά να περιέχει την επιλεγμένη συλλαβή",
+    description: "Tik...Tak Mode Description",
   },
 };

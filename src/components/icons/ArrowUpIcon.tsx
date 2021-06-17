@@ -4,7 +4,6 @@ const ArrowUpIcon: FC<SVGProps<SVGSVGElement>> = (props): ReactElement => {
   return (
     <svg
       height="100%"
-      id="Layer_1"
       {...props}
       version="1.1"
       viewBox="0 0 512 512"

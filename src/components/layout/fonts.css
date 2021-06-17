@@ -5,3 +5,7 @@
   --text-large: 3vh;
   --text-extra-large: 4vh;
 }
+
+strong {
+  font-weight: 700;
+}
