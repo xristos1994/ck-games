@@ -46,7 +46,7 @@ const setIsMenuOpenEpic = (
         isRoundInProgress
           ? [setClockIsRunning(true), reduceRemainingTime(null)]
           : []),
-        updateIsMenuOpen(payload),
+        updateIsMenuOpen(payload || false),
       ];
     })
   );

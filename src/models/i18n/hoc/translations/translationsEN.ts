@@ -1,4 +1,4 @@
-export const translationsEN = {
+export const translationsEN: Record<string, string> = {
   "Meta Author": "Christos Korompokis",
   "Meta Content": "English",
   "html lang": "en",

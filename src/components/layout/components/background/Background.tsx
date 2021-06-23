@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, useEffect, useState } from "react";
 import { classnames } from "@utils/component-utils";
 
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 const starClasses: Record<string, string> = {
   smallStar: "smallStar",

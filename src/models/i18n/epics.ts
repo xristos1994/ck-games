@@ -2,13 +2,11 @@ import { Observable, of } from "rxjs";
 import {
   ActionsObservable,
   combineEpics,
-  ofType,
-  StateObservable,
+  ofType
 } from "redux-observable";
 import { map } from "rxjs/operators";
 import { updateLang, setLang, initI18n } from "./actions";
 
-import { IState } from "@models/interfaces";
 import { IActionWithPayload } from "@core/actions/interfaces";
 import { IState as IModelState } from "./interfaces";
 import {
@@ -21,8 +19,7 @@ import {
 const startEpic = (): Observable<IActionWithPayload> => of(initI18n(null));
 
 const initI18nEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
+  action$: ActionsObservable<IActionWithPayload>
 ): Observable<IActionWithPayload<IModelState["lang"]>> => {
   return action$.pipe(
     ofType(initI18n.type),
@@ -37,8 +34,7 @@ const initI18nEpic = (
 };
 
 const setLangEpic = (
-  action$: ActionsObservable<IActionWithPayload<IModelState["lang"]>>,
-  state$: StateObservable<IState>
+  action$: ActionsObservable<IActionWithPayload<IModelState["lang"]>>
 ): Observable<IActionWithPayload<IModelState["lang"]>> => {
   return action$.pipe(
     ofType(setLang.type),

@@ -6,7 +6,7 @@ import { Button } from "@components";
 import { setPlayerById, removePlayerById } from "@models/tik-tak-boom/actions";
 import { players } from "@models/tik-tak-boom/props";
 import { IState } from "@models/interfaces";
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   player: {

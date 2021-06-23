@@ -8,7 +8,7 @@ export const assignNextRoundStarter: (
     players.find(player => player.startsRound) || {}
   ).id;
   if (idOfCurrentRoundStarter === undefined) {
-    const playerShouldStartRound = players.find(player => player.isActive);
+    const playerShouldStartRound = players.find(player => player.isActive) as IPlayer;
     return players.map(player => {
       return player.id === playerShouldStartRound.id
         ? {

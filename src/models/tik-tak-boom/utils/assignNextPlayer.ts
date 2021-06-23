@@ -4,7 +4,7 @@ export const assignNextPlayer: (players: IPlayer[]) => IPlayer[] = players => {
   const idOfPlayerThatPlaysNow = (players.find(player => player.playsNow) || {})
     .id;
   if (idOfPlayerThatPlaysNow === undefined) {
-    const playerShouldPlayNow = players.find(player => player.startsRound);
+    const playerShouldPlayNow = players.find(player => player.startsRound) as IPlayer;
     return players.map(player => {
       return player.id === playerShouldPlayNow.id
         ? { ...playerShouldPlayNow, playsNow: true }

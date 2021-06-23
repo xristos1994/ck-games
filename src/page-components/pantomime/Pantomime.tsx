@@ -15,7 +15,7 @@ import { gameState } from "@models/pantomime/props";
 import { initializeGame } from "@models/pantomime/actions";
 import { GameStates } from "@models/pantomime/config";
 import { IState } from "@models/interfaces";
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   gameState: GameStates;

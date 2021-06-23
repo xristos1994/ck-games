@@ -16,7 +16,7 @@ import {
 } from "@models/tik-tak-boom/actions";
 import { IState } from "@models/interfaces";
 
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   scoreTarget: number;

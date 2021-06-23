@@ -5,7 +5,7 @@ export interface IStore extends Store {
   injectReducer: {
     (key: string, reducer: Reducer): IStore;
   };
-  asyncReducers: any;
+  asyncReducers: unknown;
   runMiddlware: {
     (websiteRootEpic: Epic): void;
   };

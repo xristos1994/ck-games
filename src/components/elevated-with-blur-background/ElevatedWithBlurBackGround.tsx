@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, ReactChild } from "react";
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   children: ReactChild | ReactChild[];

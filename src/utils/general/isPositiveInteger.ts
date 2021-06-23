@@ -6,6 +6,6 @@ export const isPositiveInteger = (value: string | number): boolean => {
     return false;
   }
   _value = _value.replace(/^0+/, "") || "0";
-  var n = Math.floor(Number(_value));
+  const n = Math.floor(Number(_value));
   return n !== Infinity && String(n) === _value && n > 0;
 };

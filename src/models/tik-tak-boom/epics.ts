@@ -82,7 +82,7 @@ const setPlayerByIdEpic = (
 const removePlayerByIdEpic = (
   action$: ActionsObservable<IActionWithPayload<IPlayer["id"]>>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]>> => {
+): Observable<IActionWithPayload<IPlayer[] | null>> => {
   return action$.pipe(
     ofType(removePlayerById.type),
     withLatestFrom(state$),
@@ -107,7 +107,7 @@ const addPlayerByIdEpic = (
   return action$.pipe(
     ofType(addPlayer.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       return updatePlayers(players.concat(createNewPlayer(players.length)));
     })
@@ -121,7 +121,7 @@ const playersSetupSubmitEpic = (
   return action$.pipe(
     ofType(playersSetupSubmit.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const gameState = state.websiteRootReducer.tikTakBoom.gameState;
       if (gameState === GameStates.setPlayers) {
         return updateGameState(GameStates.setScoreTarget);
@@ -153,7 +153,7 @@ const scoreSetupSubmitEpic = (
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignNextRoundStarter(players, true);
       return [
@@ -177,7 +177,7 @@ const startRoundEpic = (
   return action$.pipe(
     ofType(startRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignNextPlayer(players);
       const { mode, syllable } = findModeAndSyllable();
@@ -202,7 +202,7 @@ const goToNextPlayerEpic = (
   return action$.pipe(
     ofType(goToNextPlayer.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignNextPlayer(players);
 
@@ -218,7 +218,7 @@ const goToPreviousPlayerEpic = (
   return action$.pipe(
     ofType(goToPreviousPlayer.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignPreviousPlayer(players);
 
@@ -234,7 +234,7 @@ const clockRemainingTimeBecameZeroEpic = (
   return action$.pipe(
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const isTikTakBoomSelected =
         state.websiteRootReducer.website.selectedGame ===
         AvailableGames.tikTakBoom;
@@ -243,7 +243,7 @@ const clockRemainingTimeBecameZeroEpic = (
         return noAction(null);
       }
 
-      const newRemainingTime = state.websiteRootReducer.clock.remainingTime - 1;
+      const newRemainingTime = state.websiteRootReducer.clock.remainingTime || 0 - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {
@@ -266,7 +266,7 @@ const clockTriggerTikTakSoundEpic = (
   return action$.pipe(
     ofType(clockTriggerTikTakSound.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       if (
         state.websiteRootReducer.website.selectedGame ===
         AvailableGames.tikTakBoom
@@ -291,7 +291,7 @@ const endRoundEpic = (
   return action$.pipe(
     ofType(endRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignScoreAfterRoundEnds(players);
 
@@ -313,7 +313,7 @@ const goToNextRoundEpic = (
   return action$.pipe(
     ofType(goToNextRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const scoreTarget = state.websiteRootReducer.tikTakBoom.scoreTarget;
       const players = state.websiteRootReducer.tikTakBoom.players;
 
@@ -345,7 +345,7 @@ const restartGameEpic = (
   return action$.pipe(
     ofType(restartGame.type, initializeGame.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const tikTakBoomState = state.websiteRootReducer.tikTakBoom;
       const newTikTakBoomState = restartGameState(tikTakBoomState);
 
@@ -378,7 +378,7 @@ const goBackEpic = (
   return action$.pipe(
     ofType(goBack.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const gameState = state.websiteRootReducer.tikTakBoom.gameState;
       const newGameState =
         gameState === GameStates.setScoreTarget

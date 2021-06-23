@@ -4,7 +4,7 @@ import { compose } from "@utils/component-utils";
 import { withTranslation, ITranslate } from "@models/i18n/hoc";
 import { Button } from "@components";
 import { availableGames } from "./config";
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   t: ITranslate;

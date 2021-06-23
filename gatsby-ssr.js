@@ -6,6 +6,7 @@ import { getGameFromPathname } from "@models/website/utils";
 import { updateSelectedGame } from "@models/website/actions";
 import { store } from "@store";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const onRenderBody = ({ pathname }) => {
   const lang =
     availableLangs[getlangFromPathname(pathname)] || availableLangs.default;

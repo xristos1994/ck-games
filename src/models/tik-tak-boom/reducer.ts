@@ -39,31 +39,31 @@ const initialState: IState = {
 
 const reducer = (
   state: IState = initialState,
-  action: IActionWithPayload
+  action: IActionWithPayload | IActionWithPayload<IState | IState['gameState' | 'mode' | 'syllable' | 'scoreTarget' | 'players']>
 ): IState => {
   const { type, payload } = action;
 
   switch (type) {
     case updateGameReduxState.type:
-      return payload;
+      return payload as IState;
 
     case startTikTakBoom.type:
       return { ...state, ...initialState, tikTakBoomStarted: true };
 
     case updateGameState.type:
-      return { ...state, gameState: payload };
+      return { ...state, gameState: payload as IState['gameState'] };
 
     case updateMode.type:
-      return { ...state, mode: payload };
+      return { ...state, mode: payload as IState['mode'] };
 
     case updateSyllable.type:
-      return { ...state, syllable: payload };
+      return { ...state, syllable: payload as IState['syllable'] };
 
     case updateScoreTarget.type:
-      return { ...state, scoreTarget: payload };
+      return { ...state, scoreTarget: payload as IState['scoreTarget'] };
 
     case updatePlayers.type:
-      return { ...state, players: payload };
+      return { ...state, players: payload as IState['players'] };
 
     default:
       return state;

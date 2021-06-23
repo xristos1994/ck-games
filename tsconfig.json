@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "noUnusedLocals": false,
     "jsx": "react",
     "esModuleInterop": true,
     "baseUrl": "./src",
@@ -34,5 +41,12 @@
       "@interfaces/*": ["interfaces/*"],
       "@interfaces": ["interfaces/index.ts"]
     }
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "public",
+    ".cache",
+    "lazy_dev",
+    "CK-Games-Dev_Helpers"
+  ]
 }

@@ -2,7 +2,6 @@ import { Observable, of } from "rxjs";
 import {
   combineEpics,
   ActionsObservable,
-  StateObservable,
   ofType,
 } from "redux-observable";
 import { mergeMap } from "rxjs/operators";
@@ -23,8 +22,7 @@ import { setIsMenuOpen } from "@models/layout/actions";
 const startEpic = (): Observable<IActionWithPayload> => of(startWebsite(null));
 
 const initializePantomimeEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
+  action$: ActionsObservable<IActionWithPayload>
 ): Observable<
   IActionWithPayload | IActionWithPayload<IState["selectedGame"]>
 > => {
@@ -40,8 +38,7 @@ const initializePantomimeEpic = (
 };
 
 const initializeTikTakBoomEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
+  action$: ActionsObservable<IActionWithPayload>
 ): Observable<
   IActionWithPayload | IActionWithPayload<IState["selectedGame"]>
 > => {
@@ -57,8 +54,7 @@ const initializeTikTakBoomEpic = (
 };
 
 const restartAllGamesEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
+  action$: ActionsObservable<IActionWithPayload>
 ): Observable<
   | IActionWithPayload
   | IActionWithPayload<IState["selectedGame"]>

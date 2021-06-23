@@ -8,7 +8,7 @@ import { goToNextRound, setIfMovieFound } from "@models/pantomime/actions";
 import { teams } from "@models/pantomime/props";
 import { IState } from "@models/interfaces";
 import { ScoreBoard } from "../score-board";
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   teams: {

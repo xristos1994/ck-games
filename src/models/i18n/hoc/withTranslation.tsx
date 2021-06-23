@@ -21,19 +21,19 @@ const translate: IProps["t"] = (label, placeholders = [], langCode) => {
       : { ...translationsEL };
   let result = translations[label] || label || "";
 
-  placeholders.forEach((ph, idx) => {
-    result = result.replace(`%${idx}`, ph);
+  placeholders.forEach( (ph, idx) => {
+    result = result.replace(`%${idx}`, ph as string);
   });
 
   return result;
 };
 
-const withTranslation = (WrappedComponent: FC<any>): FC<IProps> => {
+const withTranslation = (WrappedComponent: FC<IProps>): FC<IProps> => {
   const _Component: FC<IProps> = props => {
     return (
       <WrappedComponent
         {...props}
-        t={(label, placeholders) =>
+        t={(label: string, placeholders?: (string | number)[]) =>
           translate(label, placeholders, props.lang.code)
         }
       />

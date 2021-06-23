@@ -5,7 +5,7 @@ export interface ITeam {
   name: string;
   playsNow: boolean | null;
   score: number;
-  movieFound: boolean;
+  movieFound: boolean | null;
 }
 
 export type IScoreTarget = number;

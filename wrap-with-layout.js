@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 const React = require("react");
 const Layout = require("./src/components").Layout;
 

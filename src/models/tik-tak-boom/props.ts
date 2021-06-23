@@ -13,7 +13,7 @@ export const players: (state: IState) => IModelState["players"] = state =>
 export const playerById: (
   state: IState
 ) => (id: IPlayer["id"]) => IPlayer = state => id =>
-  players(state).find(player => player.id === id);
+  players(state).find(player => player.id === id) as IPlayer;
 
 export const playerNameThatPlaysNow: (
   state: IState
@@ -22,7 +22,7 @@ export const playerNameThatPlaysNow: (
   return player ? player.name : null;
 };
 
-export const playerNameThatStartsRound = state => {
+export const playerNameThatStartsRound: (state: IState) => string | null = state => {
   const player = players(state).find(player => player.startsRound);
   return player ? player.name : null;
 };
@@ -34,7 +34,7 @@ export const mode: (state: IState) => IModelState["mode"] = state =>
   state.websiteRootReducer.tikTakBoom.mode;
 
 export const syllable: (state: IState) => IModelState["syllable"] = state => {
-  let result = state.websiteRootReducer.tikTakBoom.syllable;
+  let result = state.websiteRootReducer.tikTakBoom.syllable as string;
   try {
     result = JSON.parse(result)[state.websiteRootReducer.i18n.lang.code];
   } catch (e) {

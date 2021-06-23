@@ -11,7 +11,7 @@ import {
 } from "@models/tik-tak-boom/props";
 import { IState } from "@models/interfaces";
 import { ScoreBoard } from "./../score-board"; // Alias "page-components/tik-tak-boom/components";
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   canGoBack: boolean;

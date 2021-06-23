@@ -1,7 +1,7 @@
 import { Movies } from "../config";
 
 export const findMovies = (
-  currentSelectedMovieIndex
+  currentSelectedMovieIndex: number
 ): { movies: [string, string]; index: number } => {
   const newSelectedMovieIndex = currentSelectedMovieIndex + 2;
   const moviesLength = Movies.length;

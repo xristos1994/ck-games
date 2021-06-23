@@ -41,37 +41,40 @@ const initialState: IState = {
 
 const reducer = (
   state: IState = initialState,
-  action: IActionWithPayload
+  action: IActionWithPayload<
+    IState
+    | IState['gameState' | 'scoreTarget' | 'availableTime' | 'teams' |'movie' | 'selectedMovieIndex' | 'availableMovies']
+  >
 ): IState => {
   const { type, payload } = action;
 
   switch (type) {
     case updateGameReduxState.type:
-      return payload;
+      return payload as IState;
 
     case startPantomime.type:
       return { ...state, ...initialState, pantomimeStarted: true };
 
     case updateGameState.type:
-      return { ...state, gameState: payload };
+      return { ...state, gameState: payload as IState["gameState"] };
 
     case updateScoreTarget.type:
-      return { ...state, scoreTarget: payload };
+      return { ...state, scoreTarget: payload as IState['scoreTarget']};
 
     case updateAvailableTime.type:
-      return { ...state, availableTime: payload };
+      return { ...state, availableTime: payload as IState['availableTime'] };
 
     case updateTeams.type:
-      return { ...state, teams: payload };
+      return { ...state, teams: payload as IState['teams'] };
 
     case updateMovie.type:
-      return { ...state, movie: payload };
+      return { ...state, movie: payload as IState['movie'] };
 
     case updateSelectedMovieIndex.type:
-      return { ...state, selectedMovieIndex: payload };
+      return { ...state, selectedMovieIndex: payload as IState["selectedMovieIndex"] };
 
     case updateAvailableMovies.type:
-      return { ...state, availableMovies: payload };
+      return { ...state, availableMovies: payload as IState["availableMovies"] };
 
     default:
       return state;

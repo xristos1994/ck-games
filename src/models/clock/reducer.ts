@@ -18,7 +18,7 @@ const reducer = (
       return { ...state, remainingTime: payload };
 
     case updateClockIsRunning.type:
-      return { ...state, isRunning: payload };
+      return { ...state, isRunning: payload || false };
 
     default:
       return state;

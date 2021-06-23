@@ -6,7 +6,7 @@ interface IProps {
   children: ReactChild | ReactChild[];
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className: string;
-  other?: object;
+  other?: Record<string, unknown>;
 }
 
 const Button: FC<IProps> = ({

@@ -52,8 +52,8 @@ const reduceRemainingTimeEpic = (
     ofType(reduceRemainingTime.type),
     debounceTime(1000),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
-      const newRemainingTime = state.websiteRootReducer.clock.remainingTime - 1;
+    mergeMap(([, state]) => {
+      const newRemainingTime = state.websiteRootReducer.clock.remainingTime || 0 - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (newRemainingTime === 0) {
@@ -75,8 +75,7 @@ const reduceRemainingTimeEpic = (
 };
 
 const setClockIsRunningEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
+  action$: ActionsObservable<IActionWithPayload<boolean>>,
 ): Observable<IActionWithPayload<IModelState["isRunning"]>> => {
   return action$.pipe(
     ofType(setClockIsRunning.type),
@@ -88,7 +87,6 @@ const setClockIsRunningEpic = (
 
 const resetClockEpic = (
   action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
 ): Observable<
   | IActionWithPayload<IModelState["remainingTime"]>
   | IActionWithPayload<IModelState["isRunning"]>

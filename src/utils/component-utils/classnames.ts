@@ -6,7 +6,7 @@ import { strConcat } from "@utils/general";
  * @returns {String}
  */
 export const classnames = (
-  ...classNames: (string | number | object)[]
+  ...classNames: (string | number | Record<string, string | number>)[]
 ): string => {
   const concatWithWhitespace = strConcat(" ");
   return (concatWithWhitespace as any)(...classNames);

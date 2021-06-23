@@ -8,28 +8,28 @@ export enum IRequestTypes {
 }
 
 export interface IGetService {
-  (params: { url: string; headers?: object }): {
+  (params: { url: string; headers?: Record<string, string | number> }): {
     method: IRequestTypes;
     url: string;
-    headers: object;
+    headers: Record<string, string | number>;
   };
 }
 
 export interface IPostService {
-  (params: { url: string; headers?: object; body?: object }): {
+  (params: { url: string; headers?: Record<string, string | number>; body?: Record<string, unknown> }): {
     method: IRequestTypes;
     url: string;
-    headers: object;
-    body: object;
+    headers: Record<string, string | number>;
+    body: Record<string, unknown>;
   };
 }
 
 export interface IPutService {
-  (params: { url: string; headers?: object; body?: object }): {
+  (params: { url: string; headers?: Record<string, string | number>; body?: Record<string, unknown> }): {
     method: IRequestTypes;
     url: string;
-    headers: object;
-    body: object;
+    headers: Record<string, string | number>;
+    body: Record<string, unknown>;
   };
 }
 
@@ -37,7 +37,7 @@ export interface IService {
   (payload: AjaxResponse): {
     method: IRequestTypes;
     url: string;
-    headers: object;
-    body?: object;
+    headers: Record<string, string | number>;
+    body?: Record<string, unknown>;
   };
 }

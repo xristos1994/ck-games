@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useEffect } from "react";
 import { connect } from "react-redux";
 import { SEO, AvailableGames } from "./components";
 import { restartAllGames } from "@models/website/actions";
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   restartAllGames: () => void;

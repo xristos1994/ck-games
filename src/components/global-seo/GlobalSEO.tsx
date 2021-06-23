@@ -12,7 +12,7 @@ const _GlobalSEO: FC<IProps> = ({ t }): ReactElement => {
     <Helmet>
       <meta charSet="utf-8" />
       <meta name="author" content={t("Meta Author")} />
-      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="language" content={t("Meta Content")} />
       <html lang={t("html lang")} />
     </Helmet>

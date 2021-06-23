@@ -80,7 +80,7 @@ const setTeamByIdEpic = (
 const removeTeamByIdEpic = (
   action$: ActionsObservable<IActionWithPayload<ITeam["id"]>>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState["teams"]>> => {
+): Observable<IActionWithPayload<IModelState["teams"] | null>> => {
   return action$.pipe(
     ofType(removeTeamById.type),
     withLatestFrom(state$),
@@ -105,7 +105,7 @@ const addTeamByIdEpic = (
   return action$.pipe(
     ofType(addTeam.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const teams = state.websiteRootReducer.pantomime.teams;
       return updateTeams(teams.concat(createNewTeam(teams.length)));
     })
@@ -123,7 +123,7 @@ const teamsSetupSubmitEpic = (
   return action$.pipe(
     ofType(teamsSetupSubmit.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const gameState = state.websiteRootReducer.pantomime.gameState;
       if (gameState === GameStates.setTeams) {
         return [updateGameState(GameStates.setScoreTarget)];
@@ -157,7 +157,6 @@ const setScoreTargetEpic = (
 
 const scoreSetupSubmitEpic = (
   action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
 ): Observable<IActionWithPayload<GameStates>> => {
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
@@ -192,7 +191,7 @@ const availableTimeSetupSubmitEpic = (
   return action$.pipe(
     ofType(availableTimeSetupSubmit.type, goToNextRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const newTeams = assignNextTeam(state.websiteRootReducer.pantomime.teams);
       const scoreTarget = state.websiteRootReducer.pantomime.scoreTarget;
       const gameEnded =
@@ -227,7 +226,7 @@ const startRoundEpic = (
   return action$.pipe(
     ofType(startRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       return [
         updateGameState(GameStates.roundInProgress),
         startClock(state.websiteRootReducer.pantomime.availableTime),
@@ -243,7 +242,7 @@ const clockRemainingTimeBecameZeroEpic = (
   return action$.pipe(
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const isPantomimeSelected =
         state.websiteRootReducer.website.selectedGame ===
         AvailableGames.pantomime;
@@ -252,7 +251,7 @@ const clockRemainingTimeBecameZeroEpic = (
         return noAction(null);
       }
 
-      const newRemainingTime = state.websiteRootReducer.clock.remainingTime - 1;
+      const newRemainingTime = state.websiteRootReducer.clock.remainingTime || 0 - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {
@@ -270,7 +269,6 @@ const clockRemainingTimeBecameZeroEpic = (
 
 const endRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
 ): Observable<
   IActionWithPayload<GameStates | ITeam["movieFound"]> | IActionWithPayload
 > => {
@@ -289,7 +287,7 @@ const restartGameEpic = (
   return action$.pipe(
     ofType(restartGame.type, initializeGame.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const pantomimeState = state.websiteRootReducer.pantomime;
       const newPantomimeState = restartGameState(pantomimeState);
 
@@ -345,7 +343,7 @@ const goBackEpic = (
   return action$.pipe(
     ofType(goBack.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const gameState = state.websiteRootReducer.pantomime.gameState;
       const newGameState =
         gameState === GameStates.setScoreTarget

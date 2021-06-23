@@ -11,9 +11,9 @@ interface IResult {
 
 const getSyllable = (mode: IMode, syllables: ISyllables): string => {
   let syllable = "";
-  if (mode.id === Modes.tik.id) {
+  if (mode && mode.id === Modes.tik.id) {
     syllable = syllables.start[getRandomInteger(0, syllables.start.length - 1)];
-  } else if (mode.id === Modes.tak.id) {
+  } else if (mode && mode.id === Modes.tak.id) {
     syllable = syllables.end[getRandomInteger(0, syllables.end.length - 1)];
   } else {
     syllable =

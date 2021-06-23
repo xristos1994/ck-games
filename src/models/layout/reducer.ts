@@ -15,7 +15,7 @@ const reducer = (
     case startLayout.type:
       return { ...state, layoutStarted: true };
     case updateIsMenuOpen.type:
-      return { ...state, isMenuOpen: action.payload };
+      return { ...state, isMenuOpen: action.payload || false };
     default:
       return state;
   }

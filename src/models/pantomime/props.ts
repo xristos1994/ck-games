@@ -1,4 +1,3 @@
-import { isPositiveInteger } from "@utils/general";
 import { GameStates, AvailableTimes, AvailableScoreTargets } from "./config";
 import { IState } from "@models/interfaces";
 import { IState as IModelState, ITeam } from "./interfaces";
@@ -13,7 +12,7 @@ export const teams: (state: IState) => IModelState["teams"] = state =>
 
 export const playerById: (
   state: IState
-) => (id: ITeam["id"]) => ITeam = state => id =>
+) => (id: ITeam["id"]) => ITeam | undefined = state => id =>
   teams(state).find(team => team.id === id);
 
 export const teamNameThatPlaysNow: (

@@ -14,7 +14,7 @@
  */
 export const strConcat = (
   separator?: string
-): ((items: (string | number | object)[]) => string) => {
+): ((items: (string | number | Record<string, unknown>)[]) => string) => {
   const _seperator = separator || " ";
   return (...items: (string | number | object)[]): string => {
     const hasOwnProperty = Object.prototype.hasOwnProperty;

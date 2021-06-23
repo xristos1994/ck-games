@@ -15,7 +15,7 @@ const reducer = (
 
   switch (type) {
     case updateLang.type:
-      return { ...state, lang: payload };
+      return { ...state, lang: payload || availableLangs.default };
     default:
       return state;
   }

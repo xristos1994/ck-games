@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from "react";
 import { Link } from "gatsby";
 import { FlatLogoIcon } from "@components/icons";
 
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 const Header: FC = (): ReactElement => {
   return (

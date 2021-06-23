@@ -15,7 +15,7 @@ import { AvailableGames } from "@models/website/interfaces";
 import { Link } from "gatsby";
 import { LangFlagMap } from "@models/i18n/utils";
 
-const styles = require("./styles.module.css");
+import styles from "./styles.module.css";
 
 interface IProps {
   selectedGame: string;
