@@ -1,6 +1,6 @@
-import React, { FC, ReactElement, useEffect } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { FC, ReactElement, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import {
   SEO,
   TeamsSetup,
@@ -9,13 +9,14 @@ import {
   StartRound,
   RoundInProgress,
   EndRound,
-  EndGame,
-} from "./components";
-import { gameState } from "@models/pantomime/props";
-import { initializeGame } from "@models/pantomime/actions";
-import { GameStates } from "@models/pantomime/config";
-import { IState } from "@models/interfaces";
-import styles from "./styles.module.css";
+  EndGame
+} from './components';
+import { compose } from '@utils/component-utils';
+import { gameState } from '@models/pantomime/props';
+import { initializeGame } from '@models/pantomime/actions';
+import { GameStates } from '@models/pantomime/config';
+import { IState } from '@models/interfaces';
+import styles from './styles.module.css';
 
 interface IProps {
   gameState: GameStates;
@@ -24,7 +25,7 @@ interface IProps {
 
 const _Pantomime: FC<IProps> = ({
   gameState,
-  initializeGame,
+  initializeGame
 }): ReactElement => {
   useEffect(() => {
     initializeGame();
@@ -64,15 +65,17 @@ const _Pantomime: FC<IProps> = ({
   );
 };
 
-const Pantomime = connect(
-  createStructuredSelector<
-    IState,
-    { gameState: IProps["gameState"] },
-    { gameState: IProps["gameState"] }
-  >({
-    gameState,
-  }),
-  { initializeGame }
+const Pantomime = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      { gameState: IProps['gameState'] },
+      { gameState: IProps['gameState'] }
+    >({
+      gameState
+    }),
+    { initializeGame }
+  )
 )(_Pantomime);
 
 export { Pantomime };

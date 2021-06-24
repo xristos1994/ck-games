@@ -1,4 +1,4 @@
-import { IState as ICoreState } from "./core/interfaces";
+import { IState as ICoreState } from './core/interfaces';
 
 export interface IState {
   coreRootReducer: {

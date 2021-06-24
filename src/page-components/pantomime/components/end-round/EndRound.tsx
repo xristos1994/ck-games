@@ -1,25 +1,27 @@
-import React, { FC, ReactElement } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { Button } from "@components";
-import { classnames, compose } from "@utils/component-utils";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
-import { goToNextRound, setIfMovieFound } from "@models/pantomime/actions";
-import { teams } from "@models/pantomime/props";
-import { IState } from "@models/interfaces";
-import { ScoreBoard } from "../score-board";
-import styles from "./styles.module.css";
+import React, { FC, ReactElement } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { Button } from '@components';
+import { classnames, compose } from '@utils/component-utils';
+import { withTranslation, ITranslate } from '@models/i18n/hoc';
+import { goToNextRound, setIfMovieFound } from '@models/pantomime/actions';
+import { teams } from '@models/pantomime/props';
+import { IState } from '@models/interfaces';
+import { ScoreBoard } from '../score-board';
+import styles from './styles.module.css';
+
+interface ITeam {
+  id: number;
+  score: number;
+  name: string;
+  playsNow: boolean | null;
+  movieFound: boolean;
+}
 
 interface IProps {
-  teams: {
-    id: number;
-    score: number;
-    name: string;
-    playsNow: boolean | null;
-    movieFound: boolean;
-  }[];
+  teams: ITeam[];
   goToNextRound: () => void;
-  setIfMovieFound: (boolean) => void;
+  setIfMovieFound: (arg0: boolean) => void;
   t: ITranslate;
 }
 
@@ -27,14 +29,14 @@ const _EndRound: FC<IProps> = ({
   teams,
   goToNextRound,
   setIfMovieFound,
-  t,
+  t
 }): ReactElement => {
-  const teamNow = teams.find(team => team.playsNow);
+  const teamNow = teams.find(team => team.playsNow) || {} as ITeam;
 
   return (
     <div className={styles.endRoundContainer}>
       <div className={classnames(styles.title)}>
-        {t("Team, your turn completed", [teamNow.name])}
+        {t('Team, your turn completed', [teamNow.name])}
       </div>
       <ScoreBoard />
       <div className={styles.movieFoundButtons}>
@@ -43,29 +45,29 @@ const _EndRound: FC<IProps> = ({
           other={{ disabled: teamNow.movieFound }}
           className={classnames({
             [styles.movieActionSelected]: teamNow.movieFound,
-            [styles.movieActionNotSelected]: !teamNow.movieFound,
+            [styles.movieActionNotSelected]: !teamNow.movieFound
           })}
           onClick={() => setIfMovieFound(true)}
         >
-          {t("Movie Found")}
+          {t('Movie Found')}
         </Button>
         <Button
           key="movieNotFound"
           other={{ disabled: !teamNow.movieFound }}
           className={classnames({
             [styles.movieActionSelected]: !teamNow.movieFound,
-            [styles.movieActionNotSelected]: teamNow.movieFound,
+            [styles.movieActionNotSelected]: teamNow.movieFound
           })}
           onClick={() => setIfMovieFound(false)}
         >
-          {t("Movie Not Found")}
+          {t('Movie Not Found')}
         </Button>
       </div>
       <Button
         onClick={() => goToNextRound()}
         className={classnames(styles.proceedButton)}
       >
-        {t("CONTINUE")}
+        {t('CONTINUE')}
       </Button>
     </div>
   );
@@ -76,13 +78,13 @@ const EndRound = compose(
     createStructuredSelector<
       IState,
       {
-        teams: IProps["teams"];
+        teams: IProps['teams'];
       },
       {
-        teams: IProps["teams"];
+        teams: IProps['teams'];
       }
     >({
-      teams,
+      teams
     }),
     { goToNextRound, setIfMovieFound }
   ),

@@ -1,11 +1,11 @@
-import React, { FC, ReactElement } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { classnames, compose } from "@utils/component-utils";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
-import { players } from "@models/tik-tak-boom/props";
-import { IState } from "@models/interfaces";
-import styles from "./styles.module.css";
+import React, { FC, ReactElement } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { classnames, compose } from '@utils/component-utils';
+import { withTranslation, ITranslate } from '@models/i18n/hoc';
+import { players } from '@models/tik-tak-boom/props';
+import { IState } from '@models/interfaces';
+import styles from './styles.module.css';
 
 interface IProps {
   players: {
@@ -21,14 +21,14 @@ const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
   return (
     <div className={classnames(styles.scoreBoardContainer)}>
       <div className={classnames(styles.scoreBoardTitle)}>
-        {t("Scoreboard")}
+        {t('Scoreboard')}
       </div>
       <div className={classnames(styles.scoreBoard)}>
         {players.map((player, index) => [
           <div
             key={`index_${player.id}`}
             className={classnames({
-              [styles.inactive]: !player.isActive,
+              [styles.inactive]: !player.isActive
             })}
           >
             {index + 1}.
@@ -36,7 +36,7 @@ const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
           <div
             key={`name_${player.id}`}
             className={classnames({
-              [styles.inactive]: !player.isActive,
+              [styles.inactive]: !player.isActive
             })}
           >
             {player.name}
@@ -44,11 +44,11 @@ const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
           <div
             key={`score_${player.id}`}
             className={classnames({
-              [styles.inactive]: !player.isActive,
+              [styles.inactive]: !player.isActive
             })}
           >
             {player.numOfBooms}
-          </div>,
+          </div>
         ])}
       </div>
     </div>
@@ -60,27 +60,27 @@ const ScoreBoard = compose(
     createStructuredSelector<
       IState,
       {
-        players: IProps["players"];
+        players: IProps['players'];
       },
       {
-        players: IProps["players"];
+        players: IProps['players'];
       }
     >({
-      players: (state: IState): IProps["players"] =>
+      players: (state: IState): IProps['players'] =>
         [...players(state)]
           .sort((p1, p2) =>
             p1.numOfBooms < p2.numOfBooms
               ? 1
               : p1.numOfBooms > p2.numOfBooms
-              ? -1
-              : 0
+                ? -1
+                : 0
           )
           .map(({ id, isActive, numOfBooms, name }) => ({
             id,
             isActive,
             numOfBooms,
-            name,
-          })),
+            name
+          }))
     })
   ),
   withTranslation

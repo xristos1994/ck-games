@@ -1,3 +1,3 @@
-import { useScrollDirection } from "./useScrollDirection";
+import { useScrollDirection } from './useScrollDirection';
 
 export { useScrollDirection };

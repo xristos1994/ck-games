@@ -1,9 +1,9 @@
-import { assignNextTeam } from "./assignNextTeam";
-import { createNewTeam } from "./createNewTeam";
-import { restartGameState } from "./restartGameState";
-import { assignIfMovieFound } from "./assignIfMovieFound";
-import { getAudio } from "./getAudio";
-import { findMovies } from "./findMovies";
+import { assignNextTeam } from './assignNextTeam';
+import { createNewTeam } from './createNewTeam';
+import { restartGameState } from './restartGameState';
+import { assignIfMovieFound } from './assignIfMovieFound';
+import { getAudio } from './getAudio';
+import { findMovies } from './findMovies';
 
 export {
   assignNextTeam,
@@ -11,5 +11,5 @@ export {
   restartGameState,
   assignIfMovieFound,
   getAudio,
-  findMovies,
+  findMovies
 };

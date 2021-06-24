@@ -1,4 +1,4 @@
-import { GameStates } from "./config";
+import { GameStates } from './config';
 
 export interface ITeam {
   id: number;

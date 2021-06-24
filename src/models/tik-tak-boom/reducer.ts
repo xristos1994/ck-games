@@ -1,4 +1,4 @@
-import { IActionWithPayload } from "@core/actions/interfaces";
+import { IActionWithPayload } from '@core/actions/interfaces';
 import {
   startTikTakBoom,
   updateGameState,
@@ -6,35 +6,35 @@ import {
   updateSyllable,
   updateScoreTarget,
   updatePlayers,
-  updateGameReduxState,
-} from "./actions";
-import { GameStates, AvailableScoreTargets } from "./config";
-import { IState } from "./interfaces";
+  updateGameReduxState
+} from './actions';
+import { GameStates, AvailableScoreTargets } from './config';
+import { IState } from './interfaces';
 
 const initialState: IState = {
   tikTakBoomStarted: false,
   players: [
     {
       id: 0,
-      name: "",
+      name: '',
       isActive: true,
       playsNow: null,
       startsRound: null,
-      numOfBooms: 0,
+      numOfBooms: 0
     },
     {
       id: 1,
-      name: "",
+      name: '',
       isActive: true,
       playsNow: null,
       startsRound: null,
-      numOfBooms: 0,
-    },
+      numOfBooms: 0
+    }
   ],
   gameState: GameStates.setPlayers,
   mode: null,
   syllable: null,
-  scoreTarget: AvailableScoreTargets.default,
+  scoreTarget: AvailableScoreTargets.default
 };
 
 const reducer = (
@@ -71,5 +71,5 @@ const reducer = (
 };
 
 export const tikTakBoomReducer = {
-  tikTakBoom: reducer,
+  tikTakBoom: reducer
 };

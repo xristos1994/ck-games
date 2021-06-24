@@ -1,4 +1,4 @@
-import { strConcat } from "@utils/general";
+import { strConcat } from '@utils/general';
 /**
  * Join classnames together conditionally
  *
@@ -6,8 +6,8 @@ import { strConcat } from "@utils/general";
  * @returns {String}
  */
 export const classnames = (
-  ...classNames: (string | number | Record<string, string | number>)[]
+  ...classNames: (string | number | Record<string, unknown>)[]
 ): string => {
-  const concatWithWhitespace = strConcat(" ");
-  return (concatWithWhitespace as any)(...classNames);
+  const concatWithWhitespace = strConcat(' ');
+  return concatWithWhitespace(...classNames);
 };

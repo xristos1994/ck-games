@@ -1,8 +1,9 @@
-import React, { FC, ReactElement, useEffect } from "react";
-import { connect } from "react-redux";
-import { SEO, AvailableGames } from "./components";
-import { restartAllGames } from "@models/website/actions";
-import styles from "./styles.module.css";
+import React, { FC, ReactElement, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { SEO, AvailableGames } from './components';
+import { compose } from '@utils/component-utils';
+import { restartAllGames } from '@models/website/actions';
+import styles from './styles.module.css';
 
 interface IProps {
   restartAllGames: () => void;
@@ -21,6 +22,8 @@ const _Home: FC<IProps> = ({ restartAllGames }): ReactElement => {
   );
 };
 
-const Home = connect(null, { restartAllGames })(_Home);
+const Home = compose(
+  connect(null, { restartAllGames })
+)(_Home);
 
 export { Home };

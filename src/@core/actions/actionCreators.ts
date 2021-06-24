@@ -1,4 +1,4 @@
-import { IAction, IActions } from "./interfaces";
+import { IAction, IActions } from './interfaces';
 
 export const Action = <IPayload = null>(
   groupName: string,
@@ -6,7 +6,7 @@ export const Action = <IPayload = null>(
 ): IAction<IPayload> => {
   const action = (payload: IPayload): { type: string; payload: IPayload } => ({
     type: `${groupName}//${name}`,
-    payload,
+    payload
   });
   action.type = `${groupName}//${name}`;
 
@@ -18,12 +18,12 @@ export const Actions = <
   ISucceededPayload = null,
   IFailedPayload = null
 >(
-  groupName: string,
-  name: string
-): IActions<IPayload, ISucceededPayload, IFailedPayload> => {
+    groupName: string,
+    name: string
+  ): IActions<IPayload, ISucceededPayload, IFailedPayload> => {
   const action = (payload: IPayload): { type: string; payload: IPayload } => ({
     type: `${groupName}//${name}`,
-    payload,
+    payload
   });
   action.type = `${groupName}//${name}`;
 

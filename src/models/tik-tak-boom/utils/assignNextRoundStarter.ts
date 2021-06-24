@@ -1,4 +1,4 @@
-import { IPlayer } from "models/tik-tak-boom/interfaces";
+import { IPlayer } from 'models/tik-tak-boom/interfaces';
 
 export const assignNextRoundStarter: (
   players: IPlayer[],
@@ -12,15 +12,15 @@ export const assignNextRoundStarter: (
     return players.map(player => {
       return player.id === playerShouldStartRound.id
         ? {
-            ...playerShouldStartRound,
-            startsRound: true,
-            isActive: activateAll || player.isActive,
-          }
+          ...playerShouldStartRound,
+          startsRound: true,
+          isActive: activateAll || player.isActive
+        }
         : {
-            ...player,
-            startsRound: false,
-            isActive: activateAll || player.isActive,
-          };
+          ...player,
+          startsRound: false,
+          isActive: activateAll || player.isActive
+        };
     });
   }
 
@@ -35,15 +35,15 @@ export const assignNextRoundStarter: (
       return players.map(player => {
         return player.id === playerShouldStartRound.id
           ? {
-              ...playerShouldStartRound,
-              startsRound: true,
-              isActive: activateAll || player.isActive,
-            }
+            ...playerShouldStartRound,
+            startsRound: true,
+            isActive: activateAll || player.isActive
+          }
           : {
-              ...player,
-              startsRound: false,
-              isActive: activateAll || player.isActive,
-            };
+            ...player,
+            startsRound: false,
+            isActive: activateAll || player.isActive
+          };
       });
     }
   }

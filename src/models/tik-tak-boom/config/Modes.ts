@@ -1,4 +1,4 @@
-import { IMode } from "./interfaces";
+import { IMode } from './interfaces';
 
 interface IModes {
   tik: IMode;
@@ -8,18 +8,18 @@ interface IModes {
 
 export const Modes: IModes = {
   tik: {
-    id: "tik",
-    name: "Tik...",
-    description: "Tik Mode Description",
+    id: 'tik',
+    name: 'Tik...',
+    description: 'Tik Mode Description'
   },
   tak: {
-    id: "tak",
-    name: "...Tak",
-    description: "Tak Mode Description",
+    id: 'tak',
+    name: '...Tak',
+    description: 'Tak Mode Description'
   },
   tikTak: {
-    id: "Tik...Tak",
-    name: "Tik...Tak",
-    description: "Tik...Tak Mode Description",
-  },
+    id: 'Tik...Tak',
+    name: 'Tik...Tak',
+    description: 'Tik...Tak Mode Description'
+  }
 };

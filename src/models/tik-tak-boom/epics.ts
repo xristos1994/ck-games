@@ -1,11 +1,11 @@
-import { Observable, of } from "rxjs";
+import { Observable, of } from 'rxjs';
 import {
   ActionsObservable,
   combineEpics,
   ofType,
-  StateObservable,
-} from "redux-observable";
-import { map, mergeMap, withLatestFrom } from "rxjs/operators";
+  StateObservable
+} from 'redux-observable';
+import { map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import {
   noAction,
   startTikTakBoom,
@@ -33,9 +33,9 @@ import {
   updateGameReduxState,
   initializeGame,
   setWhoLost,
-  goBack,
-} from "./actions";
-import { GameStates, BoomTimer } from "./config";
+  goBack
+} from './actions';
+import { GameStates, BoomTimer } from './config';
 import {
   findModeAndSyllable,
   assignNextPlayer,
@@ -45,16 +45,16 @@ import {
   createNewPlayer,
   restartGameState,
   assignWhoLost,
-  getAudio,
-} from "./utils";
-import { vibrate } from "@utils/hardware";
-import { getRandomInteger } from "@utils/general";
-import { IMode, IPlayer, IScoreTarget, ISyllable } from "./interfaces";
-import { IState } from "@models/interfaces";
-import { IActionWithPayload } from "@core/actions/interfaces";
-import { IState as IModelState } from "./interfaces";
-import { IState as IClock } from "@models/clock/interfaces";
-import { AvailableGames } from "@models/website/interfaces";
+  getAudio
+} from './utils';
+import { vibrate } from '@utils/hardware';
+import { getRandomInteger } from '@utils/general';
+import { IMode, IPlayer, IScoreTarget, ISyllable } from './interfaces';
+import { IState } from '@models/interfaces';
+import { IActionWithPayload } from '@core/actions/interfaces';
+import { IState as IModelState } from './interfaces';
+import { IState as IClock } from '@models/clock/interfaces';
+import { AvailableGames } from '@models/website/interfaces';
 
 const startEpic = (): Observable<IActionWithPayload> =>
   of(startTikTakBoom(null));
@@ -80,7 +80,7 @@ const setPlayerByIdEpic = (
 };
 
 const removePlayerByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload<IPlayer["id"]>>,
+  action$: ActionsObservable<IActionWithPayload<IPlayer['id']>>,
   state$: StateObservable<IState>
 ): Observable<IActionWithPayload<IPlayer[] | null>> => {
   return action$.pipe(
@@ -158,7 +158,7 @@ const scoreSetupSubmitEpic = (
       const newPlayers = assignNextRoundStarter(players, true);
       return [
         updatePlayers(newPlayers),
-        updateGameState(GameStates.waitForRoundStart),
+        updateGameState(GameStates.waitForRoundStart)
       ];
     })
   );
@@ -172,7 +172,7 @@ const startRoundEpic = (
   | IActionWithPayload<IMode>
   | IActionWithPayload<ISyllable>
   | IActionWithPayload<GameStates>
-  | IActionWithPayload<IClock["remainingTime"]>
+  | IActionWithPayload<IClock['remainingTime']>
 > => {
   return action$.pipe(
     ofType(startRound.type),
@@ -189,7 +189,7 @@ const startRoundEpic = (
         updateGameState(GameStates.roundInProgress),
         startClock(
           getRandomInteger(BoomTimer.minSeconds, BoomTimer.maxSeconds)
-        ),
+        )
       ];
     })
   );
@@ -235,9 +235,9 @@ const clockRemainingTimeBecameZeroEpic = (
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
     map(([, state]) => {
-      const isTikTakBoomSelected =
-        state.websiteRootReducer.website.selectedGame ===
-        AvailableGames.tikTakBoom;
+      const isTikTakBoomSelected
+        = state.websiteRootReducer.website.selectedGame
+        === AvailableGames.tikTakBoom;
 
       if (!isTikTakBoomSelected) {
         return noAction(null);
@@ -249,7 +249,7 @@ const clockRemainingTimeBecameZeroEpic = (
       if (clockIsRunning) {
         if (newRemainingTime <= 0) {
           vibrate([200, 100, 200, 100, 200]);
-          const audio = getAudio("boom");
+          const audio = getAudio('boom');
           audio && audio.play();
         }
       }
@@ -268,10 +268,10 @@ const clockTriggerTikTakSoundEpic = (
     withLatestFrom(state$),
     map(([, state]) => {
       if (
-        state.websiteRootReducer.website.selectedGame ===
-        AvailableGames.tikTakBoom
+        state.websiteRootReducer.website.selectedGame
+        === AvailableGames.tikTakBoom
       ) {
-        const audio = getAudio("tikTak");
+        const audio = getAudio('tikTak');
         audio && audio.play();
       }
 
@@ -298,7 +298,7 @@ const endRoundEpic = (
       return [
         updatePlayers(newPlayers),
         resetClock(null),
-        updateGameState(GameStates.roundEnded),
+        updateGameState(GameStates.roundEnded)
       ];
     })
   );
@@ -317,10 +317,10 @@ const goToNextRoundEpic = (
       const scoreTarget = state.websiteRootReducer.tikTakBoom.scoreTarget;
       const players = state.websiteRootReducer.tikTakBoom.players;
 
-      let newPlayers = players.map(player => ({ ...player, playsNow: null }));
+      let newPlayers: IPlayer[] = players.map(player => ({ ...player, playsNow: null }));
 
-      const shouldActivateAllPlayers =
-        newPlayers.filter(player => player.isActive).length === 1;
+      const shouldActivateAllPlayers
+        = newPlayers.filter(player => player.isActive).length === 1;
 
       newPlayers = assignNextRoundStarter(newPlayers, shouldActivateAllPlayers);
 
@@ -332,7 +332,7 @@ const goToNextRoundEpic = (
         updatePlayers(newPlayers),
         updateGameState(
           gameEnded ? GameStates.gameEnded : GameStates.waitForRoundStart
-        ),
+        )
       ];
     })
   );
@@ -362,7 +362,7 @@ const setWhoLostEpic = (
     ofType(setWhoLost.type),
     withLatestFrom(state$),
     map(([action, state]) => {
-      const playerLostId = action.payload;
+      const playerLostId = action.payload || 0;
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignWhoLost(players, playerLostId);
 
@@ -380,12 +380,12 @@ const goBackEpic = (
     withLatestFrom(state$),
     map(([, state]) => {
       const gameState = state.websiteRootReducer.tikTakBoom.gameState;
-      const newGameState =
-        gameState === GameStates.setScoreTarget
+      const newGameState
+        = gameState === GameStates.setScoreTarget
           ? GameStates.setPlayers
           : gameState === GameStates.waitForRoundStart
-          ? GameStates.setScoreTarget
-          : gameState;
+            ? GameStates.setScoreTarget
+            : gameState;
 
       return updateGameState(newGameState);
     })

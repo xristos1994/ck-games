@@ -1,15 +1,15 @@
-import React, { FC, ReactElement } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { classnames, compose } from "@utils/component-utils";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
-import { Button } from "@components";
-import { players, isPlayersSetupValid } from "@models/tik-tak-boom/props";
-import { Player } from "./components";
-import { addPlayer, playersSetupSubmit } from "@models/tik-tak-boom/actions";
-import { IState } from "@models/interfaces";
+import React, { FC, ReactElement } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { classnames, compose } from '@utils/component-utils';
+import { withTranslation, ITranslate } from '@models/i18n/hoc';
+import { Button } from '@components';
+import { players, isPlayersSetupValid } from '@models/tik-tak-boom/props';
+import { Player } from './components';
+import { addPlayer, playersSetupSubmit } from '@models/tik-tak-boom/actions';
+import { IState } from '@models/interfaces';
 
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 interface IProps {
   players: {
@@ -30,12 +30,12 @@ const _PlayersSetup: FC<IProps> = ({
   playersSetupSubmit,
   addPlayer,
   isPlayersSetupValid,
-  t,
+  t
 }): ReactElement => {
   return (
     <div className={classnames(styles.playersSetupContainer)}>
       <div className={classnames(styles.playersSetupTitle)}>
-        {t("Player Setup")}
+        {t('Player Setup')}
       </div>
       <div className={styles.playersContainer}>
         {players.map(player => (
@@ -46,7 +46,7 @@ const _PlayersSetup: FC<IProps> = ({
         onClick={() => addPlayer()}
         className={classnames(styles.addPlayerButton)}
       >
-        {t("Add Player")}
+        {t('Add Player')}
       </Button>
 
       <Button
@@ -54,7 +54,7 @@ const _PlayersSetup: FC<IProps> = ({
         onClick={() => playersSetupSubmit()}
         className={classnames(styles.playersSetupSubmitButton)}
       >
-        {t("CONTINUE")}
+        {t('CONTINUE')}
       </Button>
     </div>
   );
@@ -65,16 +65,16 @@ const PlayersSetup = compose(
     createStructuredSelector<
       IState,
       {
-        players: IProps["players"];
-        isPlayersSetupValid: IProps["isPlayersSetupValid"];
+        players: IProps['players'];
+        isPlayersSetupValid: IProps['isPlayersSetupValid'];
       },
       {
-        players: IProps["players"];
-        isPlayersSetupValid: IProps["isPlayersSetupValid"];
+        players: IProps['players'];
+        isPlayersSetupValid: IProps['isPlayersSetupValid'];
       }
     >({
       players,
-      isPlayersSetupValid,
+      isPlayersSetupValid
     }),
     { playersSetupSubmit, addPlayer }
   ),

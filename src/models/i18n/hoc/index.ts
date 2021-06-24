@@ -1,4 +1,6 @@
-import { withTranslation } from "./withTranslation";
-import { ITranslate } from "./interfaces";
+import { withTranslation } from './withTranslation';
+import { ITranslate } from './interfaces';
 
-export { withTranslation, ITranslate };
+export { withTranslation };
+export type { ITranslate };
+

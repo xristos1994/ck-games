@@ -1,10 +1,10 @@
-import { startLayout, updateIsMenuOpen } from "./actions";
-import { IState } from "./interfaces";
-import { IActionWithPayload } from "@core/actions/interfaces";
+import { startLayout, updateIsMenuOpen } from './actions';
+import { IState } from './interfaces';
+import { IActionWithPayload } from '@core/actions/interfaces';
 
 const initialState: IState = {
   layoutStarted: false,
-  isMenuOpen: false,
+  isMenuOpen: false
 };
 
 const reducer = (
@@ -22,5 +22,5 @@ const reducer = (
 };
 
 export const layoutReducer = {
-  layout: reducer,
+  layout: reducer
 };

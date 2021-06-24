@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { lang } from "@models/i18n/props";
-import { ILang } from "@models/i18n/interfaces";
-import { IState } from "@models/interfaces";
-import { availableLangs } from "@models/i18n/utils";
-import { ITranslate } from "./interfaces";
-import { translationsEN, translationsEL } from "./translations";
+import React, { FC } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { lang } from '@models/i18n/props';
+import { ILang } from '@models/i18n/interfaces';
+import { IState } from '@models/interfaces';
+import { availableLangs } from '@models/i18n/utils';
+import { ITranslate } from './interfaces';
+import { translationsEN, translationsEL } from './translations';
 
 interface IProps {
   t: ITranslate;
@@ -14,14 +14,14 @@ interface IProps {
   lang: ILang;
 }
 
-const translate: IProps["t"] = (label, placeholders = [], langCode) => {
-  const translations =
-    langCode === availableLangs.en.code
+const translate: IProps['t'] = (label, placeholders = [], langCode) => {
+  const translations
+    = langCode === availableLangs.en.code
       ? { ...translationsEN }
       : { ...translationsEL };
-  let result = translations[label] || label || "";
+  let result = translations[label] || label || '';
 
-  placeholders.forEach( (ph, idx) => {
+  placeholders.forEach((ph, idx) => {
     result = result.replace(`%${idx}`, ph as string);
   });
 
@@ -50,7 +50,7 @@ const withTranslation = (WrappedComponent: FC<IProps>): FC<IProps> => {
         lang: ILang;
       }
     >({
-      lang,
+      lang
     })
   )(_Component);
 

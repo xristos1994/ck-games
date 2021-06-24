@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, SVGProps } from "react";
+import React, { FC, ReactElement, SVGProps } from 'react';
 
 const BombIcon: FC<SVGProps<SVGSVGElement>> = (props): ReactElement => {
   return (

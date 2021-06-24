@@ -1,10 +1,10 @@
-import { IActionWithPayload } from "@core/actions/interfaces";
-import { updateLang } from "./actions";
-import { IState } from "./interfaces";
-import { availableLangs } from "./utils";
+import { IActionWithPayload } from '@core/actions/interfaces';
+import { updateLang } from './actions';
+import { IState } from './interfaces';
+import { availableLangs } from './utils';
 
 const initialState: IState = {
-  lang: availableLangs.default,
+  lang: availableLangs.default
 };
 
 const reducer = (
@@ -22,5 +22,5 @@ const reducer = (
 };
 
 export const i18nReducer = {
-  i18n: reducer,
+  i18n: reducer
 };

@@ -1,9 +1,9 @@
-import { startCore } from "./actions";
-import { IState } from "./interfaces";
-import { IActionWithPayload } from "./../../actions/interfaces";
+import { startCore } from './actions';
+import { IState } from './interfaces';
+import { IActionWithPayload } from './../../actions/interfaces';
 
 const initialState: IState = {
-  coreStarted: false,
+  coreStarted: false
 };
 
 const reducer = (
@@ -19,5 +19,5 @@ const reducer = (
 };
 
 export const coreReducer = {
-  core: reducer,
+  core: reducer
 };

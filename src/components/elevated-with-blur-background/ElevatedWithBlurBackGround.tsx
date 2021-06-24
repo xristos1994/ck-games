@@ -1,5 +1,5 @@
-import React, { FC, ReactElement, ReactChild } from "react";
-import styles from "./styles.module.css";
+import React, { FC, ReactElement, ReactChild } from 'react';
+import styles from './styles.module.css';
 
 interface IProps {
   children: ReactChild | ReactChild[];

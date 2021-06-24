@@ -5,5 +5,5 @@ interface IAvailableTimes {
 
 export const AvailableTimes: IAvailableTimes = {
   allTimes: [30, 60, 90, 120],
-  default: 60,
+  default: 60
 };

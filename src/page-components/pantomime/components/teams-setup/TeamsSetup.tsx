@@ -1,15 +1,15 @@
-import React, { FC, ReactElement } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { classnames, compose } from "@utils/component-utils";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
-import { Button } from "@components";
-import { teams, isTeamsSetupValid } from "@models/pantomime/props";
-import { Team } from "./components";
-import { addTeam, teamsSetupSubmit } from "@models/pantomime/actions";
-import { IState } from "@models/interfaces";
+import React, { FC, ReactElement } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { classnames, compose } from '@utils/component-utils';
+import { withTranslation, ITranslate } from '@models/i18n/hoc';
+import { Button } from '@components';
+import { teams, isTeamsSetupValid } from '@models/pantomime/props';
+import { Team } from './components';
+import { addTeam, teamsSetupSubmit } from '@models/pantomime/actions';
+import { IState } from '@models/interfaces';
 
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 interface IProps {
   teams: {
@@ -28,12 +28,12 @@ const _TeamsSetup: FC<IProps> = ({
   teamsSetupSubmit,
   addTeam,
   isTeamsSetupValid,
-  t,
+  t
 }): ReactElement => {
   return (
     <div className={classnames(styles.teamsSetupContainer)}>
       <div className={classnames(styles.teamsSetupTitle)}>
-        {t("Team Setup")}
+        {t('Team Setup')}
       </div>
       <div className={styles.teamsContainer}>
         {teams.map(team => (
@@ -44,7 +44,7 @@ const _TeamsSetup: FC<IProps> = ({
         onClick={() => addTeam()}
         className={classnames(styles.addTeamButton)}
       >
-        {t("Add Team")}
+        {t('Add Team')}
       </Button>
 
       <Button
@@ -52,7 +52,7 @@ const _TeamsSetup: FC<IProps> = ({
         onClick={() => teamsSetupSubmit()}
         className={classnames(styles.teamsSetupSubmitButton)}
       >
-        {t("CONTINUE")}
+        {t('CONTINUE')}
       </Button>
     </div>
   );
@@ -63,16 +63,16 @@ const TeamsSetup = compose(
     createStructuredSelector<
       IState,
       {
-        teams: IProps["teams"];
-        isTeamsSetupValid: IProps["isTeamsSetupValid"];
+        teams: IProps['teams'];
+        isTeamsSetupValid: IProps['isTeamsSetupValid'];
       },
       {
-        teams: IProps["teams"];
-        isTeamsSetupValid: IProps["isTeamsSetupValid"];
+        teams: IProps['teams'];
+        isTeamsSetupValid: IProps['isTeamsSetupValid'];
       }
     >({
       teams,
-      isTeamsSetupValid,
+      isTeamsSetupValid
     }),
     { teamsSetupSubmit, addTeam }
   ),

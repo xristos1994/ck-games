@@ -1,3 +1,3 @@
-import { StartRound } from "./StartRound";
+import { StartRound } from './StartRound';
 
 export { StartRound };

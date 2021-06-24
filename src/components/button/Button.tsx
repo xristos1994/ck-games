@@ -1,6 +1,6 @@
-import React, { FC, MouseEventHandler, ReactElement, ReactChild } from "react";
-import { classnames } from "@utils/component-utils";
-import "./styles.module.css";
+import React, { FC, MouseEventHandler, ReactElement, ReactChild } from 'react';
+import { classnames } from '@utils/component-utils';
+import './styles.module.css';
 
 interface IProps {
   children: ReactChild | ReactChild[];
@@ -12,13 +12,13 @@ interface IProps {
 const Button: FC<IProps> = ({
   children,
   onClick,
-  className = "",
-  other,
+  className = '',
+  other
 }): ReactElement => {
   return (
     <button
-      className={classnames("main-button-hover-effect", {
-        [className]: !!className,
+      className={classnames('main-button-hover-effect', {
+        [className]: !!className
       })}
       {...other}
       onClick={onClick}

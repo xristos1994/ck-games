@@ -1,3 +1,3 @@
-import { getGameFromPathname } from "./getGameFromPathname";
+import { getGameFromPathname } from './getGameFromPathname';
 
 export { getGameFromPathname };

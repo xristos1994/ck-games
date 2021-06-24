@@ -1,4 +1,4 @@
-import { IPlayer } from "models/tik-tak-boom/interfaces";
+import { IPlayer } from 'models/tik-tak-boom/interfaces';
 
 export const assignScoreAfterRoundEnds: (
   players: IPlayer[]

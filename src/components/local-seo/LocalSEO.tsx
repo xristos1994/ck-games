@@ -1,5 +1,5 @@
-import React, { FC, ReactElement } from "react";
-import { Helmet } from "react-helmet";
+import React, { FC, ReactElement } from 'react';
+import { Helmet } from 'react-helmet';
 
 interface IProps {
   title: string;
@@ -14,7 +14,7 @@ const LocalSEO: FC<IProps> = ({
   canonicalUrl,
   description,
   keywords,
-  ogImage,
+  ogImage
 }): ReactElement => {
   return (
     <Helmet>

@@ -1,12 +1,12 @@
-import React, { FC, ReactElement, ChangeEvent } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
-import { Button } from "@components";
-import { setPlayerById, removePlayerById } from "@models/tik-tak-boom/actions";
-import { players } from "@models/tik-tak-boom/props";
-import { IState } from "@models/interfaces";
-import styles from "./styles.module.css";
+import React, { FC, ReactElement, ChangeEvent } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { classnames, compose } from '@utils/component-utils';
+import { Button } from '@components';
+import { setPlayerById, removePlayerById } from '@models/tik-tak-boom/actions';
+import { players } from '@models/tik-tak-boom/props';
+import { IState } from '@models/interfaces';
+import styles from './styles.module.css';
 
 interface IProps {
   player: {
@@ -14,16 +14,16 @@ interface IProps {
     isActive: boolean;
     name: string;
   };
-  setPlayerById: (player: IProps["player"]) => void;
+  setPlayerById: (player: IProps['player']) => void;
   numOfPlayers: number;
-  removePlayerById: (id: IProps["player"]["id"]) => void;
+  removePlayerById: (id: IProps['player']['id']) => void;
 }
 
 const _Player: FC<IProps> = ({
   player,
   setPlayerById,
   numOfPlayers,
-  removePlayerById,
+  removePlayerById
 }): ReactElement => {
   const onChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
     setPlayerById({ ...player, name: e.target.value });
@@ -53,7 +53,7 @@ const _Player: FC<IProps> = ({
         <Button
           onClick={removePlayer}
           className={classnames(
-            "main-button-hover-effect",
+            'main-button-hover-effect',
             styles.removePlayerButton
           )}
         >
@@ -64,20 +64,22 @@ const _Player: FC<IProps> = ({
   );
 };
 
-const Player = connect(
-  createStructuredSelector<
-    IState,
-    {
-      numOfPlayers: IProps["numOfPlayers"];
-    },
-    {
-      numOfPlayers: IProps["numOfPlayers"];
-    }
-  >({
-    numOfPlayers: (state: IState): IProps["numOfPlayers"] =>
-      players(state).length,
-  }),
-  { setPlayerById: setPlayerById, removePlayerById }
+const Player = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        numOfPlayers: IProps['numOfPlayers'];
+      },
+      {
+        numOfPlayers: IProps['numOfPlayers'];
+      }
+    >({
+      numOfPlayers: (state: IState): IProps['numOfPlayers'] =>
+        players(state).length
+    }),
+    { setPlayerById: setPlayerById, removePlayerById }
+  )
 )(_Player);
 
 export { Player };

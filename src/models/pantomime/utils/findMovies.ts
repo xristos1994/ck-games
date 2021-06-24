@@ -1,4 +1,4 @@
-import { Movies } from "../config";
+import { Movies } from '../config';
 
 export const findMovies = (
   currentSelectedMovieIndex: number
@@ -9,8 +9,8 @@ export const findMovies = (
   return {
     movies: [
       Movies[newSelectedMovieIndex % moviesLength],
-      Movies[(newSelectedMovieIndex + 1) % moviesLength],
+      Movies[(newSelectedMovieIndex + 1) % moviesLength]
     ],
-    index: newSelectedMovieIndex,
+    index: newSelectedMovieIndex
   };
 };

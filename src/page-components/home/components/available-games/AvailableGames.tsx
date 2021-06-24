@@ -1,10 +1,10 @@
-import React, { FC, ReactElement } from "react";
-import { Link } from "gatsby";
-import { compose } from "@utils/component-utils";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
-import { Button } from "@components";
-import { availableGames } from "./config";
-import styles from "./styles.module.css";
+import React, { FC, ReactElement } from 'react';
+import { Link } from 'gatsby';
+import { compose } from '@utils/component-utils';
+import { withTranslation, ITranslate } from '@models/i18n/hoc';
+import { Button } from '@components';
+import { availableGames } from './config';
+import styles from './styles.module.css';
 
 interface IProps {
   t: ITranslate;

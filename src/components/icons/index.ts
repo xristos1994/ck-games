@@ -1,9 +1,9 @@
-import { FlatLogoIcon } from "./FlatLogoIcon";
-import { BombIcon } from "./BombIcon";
-import { ArrowDownIcon } from "./ArrowDownIcon";
-import { ArrowUpIcon } from "./ArrowUpIcon";
-import { GreekFlagIcon } from "./GreekFlagIcon";
-import { UkFlagIcon } from "./UkFlagIcon";
+import { FlatLogoIcon } from './FlatLogoIcon';
+import { BombIcon } from './BombIcon';
+import { ArrowDownIcon } from './ArrowDownIcon';
+import { ArrowUpIcon } from './ArrowUpIcon';
+import { GreekFlagIcon } from './GreekFlagIcon';
+import { UkFlagIcon } from './UkFlagIcon';
 
 export {
   FlatLogoIcon,
@@ -11,5 +11,5 @@ export {
   ArrowDownIcon,
   ArrowUpIcon,
   GreekFlagIcon,
-  UkFlagIcon,
+  UkFlagIcon
 };

@@ -5,7 +5,7 @@ export const isPositiveInteger = (value: string | number): boolean => {
   if (!_value) {
     return false;
   }
-  _value = _value.replace(/^0+/, "") || "0";
+  _value = _value.replace(/^0+/, '') || '0';
   const n = Math.floor(Number(_value));
   return n !== Infinity && String(n) === _value && n > 0;
 };

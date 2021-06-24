@@ -1,29 +1,29 @@
-import React, { FC, ReactElement } from "react";
-import { classnames, compose } from "@utils/component-utils";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
-import { Button } from "@components";
-import { isMenuOpen } from "@models/layout/props";
-import { selectedGame } from "@models/website/props";
-import { setIsMenuOpen } from "@models/layout/actions";
-import { availableLangs, lang } from "@models/i18n/props";
-import { setLang } from "@models/i18n/actions";
-import { IState } from "@models/interfaces";
-import { ArrowUpIcon, ArrowDownIcon } from "@components/icons";
-import { AvailableGames } from "@models/website/interfaces";
-import { Link } from "gatsby";
-import { LangFlagMap } from "@models/i18n/utils";
+import React, { FC, ReactElement } from 'react';
+import { classnames, compose } from '@utils/component-utils';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { withTranslation, ITranslate } from '@models/i18n/hoc';
+import { Button } from '@components';
+import { isMenuOpen } from '@models/layout/props';
+import { selectedGame } from '@models/website/props';
+import { setIsMenuOpen } from '@models/layout/actions';
+import { availableLangs, lang } from '@models/i18n/props';
+import { setLang } from '@models/i18n/actions';
+import { IState } from '@models/interfaces';
+import { ArrowUpIcon, ArrowDownIcon } from '@components/icons';
+import { AvailableGames } from '@models/website/interfaces';
+import { Link } from 'gatsby';
+import { LangFlagMap } from '@models/i18n/utils';
 
-import styles from "./styles.module.css";
+import styles from './styles.module.css';
 
 interface IProps {
-  selectedGame: string;
+  selectedGame: string | null;
   isMenuOpen: boolean;
   setIsMenuOpen: (isMenuOpen: boolean) => void;
   availableLangs: { code: string; label: string }[];
   lang: { code: string; label: string };
-  setLang: (lang: IProps["lang"]) => void;
+  setLang: (lang: IProps['lang']) => void;
   t: ITranslate;
 }
 
@@ -34,21 +34,21 @@ const _Menu: FC<IProps> = ({
   availableLangs,
   lang,
   setLang,
-  t,
+  t
 }): ReactElement => {
-  const isSSR = typeof window === "undefined";
+  const isSSR = typeof window === 'undefined';
 
   const h1Title = (
     <h1 className={styles.menuTitle}>
       {isSSR && !selectedGame
-        ? t("Menu Title SSR")
+        ? t('Menu Title SSR')
         : (isMenuOpen || isSSR) && selectedGame === AvailableGames.pantomime
-        ? t("Pantomime")
-        : (isMenuOpen || isSSR) && selectedGame === AvailableGames.tikTakBoom
-        ? t("Tik-Tak-Boom")
-        : isMenuOpen && !selectedGame
-        ? t("CK-Games")
-        : null}
+          ? t('Pantomime')
+          : (isMenuOpen || isSSR) && selectedGame === AvailableGames.tikTakBoom
+            ? t('Tik-Tak-Boom')
+            : isMenuOpen && !selectedGame
+              ? t('CK-Games')
+              : null}
     </h1>
   );
 
@@ -56,12 +56,12 @@ const _Menu: FC<IProps> = ({
     <>
       <div className={styles.gameDescription}>
         {isSSR || (!selectedGame && isMenuOpen) ? (
-          <h2>{t("Pantomime")}</h2>
+          <h2>{t('Pantomime')}</h2>
         ) : null}
       </div>
       <div
         className={styles.gameDescription}
-        dangerouslySetInnerHTML={{ __html: t("Pantomime Description HTML") }}
+        dangerouslySetInnerHTML={{ __html: t('Pantomime Description HTML') }}
       />
     </>
   );
@@ -70,42 +70,42 @@ const _Menu: FC<IProps> = ({
     <>
       <div className={styles.gameDescription}>
         {isSSR || (!selectedGame && isMenuOpen) ? (
-          <h2>{t("Tik-Tak-Boom")}</h2>
+          <h2>{t('Tik-Tak-Boom')}</h2>
         ) : null}
       </div>
       <div
         className={styles.gameDescription}
-        dangerouslySetInnerHTML={{ __html: t("Tik-Tak-Boom Description HTML") }}
+        dangerouslySetInnerHTML={{ __html: t('Tik-Tak-Boom Description HTML') }}
       />
     </>
   );
 
   const gameDescription = (
     <>
-      {isSSR ||
-      (isMenuOpen &&
-        (selectedGame === AvailableGames.tikTakBoom || !selectedGame))
+      {isSSR
+      || (isMenuOpen
+        && (selectedGame === AvailableGames.tikTakBoom || !selectedGame))
         ? tikTakBoomDescription
         : null}
       {isMenuOpen && !selectedGame ? <hr /> : null}
-      {isSSR ||
-      (isMenuOpen &&
-        (selectedGame === AvailableGames.pantomime || !selectedGame))
+      {isSSR
+      || (isMenuOpen
+        && (selectedGame === AvailableGames.pantomime || !selectedGame))
         ? pantomimeDescription
         : null}
     </>
   );
 
   const homeButton = isMenuOpen && !!selectedGame && (
-    <Link to={"/"}>
-      <Button className={classnames(styles.homeButton)}>{t("Home")}</Button>
+    <Link to={'/'}>
+      <Button className={classnames(styles.homeButton)}>{t('Home')}</Button>
     </Link>
   );
 
   return (
     <div
       className={classnames(styles.menuContainer, {
-        [styles.openMenu]: isMenuOpen,
+        [styles.openMenu]: isMenuOpen
       })}
     >
       {(isMenuOpen || !selectedGame) && (
@@ -151,22 +151,22 @@ const Menu = compose(
     createStructuredSelector<
       IState,
       {
-        isMenuOpen: IProps["isMenuOpen"];
-        selectedGame: IProps["selectedGame"];
-        availableLangs: IProps["availableLangs"];
-        lang: IProps["lang"];
+        isMenuOpen: IProps['isMenuOpen'];
+        selectedGame: IProps['selectedGame'];
+        availableLangs: IProps['availableLangs'];
+        lang: IProps['lang'];
       },
       {
-        isMenuOpen: IProps["isMenuOpen"];
-        selectedGame: IProps["selectedGame"];
-        availableLangs: IProps["availableLangs"];
-        lang: IProps["lang"];
+        isMenuOpen: IProps['isMenuOpen'];
+        selectedGame: IProps['selectedGame'];
+        availableLangs: IProps['availableLangs'];
+        lang: IProps['lang'];
       }
     >({
       isMenuOpen,
       selectedGame,
       availableLangs,
-      lang,
+      lang
     }),
     { setIsMenuOpen, setLang }
   ),

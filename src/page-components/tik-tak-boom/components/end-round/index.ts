@@ -1,3 +1,3 @@
-import { EndRound } from "./EndRound";
+import { EndRound } from './EndRound';
 
 export { EndRound };

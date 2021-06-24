@@ -1,3 +1,3 @@
-import { RoundInProgress } from "./RoundInProgress";
+import { RoundInProgress } from './RoundInProgress';
 
 export { RoundInProgress };

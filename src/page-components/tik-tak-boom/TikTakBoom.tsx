@@ -1,6 +1,7 @@
-import React, { FC, ReactElement, useEffect } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { FC, ReactElement, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from '@utils/component-utils';
 import {
   SEO,
   PlayersSetup,
@@ -8,13 +9,13 @@ import {
   StartRound,
   RoundInProgress,
   EndRound,
-  EndGame,
-} from "./components";
-import { gameState } from "@models/tik-tak-boom/props";
-import { initializeGame } from "@models/tik-tak-boom/actions";
-import { GameStates } from "@models/tik-tak-boom/config";
-import { IState } from "@models/interfaces";
-import styles from "./styles.module.css";
+  EndGame
+} from './components';
+import { gameState } from '@models/tik-tak-boom/props';
+import { initializeGame } from '@models/tik-tak-boom/actions';
+import { GameStates } from '@models/tik-tak-boom/config';
+import { IState } from '@models/interfaces';
+import styles from './styles.module.css';
 
 interface IProps {
   gameState: GameStates;
@@ -23,14 +24,14 @@ interface IProps {
 
 const _TikTakBoom: FC<IProps> = ({
   gameState,
-  initializeGame,
+  initializeGame
 }): ReactElement => {
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);
 
-  const playerSetup = (gameState === GameStates.setPlayers ||
-    gameState === GameStates.setPlayersWhileInProgress) && <PlayersSetup />;
+  const playerSetup = (gameState === GameStates.setPlayers
+    || gameState === GameStates.setPlayersWhileInProgress) && <PlayersSetup />;
 
   const scoreSetup = gameState === GameStates.setScoreTarget && <ScoreSetup />;
 
@@ -59,15 +60,17 @@ const _TikTakBoom: FC<IProps> = ({
   );
 };
 
-const TikTakBoom = connect(
-  createStructuredSelector<
-    IState,
-    { gameState: IProps["gameState"] },
-    { gameState: IProps["gameState"] }
-  >({
-    gameState,
-  }),
-  { initializeGame }
+const TikTakBoom = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      { gameState: IProps['gameState'] },
+      { gameState: IProps['gameState'] }
+    >({
+      gameState
+    }),
+    { initializeGame }
+  )
 )(_TikTakBoom);
 
 export { TikTakBoom };
