@@ -15,7 +15,7 @@ interface ITeam {
   score: number;
   name: string;
   playsNow: boolean | null;
-  movieFound: boolean;
+  movieFound: boolean | null;
 }
 
 interface IProps {
