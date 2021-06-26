@@ -6,10 +6,7 @@ const initialState: IState = {
   coreStarted: false
 };
 
-const reducer = (
-  state: IState = initialState,
-  action: IActionWithPayload
-): IState => {
+const reducer = (state: IState = initialState, action: IActionWithPayload): IState => {
   switch (action.type) {
     case startCore.type:
       return { ...state, coreStarted: true };

@@ -8,12 +8,11 @@ import { coreRootEpic } from './../models';
 const epicMiddleware = createEpicMiddleware();
 
 const _createStore = (): IStore => {
-  const store = (process.env.NODE_ENV === 'development'
-    ? createStore(
-      createReducer(),
-      composeWithDevTools(applyMiddleware(epicMiddleware))
-    )
-    : createStore(createReducer(), applyMiddleware(epicMiddleware))) as IStore;
+  const store = (
+    process.env.NODE_ENV === 'development'
+      ? createStore(createReducer(), composeWithDevTools(applyMiddleware(epicMiddleware)))
+      : createStore(createReducer(), applyMiddleware(epicMiddleware))
+  ) as IStore;
 
   store.asyncReducers = {} as Reducer;
   store.injectReducer = (key: string, reducer: Reducer) => {
@@ -21,7 +20,7 @@ const _createStore = (): IStore => {
     store.replaceReducer(createReducer(store.asyncReducers));
     return store;
   };
-  store.runMiddlware = websiteRootEpic => {
+  store.runMiddlware = (websiteRootEpic) => {
     epicMiddleware.run(combineEpics(coreRootEpic, websiteRootEpic));
   };
 

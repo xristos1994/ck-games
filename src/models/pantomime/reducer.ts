@@ -42,8 +42,15 @@ const initialState: IState = {
 const reducer = (
   state: IState = initialState,
   action: IActionWithPayload<
-    IState
-    | IState['gameState' | 'scoreTarget' | 'availableTime' | 'teams' |'movie' | 'selectedMovieIndex' | 'availableMovies']
+    | IState
+    | IState[
+        | 'gameState'
+        | 'scoreTarget'
+        | 'availableTime'
+        | 'teams'
+        | 'movie'
+        | 'selectedMovieIndex'
+        | 'availableMovies']
   >
 ): IState => {
   const { type, payload } = action;

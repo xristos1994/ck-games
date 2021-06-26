@@ -22,8 +22,6 @@ const _Home: FC<IProps> = ({ restartAllGames }): ReactElement => {
   );
 };
 
-const Home = compose(
-  connect(null, { restartAllGames })
-)(_Home);
+const Home = compose(connect(null, { restartAllGames }))(_Home);
 
 export { Home };

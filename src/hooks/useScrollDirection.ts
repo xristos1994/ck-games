@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 enum SclollDirections {
   up = 'up',
-  down = 'down',
+  down = 'down'
 }
 
 const useScrollDirection = ({
@@ -15,8 +15,7 @@ const useScrollDirection = ({
   const SCROLL_UP = SclollDirections.up;
   const SCROLL_DOWN = SclollDirections.down;
   const _initialDirection = initialDirection || SCROLL_UP;
-  const _thresholdPixels
-    = typeof thresholdPixels === 'number' ? thresholdPixels : 64;
+  const _thresholdPixels = typeof thresholdPixels === 'number' ? thresholdPixels : 64;
 
   const [scrollDir, setScrollDir] = useState(_initialDirection);
 

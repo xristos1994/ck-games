@@ -25,19 +25,12 @@ interface IProps {
   t: ITranslate;
 }
 
-const _EndRound: FC<IProps> = ({
-  teams,
-  goToNextRound,
-  setIfMovieFound,
-  t
-}): ReactElement => {
-  const teamNow = teams.find(team => team.playsNow) || {} as ITeam;
+const _EndRound: FC<IProps> = ({ teams, goToNextRound, setIfMovieFound, t }): ReactElement => {
+  const teamNow = teams.find((team) => team.playsNow) || ({} as ITeam);
 
   return (
     <div className={styles.endRoundContainer}>
-      <div className={classnames(styles.title)}>
-        {t('Team, your turn completed', [teamNow.name])}
-      </div>
+      <div className={classnames(styles.title)}>{t('Team, your turn completed', [teamNow.name])}</div>
       <ScoreBoard />
       <div className={styles.movieFoundButtons}>
         <Button
@@ -63,10 +56,7 @@ const _EndRound: FC<IProps> = ({
           {t('Movie Not Found')}
         </Button>
       </div>
-      <Button
-        onClick={() => goToNextRound()}
-        className={classnames(styles.proceedButton)}
-      >
+      <Button onClick={() => goToNextRound()} className={classnames(styles.proceedButton)}>
         {t('CONTINUE')}
       </Button>
     </div>

@@ -5,11 +5,4 @@ import { assignIfMovieFound } from './assignIfMovieFound';
 import { getAudio } from './getAudio';
 import { findMovies } from './findMovies';
 
-export {
-  assignNextTeam,
-  createNewTeam,
-  restartGameState,
-  assignIfMovieFound,
-  getAudio,
-  findMovies
-};
+export { assignNextTeam, createNewTeam, restartGameState, assignIfMovieFound, getAudio, findMovies };

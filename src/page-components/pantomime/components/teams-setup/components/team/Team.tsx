@@ -19,12 +19,7 @@ interface IProps {
   removeTeamById: (id: IProps['team']['id']) => void;
 }
 
-const _Team: FC<IProps> = ({
-  team,
-  setTeamById,
-  numOfTeams,
-  removeTeamById
-}): ReactElement => {
+const _Team: FC<IProps> = ({ team, setTeamById, numOfTeams, removeTeamById }): ReactElement => {
   const onChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
     setTeamById({ ...team, name: e.target.value });
   };
@@ -50,10 +45,7 @@ const _Team: FC<IProps> = ({
         onBlur={onBlurName}
       />
       {numOfTeams === 2 ? null : (
-        <Button
-          onClick={removeTeam}
-          className={classnames(styles.removeTeamButton)}
-        >
+        <Button onClick={removeTeam} className={classnames(styles.removeTeamButton)}>
           X
         </Button>
       )}

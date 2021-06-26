@@ -3,4 +3,3 @@ import { ITranslate } from './interfaces';
 
 export { withTranslation };
 export type { ITranslate };
-

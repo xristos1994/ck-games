@@ -1,11 +1,11 @@
 import { IPlayer } from '@models/tik-tak-boom/interfaces';
 
-export const assignWhoLost: (
-  players: IPlayer[],
-  playerLostId: IPlayer['id']
-) => IPlayer[] = (players, playerLostId) => {
-  const activePlayers = players.filter(player => player.isActive);
-  return players.map(player => {
+export const assignWhoLost: (players: IPlayer[], playerLostId: IPlayer['id']) => IPlayer[] = (
+  players,
+  playerLostId
+) => {
+  const activePlayers = players.filter((player) => player.isActive);
+  return players.map((player) => {
     if (player.playsNow) {
       return {
         ...player,

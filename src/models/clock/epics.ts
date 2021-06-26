@@ -1,10 +1,5 @@
 import { Observable } from 'rxjs';
-import {
-  ActionsObservable,
-  combineEpics,
-  ofType,
-  StateObservable
-} from 'redux-observable';
+import { ActionsObservable, combineEpics, ofType, StateObservable } from 'redux-observable';
 import { debounceTime, mergeMap, map, withLatestFrom } from 'rxjs/operators';
 import {
   updateRemainingTime,
@@ -25,19 +20,13 @@ const startClockEpic = (
   action$: ActionsObservable<IActionWithPayload<IModelState['remainingTime']>>,
   state$: StateObservable<IState>
 ): Observable<
-  | IActionWithPayload<IModelState['remainingTime']>
-  | IActionWithPayload<IModelState['isRunning']>
-  | IActionWithPayload
+  IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload<IModelState['isRunning']> | IActionWithPayload
 > => {
   return action$.pipe(
     ofType(startClock.type),
     withLatestFrom(state$),
     mergeMap(([{ payload }]) => {
-      return [
-        updateRemainingTime(payload),
-        updateClockIsRunning(true),
-        reduceRemainingTime(null)
-      ];
+      return [updateRemainingTime(payload), updateClockIsRunning(true), reduceRemainingTime(null)];
     })
   );
 };
@@ -45,9 +34,7 @@ const startClockEpic = (
 const reduceRemainingTimeEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload
-> => {
+): Observable<IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload> => {
   return action$.pipe(
     ofType(reduceRemainingTime.type),
     debounceTime(1000),
@@ -57,19 +44,12 @@ const reduceRemainingTimeEpic = (
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (newRemainingTime === 0) {
-        return [
-          updateRemainingTime(newRemainingTime),
-          clockRemainingTimeBecameZero(null)
-        ];
+        return [updateRemainingTime(newRemainingTime), clockRemainingTimeBecameZero(null)];
       }
       if (!clockIsRunning) {
         return [updateRemainingTime(newRemainingTime)];
       }
-      return [
-        updateRemainingTime(newRemainingTime),
-        reduceRemainingTime(null),
-        clockTriggerTikTakSound(null)
-      ];
+      return [updateRemainingTime(newRemainingTime), reduceRemainingTime(null), clockTriggerTikTakSound(null)];
     })
   );
 };
@@ -79,7 +59,7 @@ const setClockIsRunningEpic = (
 ): Observable<IActionWithPayload<IModelState['isRunning']>> => {
   return action$.pipe(
     ofType(setClockIsRunning.type),
-    map(action => {
+    map((action) => {
       return updateClockIsRunning(action.payload);
     })
   );
@@ -87,10 +67,7 @@ const setClockIsRunningEpic = (
 
 const resetClockEpic = (
   action$: ActionsObservable<IActionWithPayload>
-): Observable<
-  | IActionWithPayload<IModelState['remainingTime']>
-  | IActionWithPayload<IModelState['isRunning']>
-> => {
+): Observable<IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload<IModelState['isRunning']>> => {
   return action$.pipe(
     ofType(resetClock.type),
     mergeMap(() => {
@@ -99,9 +76,4 @@ const resetClockEpic = (
   );
 };
 
-export const clockEpic = combineEpics(
-  startClockEpic,
-  resetClockEpic,
-  setClockIsRunningEpic,
-  reduceRemainingTimeEpic
-);
+export const clockEpic = combineEpics(startClockEpic, resetClockEpic, setClockIsRunningEpic, reduceRemainingTimeEpic);

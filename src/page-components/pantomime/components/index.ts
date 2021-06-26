@@ -8,14 +8,4 @@ import { EndRound } from './end-round';
 import { EndGame } from './end-game';
 import { ScoreBoard } from './score-board';
 
-export {
-  SEO,
-  TeamsSetup,
-  ScoreSetup,
-  AvailableTimeSetup,
-  StartRound,
-  RoundInProgress,
-  EndRound,
-  EndGame,
-  ScoreBoard
-};
+export { SEO, TeamsSetup, ScoreSetup, AvailableTimeSetup, StartRound, RoundInProgress, EndRound, EndGame, ScoreBoard };

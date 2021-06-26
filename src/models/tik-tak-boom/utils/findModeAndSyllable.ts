@@ -16,10 +16,7 @@ const getSyllable = (mode: IMode, syllables: ISyllables): string => {
   } else if (mode && mode.id === Modes.tak.id) {
     syllable = syllables.end[getRandomInteger(0, syllables.end.length - 1)];
   } else {
-    syllable
-      = syllables.everywhere[
-        getRandomInteger(0, syllables.everywhere.length - 1)
-      ];
+    syllable = syllables.everywhere[getRandomInteger(0, syllables.everywhere.length - 1)];
   }
 
   return syllable;

@@ -5,11 +5,4 @@ import { ArrowUpIcon } from './ArrowUpIcon';
 import { GreekFlagIcon } from './GreekFlagIcon';
 import { UkFlagIcon } from './UkFlagIcon';
 
-export {
-  FlatLogoIcon,
-  BombIcon,
-  ArrowDownIcon,
-  ArrowUpIcon,
-  GreekFlagIcon,
-  UkFlagIcon
-};
+export { FlatLogoIcon, BombIcon, ArrowDownIcon, ArrowUpIcon, GreekFlagIcon, UkFlagIcon };

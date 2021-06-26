@@ -5,12 +5,7 @@ import { classnames, compose } from '@utils/component-utils';
 import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { Button } from '@components';
 import { startRound, goBack, setMovie } from '@models/pantomime/actions';
-import {
-  teamNameThatPlaysNow,
-  canGoBack,
-  availableMovies,
-  movie
-} from '@models/pantomime/props';
+import { teamNameThatPlaysNow, canGoBack, availableMovies, movie } from '@models/pantomime/props';
 import { IState } from '@models/interfaces';
 
 import styles from './styles.module.css';
@@ -38,10 +33,8 @@ const _StartRound: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
-      <div className={classnames(styles.playsNow)}>
-        {t('Team, it is your turn', [teamNameThatPlaysNow as string])}
-      </div>
-      {availableMovies.map(_movie => (
+      <div className={classnames(styles.playsNow)}>{t('Team, it is your turn', [teamNameThatPlaysNow as string])}</div>
+      {availableMovies.map((_movie) => (
         <Button
           key={_movie}
           other={{ disabled: _movie === movie }}
@@ -62,10 +55,7 @@ const _StartRound: FC<IProps> = ({
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button
-          onClick={() => goBack()}
-          className={classnames(styles.backButton)}
-        >
+        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

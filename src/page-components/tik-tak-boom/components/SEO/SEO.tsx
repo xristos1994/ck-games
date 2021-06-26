@@ -15,9 +15,7 @@ const ogImage = `${getCanonicalBaseUrl()}${
 
 const _SEO: FC<IProps> = ({ t }): ReactElement => {
   const title = t('Tik-Tak-Boom Meta Title');
-  const canonicalUrl = `${getCanonicalBaseUrl()}/${t(
-    'Tik-Tak-Boom Meta Canonical Pathname'
-  )}`;
+  const canonicalUrl = `${getCanonicalBaseUrl()}/${t('Tik-Tak-Boom Meta Canonical Pathname')}`;
   const description = t('Tik-Tak-Boom Meta Description');
   const keywords = t('Tik-Tak-Boom Meta Keywords');
 

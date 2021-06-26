@@ -19,9 +19,7 @@ interface IProps {
 const _ScoreBoard: FC<IProps> = ({ teams, t }): ReactElement => {
   return (
     <div className={classnames(styles.scoreBoardContainer)}>
-      <div className={classnames(styles.scoreBoardTitle)}>
-        {t('Scoreboard')}
-      </div>
+      <div className={classnames(styles.scoreBoardTitle)}>{t('Scoreboard')}</div>
       <div className={classnames(styles.scoreBoard)}>
         {teams.map((team, index) => [
           <div key={`index_${team.id}`}>{index + 1}.</div>,
@@ -46,9 +44,7 @@ const ScoreBoard = compose(
     >({
       teams: (state: IState): IProps['teams'] =>
         [...teams(state)]
-          .sort((t1, t2) =>
-            t1.score < t2.score ? 1 : t1.score > t2.score ? -1 : 0
-          )
+          .sort((t1, t2) => (t1.score < t2.score ? 1 : t1.score > t2.score ? -1 : 0))
           .map(({ id, score, name }) => ({
             id,
             score,

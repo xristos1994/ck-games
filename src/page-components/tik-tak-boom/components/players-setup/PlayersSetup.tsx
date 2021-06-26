@@ -34,18 +34,13 @@ const _PlayersSetup: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={classnames(styles.playersSetupContainer)}>
-      <div className={classnames(styles.playersSetupTitle)}>
-        {t('Player Setup')}
-      </div>
+      <div className={classnames(styles.playersSetupTitle)}>{t('Player Setup')}</div>
       <div className={styles.playersContainer}>
-        {players.map(player => (
+        {players.map((player) => (
           <Player key={player.id} player={player} />
         ))}
       </div>
-      <Button
-        onClick={() => addPlayer()}
-        className={classnames(styles.addPlayerButton)}
-      >
+      <Button onClick={() => addPlayer()} className={classnames(styles.addPlayerButton)}>
         {t('Add Player')}
       </Button>
 

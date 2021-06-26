@@ -15,10 +15,7 @@ interface IProps {
 }
 
 const translate: IProps['t'] = (label, placeholders = [], langCode) => {
-  const translations
-    = langCode === availableLangs.en.code
-      ? { ...translationsEN }
-      : { ...translationsEL };
+  const translations = langCode === availableLangs.en.code ? { ...translationsEN } : { ...translationsEL };
   let result = translations[label] || label || '';
 
   placeholders.forEach((ph, idx) => {
@@ -29,13 +26,11 @@ const translate: IProps['t'] = (label, placeholders = [], langCode) => {
 };
 
 const withTranslation = (WrappedComponent: FC<IProps>): FC<IProps> => {
-  const _Component: FC<IProps> = props => {
+  const _Component: FC<IProps> = (props) => {
     return (
       <WrappedComponent
         {...props}
-        t={(label: string, placeholders?: (string | number)[]) =>
-          translate(label, placeholders, props.lang.code)
-        }
+        t={(label: string, placeholders?: (string | number)[]) => translate(label, placeholders, props.lang.code)}
       />
     );
   };

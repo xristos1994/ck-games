@@ -4,16 +4,8 @@ import { createStructuredSelector } from 'reselect';
 import { classnames, compose } from '@utils/component-utils';
 import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { Button } from '@components';
-import {
-  availableTime,
-  availableTimes,
-  canGoBack
-} from '@models/pantomime/props';
-import {
-  setAvailableTime,
-  availableTimeSetupSubmit,
-  goBack
-} from '@models/pantomime/actions';
+import { availableTime, availableTimes, canGoBack } from '@models/pantomime/props';
+import { setAvailableTime, availableTimeSetupSubmit, goBack } from '@models/pantomime/actions';
 import { IState } from '@models/interfaces';
 
 import styles from './styles.module.css';
@@ -43,15 +35,13 @@ const _AvailableTimeSetup: FC<IProps> = ({
 
   return (
     <div className={classnames(styles.availableTimeSetupContainer)}>
-      <div className={classnames(styles.availableTimeSetupTitle)}>
-        {t('Choose Available Time')}
-      </div>
+      <div className={classnames(styles.availableTimeSetupTitle)}>{t('Choose Available Time')}</div>
       <select
         className={classnames(styles.availableTimeTargetInput)}
         value={availableTime}
         onChange={() => onAvailableTimeChange}
       >
-        {availableTimes.map(time => (
+        {availableTimes.map((time) => (
           <option key={time} value={time}>
             {`${time} ${t('Seconds')}`}
           </option>
@@ -64,10 +54,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button
-          onClick={() => goBack()}
-          className={classnames(styles.backButton)}
-        >
+        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

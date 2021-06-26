@@ -39,7 +39,9 @@ const initialState: IState = {
 
 const reducer = (
   state: IState = initialState,
-  action: IActionWithPayload | IActionWithPayload<IState | IState['gameState' | 'mode' | 'syllable' | 'scoreTarget' | 'players']>
+  action:
+    | IActionWithPayload
+    | IActionWithPayload<IState | IState['gameState' | 'mode' | 'syllable' | 'scoreTarget' | 'players']>
 ): IState => {
   const { type, payload } = action;
 

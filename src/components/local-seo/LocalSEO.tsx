@@ -9,13 +9,7 @@ interface IProps {
   ogImage: string;
 }
 
-const LocalSEO: FC<IProps> = ({
-  title,
-  canonicalUrl,
-  description,
-  keywords,
-  ogImage
-}): ReactElement => {
+const LocalSEO: FC<IProps> = ({ title, canonicalUrl, description, keywords, ogImage }): ReactElement => {
   return (
     <Helmet>
       {title && <title>{title}</title>}

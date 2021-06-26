@@ -23,27 +23,16 @@ interface IProps {
   t: ITranslate;
 }
 
-const _TeamsSetup: FC<IProps> = ({
-  teams,
-  teamsSetupSubmit,
-  addTeam,
-  isTeamsSetupValid,
-  t
-}): ReactElement => {
+const _TeamsSetup: FC<IProps> = ({ teams, teamsSetupSubmit, addTeam, isTeamsSetupValid, t }): ReactElement => {
   return (
     <div className={classnames(styles.teamsSetupContainer)}>
-      <div className={classnames(styles.teamsSetupTitle)}>
-        {t('Team Setup')}
-      </div>
+      <div className={classnames(styles.teamsSetupTitle)}>{t('Team Setup')}</div>
       <div className={styles.teamsContainer}>
-        {teams.map(team => (
+        {teams.map((team) => (
           <Team key={team.id} team={team} />
         ))}
       </div>
-      <Button
-        onClick={() => addTeam()}
-        className={classnames(styles.addTeamButton)}
-      >
+      <Button onClick={() => addTeam()} className={classnames(styles.addTeamButton)}>
         {t('Add Team')}
       </Button>
 

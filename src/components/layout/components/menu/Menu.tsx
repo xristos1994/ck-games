@@ -55,23 +55,16 @@ const _Menu: FC<IProps> = ({
   const pantomimeDescription = (
     <>
       <div className={styles.gameDescription}>
-        {isSSR || (!selectedGame && isMenuOpen) ? (
-          <h2>{t('Pantomime')}</h2>
-        ) : null}
+        {isSSR || (!selectedGame && isMenuOpen) ? <h2>{t('Pantomime')}</h2> : null}
       </div>
-      <div
-        className={styles.gameDescription}
-        dangerouslySetInnerHTML={{ __html: t('Pantomime Description HTML') }}
-      />
+      <div className={styles.gameDescription} dangerouslySetInnerHTML={{ __html: t('Pantomime Description HTML') }} />
     </>
   );
 
   const tikTakBoomDescription = (
     <>
       <div className={styles.gameDescription}>
-        {isSSR || (!selectedGame && isMenuOpen) ? (
-          <h2>{t('Tik-Tak-Boom')}</h2>
-        ) : null}
+        {isSSR || (!selectedGame && isMenuOpen) ? <h2>{t('Tik-Tak-Boom')}</h2> : null}
       </div>
       <div
         className={styles.gameDescription}
@@ -82,15 +75,11 @@ const _Menu: FC<IProps> = ({
 
   const gameDescription = (
     <>
-      {isSSR
-      || (isMenuOpen
-        && (selectedGame === AvailableGames.tikTakBoom || !selectedGame))
+      {isSSR || (isMenuOpen && (selectedGame === AvailableGames.tikTakBoom || !selectedGame))
         ? tikTakBoomDescription
         : null}
       {isMenuOpen && !selectedGame ? <hr /> : null}
-      {isSSR
-      || (isMenuOpen
-        && (selectedGame === AvailableGames.pantomime || !selectedGame))
+      {isSSR || (isMenuOpen && (selectedGame === AvailableGames.pantomime || !selectedGame))
         ? pantomimeDescription
         : null}
     </>
@@ -110,7 +99,7 @@ const _Menu: FC<IProps> = ({
     >
       {(isMenuOpen || !selectedGame) && (
         <div className={styles.langSelector}>
-          {availableLangs.map(_lang => {
+          {availableLangs.map((_lang) => {
             const isSelectedLang = _lang.code === lang.code;
             return (
               <Button
@@ -125,15 +114,8 @@ const _Menu: FC<IProps> = ({
           })}
         </div>
       )}
-      <Button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className={styles.menuButton}
-      >
-        {isMenuOpen ? (
-          <ArrowDownIcon className={styles.arrowIcon} />
-        ) : (
-          <ArrowUpIcon className={styles.arrowIcon} />
-        )}
+      <Button onClick={() => setIsMenuOpen(!isMenuOpen)} className={styles.menuButton}>
+        {isMenuOpen ? <ArrowDownIcon className={styles.arrowIcon} /> : <ArrowUpIcon className={styles.arrowIcon} />}
       </Button>
       <div className={styles.menuContent}>
         <div className={styles.content}>

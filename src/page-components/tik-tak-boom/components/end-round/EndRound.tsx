@@ -24,21 +24,14 @@ interface IProps {
   t: ITranslate;
 }
 
-const _EndRound: FC<IProps> = ({
-  players,
-  goToNextRound,
-  setWhoLost,
-  t
-}): ReactElement => {
-  const playerNow = (players.find(player => player.playsNow) || {}) as IPlayer;
+const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t }): ReactElement => {
+  const playerNow = (players.find((player) => player.playsNow) || {}) as IPlayer;
 
   return (
     <div className={styles.endRoundContainer}>
-      <div className={classnames(styles.whoLost)}>
-        {t('Player, bomb exploded in your hands', [playerNow.name])}
-      </div>
+      <div className={classnames(styles.whoLost)}>{t('Player, bomb exploded in your hands', [playerNow.name])}</div>
       <div className={styles.playersContainer}>
-        {players.map(player => (
+        {players.map((player) => (
           <Button
             key={player.id}
             other={{ disabled: !player.isActive }}
@@ -53,21 +46,14 @@ const _EndRound: FC<IProps> = ({
             }}
           >
             <>
-              {playerNow.id === player.id ? (
-                <BombIcon className={styles.icon} />
-              ) : null}
+              {playerNow.id === player.id ? <BombIcon className={styles.icon} /> : null}
               {player.name}
-              {playerNow.id === player.id ? (
-                <BombIcon className={styles.icon} />
-              ) : null}
+              {playerNow.id === player.id ? <BombIcon className={styles.icon} /> : null}
             </>
           </Button>
         ))}
       </div>
-      <Button
-        onClick={() => goToNextRound()}
-        className={classnames(styles.proceedButton)}
-      >
+      <Button onClick={() => goToNextRound()} className={classnames(styles.proceedButton)}>
         {t('CONTINUE')}
       </Button>
     </div>

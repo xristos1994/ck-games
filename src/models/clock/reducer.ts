@@ -7,10 +7,7 @@ const initialState: IState = {
   isRunning: false
 };
 
-const reducer = (
-  state: IState = initialState,
-  action: IActionWithPayload
-): IState => {
+const reducer = (state: IState = initialState, action: IActionWithPayload): IState => {
   const { type, payload } = action;
 
   switch (type) {

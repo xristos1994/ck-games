@@ -1,10 +1,5 @@
 import { Observable, of } from 'rxjs';
-import {
-  combineEpics,
-  ActionsObservable,
-  StateObservable,
-  ofType
-} from 'redux-observable';
+import { combineEpics, ActionsObservable, StateObservable, ofType } from 'redux-observable';
 import { mergeMap, withLatestFrom } from 'rxjs/operators';
 import { startLayout, updateIsMenuOpen, setIsMenuOpen } from './actions';
 import { IState } from '@models/interfaces';
@@ -21,29 +16,21 @@ const setIsMenuOpenEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
 ): Observable<
-  | IActionWithPayload<IModelState['isMenuOpen']>
-  | IActionWithPayload<IClockState['isRunning']>
-  | IActionWithPayload
+  IActionWithPayload<IModelState['isMenuOpen']> | IActionWithPayload<IClockState['isRunning']> | IActionWithPayload
 > => {
   return action$.pipe(
     ofType(setIsMenuOpen.type),
     withLatestFrom(state$),
     mergeMap(([{ payload }, state]) => {
       const isRoundInProgress
-        = state.websiteRootReducer.pantomime.gameState
-          === PantomimeGameStates.roundInProgress
-        || state.websiteRootReducer.tikTakBoom.gameState
-          === TikTakBoomGameStates.roundInProgress;
+        = state.websiteRootReducer.pantomime.gameState === PantomimeGameStates.roundInProgress
+        || state.websiteRootReducer.tikTakBoom.gameState === TikTakBoomGameStates.roundInProgress;
 
       return [
-        ...(payload
-        && !!state.websiteRootReducer.website.selectedGame
-        && isRoundInProgress
+        ...(payload && !!state.websiteRootReducer.website.selectedGame && isRoundInProgress
           ? [setClockIsRunning(false)]
           : []),
-        ...(!payload
-        && !!state.websiteRootReducer.website.selectedGame
-        && isRoundInProgress
+        ...(!payload && !!state.websiteRootReducer.website.selectedGame && isRoundInProgress
           ? [setClockIsRunning(true), reduceRemainingTime(null)]
           : []),
         updateIsMenuOpen(payload || false)

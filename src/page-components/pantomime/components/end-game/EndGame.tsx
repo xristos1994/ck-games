@@ -16,14 +16,9 @@ interface IProps {
 const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
   return (
     <div className={styles.endGameContainer}>
-      <div className={classnames(styles.gameEndTitle)}>
-        {t('Game Completed')}
-      </div>
+      <div className={classnames(styles.gameEndTitle)}>{t('Game Completed')}</div>
       <ScoreBoard />
-      <Button
-        onClick={() => restartGame()}
-        className={classnames(styles.restartButton)}
-      >
+      <Button onClick={() => restartGame()} className={classnames(styles.restartButton)}>
         {t('Restart Game')}
       </Button>
       <Link to={'/'}>
@@ -33,9 +28,6 @@ const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
   );
 };
 
-const EndGame = compose(
-  connect(null, { restartGame }),
-  withTranslation
-)(_EndGame);
+const EndGame = compose(connect(null, { restartGame }), withTranslation)(_EndGame);
 
 export { EndGame };

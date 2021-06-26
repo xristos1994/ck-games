@@ -3,10 +3,4 @@ import { setLocalStorageLang, getLocalStorageLang } from './localStorageLang';
 import { LangFlagMap } from './LangFlagMap';
 import { getlangFromPathname } from './getlangFromPathname';
 
-export {
-  availableLangs,
-  setLocalStorageLang,
-  getLocalStorageLang,
-  LangFlagMap,
-  getlangFromPathname
-};
+export { availableLangs, setLocalStorageLang, getLocalStorageLang, LangFlagMap, getlangFromPathname };

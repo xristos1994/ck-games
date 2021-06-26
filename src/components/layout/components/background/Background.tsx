@@ -16,10 +16,8 @@ const Background: FC = (): ReactElement => {
     setRenderedOnce(true);
   }, [setRenderedOnce]);
 
-  const width
-    = typeof window !== 'undefined' && renderedOnce ? window.innerWidth : 1024;
-  const height
-    = typeof window !== 'undefined' && renderedOnce ? window.innerHeight : 1500;
+  const width = typeof window !== 'undefined' && renderedOnce ? window.innerWidth : 1024;
+  const height = typeof window !== 'undefined' && renderedOnce ? window.innerHeight : 1500;
 
   return (
     <div className={styles.backgroundContainer}>

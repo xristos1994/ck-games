@@ -4,15 +4,8 @@ import { createStructuredSelector } from 'reselect';
 import { classnames, compose } from '@utils/component-utils';
 import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { Button } from '@components';
-import {
-  mode,
-  syllable,
-  playerNameThatPlaysNow
-} from '@models/tik-tak-boom/props';
-import {
-  goToNextPlayer,
-  goToPreviousPlayer
-} from '@models/tik-tak-boom/actions';
+import { mode, syllable, playerNameThatPlaysNow } from '@models/tik-tak-boom/props';
+import { goToNextPlayer, goToPreviousPlayer } from '@models/tik-tak-boom/actions';
 import { IState } from '@models/interfaces';
 
 import styles from './styles.module.css';
@@ -40,20 +33,12 @@ const _RoundInProgress: FC<IProps> = ({
         {t('Player, it is your turn', [playerNameThatPlaysNow as string])}
       </div>
       <div className={classnames(styles.mode)}>{mode && mode.name}</div>
-      <div className={classnames(styles.modeDescription)}>
-        *{t((mode && mode.description) || '')}
-      </div>
+      <div className={classnames(styles.modeDescription)}>*{t((mode && mode.description) || '')}</div>
       <div className={classnames(styles.syllable)}>{syllable}</div>
-      <Button
-        onClick={() => goToNextPlayer()}
-        className={classnames(styles.goToNextPlayerButton)}
-      >
+      <Button onClick={() => goToNextPlayer()} className={classnames(styles.goToNextPlayerButton)}>
         {t('Next Player')}
       </Button>
-      <Button
-        onClick={() => goToPreviousPlayer()}
-        className={classnames(styles.goToPreviousPlayerButton)}
-      >
+      <Button onClick={() => goToPreviousPlayer()} className={classnames(styles.goToPreviousPlayerButton)}>
         {t('Previous Player')}
       </Button>
     </div>

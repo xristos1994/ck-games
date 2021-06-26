@@ -5,7 +5,7 @@ export enum GameStates {
   roundInProgress = 'roundInProgress',
   setPlayersWhileInProgress = 'setPlayersWhileInProgress',
   roundEnded = 'roundEnded',
-  gameEnded = 'gameEnded',
+  gameEnded = 'gameEnded'
 }
 
 // export type GameStates =

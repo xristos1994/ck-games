@@ -28,23 +28,13 @@ const _RoundInProgress: FC<IProps> = ({
 }): ReactElement => {
   return (
     <div className={styles.roundInProgressContainer}>
-      <div className={classnames(styles.team)}>
-        {t('Team, it is your turn', [teamNameThatPlaysNow as string])}
-      </div>
+      <div className={classnames(styles.team)}>{t('Team, it is your turn', [teamNameThatPlaysNow as string])}</div>
       <div className={classnames(styles.movie)}>{movie}</div>
-      <div className={classnames(styles.remainingTime)}>
-        {clockRemainingTime}
-      </div>
-      <Button
-        onClick={() => setIfMovieFound(true)}
-        className={classnames(styles.movieFoundButton)}
-      >
+      <div className={classnames(styles.remainingTime)}>{clockRemainingTime}</div>
+      <Button onClick={() => setIfMovieFound(true)} className={classnames(styles.movieFoundButton)}>
         {t('Movie Found')}
       </Button>
-      <Button
-        onClick={() => setIfMovieFound(false)}
-        className={classnames(styles.movieNotFoundButton)}
-      >
+      <Button onClick={() => setIfMovieFound(false)} className={classnames(styles.movieNotFoundButton)}>
         {t('Movie Not Found')}
       </Button>
     </div>

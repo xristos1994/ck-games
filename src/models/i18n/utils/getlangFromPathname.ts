@@ -11,7 +11,7 @@ export const getlangFromPathname = (pathname?: string): string => {
 
   return (
     Object.keys(availableLangs)
-      .filter(lang => lang !== 'default')
-      .find(lang => pathNameParams.includes(lang)) || ''
+      .filter((lang) => lang !== 'default')
+      .find((lang) => pathNameParams.includes(lang)) || ''
   );
 };

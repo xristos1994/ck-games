@@ -35,16 +35,27 @@ module.exports = {
     // ---------------------------------------
     // Stylistic Issues
     // ---------------------------------------
-    indent: ['warn', 2, {
-      SwitchCase: 1,
-      ignoredNodes: ['TemplateLiteral']
-    }],
-    quotes: ['warn', 'single', {
-      allowTemplateLiterals: true
-    }],
-    'no-multiple-empty-lines': ['warn', {
-      'max': 1
-    }],
+    indent: [
+      'warn',
+      2,
+      {
+        SwitchCase: 1,
+        ignoredNodes: ['TemplateLiteral']
+      }
+    ],
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true
+      }
+    ],
+    'no-multiple-empty-lines': [
+      'warn',
+      {
+        max: 1
+      }
+    ],
     'no-trailing-spaces': ['warn'],
     'comma-spacing': ['warn'],
     'comma-style': ['warn'],
@@ -54,11 +65,14 @@ module.exports = {
     'object-curly-spacing': ['warn', 'always'],
     'space-before-blocks': ['warn', 'always'],
     'spaced-comment': ['warn', 'always'],
-    'space-before-function-paren': ['warn', {
-      anonymous: 'always',
-      named: 'never',
-      asyncArrow: 'always'
-    }],
+    'space-before-function-paren': [
+      'warn',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ],
     'padded-blocks': ['warn', 'never'],
     'comma-dangle': ['warn', 'never'],
     semi: 'off',
@@ -75,19 +89,29 @@ module.exports = {
      */
     // 'no-undef': ['error'],
     curly: ['warn'],
-    'eqeqeq': ['error', 'always', {
-      'null': 'ignore'
-    }],
-    'no-multi-spaces': ['warn', {
-      ignoreEOLComments: true,
-      exceptions: {
-        Property: false
+    eqeqeq: [
+      'error',
+      'always',
+      {
+        null: 'ignore'
       }
-    }],
-    '@typescript-eslint/no-unused-vars': ['warn', {
-      args: 'after-used',
-      ignoreRestSiblings: true
-    }],
+    ],
+    'no-multi-spaces': [
+      'warn',
+      {
+        ignoreEOLComments: true,
+        exceptions: {
+          Property: false
+        }
+      }
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        args: 'after-used',
+        ignoreRestSiblings: true
+      }
+    ],
 
     // ---------------------------------------
     // NOTE The following rules are disabled becuase linter will never stop complaining.

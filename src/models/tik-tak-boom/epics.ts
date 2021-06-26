@@ -1,10 +1,5 @@
 import { Observable, of } from 'rxjs';
-import {
-  ActionsObservable,
-  combineEpics,
-  ofType,
-  StateObservable
-} from 'redux-observable';
+import { ActionsObservable, combineEpics, ofType, StateObservable } from 'redux-observable';
 import { map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import {
   noAction,
@@ -56,8 +51,7 @@ import { IState as IModelState } from './interfaces';
 import { IState as IClock } from '@models/clock/interfaces';
 import { AvailableGames } from '@models/website/interfaces';
 
-const startEpic = (): Observable<IActionWithPayload> =>
-  of(startTikTakBoom(null));
+const startEpic = (): Observable<IActionWithPayload> => of(startTikTakBoom(null));
 
 const setPlayerByIdEpic = (
   action$: ActionsObservable<IActionWithPayload<IPlayer>>,
@@ -68,7 +62,7 @@ const setPlayerByIdEpic = (
     withLatestFrom(state$),
     map(([{ payload }, state]) => {
       return updatePlayers(
-        state.websiteRootReducer.tikTakBoom.players.map(player => {
+        state.websiteRootReducer.tikTakBoom.players.map((player) => {
           if (player.id === payload.id) {
             return { ...player, ...payload };
           }
@@ -92,9 +86,7 @@ const removePlayerByIdEpic = (
         return noAction(null);
       }
       return updatePlayers(
-        players
-          .filter(player => player.id !== payload)
-          .map((player, index) => ({ ...player, id: index }))
+        players.filter((player) => player.id !== payload).map((player, index) => ({ ...player, id: index }))
       );
     })
   );
@@ -147,19 +139,14 @@ const setScoreTargetEpic = (
 const scoreSetupSubmitEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>
-> => {
+): Observable<IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>> => {
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
     withLatestFrom(state$),
     mergeMap(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignNextRoundStarter(players, true);
-      return [
-        updatePlayers(newPlayers),
-        updateGameState(GameStates.waitForRoundStart)
-      ];
+      return [updatePlayers(newPlayers), updateGameState(GameStates.waitForRoundStart)];
     })
   );
 };
@@ -187,9 +174,7 @@ const startRoundEpic = (
         updateMode(mode),
         updateSyllable(syllable),
         updateGameState(GameStates.roundInProgress),
-        startClock(
-          getRandomInteger(BoomTimer.minSeconds, BoomTimer.maxSeconds)
-        )
+        startClock(getRandomInteger(BoomTimer.minSeconds, BoomTimer.maxSeconds))
       ];
     })
   );
@@ -235,9 +220,7 @@ const clockRemainingTimeBecameZeroEpic = (
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
     map(([, state]) => {
-      const isTikTakBoomSelected
-        = state.websiteRootReducer.website.selectedGame
-        === AvailableGames.tikTakBoom;
+      const isTikTakBoomSelected = state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom;
 
       if (!isTikTakBoomSelected) {
         return noAction(null);
@@ -267,10 +250,7 @@ const clockTriggerTikTakSoundEpic = (
     ofType(clockTriggerTikTakSound.type),
     withLatestFrom(state$),
     map(([, state]) => {
-      if (
-        state.websiteRootReducer.website.selectedGame
-        === AvailableGames.tikTakBoom
-      ) {
+      if (state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom) {
         const audio = getAudio('tikTak');
         audio && audio.play();
       }
@@ -283,11 +263,7 @@ const clockTriggerTikTakSoundEpic = (
 const endRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  | IActionWithPayload
-  | IActionWithPayload<GameStates>
-  | IActionWithPayload<IPlayer[]>
-> => {
+): Observable<IActionWithPayload | IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(endRound.type),
     withLatestFrom(state$),
@@ -295,11 +271,7 @@ const endRoundEpic = (
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignScoreAfterRoundEnds(players);
 
-      return [
-        updatePlayers(newPlayers),
-        resetClock(null),
-        updateGameState(GameStates.roundEnded)
-      ];
+      return [updatePlayers(newPlayers), resetClock(null), updateGameState(GameStates.roundEnded)];
     })
   );
 };
@@ -307,9 +279,7 @@ const endRoundEpic = (
 const goToNextRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>
-> => {
+): Observable<IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(goToNextRound.type),
     withLatestFrom(state$),
@@ -317,22 +287,17 @@ const goToNextRoundEpic = (
       const scoreTarget = state.websiteRootReducer.tikTakBoom.scoreTarget;
       const players = state.websiteRootReducer.tikTakBoom.players;
 
-      let newPlayers: IPlayer[] = players.map(player => ({ ...player, playsNow: null }));
+      let newPlayers: IPlayer[] = players.map((player) => ({ ...player, playsNow: null }));
 
-      const shouldActivateAllPlayers
-        = newPlayers.filter(player => player.isActive).length === 1;
+      const shouldActivateAllPlayers = newPlayers.filter((player) => player.isActive).length === 1;
 
       newPlayers = assignNextRoundStarter(newPlayers, shouldActivateAllPlayers);
 
-      const gameEnded = !!newPlayers.find(
-        player => player.numOfBooms === scoreTarget
-      );
+      const gameEnded = !!newPlayers.find((player) => player.numOfBooms === scoreTarget);
 
       return [
         updatePlayers(newPlayers),
-        updateGameState(
-          gameEnded ? GameStates.gameEnded : GameStates.waitForRoundStart
-        )
+        updateGameState(gameEnded ? GameStates.gameEnded : GameStates.waitForRoundStart)
       ];
     })
   );

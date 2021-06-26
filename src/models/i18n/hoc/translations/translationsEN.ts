@@ -108,10 +108,8 @@ export const translationsEN: Record<string, string> = {
   'Choose Winning Score': 'Choose Winning Score',
   'Tik-Tak-Boom Meta Title': 'CK-Games: Tik-Tak-Boom',
   'Tik-Tak-Boom Meta Canonical Pathname': 'en/tik-tak-boom/',
-  'Tik-Tak-Boom Meta Description':
-    'Have fun with your friend playing Tik-Tak-Boom',
-  'Tik-Tak-Boom Meta Keywords':
-    'game, entartainment, fun, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb',
+  'Tik-Tak-Boom Meta Description': 'Have fun with your friend playing Tik-Tak-Boom',
+  'Tik-Tak-Boom Meta Keywords': 'game, entartainment, fun, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb',
   'Choose Available Time': 'Choose Available Time',
   Seconds: 'Seconds',
   'Movie Not Found': 'Movie Not Found!',
@@ -120,14 +118,12 @@ export const translationsEN: Record<string, string> = {
   'Pantomime Meta Title': 'CK-Games: Pantomime',
   'Pantomime Meta Canonical Pathname': 'en/pantomime/',
   'Pantomime Meta Description': 'Have fun with your friend playing Pantomime.',
-  'Pantomime Meta Keywords':
-    'game, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw',
+  'Pantomime Meta Keywords': 'game, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw',
   'Team Setup': 'Teams\' setup',
   'Add Team': 'Add Team',
   'Home Meta Title': 'CK-Games',
   'Home Meta Canonical Pathname': 'en',
-  'Home Meta Description':
-    'You choose how you will have fun with your friends. Play Pantomime or Tik-Tak-Boom.',
+  'Home Meta Description': 'You choose how you will have fun with your friends. Play Pantomime or Tik-Tak-Boom.',
   'Home Meta Keywords':
     'games, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb'
 };

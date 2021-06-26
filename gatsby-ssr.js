@@ -8,8 +8,7 @@ import { store } from '@store';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const onRenderBody = ({ pathname }) => {
-  const lang
-    = availableLangs[getlangFromPathname(pathname)] || availableLangs.default;
+  const lang = availableLangs[getlangFromPathname(pathname)] || availableLangs.default;
   store.dispatch(updateLang(lang));
 
   const game = getGameFromPathname(pathname) || null;

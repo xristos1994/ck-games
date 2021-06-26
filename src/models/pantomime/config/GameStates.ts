@@ -5,5 +5,5 @@ export enum GameStates {
   waitForRoundStart = 'waitForRoundStart',
   roundInProgress = 'roundInProgress',
   roundEnded = 'roundEnded',
-  gameEnded = 'gameEnded',
+  gameEnded = 'gameEnded'
 }

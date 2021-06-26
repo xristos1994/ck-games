@@ -4,7 +4,7 @@ import { AjaxResponse } from 'rxjs/ajax';
 export enum IRequestTypes {
   post = 'POST',
   get = 'GET',
-  put = 'PUT',
+  put = 'PUT'
 }
 
 export interface IGetService {

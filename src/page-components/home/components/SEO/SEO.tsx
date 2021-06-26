@@ -15,9 +15,7 @@ const ogImage = `${getCanonicalBaseUrl()}${
 
 const _SEO: FC<IProps> = ({ t }): ReactElement => {
   const title = t('Home Meta Title');
-  const canonicalUrl = `${getCanonicalBaseUrl()}/${t(
-    'Home Meta Canonical Pathname'
-  )}`;
+  const canonicalUrl = `${getCanonicalBaseUrl()}/${t('Home Meta Canonical Pathname')}`;
   const description = t('Home Meta Description');
   const keywords = t('Home Meta Keywords');
 

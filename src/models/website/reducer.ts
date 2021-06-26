@@ -7,10 +7,7 @@ const initialState: IState = {
   selectedGame: null
 };
 
-const reducer = (
-  state: IState = initialState,
-  action: IActionWithPayload
-): IState => {
+const reducer = (state: IState = initialState, action: IActionWithPayload): IState => {
   switch (action.type) {
     case startWebsite.type:
       return { ...state, websiteStarted: true };

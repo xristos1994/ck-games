@@ -1,9 +1,6 @@
 import { IAction, IActions } from './interfaces';
 
-export const Action = <IPayload = null>(
-  groupName: string,
-  name: string
-): IAction<IPayload> => {
+export const Action = <IPayload = null>(groupName: string, name: string): IAction<IPayload> => {
   const action = (payload: IPayload): { type: string; payload: IPayload } => ({
     type: `${groupName}//${name}`,
     payload
@@ -13,14 +10,10 @@ export const Action = <IPayload = null>(
   return action;
 };
 
-export const Actions = <
-  IPayload = null,
-  ISucceededPayload = null,
-  IFailedPayload = null
->(
-    groupName: string,
-    name: string
-  ): IActions<IPayload, ISucceededPayload, IFailedPayload> => {
+export const Actions = <IPayload = null, ISucceededPayload = null, IFailedPayload = null>(
+  groupName: string,
+  name: string
+): IActions<IPayload, ISucceededPayload, IFailedPayload> => {
   const action = (payload: IPayload): { type: string; payload: IPayload } => ({
     type: `${groupName}//${name}`,
     payload

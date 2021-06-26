@@ -7,10 +7,7 @@ const initialState: IState = {
   isMenuOpen: false
 };
 
-const reducer = (
-  state: IState = initialState,
-  action: IActionWithPayload
-): IState => {
+const reducer = (state: IState = initialState, action: IActionWithPayload): IState => {
   switch (action.type) {
     case startLayout.type:
       return { ...state, layoutStarted: true };

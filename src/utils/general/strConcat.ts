@@ -1,6 +1,4 @@
-export const strConcat = (
-  separator?: string
-): ((items: (string | number | Record<string, boolean>)[]) => string) => {
+export const strConcat = (separator?: string): ((items: (string | number | Record<string, boolean>)[]) => string) => {
   const _seperator = separator || ' ';
   return (...items: (string | number | Record<never, boolean>)[]): string => {
     const hasOwnProperty = Object.prototype.hasOwnProperty;

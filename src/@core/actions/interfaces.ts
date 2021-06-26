@@ -3,11 +3,7 @@ export interface IAction<IPayload = null> {
   (payload: IPayload): { type: string; payload: IPayload };
 }
 
-export interface IActions<
-  IPayload = null,
-  ISucceededPayload = null,
-  IFailedPayload = null
-> {
+export interface IActions<IPayload = null, ISucceededPayload = null, IFailedPayload = null> {
   succeeded: IAction<ISucceededPayload>;
   failed: IAction<IFailedPayload>;
   type: string;

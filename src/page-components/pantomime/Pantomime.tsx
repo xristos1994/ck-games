@@ -23,10 +23,7 @@ interface IProps {
   initializeGame: () => void;
 }
 
-const _Pantomime: FC<IProps> = ({
-  gameState,
-  initializeGame
-}): ReactElement => {
+const _Pantomime: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);
@@ -35,17 +32,11 @@ const _Pantomime: FC<IProps> = ({
 
   const scoreSetup = gameState === GameStates.setScoreTarget && <ScoreSetup />;
 
-  const availableTimeSetup = gameState === GameStates.setAvailableTime && (
-    <AvailableTimeSetup />
-  );
+  const availableTimeSetup = gameState === GameStates.setAvailableTime && <AvailableTimeSetup />;
 
-  const startRound = gameState === GameStates.waitForRoundStart && (
-    <StartRound />
-  );
+  const startRound = gameState === GameStates.waitForRoundStart && <StartRound />;
 
-  const roundInProgress = gameState === GameStates.roundInProgress && (
-    <RoundInProgress />
-  );
+  const roundInProgress = gameState === GameStates.roundInProgress && <RoundInProgress />;
 
   const endGame = gameState === GameStates.gameEnded && <EndGame />;
 
@@ -67,11 +58,7 @@ const _Pantomime: FC<IProps> = ({
 
 const Pantomime = compose(
   connect(
-    createStructuredSelector<
-      IState,
-      { gameState: IProps['gameState'] },
-      { gameState: IProps['gameState'] }
-    >({
+    createStructuredSelector<IState, { gameState: IProps['gameState'] }, { gameState: IProps['gameState'] }>({
       gameState
     }),
     { initializeGame }

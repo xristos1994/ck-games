@@ -19,12 +19,7 @@ interface IProps {
   removePlayerById: (id: IProps['player']['id']) => void;
 }
 
-const _Player: FC<IProps> = ({
-  player,
-  setPlayerById,
-  numOfPlayers,
-  removePlayerById
-}): ReactElement => {
+const _Player: FC<IProps> = ({ player, setPlayerById, numOfPlayers, removePlayerById }): ReactElement => {
   const onChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
     setPlayerById({ ...player, name: e.target.value });
   };
@@ -50,13 +45,7 @@ const _Player: FC<IProps> = ({
         onBlur={onBlurName}
       />
       {numOfPlayers === 2 ? null : (
-        <Button
-          onClick={removePlayer}
-          className={classnames(
-            'main-button-hover-effect',
-            styles.removePlayerButton
-          )}
-        >
+        <Button onClick={removePlayer} className={classnames('main-button-hover-effect', styles.removePlayerButton)}>
           X
         </Button>
       )}
@@ -75,8 +64,7 @@ const Player = compose(
         numOfPlayers: IProps['numOfPlayers'];
       }
     >({
-      numOfPlayers: (state: IState): IProps['numOfPlayers'] =>
-        players(state).length
+      numOfPlayers: (state: IState): IProps['numOfPlayers'] => players(state).length
     }),
     { setPlayerById: setPlayerById, removePlayerById }
   )
