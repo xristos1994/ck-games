@@ -26,10 +26,14 @@ export const findModeAndSyllable: () => IResult = () => {
   const modeKeys = Object.keys(Modes);
 
   const result: IResult = {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     mode: Modes[modeKeys[0]],
     syllable: ''
   };
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   result.mode = Modes[modeKeys[getRandomInteger(0, modeKeys.length - 1)]];
 
   const syllableEL = getSyllable(result.mode, SyllablesEL);

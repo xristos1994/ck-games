@@ -1,6 +1,9 @@
-export const compose = (...fns) => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+type ArityOneFn = (arg: any) => any;
+
+export const compose = (...fns: ArityOneFn[]): ArityOneFn => {
   if (fns.length === 0) {
-    return (fn) => fn;
+    return (fn: any) => fn;
   }
 
   if (fns.length === 1) {

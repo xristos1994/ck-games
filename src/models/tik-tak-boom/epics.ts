@@ -171,6 +171,8 @@ const startRoundEpic = (
 
       return [
         updatePlayers(newPlayers),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         updateMode(mode),
         updateSyllable(syllable),
         updateGameState(GameStates.roundInProgress),

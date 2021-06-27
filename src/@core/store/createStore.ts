@@ -16,7 +16,11 @@ const _createStore = (): IStore => {
 
   store.asyncReducers = {} as Reducer;
   store.injectReducer = (key: string, reducer: Reducer) => {
-    store.asyncReducers[key] = reducer;
+    if (store.asyncReducers) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      store.asyncReducers[key] = reducer;
+    }
     store.replaceReducer(createReducer(store.asyncReducers));
     return store;
   };

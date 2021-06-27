@@ -20,6 +20,8 @@ export const strConcat = (separator?: string): ((items: (string | number | Recor
         result += (result ? _seperator : '') + item;
       } else if (typeof item === 'object') {
         for (const key in item) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           if (hasOwnProperty.call(item, key) && item[key]) {
             result += (result ? _seperator : '') + key;
           }
