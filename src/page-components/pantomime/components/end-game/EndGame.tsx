@@ -6,7 +6,8 @@ import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { Button } from '@components';
 import { restartGame } from '@models/pantomime/actions';
 import { ScoreBoard } from './../score-board'; // Alias "page-components/pantomime/components";
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   restartGame: () => void;

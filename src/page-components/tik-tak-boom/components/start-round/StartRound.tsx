@@ -8,7 +8,8 @@ import { startRound, goBack } from '@models/tik-tak-boom/actions';
 import { playerNameThatStartsRound, canGoBack } from '@models/tik-tak-boom/props';
 import { IState } from '@models/interfaces';
 import { ScoreBoard } from './../score-board'; // Alias "page-components/tik-tak-boom/components";
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   canGoBack: boolean;

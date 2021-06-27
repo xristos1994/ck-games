@@ -5,7 +5,8 @@ import { classnames, compose } from '@utils/component-utils';
 import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { teams } from '@models/pantomime/props';
 import { IState } from '@models/interfaces';
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   teams: {

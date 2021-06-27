@@ -4,7 +4,8 @@ import { compose } from '@utils/component-utils';
 import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { Button } from '@components';
 import { availableGames } from './config';
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   t: ITranslate;

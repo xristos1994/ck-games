@@ -9,7 +9,8 @@ import { Player } from './components';
 import { addPlayer, playersSetupSubmit } from '@models/tik-tak-boom/actions';
 import { IState } from '@models/interfaces';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   players: {

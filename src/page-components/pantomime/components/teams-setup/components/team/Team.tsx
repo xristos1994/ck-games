@@ -6,7 +6,8 @@ import { Button } from '@components';
 import { setTeamById, removeTeamById } from '@models/pantomime/actions';
 import { teams } from '@models/pantomime/props';
 import { IState } from '@models/interfaces';
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   team: {

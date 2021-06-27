@@ -8,7 +8,8 @@ import { availableTime, availableTimes, canGoBack } from '@models/pantomime/prop
 import { setAvailableTime, availableTimeSetupSubmit, goBack } from '@models/pantomime/actions';
 import { IState } from '@models/interfaces';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   availableTime: number;

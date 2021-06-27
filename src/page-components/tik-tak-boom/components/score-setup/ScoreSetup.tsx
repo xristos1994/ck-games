@@ -8,7 +8,8 @@ import { scoreTarget, canGoBack, availableScoreTargets } from '@models/tik-tak-b
 import { setScoreTarget, scoreSetupSubmit, goBack } from '@models/tik-tak-boom/actions';
 import { IState } from '@models/interfaces';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   scoreTarget: number;

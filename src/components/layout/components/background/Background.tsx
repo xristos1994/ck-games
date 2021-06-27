@@ -1,7 +1,8 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react';
 import { classnames } from '@utils/component-utils';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 const starClasses: Record<string, string> = {
   smallStar: 'smallStar',

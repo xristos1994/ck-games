@@ -8,7 +8,8 @@ import { mode, syllable, playerNameThatPlaysNow } from '@models/tik-tak-boom/pro
 import { goToNextPlayer, goToPreviousPlayer } from '@models/tik-tak-boom/actions';
 import { IState } from '@models/interfaces';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   goToNextPlayer: () => void;

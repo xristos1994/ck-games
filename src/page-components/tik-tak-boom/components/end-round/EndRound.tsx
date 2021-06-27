@@ -8,7 +8,8 @@ import { goToNextRound, setWhoLost } from '@models/tik-tak-boom/actions';
 import { players } from '@models/tik-tak-boom/props';
 import { IState } from '@models/interfaces';
 import { BombIcon } from '@components/icons';
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IPlayer {
   id: number;

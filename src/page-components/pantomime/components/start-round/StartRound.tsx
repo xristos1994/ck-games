@@ -8,7 +8,8 @@ import { startRound, goBack, setMovie } from '@models/pantomime/actions';
 import { teamNameThatPlaysNow, canGoBack, availableMovies, movie } from '@models/pantomime/props';
 import { IState } from '@models/interfaces';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   canGoBack: boolean;

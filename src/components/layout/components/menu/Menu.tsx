@@ -15,7 +15,8 @@ import { AvailableGames } from '@models/website/interfaces';
 import { Link } from 'gatsby';
 import { LangFlagMap } from '@models/i18n/utils';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   selectedGame: string | null;

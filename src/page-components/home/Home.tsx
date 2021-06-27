@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { SEO, AvailableGames } from './components';
 import { compose } from '@utils/component-utils';
 import { restartAllGames } from '@models/website/actions';
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   restartAllGames: () => void;

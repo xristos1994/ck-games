@@ -9,7 +9,8 @@ import { Team } from './components';
 import { addTeam, teamsSetupSubmit } from '@models/pantomime/actions';
 import { IState } from '@models/interfaces';
 
-import styles from './styles.module.css';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   teams: {
