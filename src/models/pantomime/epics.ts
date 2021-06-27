@@ -29,11 +29,10 @@ import {
   setMovie,
   updateMovie,
   goBack,
-  updateSelectedMovieIndex,
-  updateAvailableMovies
+  updateSelectedMovieIndex
 } from './actions';
-import { GameStates } from './config';
-import { findMovies, assignNextTeam, createNewTeam, restartGameState, assignIfMovieFound, getAudio } from './utils';
+import { GameStates, Movies } from './config';
+import { findNewMoviesIndex, assignNextTeam, createNewTeam, restartGameState, assignIfMovieFound, getAudio } from './utils';
 import { vibrate } from '@utils/hardware';
 import { ITeam, IScoreTarget } from './interfaces';
 import { IState } from '@models/interfaces';
@@ -41,6 +40,8 @@ import { IActionWithPayload } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
 import { IState as IClock } from '@models/clock/interfaces';
 import { AvailableGames } from '@models/website/interfaces';
+import { setLang } from '@models/i18n/actions';
+import { availableLangs } from '@models/i18n/utils';
 
 const startEpic = (): Observable<IActionWithPayload> => of(startPantomime(null));
 
@@ -100,7 +101,6 @@ const teamsSetupSubmitEpic = (
   state$: StateObservable<IState>
 ): Observable<
   | IActionWithPayload<GameStates>
-  | IActionWithPayload<IModelState['availableMovies']>
   | IActionWithPayload<IModelState['selectedMovieIndex']>
 > => {
   return action$.pipe(
@@ -112,12 +112,11 @@ const teamsSetupSubmitEpic = (
         return [updateGameState(GameStates.setScoreTarget)];
       }
 
-      const newMovies = findMovies(state.websiteRootReducer.pantomime.selectedMovieIndex);
+      const newMoviesIndex = findNewMoviesIndex(state.websiteRootReducer.pantomime.selectedMovieIndex);
 
       return [
         updateGameState(GameStates.waitForRoundStart),
-        updateAvailableMovies(newMovies.movies),
-        updateSelectedMovieIndex(newMovies.index)
+        updateSelectedMovieIndex(newMoviesIndex)
       ];
     })
   );
@@ -166,7 +165,6 @@ const availableTimeSetupSubmitEpic = (
 ): Observable<
   | IActionWithPayload<IModelState['teams']>
   | IActionWithPayload<GameStates>
-  | IActionWithPayload<IModelState['availableMovies']>
   | IActionWithPayload<IModelState['selectedMovieIndex']>
 > => {
   return action$.pipe(
@@ -176,12 +174,12 @@ const availableTimeSetupSubmitEpic = (
       const newTeams = assignNextTeam(state.websiteRootReducer.pantomime.teams);
       const scoreTarget = state.websiteRootReducer.pantomime.scoreTarget;
       const gameEnded = !!newTeams.find((team) => team.score === scoreTarget) && newTeams[0].playsNow;
-      const newMovies = findMovies(state.websiteRootReducer.pantomime.selectedMovieIndex);
+      const newMoviesIndex = findNewMoviesIndex(state.websiteRootReducer.pantomime.selectedMovieIndex);
 
       return [
         updateTeams(newTeams),
         updateGameState(gameEnded ? GameStates.gameEnded : GameStates.waitForRoundStart),
-        ...(gameEnded ? [] : [updateAvailableMovies(newMovies.movies), updateSelectedMovieIndex(newMovies.index)])
+        ...(gameEnded ? [] : [updateSelectedMovieIndex(newMoviesIndex)])
       ];
     })
   );
@@ -273,6 +271,33 @@ const setMovieEpic = (
   );
 };
 
+const setMovieWhenChangeLangEpic = (
+  action$: ActionsObservable<IActionWithPayload<IState['websiteRootReducer']['i18n']['lang']>>,
+  state$: StateObservable<IState>
+): Observable<IActionWithPayload<IModelState['movie'] | null>> => {
+  return action$.pipe(
+    ofType(setLang.type),
+    withLatestFrom(state$),
+    map(([{ payload }, state]) => {
+      const currentMovie = state.websiteRootReducer.pantomime.movie;
+
+      if (!currentMovie) {
+        return noAction(null);
+      }
+
+      const currentLangCode = payload.code;
+      const previousLangCode = currentLangCode === availableLangs.en.code ? availableLangs.el.code : availableLangs.en.code;
+
+      const currentMovies = Movies[currentLangCode.toUpperCase()];
+      const previousMovies = Movies[previousLangCode.toUpperCase()];
+
+      const actualSelectedMovieIndex = previousMovies.indexOf(currentMovie);
+
+      return updateMovie(currentMovies[actualSelectedMovieIndex % currentMovies.length]);
+    })
+  );
+};
+
 const setIfMovieFoundEpic = (
   action$: ActionsObservable<IActionWithPayload<ITeam['movieFound']>>,
   state$: StateObservable<IState>
@@ -327,6 +352,7 @@ export const pantomimeEpic = combineEpics(
   setAvailableTimeEpic,
   availableTimeSetupSubmitEpic,
   setMovieEpic,
+  setMovieWhenChangeLangEpic,
   startRoundEpic,
   clockRemainingTimeBecameZeroEpic,
   endRoundEpic,

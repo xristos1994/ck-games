@@ -68,8 +68,3 @@ export const updateSelectedMovieIndex: IAction<IState['selectedMovieIndex']> = A
   'PANTOMIME',
   'UPDATE_SELECTED_MOVIE_INDEX'
 );
-
-export const updateAvailableMovies: IAction<IState['availableMovies']> = Action<IState['availableMovies']>(
-  'PANTOMIME',
-  'UPDATE_AVAILABLE_MOVIES'
-);

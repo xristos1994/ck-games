@@ -1,4 +1,4 @@
-import { GameStates, AvailableTimes, AvailableScoreTargets } from './config';
+import { GameStates, AvailableTimes, AvailableScoreTargets, Movies } from './config';
 import { IState } from '@models/interfaces';
 import { IState as IModelState, ITeam } from './interfaces';
 
@@ -18,7 +18,8 @@ export const teamNameThatPlaysNow: (state: IState) => ITeam['name'] | null = (st
 export const gameState: (state: IState) => IModelState['gameState'] = (state) =>
   state.websiteRootReducer.pantomime.gameState;
 
-export const movie: (state: IState) => IModelState['movie'] = (state) => state.websiteRootReducer.pantomime.movie;
+export const movie: (state: IState) => IModelState['movie'] = (state) =>
+  state.websiteRootReducer.pantomime.movie;
 
 export const scoreTarget: (state: IState) => IModelState['scoreTarget'] = (state) =>
   state.websiteRootReducer.pantomime.scoreTarget;
@@ -46,5 +47,14 @@ export const availableScoreTargets: () => IModelState['scoreTarget'][] = () => A
 export const availableTime: (state: IState) => IModelState['availableTime'] = (state) =>
   state.websiteRootReducer.pantomime.availableTime;
 
-export const availableMovies: (state: IState) => IModelState['availableMovies'] = (state) =>
-  state.websiteRootReducer.pantomime.availableMovies;
+export const availableMovies: (state: IState) => [ IModelState['movie'], IModelState['movie'] ] = (state) => {
+  const movies = Movies[state.websiteRootReducer.i18n.lang.code.toUpperCase()];
+  const moviesLength = movies.length;
+  const selectedMovieIndex = state.websiteRootReducer.pantomime.selectedMovieIndex;
+
+  return [movies[selectedMovieIndex % moviesLength], movies[(selectedMovieIndex + 1) % moviesLength]];
+};
+
+export const selectedMovieIndex: (state: IState) => IModelState['selectedMovieIndex'] = (state) =>
+  state.websiteRootReducer.pantomime.selectedMovieIndex;
+

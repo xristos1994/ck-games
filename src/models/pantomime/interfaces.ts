@@ -12,7 +12,6 @@ export type IScoreTarget = number;
 
 export type AvailableTime = number;
 export type IMovie = string;
-export type AvailableMovies = [IMovie, IMovie];
 
 export interface IState {
   pantomimeStarted: boolean;
@@ -22,5 +21,4 @@ export interface IState {
   availableTime: AvailableTime;
   movie: IMovie;
   selectedMovieIndex: number;
-  availableMovies: AvailableMovies;
 }
