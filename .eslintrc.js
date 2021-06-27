@@ -3,7 +3,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'prettier'
     // 'plugin:react-hooks/recommended'
     // 'prettier/@typescript-eslint',
     // 'plugin:prettier/recommended'
@@ -40,7 +41,8 @@ module.exports = {
       2,
       {
         SwitchCase: 1,
-        ignoredNodes: ['TemplateLiteral']
+        ignoredNodes: ['TemplateLiteral'],
+        flatTernaryExpressions: false
       }
     ],
     quotes: [
