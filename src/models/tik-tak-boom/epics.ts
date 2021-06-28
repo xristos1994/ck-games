@@ -228,7 +228,7 @@ const clockRemainingTimeBecameZeroEpic = (
         return noAction(null);
       }
 
-      const newRemainingTime = state.websiteRootReducer.clock.remainingTime || 0 - 1;
+      const newRemainingTime = (state.websiteRootReducer.clock.remainingTime || 0) - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {

@@ -40,7 +40,7 @@ const reduceRemainingTimeEpic = (
     debounceTime(1000),
     withLatestFrom(state$),
     mergeMap(([, state]) => {
-      const newRemainingTime = state.websiteRootReducer.clock.remainingTime || 0 - 1;
+      const newRemainingTime = (state.websiteRootReducer.clock.remainingTime || 0) - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (newRemainingTime === 0) {
