@@ -1,15 +1,15 @@
-export const translationsEL = {
-  "Meta Author": "Χρίστος Κορομπόκης",
-  "Meta Content": "Greek",
-  "html lang": "el",
-  "Menu Title SSR": "CK-Games Παντομίμα Tik-Tak-Boom",
-  "CK-Games": "CK-Games",
-  Pantomime: "Παντομίμα",
-  "Tik-Tak-Boom": "Tik-Tak-Boom",
-  CONTINUE: "ΣΥΝΕΧΕΙΑ",
-  BACK: "ΠΙΣΩ",
-  "Player, it is your turn": "%0, είναι η σειρά σου!",
-  "Pantomime Description HTML": `
+export const translationsEL: Record<string, string> = {
+  'Meta Author': 'Χρίστος Κορομπόκης',
+  'Meta Content': 'Greek',
+  'html lang': 'el',
+  'Menu Title SSR': 'CK-Games Παντομίμα Tik-Tak-Boom',
+  'CK-Games': 'CK-Games',
+  Pantomime: 'Παντομίμα',
+  'Tik-Tak-Boom': 'Tik-Tak-Boom',
+  CONTINUE: 'ΣΥΝΕΧΕΙΑ',
+  BACK: 'ΠΙΣΩ',
+  'Player, it is your turn': '%0, είναι η σειρά σου!',
+  'Pantomime Description HTML': `
         <p>
           Μάζεψε τους φίλους σου και διασκεδάστε παίζοντας
           <strong> Παντομίμα</strong>.
@@ -52,7 +52,7 @@ export const translationsEL = {
           </li>
         </ul>
       `,
-  "Tik-Tak-Boom Description HTML": `
+  'Tik-Tak-Boom Description HTML': `
         <p>
           Μάζεψε τους φίλους σου και διασκεδάστε παίζοντας
           <strong> Tik-Tak-Boom</strong>.
@@ -96,45 +96,38 @@ export const translationsEL = {
           </li>
         </ul>
     `,
-  Home: "Αρχική",
-  "Team, it is your turn": "%0, είναι η σειρά σας!",
-  "Game Completed": "Το Παιχνίδι Ολοκληρώθηκε",
-  "Restart Game": "Επανεκκίνηση Παιχνιδιού",
-  "Player, bomb exploded in your hands": "%0, η βόμβα έσκασε στα χέρια σου!",
-  "Player Setup": "Εισαγωγή Παικτών",
-  "Add Player": "Προσθήκη Παίκτη",
-  "Next Player": "Επόμενος Παίκτης",
-  "Previous Player": "Προηγούμενος Παίκτης",
-  "Tik Mode Description": "Η λέξη πρέπει να ξεκινά με την επιλεγμένη συλλαβή",
-  "Tak Mode Description":
-    "Η λέξη πρέπει να τελειώνει με την επιλεγμένη συλλαβή",
-  "Tik...Tak Mode Description":
-    "Η λέξη πρέπει απλά να περιέχει την επιλεγμένη συλλαβή",
-  Scoreboard: "Βαθμολογία",
-  "Choose Winning Score": "Επιλέξτε το σκορ νίκης",
-  "Tik-Tak-Boom Meta Title": "CK-Games: Tik-Tak-Boom",
-  "Tik-Tak-Boom Meta Canonical Pathname": "tik-tak-boom/",
-  "Tik-Tak-Boom Meta Description":
-    "Διασκέδασε με την παρέα σου παίζοντας Tik-Tak-Boom.",
-  "Tik-Tak-Boom Meta Keywords":
-    "παιχνίδι, διασκέδαση, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα",
-  "Choose Available Time": "Επιλέξτε τον διαθέσιμο χρόνο",
-  Seconds: "Δευτερόλεπτα",
-  "Movie Not Found": "Η Ταινία Δε Βρέθηκε!",
-  "Movie Found": "Η Ταινία Βρέθηκε!",
-  "Team, your turn completed": "%0, η σειρά σας ολοκληρώθηκε!",
-  "Pantomime Meta Title": "CK-Games: Παντομίμα",
-  "Pantomime Meta Canonical Pathname": "pantomime/",
-  "Pantomime Meta Description":
-    "Διασκέδασε με την παρέα σου παίζοντας Παντομίμα.",
-  "Pantomime Meta Keywords":
-    "παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία",
-  "Team Setup": "Εισαγωγή Ομάδων",
-  "Add Team": "Προσθήκη Ομάδας",
-  "Home Meta Title": "CK-Games",
-  "Home Meta Canonical Pathname": "",
-  "Home Meta Description":
-    "Εσύ επιλέγεις πως θα διασκεδάσεις με την παρέα σου. Παίξτε Παντομίμα ή Tik-Tak-Boom.",
-  "Home Meta Keywords":
-    "παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα",
+  Home: 'Αρχική',
+  'Team, it is your turn': '%0, είναι η σειρά σας!',
+  'Game Completed': 'Το Παιχνίδι Ολοκληρώθηκε',
+  'Restart Game': 'Επανεκκίνηση Παιχνιδιού',
+  'Player, bomb exploded in your hands': '%0, η βόμβα έσκασε στα χέρια σου!',
+  'Player Setup': 'Εισαγωγή Παικτών',
+  'Add Player': 'Προσθήκη Παίκτη',
+  'Next Player': 'Επόμενος Παίκτης',
+  'Previous Player': 'Προηγούμενος Παίκτης',
+  'Tik Mode Description': 'Η λέξη πρέπει να ξεκινά με την επιλεγμένη συλλαβή',
+  'Tak Mode Description': 'Η λέξη πρέπει να τελειώνει με την επιλεγμένη συλλαβή',
+  'Tik...Tak Mode Description': 'Η λέξη πρέπει απλά να περιέχει την επιλεγμένη συλλαβή',
+  Scoreboard: 'Βαθμολογία',
+  'Choose Winning Score': 'Επιλέξτε το σκορ νίκης',
+  'Tik-Tak-Boom Meta Title': 'CK-Games: Tik-Tak-Boom',
+  'Tik-Tak-Boom Meta Canonical Pathname': 'tik-tak-boom/',
+  'Tik-Tak-Boom Meta Description': 'Διασκέδασε με την παρέα σου παίζοντας Tik-Tak-Boom.',
+  'Tik-Tak-Boom Meta Keywords': 'παιχνίδι, διασκέδαση, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα',
+  'Choose Available Time': 'Επιλέξτε τον διαθέσιμο χρόνο',
+  Seconds: 'Δευτερόλεπτα',
+  'Movie Not Found': 'Η Ταινία Δε Βρέθηκε!',
+  'Movie Found': 'Η Ταινία Βρέθηκε!',
+  'Team, your turn completed': '%0, η σειρά σας ολοκληρώθηκε!',
+  'Pantomime Meta Title': 'CK-Games: Παντομίμα',
+  'Pantomime Meta Canonical Pathname': 'pantomime/',
+  'Pantomime Meta Description': 'Διασκέδασε με την παρέα σου παίζοντας Παντομίμα.',
+  'Pantomime Meta Keywords': 'παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία',
+  'Team Setup': 'Εισαγωγή Ομάδων',
+  'Add Team': 'Προσθήκη Ομάδας',
+  'Home Meta Title': 'CK-Games',
+  'Home Meta Canonical Pathname': '',
+  'Home Meta Description': 'Εσύ επιλέγεις πως θα διασκεδάσεις με την παρέα σου. Παίξτε Παντομίμα ή Tik-Tak-Boom.',
+  'Home Meta Keywords':
+    'παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα'
 };

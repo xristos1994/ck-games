@@ -1,3 +1,3 @@
-import { ScoreSetup } from "./ScoreSetup";
+import { ScoreSetup } from './ScoreSetup';
 
 export { ScoreSetup };

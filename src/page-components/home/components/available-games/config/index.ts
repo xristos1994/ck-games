@@ -1,3 +1,3 @@
-import { availableGames } from "./availableGames";
+import { availableGames } from './availableGames';
 
 export { availableGames };

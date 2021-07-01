@@ -1,8 +1,8 @@
-import React, { FC, ReactElement, useEffect } from "react";
+import React, { FC, ReactElement, useEffect } from 'react';
 
 const PageNotFound: FC = (): ReactElement => {
   useEffect(() => {
-    window.location.href = "/";
+    window.location.href = '/';
   }, []);
 
   return <>Page Not Found</>;

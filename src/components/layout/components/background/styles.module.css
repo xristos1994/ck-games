@@ -22,7 +22,7 @@
 }
 
 .backgroundContainer > .smallStar::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 100vh;
   width: 0.0625rem;
@@ -37,7 +37,7 @@
 }
 
 .backgroundContainer > .mediumStar::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 100vh;
   width: 0.125rem;
@@ -52,7 +52,7 @@
 }
 
 .backgroundContainer > .bigStar::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 100vh;
   width: 0.1875rem;

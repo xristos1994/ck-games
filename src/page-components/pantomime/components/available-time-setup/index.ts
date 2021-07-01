@@ -1,3 +1,3 @@
-import { AvailableTimeSetup } from "./AvailableTimeSetup";
+import { AvailableTimeSetup } from './AvailableTimeSetup';
 
 export { AvailableTimeSetup };

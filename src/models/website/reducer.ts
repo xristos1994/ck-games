@@ -1,16 +1,13 @@
-import { startWebsite, updateSelectedGame } from "./actions";
-import { IState } from "./interfaces";
-import { IActionWithPayload } from "@core/actions/interfaces";
+import { startWebsite, updateSelectedGame } from './actions';
+import { IState } from './interfaces';
+import { IActionWithPayload } from '@core/actions/interfaces';
 
 const initialState: IState = {
   websiteStarted: false,
-  selectedGame: null,
+  selectedGame: null
 };
 
-const reducer = (
-  state: IState = initialState,
-  action: IActionWithPayload
-): IState => {
+const reducer = (state: IState = initialState, action: IActionWithPayload): IState => {
   switch (action.type) {
     case startWebsite.type:
       return { ...state, websiteStarted: true };
@@ -22,5 +19,5 @@ const reducer = (
 };
 
 export const websiteReducer = {
-  website: reducer,
+  website: reducer
 };

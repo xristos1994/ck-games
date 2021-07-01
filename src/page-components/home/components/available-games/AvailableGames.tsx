@@ -1,10 +1,11 @@
-import React, { FC, ReactElement } from "react";
-import { Link } from "gatsby";
-import { compose } from "@utils/component-utils";
-import { withTranslation, ITranslate } from "@models/i18n/hoc";
-import { Button } from "@components";
-import { availableGames } from "./config";
-const styles = require("./styles.module.css");
+import React, { FC, ReactElement } from 'react';
+import { Link } from 'gatsby';
+import { compose } from '@utils/component-utils';
+import { withTranslation, ITranslate } from '@models/i18n/hoc';
+import { Button } from '@components';
+import { availableGames } from './config';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   t: ITranslate;

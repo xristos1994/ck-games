@@ -1,3 +1,3 @@
-import { TikTakBoom } from "./TikTakBoom";
+import { TikTakBoom } from './TikTakBoom';
 
 export { TikTakBoom };

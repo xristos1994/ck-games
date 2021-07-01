@@ -1,4 +1,4 @@
-FROM node:12-alpine as builder
+FROM node:14-alpine as builder
 
 
 WORKDIR /app
@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN npm install --global gatsby-cli && gatsby telemetry --disable
+RUN npm install --global gatsby-cli@3.8.0 && gatsby telemetry --disable
 RUN npm install
 
 # add app

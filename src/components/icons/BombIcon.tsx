@@ -1,15 +1,8 @@
-import React, { FC, ReactElement, SVGProps } from "react";
+import React, { FC, ReactElement, SVGProps } from 'react';
 
 const BombIcon: FC<SVGProps<SVGSVGElement>> = (props): ReactElement => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
-      {...props}
-      version="1.1"
-      viewBox="0 0 512 512"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" {...props} version="1.1" viewBox="0 0 512 512">
       <g id="_x31_28_x2C__bomb_x2C__explosive_x2C__explosion">
         <g id="XMLID_13839_">
           <path

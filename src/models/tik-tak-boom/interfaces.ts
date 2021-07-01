@@ -1,5 +1,5 @@
-import { GameStates } from "./config";
-import { IMode as IModeObj } from "./config/interfaces";
+import { GameStates } from './config';
+import { IMode as IModeObj } from './config/interfaces';
 
 export interface IPlayer {
   id: number;

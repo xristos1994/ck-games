@@ -1,11 +1,6 @@
-import { Observable, of } from "rxjs";
-import {
-  ActionsObservable,
-  combineEpics,
-  ofType,
-  StateObservable,
-} from "redux-observable";
-import { map, mergeMap, withLatestFrom } from "rxjs/operators";
+import { Observable, of } from 'rxjs';
+import { ActionsObservable, combineEpics, ofType, StateObservable } from 'redux-observable';
+import { map, mergeMap, withLatestFrom } from 'rxjs/operators';
 import {
   noAction,
   startTikTakBoom,
@@ -33,9 +28,9 @@ import {
   updateGameReduxState,
   initializeGame,
   setWhoLost,
-  goBack,
-} from "./actions";
-import { GameStates, BoomTimer } from "./config";
+  goBack
+} from './actions';
+import { GameStates, BoomTimer } from './config';
 import {
   findModeAndSyllable,
   assignNextPlayer,
@@ -45,19 +40,18 @@ import {
   createNewPlayer,
   restartGameState,
   assignWhoLost,
-  getAudio,
-} from "./utils";
-import { vibrate } from "@utils/hardware";
-import { getRandomInteger } from "@utils/general";
-import { IMode, IPlayer, IScoreTarget, ISyllable } from "./interfaces";
-import { IState } from "@models/interfaces";
-import { IActionWithPayload } from "@core/actions/interfaces";
-import { IState as IModelState } from "./interfaces";
-import { IState as IClock } from "@models/clock/interfaces";
-import { AvailableGames } from "@models/website/interfaces";
+  getAudio
+} from './utils';
+import { vibrate } from '@utils/hardware';
+import { getRandomInteger } from '@utils/general';
+import { IMode, IPlayer, IScoreTarget, ISyllable } from './interfaces';
+import { IState } from '@models/interfaces';
+import { IActionWithPayload } from '@core/actions/interfaces';
+import { IState as IModelState } from './interfaces';
+import { IState as IClock } from '@models/clock/interfaces';
+import { AvailableGames } from '@models/website/interfaces';
 
-const startEpic = (): Observable<IActionWithPayload> =>
-  of(startTikTakBoom(null));
+const startEpic = (): Observable<IActionWithPayload> => of(startTikTakBoom(null));
 
 const setPlayerByIdEpic = (
   action$: ActionsObservable<IActionWithPayload<IPlayer>>,
@@ -68,7 +62,7 @@ const setPlayerByIdEpic = (
     withLatestFrom(state$),
     map(([{ payload }, state]) => {
       return updatePlayers(
-        state.websiteRootReducer.tikTakBoom.players.map(player => {
+        state.websiteRootReducer.tikTakBoom.players.map((player) => {
           if (player.id === payload.id) {
             return { ...player, ...payload };
           }
@@ -80,9 +74,9 @@ const setPlayerByIdEpic = (
 };
 
 const removePlayerByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload<IPlayer["id"]>>,
+  action$: ActionsObservable<IActionWithPayload<IPlayer['id']>>,
   state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]>> => {
+): Observable<IActionWithPayload<IPlayer[] | null>> => {
   return action$.pipe(
     ofType(removePlayerById.type),
     withLatestFrom(state$),
@@ -92,9 +86,7 @@ const removePlayerByIdEpic = (
         return noAction(null);
       }
       return updatePlayers(
-        players
-          .filter(player => player.id !== payload)
-          .map((player, index) => ({ ...player, id: index }))
+        players.filter((player) => player.id !== payload).map((player, index) => ({ ...player, id: index }))
       );
     })
   );
@@ -107,7 +99,7 @@ const addPlayerByIdEpic = (
   return action$.pipe(
     ofType(addPlayer.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       return updatePlayers(players.concat(createNewPlayer(players.length)));
     })
@@ -121,7 +113,7 @@ const playersSetupSubmitEpic = (
   return action$.pipe(
     ofType(playersSetupSubmit.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const gameState = state.websiteRootReducer.tikTakBoom.gameState;
       if (gameState === GameStates.setPlayers) {
         return updateGameState(GameStates.setScoreTarget);
@@ -147,19 +139,14 @@ const setScoreTargetEpic = (
 const scoreSetupSubmitEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>
-> => {
+): Observable<IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>> => {
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignNextRoundStarter(players, true);
-      return [
-        updatePlayers(newPlayers),
-        updateGameState(GameStates.waitForRoundStart),
-      ];
+      return [updatePlayers(newPlayers), updateGameState(GameStates.waitForRoundStart)];
     })
   );
 };
@@ -172,24 +159,24 @@ const startRoundEpic = (
   | IActionWithPayload<IMode>
   | IActionWithPayload<ISyllable>
   | IActionWithPayload<GameStates>
-  | IActionWithPayload<IClock["remainingTime"]>
+  | IActionWithPayload<IClock['remainingTime']>
 > => {
   return action$.pipe(
     ofType(startRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignNextPlayer(players);
       const { mode, syllable } = findModeAndSyllable();
 
       return [
         updatePlayers(newPlayers),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         updateMode(mode),
         updateSyllable(syllable),
         updateGameState(GameStates.roundInProgress),
-        startClock(
-          getRandomInteger(BoomTimer.minSeconds, BoomTimer.maxSeconds)
-        ),
+        startClock(getRandomInteger(BoomTimer.minSeconds, BoomTimer.maxSeconds))
       ];
     })
   );
@@ -202,7 +189,7 @@ const goToNextPlayerEpic = (
   return action$.pipe(
     ofType(goToNextPlayer.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignNextPlayer(players);
 
@@ -218,7 +205,7 @@ const goToPreviousPlayerEpic = (
   return action$.pipe(
     ofType(goToPreviousPlayer.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignPreviousPlayer(players);
 
@@ -234,22 +221,20 @@ const clockRemainingTimeBecameZeroEpic = (
   return action$.pipe(
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
-      const isTikTakBoomSelected =
-        state.websiteRootReducer.website.selectedGame ===
-        AvailableGames.tikTakBoom;
+    map(([, state]) => {
+      const isTikTakBoomSelected = state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom;
 
       if (!isTikTakBoomSelected) {
         return noAction(null);
       }
 
-      const newRemainingTime = state.websiteRootReducer.clock.remainingTime - 1;
+      const newRemainingTime = (state.websiteRootReducer.clock.remainingTime || 0) - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (clockIsRunning) {
         if (newRemainingTime <= 0) {
           vibrate([200, 100, 200, 100, 200]);
-          const audio = getAudio("boom");
+          const audio = getAudio('boom');
           audio && audio.play();
         }
       }
@@ -266,12 +251,9 @@ const clockTriggerTikTakSoundEpic = (
   return action$.pipe(
     ofType(clockTriggerTikTakSound.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
-      if (
-        state.websiteRootReducer.website.selectedGame ===
-        AvailableGames.tikTakBoom
-      ) {
-        const audio = getAudio("tikTak");
+    map(([, state]) => {
+      if (state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom) {
+        const audio = getAudio('tikTak');
         audio && audio.play();
       }
 
@@ -283,23 +265,15 @@ const clockTriggerTikTakSoundEpic = (
 const endRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  | IActionWithPayload
-  | IActionWithPayload<GameStates>
-  | IActionWithPayload<IPlayer[]>
-> => {
+): Observable<IActionWithPayload | IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(endRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignScoreAfterRoundEnds(players);
 
-      return [
-        updatePlayers(newPlayers),
-        resetClock(null),
-        updateGameState(GameStates.roundEnded),
-      ];
+      return [updatePlayers(newPlayers), resetClock(null), updateGameState(GameStates.roundEnded)];
     })
   );
 };
@@ -307,32 +281,25 @@ const endRoundEpic = (
 const goToNextRoundEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>
-> => {
+): Observable<IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>> => {
   return action$.pipe(
     ofType(goToNextRound.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const scoreTarget = state.websiteRootReducer.tikTakBoom.scoreTarget;
       const players = state.websiteRootReducer.tikTakBoom.players;
 
-      let newPlayers = players.map(player => ({ ...player, playsNow: null }));
+      let newPlayers: IPlayer[] = players.map((player) => ({ ...player, playsNow: null }));
 
-      const shouldActivateAllPlayers =
-        newPlayers.filter(player => player.isActive).length === 1;
+      const shouldActivateAllPlayers = newPlayers.filter((player) => player.isActive).length === 1;
 
       newPlayers = assignNextRoundStarter(newPlayers, shouldActivateAllPlayers);
 
-      const gameEnded = !!newPlayers.find(
-        player => player.numOfBooms === scoreTarget
-      );
+      const gameEnded = !!newPlayers.find((player) => player.numOfBooms === scoreTarget);
 
       return [
         updatePlayers(newPlayers),
-        updateGameState(
-          gameEnded ? GameStates.gameEnded : GameStates.waitForRoundStart
-        ),
+        updateGameState(gameEnded ? GameStates.gameEnded : GameStates.waitForRoundStart)
       ];
     })
   );
@@ -345,7 +312,7 @@ const restartGameEpic = (
   return action$.pipe(
     ofType(restartGame.type, initializeGame.type),
     withLatestFrom(state$),
-    mergeMap(([action, state]) => {
+    mergeMap(([, state]) => {
       const tikTakBoomState = state.websiteRootReducer.tikTakBoom;
       const newTikTakBoomState = restartGameState(tikTakBoomState);
 
@@ -362,7 +329,7 @@ const setWhoLostEpic = (
     ofType(setWhoLost.type),
     withLatestFrom(state$),
     map(([action, state]) => {
-      const playerLostId = action.payload;
+      const playerLostId = action.payload || 0;
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignWhoLost(players, playerLostId);
 
@@ -378,14 +345,14 @@ const goBackEpic = (
   return action$.pipe(
     ofType(goBack.type),
     withLatestFrom(state$),
-    map(([action, state]) => {
+    map(([, state]) => {
       const gameState = state.websiteRootReducer.tikTakBoom.gameState;
-      const newGameState =
-        gameState === GameStates.setScoreTarget
+      const newGameState
+        = gameState === GameStates.setScoreTarget
           ? GameStates.setPlayers
           : gameState === GameStates.waitForRoundStart
-          ? GameStates.setScoreTarget
-          : gameState;
+            ? GameStates.setScoreTarget
+            : gameState;
 
       return updateGameState(newGameState);
     })

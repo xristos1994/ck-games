@@ -1,5 +1,6 @@
-import React, { FC, ReactElement, ReactChild } from "react";
-const styles = require("./styles.module.css");
+import React, { FC, ReactElement, ReactChild } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   children: ReactChild | ReactChild[];

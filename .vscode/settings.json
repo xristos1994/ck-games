@@ -1,3 +1,10 @@
 {
-  "editor.formatOnSave": true
+  "[json]": {
+    "editor.formatOnSave": true // Let Prettier format JSON files
+  },
+  // "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["html", "javascript", "typescript", "javascriptreact", "typescriptreact"]
 }

@@ -1,12 +1,13 @@
-import React, { FC, ReactElement, ChangeEvent } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { classnames } from "@utils/component-utils";
-import { Button } from "@components";
-import { setTeamById, removeTeamById } from "@models/pantomime/actions";
-import { teams } from "@models/pantomime/props";
-import { IState } from "@models/interfaces";
-const styles = require("./styles.module.css");
+import React, { FC, ReactElement, ChangeEvent } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { classnames, compose } from '@utils/component-utils';
+import { Button } from '@components';
+import { setTeamById, removeTeamById } from '@models/pantomime/actions';
+import { teams } from '@models/pantomime/props';
+import { IState } from '@models/interfaces';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   team: {
@@ -14,17 +15,12 @@ interface IProps {
     score: number;
     name: string;
   };
-  setTeamById: (team: IProps["team"]) => void;
+  setTeamById: (team: IProps['team']) => void;
   numOfTeams: number;
-  removeTeamById: (id: IProps["team"]["id"]) => void;
+  removeTeamById: (id: IProps['team']['id']) => void;
 }
 
-const _Team: FC<IProps> = ({
-  team,
-  setTeamById,
-  numOfTeams,
-  removeTeamById,
-}): ReactElement => {
+const _Team: FC<IProps> = ({ team, setTeamById, numOfTeams, removeTeamById }): ReactElement => {
   const onChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
     setTeamById({ ...team, name: e.target.value });
   };
@@ -50,10 +46,7 @@ const _Team: FC<IProps> = ({
         onBlur={onBlurName}
       />
       {numOfTeams === 2 ? null : (
-        <Button
-          onClick={removeTeam}
-          className={classnames(styles.removeTeamButton)}
-        >
+        <Button onClick={removeTeam} className={classnames(styles.removeTeamButton)}>
           X
         </Button>
       )}
@@ -61,19 +54,21 @@ const _Team: FC<IProps> = ({
   );
 };
 
-const Team = connect(
-  createStructuredSelector<
-    IState,
-    {
-      numOfTeams: IProps["numOfTeams"];
-    },
-    {
-      numOfTeams: IProps["numOfTeams"];
-    }
-  >({
-    numOfTeams: (state: IState): IProps["numOfTeams"] => teams(state).length,
-  }),
-  { setTeamById: setTeamById, removeTeamById }
+const Team = compose(
+  connect(
+    createStructuredSelector<
+      IState,
+      {
+        numOfTeams: IProps['numOfTeams'];
+      },
+      {
+        numOfTeams: IProps['numOfTeams'];
+      }
+    >({
+      numOfTeams: (state: IState): IProps['numOfTeams'] => teams(state).length
+    }),
+    { setTeamById: setTeamById, removeTeamById }
+  )
 )(_Team);
 
 export { Team };
