@@ -1,8 +1,10 @@
-import { createStore } from "@core/store";
-import { websiteRootReducer, websiteRootEpic } from "@models";
+import { createStore } from '@core/store';
+import { websiteRootReducer, websiteRootEpic } from '@models';
 
 const store = createStore();
-store.injectReducer("websiteRootReducer", websiteRootReducer);
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+store.injectReducer('websiteRootReducer', websiteRootReducer);
 
 store.runMiddlware(websiteRootEpic);
 

@@ -1,8 +1,9 @@
-import React, { FC, ReactElement } from "react";
-import { Link } from "gatsby";
-import { FlatLogoIcon } from "@components/icons";
+import React, { FC, ReactElement } from 'react';
+import { Link } from 'gatsby';
+import { FlatLogoIcon } from '@components/icons';
 
-const styles = require("./styles.module.css");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 const Header: FC = (): ReactElement => {
   return (

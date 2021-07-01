@@ -1,3 +1,3 @@
-import { PlayersSetup } from "./PlayersSetup";
+import { PlayersSetup } from './PlayersSetup';
 
 export { PlayersSetup };

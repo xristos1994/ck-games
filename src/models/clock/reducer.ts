@@ -1,16 +1,13 @@
-import { IActionWithPayload } from "@core/actions/interfaces";
-import { updateRemainingTime, updateClockIsRunning } from "./actions";
-import { IState } from "./interfaces";
+import { IActionWithPayload } from '@core/actions/interfaces';
+import { updateRemainingTime, updateClockIsRunning } from './actions';
+import { IState } from './interfaces';
 
 const initialState: IState = {
   remainingTime: null,
-  isRunning: false,
+  isRunning: false
 };
 
-const reducer = (
-  state: IState = initialState,
-  action: IActionWithPayload
-): IState => {
+const reducer = (state: IState = initialState, action: IActionWithPayload): IState => {
   const { type, payload } = action;
 
   switch (type) {
@@ -18,7 +15,7 @@ const reducer = (
       return { ...state, remainingTime: payload };
 
     case updateClockIsRunning.type:
-      return { ...state, isRunning: payload };
+      return { ...state, isRunning: payload || false };
 
     default:
       return state;
@@ -26,5 +23,5 @@ const reducer = (
 };
 
 export const clockReducer = {
-  clock: reducer,
+  clock: reducer
 };

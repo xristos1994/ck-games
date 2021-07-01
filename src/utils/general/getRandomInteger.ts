@@ -1,8 +1,4 @@
-export const getRandomInteger = (
-  min: number,
-  max: number,
-  maxInclusive?: boolean
-): number => {
+export const getRandomInteger = (min: number, max: number, maxInclusive?: boolean): number => {
   const _maxInclusive = maxInclusive == null ? true : !!maxInclusive;
 
   const _min = Math.ceil(min);

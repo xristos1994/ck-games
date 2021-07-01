@@ -1,6 +1,6 @@
-import React, { FC, ReactElement, useEffect } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { FC, ReactElement, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import {
   SEO,
   TeamsSetup,
@@ -9,23 +9,22 @@ import {
   StartRound,
   RoundInProgress,
   EndRound,
-  EndGame,
-} from "./components";
-import { gameState } from "@models/pantomime/props";
-import { initializeGame } from "@models/pantomime/actions";
-import { GameStates } from "@models/pantomime/config";
-import { IState } from "@models/interfaces";
-const styles = require("./styles.module.css");
+  EndGame
+} from './components';
+import { compose } from '@utils/component-utils';
+import { gameState } from '@models/pantomime/props';
+import { initializeGame } from '@models/pantomime/actions';
+import { GameStates } from '@models/pantomime/config';
+import { IState } from '@models/interfaces';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const styles = require('./styles.module.css');
 
 interface IProps {
   gameState: GameStates;
   initializeGame: () => void;
 }
 
-const _Pantomime: FC<IProps> = ({
-  gameState,
-  initializeGame,
-}): ReactElement => {
+const _Pantomime: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);
@@ -34,17 +33,11 @@ const _Pantomime: FC<IProps> = ({
 
   const scoreSetup = gameState === GameStates.setScoreTarget && <ScoreSetup />;
 
-  const availableTimeSetup = gameState === GameStates.setAvailableTime && (
-    <AvailableTimeSetup />
-  );
+  const availableTimeSetup = gameState === GameStates.setAvailableTime && <AvailableTimeSetup />;
 
-  const startRound = gameState === GameStates.waitForRoundStart && (
-    <StartRound />
-  );
+  const startRound = gameState === GameStates.waitForRoundStart && <StartRound />;
 
-  const roundInProgress = gameState === GameStates.roundInProgress && (
-    <RoundInProgress />
-  );
+  const roundInProgress = gameState === GameStates.roundInProgress && <RoundInProgress />;
 
   const endGame = gameState === GameStates.gameEnded && <EndGame />;
 
@@ -64,15 +57,13 @@ const _Pantomime: FC<IProps> = ({
   );
 };
 
-const Pantomime = connect(
-  createStructuredSelector<
-    IState,
-    { gameState: IProps["gameState"] },
-    { gameState: IProps["gameState"] }
-  >({
-    gameState,
-  }),
-  { initializeGame }
+const Pantomime = compose(
+  connect(
+    createStructuredSelector<IState, { gameState: IProps['gameState'] }, { gameState: IProps['gameState'] }>({
+      gameState
+    }),
+    { initializeGame }
+  )
 )(_Pantomime);
 
 export { Pantomime };

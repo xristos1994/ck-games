@@ -1,3 +1,3 @@
-import { LocalSEO } from "./LocalSEO";
+import { LocalSEO } from './LocalSEO';
 
 export { LocalSEO };

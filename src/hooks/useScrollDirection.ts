@@ -1,13 +1,13 @@
-import { EffectCallback, useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 enum SclollDirections {
-  up = "up",
-  down = "down",
+  up = 'up',
+  down = 'down'
 }
 
 const useScrollDirection = ({
   initialDirection,
-  thresholdPixels,
+  thresholdPixels
 }: {
   initialDirection?: SclollDirections;
   thresholdPixels?: number;
@@ -15,8 +15,7 @@ const useScrollDirection = ({
   const SCROLL_UP = SclollDirections.up;
   const SCROLL_DOWN = SclollDirections.down;
   const _initialDirection = initialDirection || SCROLL_UP;
-  const _thresholdPixels =
-    typeof thresholdPixels === "number" ? thresholdPixels : 64;
+  const _thresholdPixels = typeof thresholdPixels === 'number' ? thresholdPixels : 64;
 
   const [scrollDir, setScrollDir] = useState(_initialDirection);
 
@@ -45,9 +44,9 @@ const useScrollDirection = ({
       }
     };
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, [_initialDirection, thresholdPixels]);
 
   return scrollDir;
@@ -55,7 +54,7 @@ const useScrollDirection = ({
 
 useScrollDirection.ScrollDirections = {
   up: SclollDirections.up,
-  down: SclollDirections.down,
+  down: SclollDirections.down
 };
 
 export { useScrollDirection };

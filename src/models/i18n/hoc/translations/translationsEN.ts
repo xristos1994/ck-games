@@ -1,15 +1,15 @@
-export const translationsEN = {
-  "Meta Author": "Christos Korompokis",
-  "Meta Content": "English",
-  "html lang": "en",
-  "Menu Title SSR": "CK-Games pantomime Tik-Tak-Boom",
-  "CK-Games": "CK-Games",
-  Pantomime: "Pantomime",
-  "Tik-Tak-Boom": "Tik-Tak-Boom",
-  CONTINUE: "CONTINUE",
-  BACK: "BACK",
-  "Player, it is your turn": "%0, it is your turn!",
-  "Pantomime Description HTML": `
+export const translationsEN: Record<string, string> = {
+  'Meta Author': 'Christos Korompokis',
+  'Meta Content': 'English',
+  'html lang': 'en',
+  'Menu Title SSR': 'CK-Games pantomime Tik-Tak-Boom',
+  'CK-Games': 'CK-Games',
+  Pantomime: 'Pantomime',
+  'Tik-Tak-Boom': 'Tik-Tak-Boom',
+  CONTINUE: 'CONTINUE',
+  BACK: 'BACK',
+  'Player, it is your turn': '%0, it is your turn!',
+  'Pantomime Description HTML': `
         <p>
           Gather your friend and have fun playing
           <strong> Pantomime</strong>.
@@ -51,7 +51,7 @@ export const translationsEN = {
           </li>
         </ul>
       `,
-  "Tik-Tak-Boom Description HTML": `
+  'Tik-Tak-Boom Description HTML': `
         <p>
           Gather your friends and have fun playing
           <strong> Tik-Tak-Boom</strong>.
@@ -92,42 +92,38 @@ export const translationsEN = {
           </li>
         </ul>
     `,
-  Home: "Home",
-  "Team, it is your turn": "%0, it is your turn!",
-  "Game Completed": "Game Completed",
-  "Restart Game": "Restart Game",
-  "Player, bomb exploded in your hands": "%0, bomb exploded in your hands!",
-  "Player Setup": "Players' Setup",
-  "Add Player": "Add Player",
-  "Next Player": "Next Player",
-  "Previous Player": "Previous Player",
-  "Tik Mode Description": "Word must start with the selected syllable",
-  "Tak Mode Description": "Word must end with the selected syllable",
-  "Tik...Tak Mode Description": "Word must just contain the selected syllable",
-  Scoreboard: "Scoreboard",
-  "Choose Winning Score": "Choose Winning Score",
-  "Tik-Tak-Boom Meta Title": "CK-Games: Tik-Tak-Boom",
-  "Tik-Tak-Boom Meta Canonical Pathname": "en/tik-tak-boom/",
-  "Tik-Tak-Boom Meta Description":
-    "Have fun with your friend playing Tik-Tak-Boom",
-  "Tik-Tak-Boom Meta Keywords":
-    "game, entartainment, fun, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb",
-  "Choose Available Time": "Choose Available Time",
-  Seconds: "Seconds",
-  "Movie Not Found": "Movie Not Found!",
-  "Movie Found": "Movie Found!",
-  "Team, your turn completed": "%0, your turn completed!",
-  "Pantomime Meta Title": "CK-Games: Pantomime",
-  "Pantomime Meta Canonical Pathname": "en/pantomime/",
-  "Pantomime Meta Description": "Have fun with your friend playing Pantomime.",
-  "Pantomime Meta Keywords":
-    "game, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw",
-  "Team Setup": "Teams' setup",
-  "Add Team": "Add Team",
-  "Home Meta Title": "CK-Games",
-  "Home Meta Canonical Pathname": "en",
-  "Home Meta Description":
-    "You choose how you will have fun with your friends. Play Pantomime or Tik-Tak-Boom.",
-  "Home Meta Keywords":
-    "games, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb",
+  Home: 'Home',
+  'Team, it is your turn': '%0, it is your turn!',
+  'Game Completed': 'Game Completed',
+  'Restart Game': 'Restart Game',
+  'Player, bomb exploded in your hands': '%0, bomb exploded in your hands!',
+  'Player Setup': 'Players\' Setup',
+  'Add Player': 'Add Player',
+  'Next Player': 'Next Player',
+  'Previous Player': 'Previous Player',
+  'Tik Mode Description': 'Word must start with the selected syllable',
+  'Tak Mode Description': 'Word must end with the selected syllable',
+  'Tik...Tak Mode Description': 'Word must just contain the selected syllable',
+  Scoreboard: 'Scoreboard',
+  'Choose Winning Score': 'Choose Winning Score',
+  'Tik-Tak-Boom Meta Title': 'CK-Games: Tik-Tak-Boom',
+  'Tik-Tak-Boom Meta Canonical Pathname': 'en/tik-tak-boom/',
+  'Tik-Tak-Boom Meta Description': 'Have fun with your friend playing Tik-Tak-Boom',
+  'Tik-Tak-Boom Meta Keywords': 'game, entartainment, fun, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb',
+  'Choose Available Time': 'Choose Available Time',
+  Seconds: 'Seconds',
+  'Movie Not Found': 'Movie Not Found!',
+  'Movie Found': 'Movie Found!',
+  'Team, your turn completed': '%0, your turn completed!',
+  'Pantomime Meta Title': 'CK-Games: Pantomime',
+  'Pantomime Meta Canonical Pathname': 'en/pantomime/',
+  'Pantomime Meta Description': 'Have fun with your friend playing Pantomime.',
+  'Pantomime Meta Keywords': 'game, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw',
+  'Team Setup': 'Teams\' setup',
+  'Add Team': 'Add Team',
+  'Home Meta Title': 'CK-Games',
+  'Home Meta Canonical Pathname': 'en',
+  'Home Meta Description': 'You choose how you will have fun with your friends. Play Pantomime or Tik-Tak-Boom.',
+  'Home Meta Keywords':
+    'games, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb'
 };

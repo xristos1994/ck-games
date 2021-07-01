@@ -5,5 +5,5 @@ interface IBoomTimer {
 
 export const BoomTimer: IBoomTimer = {
   minSeconds: 15,
-  maxSeconds: 50,
+  maxSeconds: 50
 };

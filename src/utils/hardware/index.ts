@@ -1,3 +1,3 @@
-import { vibrate } from "./vibrate";
+import { vibrate } from './vibrate';
 
 export { vibrate };

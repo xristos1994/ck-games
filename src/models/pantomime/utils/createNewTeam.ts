@@ -1,11 +1,11 @@
-import { ITeam } from "models/pantomime/interfaces";
+import { ITeam } from 'models/pantomime/interfaces';
 
-export const createNewTeam: (id: ITeam["id"]) => ITeam = id => {
+export const createNewTeam: (id: ITeam['id']) => ITeam = (id) => {
   return {
     id,
-    name: "",
+    name: '',
     score: 0,
     playsNow: false,
-    movieFound: false,
+    movieFound: false
   };
 };

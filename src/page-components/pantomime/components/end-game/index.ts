@@ -1,3 +1,3 @@
-import { EndGame } from "./EndGame";
+import { EndGame } from './EndGame';
 
 export { EndGame };

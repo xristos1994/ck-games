@@ -1,25 +1,9 @@
-/**
- * Concatenate strings conditionally.
- * strConcat(separator: String) => (...items: [...(String | Number | Object)]) => String
- *
- * @param {String} [separator=' '] The separator to concatenate strings with.
- * @returns {function}
- * @eaxample
-
- * const concatWithWhitespace = strConcat();
- * concatWithWhitespace('a', { 'b': true }, { 'c': false }, 'd', 'e'); // -> 'a b d e'
- *
- * const concatWithUnderscore = strConcat('_');
- * concatWithUnderscore('a', { 'b': true }, { 'c': false }, 'd', 'e'); // ->'a_b_d_e'
- */
-export const strConcat = (
-  separator?: string
-): ((items: (string | number | object)[]) => string) => {
-  const _seperator = separator || " ";
-  return (...items: (string | number | object)[]): string => {
+export const strConcat = (separator?: string): ((items: (string | number | Record<string, boolean>)[]) => string) => {
+  const _seperator = separator || ' ';
+  return (...items: (string | number | Record<never, boolean>)[]): string => {
     const hasOwnProperty = Object.prototype.hasOwnProperty;
     const itemsLength = items.length;
-    let result = "";
+    let result = '';
 
     if (!itemsLength) {
       return result;
@@ -32,12 +16,14 @@ export const strConcat = (
         continue;
       }
 
-      if (typeof item === "string" || typeof item === "number") {
-        result += (result ? _seperator : "") + item;
-      } else if (typeof item === "object") {
-        for (let key in item) {
+      if (typeof item === 'string' || typeof item === 'number') {
+        result += (result ? _seperator : '') + item;
+      } else if (typeof item === 'object') {
+        for (const key in item) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           if (hasOwnProperty.call(item, key) && item[key]) {
-            result += (result ? _seperator : "") + key;
+            result += (result ? _seperator : '') + key;
           }
         }
       }

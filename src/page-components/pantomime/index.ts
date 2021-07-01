@@ -1,3 +1,3 @@
-import { Pantomime } from "./Pantomime";
+import { Pantomime } from './Pantomime';
 
 export { Pantomime };

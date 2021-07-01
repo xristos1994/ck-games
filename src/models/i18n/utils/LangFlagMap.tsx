@@ -1,6 +1,6 @@
-import React, { FC, ReactElement } from "react";
-import { GreekFlagIcon, UkFlagIcon } from "@components/icons";
-import { availableLangs } from "./availableLangs";
+import React, { FC, ReactElement } from 'react';
+import { GreekFlagIcon, UkFlagIcon } from '@components/icons';
+import { availableLangs } from './availableLangs';
 
 interface IProps {
   langCode: string;

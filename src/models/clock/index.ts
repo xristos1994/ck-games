@@ -1,4 +1,4 @@
-import { clockEpic } from "./epics";
-import { clockReducer } from "./reducer";
+import { clockEpic } from './epics';
+import { clockReducer } from './reducer';
 
 export { clockEpic, clockReducer };

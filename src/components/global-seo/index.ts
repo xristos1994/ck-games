@@ -1,3 +1,3 @@
-import { GlobalSEO } from "./GlobalSEO";
+import { GlobalSEO } from './GlobalSEO';
 
 export { GlobalSEO };

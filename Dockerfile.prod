@@ -1,8 +1,8 @@
 # build env
-FROM node:12-alpine as ck-games-builder
+FROM node:14-alpine as ck-games-builder
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install --global gatsby-cli && gatsby telemetry --disable
+RUN npm install --global gatsby-cli@3.8.0 && gatsby telemetry --disable
 RUN npm install
 
 COPY . .

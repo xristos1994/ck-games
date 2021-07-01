@@ -1,30 +1,17 @@
-import React, { FC, ReactElement, SVGProps } from "react";
+import React, { FC, ReactElement, SVGProps } from 'react';
 
 const GreekFlagIcon: FC<SVGProps<SVGSVGElement>> = (props): ReactElement => {
   return (
-    <svg
-      height="100%"
-      {...props}
-      version="1.1"
-      viewBox="0 0 512 512"
-      width="100%"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg height="100%" {...props} version="1.1" viewBox="0 0 512 512" width="100%" xmlns="http://www.w3.org/2000/svg">
       <circle fill="#F0F0F0" cx="256" cy="256" r="256" />
       <g>
-        <path
-          fill="#338AF3"
-          d="M256,189.217h247.181c-6.419-23.814-16.175-46.255-28.755-66.783H256V189.217z"
-        />
+        <path fill="#338AF3" d="M256,189.217h247.181c-6.419-23.814-16.175-46.255-28.755-66.783H256V189.217z" />
         <path
           fill="#338AF3"
           d="M96.643,456.348h318.713c23.363-18.608,43.399-41.21,59.069-66.783H37.574
  C53.245,415.137,73.281,437.74,96.643,456.348z"
         />
-        <path
-          fill="#338AF3"
-          d="M89.043,61.939c-20.126,17.331-37.525,37.74-51.469,60.496h51.469V61.939z"
-        />
+        <path fill="#338AF3" d="M89.043,61.939c-20.126,17.331-37.525,37.74-51.469,60.496h51.469V61.939z" />
         <path
           fill="#338AF3"
           d="M256,256c0-26.076,0-47.899,0-66.783H155.826V256H89.043v-66.783H8.819
