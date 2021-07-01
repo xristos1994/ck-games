@@ -19,7 +19,6 @@
     "lint:fix": "yarn lint --fix",
     "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,css,json,md}\"",
     "format:lint": "npm run prettier && npm run lint -- --fix",
-    "lazy:create": "node lazy_dev/scripts/create.js",
     "docker:build:prod": "docker build -f Dockerfile.prod -t ck-games:prod .",
     "docker:run:prod": "docker run -it --rm -p 9000:80 ck-games:prod",
     "docker:build": "docker build -t ck-games .",
@@ -58,7 +57,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "prettier": "^2.3.2",
-    "prompts": "^2.4.0",
     "typescript": "^4.2.3"
   },
   "repository": {

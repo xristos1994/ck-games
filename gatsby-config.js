@@ -16,8 +16,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `MyGames`,
-        short_name: `MyGames`,
+        name: `CK-Games`,
+        short_name: `CK-Games`,
         start_url: `/`,
         background_color: `#001a9e`,
         theme_color: `#001a9e`,
