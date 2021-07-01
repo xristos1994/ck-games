@@ -7,7 +7,7 @@ export interface IActions<IPayload = null, ISucceededPayload = null, IFailedPayl
   succeeded: IAction<ISucceededPayload>;
   failed: IAction<IFailedPayload>;
   type: string;
-  (payload: IPayload): { type: string; payload?: IPayload };
+  (payload: IPayload): { type: string; payload: IPayload };
 }
 
 export interface IActionWithPayload<IPayload = null> {
