@@ -66,11 +66,11 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 3. Navigate to your workspace and clone this repository.
 4. Navigate in the cloned repository folder.
 5. `npm install`
-6. If you want to run the development server:
+6. If you want to run the development server:<br>
    `npm start`
-7. If you want to serve a production build locally:  
-   `npm run build`
-   `npm run serve`
+7. If you want to serve a production build locally: <br>
+   `npm run build`<br>
+   `npm run serve`<br>
 8. Visit [http://localhost:8000](http://localhost:8000)
 
 ## 🚀 Start CK-Games locally using Docker
@@ -78,11 +78,11 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 1. Install [Docker](https://www.docker.com/get-started)
 2. Navigate to your workspace and clone this repository.
 3. Navigate in the cloned repository folder.
-4. If you want to run the devolopment derver:
-   `docker build -t ck-games .`
-   `docker run -it -p 8000:8000 ck-games`
-5. If you want to serve a production build:
-   `docker build -f Dockerfile.prod -t ck-games:prod .`
+4. If you want to run the devolopment derver:<br>
+   `docker build -t ck-games .`<br>
+   `docker run -it -p 8000:8000 ck-games`<br>
+5. If you want to serve a production build:<br>
+   `docker build -f Dockerfile.prod -t ck-games:prod .`<br>
    `docker run -it --rm -p 9000:80 ck-games:prod`
 
 ## 💫 Deploy
