@@ -11,9 +11,15 @@ import { setIsMenuOpen } from '@models/layout/actions';
 
 const startEpic = (): Observable<IActionWithPayload> => of(startWebsite(null));
 
-const initializePantomimeEpic = (
-  action$: ActionsObservable<IActionWithPayload>
-): Observable<IActionWithPayload | IActionWithPayload<IState['selectedGame']>> => {
+// --------------------------------------------------------------------
+
+interface IInitializePantomimeEpic {
+  (action$: ActionsObservable<IActionWithPayload>): Observable<
+    IActionWithPayload | IActionWithPayload<IState['selectedGame']>
+  >;
+}
+
+const initializePantomimeEpic: IInitializePantomimeEpic = (action$) => {
   return action$.pipe(
     ofType(initializePantomime.type),
     mergeMap(() => {
@@ -22,9 +28,15 @@ const initializePantomimeEpic = (
   );
 };
 
-const initializeTikTakBoomEpic = (
-  action$: ActionsObservable<IActionWithPayload>
-): Observable<IActionWithPayload | IActionWithPayload<IState['selectedGame']>> => {
+// --------------------------------------------------------------------
+
+interface IInitializeTikTakBoomEpic {
+  (action$: ActionsObservable<IActionWithPayload>): Observable<
+    IActionWithPayload | IActionWithPayload<IState['selectedGame']>
+  >;
+}
+
+const initializeTikTakBoomEpic: IInitializeTikTakBoomEpic = (action$) => {
   return action$.pipe(
     ofType(initializeTikTakBoom.type),
     mergeMap(() => {
@@ -33,11 +45,15 @@ const initializeTikTakBoomEpic = (
   );
 };
 
-const restartAllGamesEpic = (
-  action$: ActionsObservable<IActionWithPayload>
-): Observable<
-  IActionWithPayload | IActionWithPayload<IState['selectedGame']> | IActionWithPayload<ILayoutState['isMenuOpen']>
-> => {
+// --------------------------------------------------------------------
+
+interface IRestartAllGamesEpic {
+  (action$: ActionsObservable<IActionWithPayload>): Observable<
+    IActionWithPayload | IActionWithPayload<IState['selectedGame']> | IActionWithPayload<ILayoutState['isMenuOpen']>
+  >;
+}
+
+const restartAllGamesEpic: IRestartAllGamesEpic = (action$) => {
   return action$.pipe(
     ofType(restartAllGames.type),
     mergeMap(() => {
@@ -45,6 +61,8 @@ const restartAllGamesEpic = (
     })
   );
 };
+
+// --------------------------------------------------------------------
 
 export const websiteEpic = combineEpics(
   startEpic,

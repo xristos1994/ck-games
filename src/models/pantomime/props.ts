@@ -18,8 +18,7 @@ export const teamNameThatPlaysNow: (state: IState) => ITeam['name'] | null = (st
 export const gameState: (state: IState) => IModelState['gameState'] = (state) =>
   state.websiteRootReducer.pantomime.gameState;
 
-export const movie: (state: IState) => IModelState['movie'] = (state) =>
-  state.websiteRootReducer.pantomime.movie;
+export const movie: (state: IState) => IModelState['movie'] = (state) => state.websiteRootReducer.pantomime.movie;
 
 export const scoreTarget: (state: IState) => IModelState['scoreTarget'] = (state) =>
   state.websiteRootReducer.pantomime.scoreTarget;
@@ -47,7 +46,7 @@ export const availableScoreTargets: () => IModelState['scoreTarget'][] = () => A
 export const availableTime: (state: IState) => IModelState['availableTime'] = (state) =>
   state.websiteRootReducer.pantomime.availableTime;
 
-export const availableMovies: (state: IState) => [ IModelState['movie'], IModelState['movie'] ] = (state) => {
+export const availableMovies: (state: IState) => [IModelState['movie'], IModelState['movie']] = (state) => {
   const movies = Movies[state.websiteRootReducer.i18n.lang.code.toUpperCase()];
   const moviesLength = movies.length;
   const selectedMovieIndex = state.websiteRootReducer.pantomime.selectedMovieIndex;
@@ -57,4 +56,3 @@ export const availableMovies: (state: IState) => [ IModelState['movie'], IModelS
 
 export const selectedMovieIndex: (state: IState) => IModelState['selectedMovieIndex'] = (state) =>
   state.websiteRootReducer.pantomime.selectedMovieIndex;
-
