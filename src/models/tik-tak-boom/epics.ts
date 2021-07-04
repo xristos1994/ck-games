@@ -53,10 +53,15 @@ import { AvailableGames } from '@models/website/interfaces';
 
 const startEpic = (): Observable<IActionWithPayload> => of(startTikTakBoom(null));
 
-const setPlayerByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload<IPlayer>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]>> => {
+// --------------------------------------------------------------------
+
+interface ISetPlayerByIdEpic {
+  (action$: ActionsObservable<IActionWithPayload<IPlayer>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IPlayer[]>
+  >;
+}
+
+const setPlayerByIdEpic: ISetPlayerByIdEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setPlayerById.type),
     withLatestFrom(state$),
@@ -73,10 +78,15 @@ const setPlayerByIdEpic = (
   );
 };
 
-const removePlayerByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload<IPlayer['id']>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[] | null>> => {
+// --------------------------------------------------------------------
+
+interface IRemovePlayerByIdEpic {
+  (action$: ActionsObservable<IActionWithPayload<IPlayer['id']>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IPlayer[] | null>
+  >;
+}
+
+const removePlayerByIdEpic: IRemovePlayerByIdEpic = (action$, state$) => {
   return action$.pipe(
     ofType(removePlayerById.type),
     withLatestFrom(state$),
@@ -92,10 +102,15 @@ const removePlayerByIdEpic = (
   );
 };
 
-const addPlayerByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]>> => {
+// --------------------------------------------------------------------
+
+interface IAddPlayerByIdEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IPlayer[]>
+  >;
+}
+
+const addPlayerByIdEpic: IAddPlayerByIdEpic = (action$, state$) => {
   return action$.pipe(
     ofType(addPlayer.type),
     withLatestFrom(state$),
@@ -106,10 +121,15 @@ const addPlayerByIdEpic = (
   );
 };
 
-const playersSetupSubmitEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<GameStates>> => {
+// --------------------------------------------------------------------
+
+interface IPlayersSetupSubmitEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<GameStates>
+  >;
+}
+
+const playersSetupSubmitEpic: IPlayersSetupSubmitEpic = (action$, state$) => {
   return action$.pipe(
     ofType(playersSetupSubmit.type),
     withLatestFrom(state$),
@@ -123,10 +143,15 @@ const playersSetupSubmitEpic = (
   );
 };
 
-const setScoreTargetEpic = (
-  action$: ActionsObservable<IActionWithPayload<IScoreTarget>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IScoreTarget>> => {
+// --------------------------------------------------------------------
+
+interface ISetScoreTargetEpic {
+  (action$: ActionsObservable<IActionWithPayload<IScoreTarget>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IScoreTarget>
+  >;
+}
+
+const setScoreTargetEpic: ISetScoreTargetEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setScoreTarget.type),
     withLatestFrom(state$),
@@ -136,10 +161,15 @@ const setScoreTargetEpic = (
   );
 };
 
-const scoreSetupSubmitEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>> => {
+// --------------------------------------------------------------------
+
+interface IScoreSetupSubmitEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>
+  >;
+}
+
+const scoreSetupSubmitEpic: IScoreSetupSubmitEpic = (action$, state$) => {
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
     withLatestFrom(state$),
@@ -151,16 +181,19 @@ const scoreSetupSubmitEpic = (
   );
 };
 
-const startRoundEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<
-  | IActionWithPayload<IPlayer[]>
-  | IActionWithPayload<IMode>
-  | IActionWithPayload<ISyllable>
-  | IActionWithPayload<GameStates>
-  | IActionWithPayload<IClock['remainingTime']>
-> => {
+// --------------------------------------------------------------------
+
+interface IStartRoundEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    | IActionWithPayload<IPlayer[]>
+    | IActionWithPayload<IMode>
+    | IActionWithPayload<ISyllable>
+    | IActionWithPayload<GameStates>
+    | IActionWithPayload<IClock['remainingTime']>
+  >;
+}
+
+const startRoundEpic: IStartRoundEpic = (action$, state$) => {
   return action$.pipe(
     ofType(startRound.type),
     withLatestFrom(state$),
@@ -182,10 +215,15 @@ const startRoundEpic = (
   );
 };
 
-const goToNextPlayerEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]>> => {
+// --------------------------------------------------------------------
+
+interface IGoToNextPlayerEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IPlayer[]>
+  >;
+}
+
+const goToNextPlayerEpic: IGoToNextPlayerEpic = (action$, state$) => {
   return action$.pipe(
     ofType(goToNextPlayer.type),
     withLatestFrom(state$),
@@ -198,10 +236,15 @@ const goToNextPlayerEpic = (
   );
 };
 
-const goToPreviousPlayerEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]>> => {
+// --------------------------------------------------------------------
+
+interface IGoToPreviousPlayerEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IPlayer[]>
+  >;
+}
+
+const goToPreviousPlayerEpic: IGoToPreviousPlayerEpic = (action$, state$) => {
   return action$.pipe(
     ofType(goToPreviousPlayer.type),
     withLatestFrom(state$),
@@ -214,10 +257,13 @@ const goToPreviousPlayerEpic = (
   );
 };
 
-const clockRemainingTimeBecameZeroEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload> => {
+// --------------------------------------------------------------------
+
+interface IClockRemainingTimeBecameZeroEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<IActionWithPayload>;
+}
+
+const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (action$, state$) => {
   return action$.pipe(
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
@@ -244,10 +290,13 @@ const clockRemainingTimeBecameZeroEpic = (
   );
 };
 
-const clockTriggerTikTakSoundEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload> => {
+// --------------------------------------------------------------------
+
+interface IClockTriggerTikTakSoundEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<IActionWithPayload>;
+}
+
+const clockTriggerTikTakSoundEpic: IClockTriggerTikTakSoundEpic = (action$, state$) => {
   return action$.pipe(
     ofType(clockTriggerTikTakSound.type),
     withLatestFrom(state$),
@@ -262,10 +311,15 @@ const clockTriggerTikTakSoundEpic = (
   );
 };
 
-const endRoundEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload | IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>> => {
+// --------------------------------------------------------------------
+
+interface IEndRoundEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload | IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>
+  >;
+}
+
+const endRoundEpic: IEndRoundEpic = (action$, state$) => {
   return action$.pipe(
     ofType(endRound.type),
     withLatestFrom(state$),
@@ -278,10 +332,15 @@ const endRoundEpic = (
   );
 };
 
-const goToNextRoundEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>> => {
+// --------------------------------------------------------------------
+
+interface IGoToNextRoundEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>
+  >;
+}
+
+const goToNextRoundEpic: IGoToNextRoundEpic = (action$, state$) => {
   return action$.pipe(
     ofType(goToNextRound.type),
     withLatestFrom(state$),
@@ -305,10 +364,15 @@ const goToNextRoundEpic = (
   );
 };
 
-const restartGameEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState> | IActionWithPayload> => {
+// --------------------------------------------------------------------
+
+interface IRestartGameEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState> | IActionWithPayload
+  >;
+}
+
+const restartGameEpic: IRestartGameEpic = (action$, state$) => {
   return action$.pipe(
     ofType(restartGame.type, initializeGame.type),
     withLatestFrom(state$),
@@ -321,10 +385,15 @@ const restartGameEpic = (
   );
 };
 
-const setWhoLostEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IPlayer[]>> => {
+// --------------------------------------------------------------------
+
+interface ISetWhoLostEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IPlayer[]>
+  >;
+}
+
+const setWhoLostEpic: ISetWhoLostEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setWhoLost.type),
     withLatestFrom(state$),
@@ -338,10 +407,15 @@ const setWhoLostEpic = (
   );
 };
 
-const goBackEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<GameStates>> => {
+// --------------------------------------------------------------------
+
+interface IGoBackEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<GameStates>
+  >;
+}
+
+const goBackEpic: IGoBackEpic = (action$, state$) => {
   return action$.pipe(
     ofType(goBack.type),
     withLatestFrom(state$),
@@ -358,6 +432,8 @@ const goBackEpic = (
     })
   );
 };
+
+// --------------------------------------------------------------------
 
 export const tikTakBoomEpic = combineEpics(
   startEpic,

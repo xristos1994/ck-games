@@ -7,9 +7,17 @@ interface IProps {
   description: string;
   keywords: string;
   ogImage: string;
+  alternateLangLinks: { langCode: string; link: string }[];
 }
 
-const LocalSEO: FC<IProps> = ({ title, canonicalUrl, description, keywords, ogImage }): ReactElement => {
+const LocalSEO: FC<IProps> = ({
+  title,
+  canonicalUrl,
+  description,
+  keywords,
+  ogImage,
+  alternateLangLinks
+}): ReactElement => {
   return (
     <Helmet>
       {title && <title>{title}</title>}
@@ -28,6 +36,12 @@ const LocalSEO: FC<IProps> = ({ title, canonicalUrl, description, keywords, ogIm
       {description && <meta name="twitter:description" content={description} />}
       {title && <meta name="twitter:title" content={title} />}
       {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+      {alternateLangLinks.length
+        ? alternateLangLinks.map(({ langCode, link }) => (
+          <link key={langCode} rel="alternate" hrefLang={langCode} href={link} />
+        ))
+        : null}
     </Helmet>
   );
 };

@@ -12,12 +12,15 @@ import { GameStates as TikTakBoomGameStates } from '@models/tik-tak-boom/config'
 
 const startEpic = (): Observable<IActionWithPayload> => of(startLayout(null));
 
-const setIsMenuOpenEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<
-  IActionWithPayload<IModelState['isMenuOpen']> | IActionWithPayload<IClockState['isRunning']> | IActionWithPayload
-> => {
+// --------------------------------------------------------------------
+
+interface ISetIsMenuOpenEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState['isMenuOpen']> | IActionWithPayload<IClockState['isRunning']> | IActionWithPayload
+  >;
+}
+
+const setIsMenuOpenEpic: ISetIsMenuOpenEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setIsMenuOpen.type),
     withLatestFrom(state$),
@@ -38,5 +41,7 @@ const setIsMenuOpenEpic = (
     })
   );
 };
+
+// --------------------------------------------------------------------
 
 export const layoutEpic = combineEpics(startEpic, setIsMenuOpenEpic);

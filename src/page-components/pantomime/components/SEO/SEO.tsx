@@ -18,11 +18,25 @@ const _SEO: FC<IProps> = ({ t }): ReactElement => {
   const canonicalUrl = `${getCanonicalBaseUrl()}/${t('Pantomime Meta Canonical Pathname')}`;
   const description = t('Pantomime Meta Description');
   const keywords = t('Pantomime Meta Keywords');
+  const alternateLangLinks = [
+    {
+      langCode: 'el',
+      link: `${getCanonicalBaseUrl()}/el/${t('Pantomime Meta Canonical Pathname')
+        .replace('en/', '')
+        .replace('el/', '')}`
+    },
+    {
+      langCode: 'en',
+      link: `${getCanonicalBaseUrl()}/en/${t('Pantomime Meta Canonical Pathname')
+        .replace('en/', '')
+        .replace('el/', '')}`
+    }
+  ];
 
   return (
     <>
       <GlobalSEO />
-      <LocalSEO {...{ title, canonicalUrl, description, keywords, ogImage }} />
+      <LocalSEO {...{ title, canonicalUrl, description, keywords, ogImage, alternateLangLinks }} />
     </>
   );
 };

@@ -9,9 +9,13 @@ import { availableLangs, setLocalStorageLang, getLocalStorageLang, getlangFromPa
 
 const startEpic = (): Observable<IActionWithPayload> => of(initI18n(null));
 
-const initI18nEpic = (
-  action$: ActionsObservable<IActionWithPayload>
-): Observable<IActionWithPayload<IModelState['lang']>> => {
+// --------------------------------------------------------------------
+
+interface IInitI18nEpic {
+  (action$: ActionsObservable<IActionWithPayload>): Observable<IActionWithPayload<IModelState['lang']>>;
+}
+
+const initI18nEpic: IInitI18nEpic = (action$) => {
   return action$.pipe(
     ofType(initI18n.type),
     map(() => {
@@ -23,9 +27,15 @@ const initI18nEpic = (
   );
 };
 
-const setLangEpic = (
-  action$: ActionsObservable<IActionWithPayload<IModelState['lang']>>
-): Observable<IActionWithPayload<IModelState['lang']>> => {
+// --------------------------------------------------------------------
+
+interface ISetLangEpic {
+  (action$: ActionsObservable<IActionWithPayload<IModelState['lang']>>): Observable<
+    IActionWithPayload<IModelState['lang']>
+  >;
+}
+
+const setLangEpic: ISetLangEpic = (action$) => {
   return action$.pipe(
     ofType(setLang.type),
     map((action) => {
@@ -34,5 +44,7 @@ const setLangEpic = (
     })
   );
 };
+
+// --------------------------------------------------------------------
 
 export const i18nEpic = combineEpics(startEpic, initI18nEpic, setLangEpic);
