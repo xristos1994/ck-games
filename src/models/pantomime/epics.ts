@@ -52,10 +52,15 @@ import { availableLangs } from '@models/i18n/utils';
 
 const startEpic = (): Observable<IActionWithPayload> => of(startPantomime(null));
 
-const setTeamByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload<ITeam>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState['teams']>> => {
+// --------------------------------------------------------------------
+
+interface ISetTeamByIdEpic {
+  (action$: ActionsObservable<IActionWithPayload<ITeam>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState['teams']>
+  >;
+}
+
+const setTeamByIdEpic: ISetTeamByIdEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setTeamById.type),
     withLatestFrom(state$),
@@ -72,10 +77,15 @@ const setTeamByIdEpic = (
   );
 };
 
-const removeTeamByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload<ITeam['id']>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState['teams'] | null>> => {
+// --------------------------------------------------------------------
+
+interface IRemoveTeamByIdEpic {
+  (action$: ActionsObservable<IActionWithPayload<ITeam['id']>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState['teams'] | null>
+  >;
+}
+
+const removeTeamByIdEpic: IRemoveTeamByIdEpic = (action$, state$) => {
   return action$.pipe(
     ofType(removeTeamById.type),
     withLatestFrom(state$),
@@ -89,10 +99,15 @@ const removeTeamByIdEpic = (
   );
 };
 
-const addTeamByIdEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState['teams']>> => {
+// --------------------------------------------------------------------
+
+interface IAddTeamByIdEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState['teams']>
+  >;
+}
+
+const addTeamByIdEpic: IAddTeamByIdEpic = (action$, state$) => {
   return action$.pipe(
     ofType(addTeam.type),
     withLatestFrom(state$),
@@ -103,10 +118,15 @@ const addTeamByIdEpic = (
   );
 };
 
-const teamsSetupSubmitEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<GameStates> | IActionWithPayload<IModelState['selectedMovieIndex']>> => {
+// --------------------------------------------------------------------
+
+interface ITeamsSetupSubmitEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<GameStates> | IActionWithPayload<IModelState['selectedMovieIndex']>
+  >;
+}
+
+const teamsSetupSubmitEpic: ITeamsSetupSubmitEpic = (action$, state$) => {
   return action$.pipe(
     ofType(teamsSetupSubmit.type),
     withLatestFrom(state$),
@@ -123,10 +143,15 @@ const teamsSetupSubmitEpic = (
   );
 };
 
-const setScoreTargetEpic = (
-  action$: ActionsObservable<IActionWithPayload<IScoreTarget>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IScoreTarget>> => {
+// --------------------------------------------------------------------
+
+interface ISetScoreTargetEpic {
+  (action$: ActionsObservable<IActionWithPayload<IScoreTarget>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IScoreTarget>
+  >;
+}
+
+const setScoreTargetEpic: ISetScoreTargetEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setScoreTarget.type),
     withLatestFrom(state$),
@@ -136,9 +161,13 @@ const setScoreTargetEpic = (
   );
 };
 
-const scoreSetupSubmitEpic = (
-  action$: ActionsObservable<IActionWithPayload>
-): Observable<IActionWithPayload<GameStates>> => {
+// --------------------------------------------------------------------
+
+interface IScoreSetupSubmitEpic {
+  (action$: ActionsObservable<IActionWithPayload>): Observable<IActionWithPayload<GameStates>>;
+}
+
+const scoreSetupSubmitEpic: IScoreSetupSubmitEpic = (action$) => {
   return action$.pipe(
     ofType(scoreSetupSubmit.type),
     map(() => {
@@ -147,10 +176,16 @@ const scoreSetupSubmitEpic = (
   );
 };
 
-const setAvailableTimeEpic = (
-  action$: ActionsObservable<IActionWithPayload<IModelState['availableTime']>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState['availableTime']>> => {
+// --------------------------------------------------------------------
+
+interface ISetAvailableTimeEpic {
+  (
+    action$: ActionsObservable<IActionWithPayload<IModelState['availableTime']>>,
+    state$: StateObservable<IState>
+  ): Observable<IActionWithPayload<IModelState['availableTime']>>;
+}
+
+const setAvailableTimeEpic: ISetAvailableTimeEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setAvailableTime.type),
     withLatestFrom(state$),
@@ -160,14 +195,17 @@ const setAvailableTimeEpic = (
   );
 };
 
-const availableTimeSetupSubmitEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<
-  | IActionWithPayload<IModelState['teams']>
-  | IActionWithPayload<GameStates>
-  | IActionWithPayload<IModelState['selectedMovieIndex']>
-> => {
+// --------------------------------------------------------------------
+
+interface IAvailableTimeSetupSubmitEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    | IActionWithPayload<IModelState['teams']>
+    | IActionWithPayload<GameStates>
+    | IActionWithPayload<IModelState['selectedMovieIndex']>
+  >;
+}
+
+const availableTimeSetupSubmitEpic: IAvailableTimeSetupSubmitEpic = (action$, state$) => {
   return action$.pipe(
     ofType(availableTimeSetupSubmit.type, goToNextRound.type),
     withLatestFrom(state$),
@@ -186,10 +224,15 @@ const availableTimeSetupSubmitEpic = (
   );
 };
 
-const startRoundEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<GameStates> | IActionWithPayload<IClock['remainingTime']>> => {
+// --------------------------------------------------------------------
+
+interface IStartRoundEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<GameStates> | IActionWithPayload<IClock['remainingTime']>
+  >;
+}
+
+const startRoundEpic: IStartRoundEpic = (action$, state$) => {
   return action$.pipe(
     ofType(startRound.type),
     withLatestFrom(state$),
@@ -202,10 +245,15 @@ const startRoundEpic = (
   );
 };
 
-const clockRemainingTimeBecameZeroEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<ITeam['movieFound']>> => {
+// --------------------------------------------------------------------
+
+interface IClockRemainingTimeBecameZeroEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<ITeam['movieFound']>
+  >;
+}
+
+const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (action$, state$) => {
   return action$.pipe(
     ofType(clockRemainingTimeBecameZero.type),
     withLatestFrom(state$),
@@ -232,9 +280,15 @@ const clockRemainingTimeBecameZeroEpic = (
   );
 };
 
-const endRoundEpic = (
-  action$: ActionsObservable<IActionWithPayload>
-): Observable<IActionWithPayload<GameStates | ITeam['movieFound']> | IActionWithPayload> => {
+// --------------------------------------------------------------------
+
+interface IEndRoundEpic {
+  (action$: ActionsObservable<IActionWithPayload>): Observable<
+    IActionWithPayload<GameStates | ITeam['movieFound']> | IActionWithPayload
+  >;
+}
+
+const endRoundEpic: IEndRoundEpic = (action$) => {
   return action$.pipe(
     ofType(endRound.type),
     mergeMap(() => {
@@ -243,10 +297,15 @@ const endRoundEpic = (
   );
 };
 
-const restartGameEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState> | IActionWithPayload> => {
+// --------------------------------------------------------------------
+
+interface IRestartGameEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState> | IActionWithPayload
+  >;
+}
+
+const restartGameEpic: IRestartGameEpic = (action$, state$) => {
   return action$.pipe(
     ofType(restartGame.type, initializeGame.type),
     withLatestFrom(state$),
@@ -259,10 +318,15 @@ const restartGameEpic = (
   );
 };
 
-const setMovieEpic = (
-  action$: ActionsObservable<IActionWithPayload<IModelState['movie']>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState['movie']>> => {
+// --------------------------------------------------------------------
+
+interface ISetMovieEpic {
+  (action$: ActionsObservable<IActionWithPayload<IModelState['movie']>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState['movie']>
+  >;
+}
+
+const setMovieEpic: ISetMovieEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setMovie.type),
     withLatestFrom(state$),
@@ -272,10 +336,16 @@ const setMovieEpic = (
   );
 };
 
-const setMovieWhenChangeLangEpic = (
-  action$: ActionsObservable<IActionWithPayload<IState['websiteRootReducer']['i18n']['lang']>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState['movie'] | null>> => {
+// --------------------------------------------------------------------
+
+interface ISetMovieWhenChangeLangEpic {
+  (
+    action$: ActionsObservable<IActionWithPayload<IState['websiteRootReducer']['i18n']['lang']>>,
+    state$: StateObservable<IState>
+  ): Observable<IActionWithPayload<IModelState['movie'] | null>>;
+}
+
+const setMovieWhenChangeLangEpic: ISetMovieWhenChangeLangEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setLang.type),
     withLatestFrom(state$),
@@ -300,10 +370,15 @@ const setMovieWhenChangeLangEpic = (
   );
 };
 
-const setIfMovieFoundEpic = (
-  action$: ActionsObservable<IActionWithPayload<ITeam['movieFound']>>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<IModelState['teams']> | IActionWithPayload> => {
+// --------------------------------------------------------------------
+
+interface ISetIfMovieFoundEpic {
+  (action$: ActionsObservable<IActionWithPayload<ITeam['movieFound']>>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<IModelState['teams']> | IActionWithPayload
+  >;
+}
+
+const setIfMovieFoundEpic: ISetIfMovieFoundEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setIfMovieFound.type),
     withLatestFrom(state$),
@@ -320,10 +395,15 @@ const setIfMovieFoundEpic = (
   );
 };
 
-const goBackEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<GameStates>> => {
+// --------------------------------------------------------------------
+
+interface IGoBackEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<GameStates>
+  >;
+}
+
+const goBackEpic: IGoBackEpic = (action$, state$) => {
   return action$.pipe(
     ofType(goBack.type),
     withLatestFrom(state$),
@@ -342,6 +422,8 @@ const goBackEpic = (
     })
   );
 };
+
+// --------------------------------------------------------------------
 
 export const pantomimeEpic = combineEpics(
   startEpic,

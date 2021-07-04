@@ -20,10 +20,15 @@ const SESSION_ID_KEY = 'ck-games-session-id';
 
 const startEpic = (): Observable<IActionWithPayload> => of(startLogging(null));
 
-const createLogPayloadEpic = (
-  action$: ActionsObservable<IActionWithPayload>,
-  state$: StateObservable<IState>
-): Observable<IActionWithPayload<ILoggingPayload | null>> => {
+// --------------------------------------------------------------------
+
+interface ICreateLogPayloadEpic {
+  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
+    IActionWithPayload<ILoggingPayload | null>
+  >;
+}
+
+const createLogPayloadEpic: ICreateLogPayloadEpic = (action$, state$) => {
   return action$.pipe(
     ofType(
       startLogging.type,
@@ -110,6 +115,8 @@ const createLogPayloadEpic = (
   );
 };
 
+// --------------------------------------------------------------------
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const logEpic = (action$) => {
@@ -122,7 +129,9 @@ const logEpic = (action$) => {
   );
 };
 
+// --------------------------------------------------------------------
+
 export const loggingEpic
   = process.env.NODE_ENV === 'development' && !LOGGING_IN_DEV_MODE
-    ? combineEpics()
+    ? combineEpics(startEpic, createLogPayloadEpic)
     : combineEpics(startEpic, createLogPayloadEpic, logEpic);
