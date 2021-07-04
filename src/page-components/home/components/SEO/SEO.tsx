@@ -18,11 +18,15 @@ const _SEO: FC<IProps> = ({ t }): ReactElement => {
   const canonicalUrl = `${getCanonicalBaseUrl()}/${t('Home Meta Canonical Pathname')}`;
   const description = t('Home Meta Description');
   const keywords = t('Home Meta Keywords');
+  const alternateLangLinks = [
+    { langCode: 'el', link: `${getCanonicalBaseUrl()}/el` },
+    { langCode: 'en', link: `${getCanonicalBaseUrl()}/en` }
+  ];
 
   return (
     <>
       <GlobalSEO />
-      <LocalSEO {...{ title, canonicalUrl, description, keywords, ogImage }} />
+      <LocalSEO {...{ title, canonicalUrl, description, keywords, ogImage, alternateLangLinks }} />
     </>
   );
 };

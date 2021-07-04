@@ -1,5 +1,4 @@
-export const Movies: Record<string, string[]>
-= {
+export const Movies: Record<string, string[]> = {
   EL: [
     'Ο Δημήτριος και οι Μονομάχοι',
     'Τρελός για Έρωτα',
@@ -2399,4 +2398,3 @@ export const Movies: Record<string, string[]>
     'Videodrome'
   ].sort(() => (Math.random() > 0.5 ? -1 : 1))
 };
-

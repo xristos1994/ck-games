@@ -32,7 +32,14 @@ import {
   updateSelectedMovieIndex
 } from './actions';
 import { GameStates, Movies } from './config';
-import { findNewMoviesIndex, assignNextTeam, createNewTeam, restartGameState, assignIfMovieFound, getAudio } from './utils';
+import {
+  findNewMoviesIndex,
+  assignNextTeam,
+  createNewTeam,
+  restartGameState,
+  assignIfMovieFound,
+  getAudio
+} from './utils';
 import { vibrate } from '@utils/hardware';
 import { ITeam, IScoreTarget } from './interfaces';
 import { IState } from '@models/interfaces';
@@ -99,10 +106,7 @@ const addTeamByIdEpic = (
 const teamsSetupSubmitEpic = (
   action$: ActionsObservable<IActionWithPayload>,
   state$: StateObservable<IState>
-): Observable<
-  | IActionWithPayload<GameStates>
-  | IActionWithPayload<IModelState['selectedMovieIndex']>
-> => {
+): Observable<IActionWithPayload<GameStates> | IActionWithPayload<IModelState['selectedMovieIndex']>> => {
   return action$.pipe(
     ofType(teamsSetupSubmit.type),
     withLatestFrom(state$),
@@ -114,10 +118,7 @@ const teamsSetupSubmitEpic = (
 
       const newMoviesIndex = findNewMoviesIndex(state.websiteRootReducer.pantomime.selectedMovieIndex);
 
-      return [
-        updateGameState(GameStates.waitForRoundStart),
-        updateSelectedMovieIndex(newMoviesIndex)
-      ];
+      return [updateGameState(GameStates.waitForRoundStart), updateSelectedMovieIndex(newMoviesIndex)];
     })
   );
 };
@@ -286,7 +287,8 @@ const setMovieWhenChangeLangEpic = (
       }
 
       const currentLangCode = payload.code;
-      const previousLangCode = currentLangCode === availableLangs.en.code ? availableLangs.el.code : availableLangs.en.code;
+      const previousLangCode
+        = currentLangCode === availableLangs.en.code ? availableLangs.el.code : availableLangs.en.code;
 
       const currentMovies = Movies[currentLangCode.toUpperCase()];
       const previousMovies = Movies[previousLangCode.toUpperCase()];

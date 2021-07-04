@@ -38,9 +38,10 @@ const createLogPayloadEpic = (
     withLatestFrom(state$),
     map(([{ type, payload }, state]) => {
       if (
-        (type === initializeTikTakBoom.type && state.websiteRootReducer.website.selectedGame !== AvailableGames.tikTakBoom)
-          || (type === initializePantomime.type && state.websiteRootReducer.website.selectedGame !== AvailableGames.pantomime)
-
+        (type === initializeTikTakBoom.type
+          && state.websiteRootReducer.website.selectedGame !== AvailableGames.tikTakBoom)
+        || (type === initializePantomime.type
+          && state.websiteRootReducer.website.selectedGame !== AvailableGames.pantomime)
       ) {
         return noAction(null);
       }
@@ -49,7 +50,7 @@ const createLogPayloadEpic = (
       const isFirstTime = !sessionId;
 
       if (!sessionId) {
-        sessionId = new Date().toUTCString() + '/' + Math.round(Math.random()*10000000000);
+        sessionId = new Date().toUTCString() + '/' + Math.round(Math.random() * 10000000000);
         localStorage.setItem(SESSION_ID_KEY, sessionId);
       }
 
@@ -63,21 +64,33 @@ const createLogPayloadEpic = (
         date: new Date().toUTCString(),
         isFirstTime,
         action: '',
-        message:''
+        message: ''
       };
 
       if (type === startLogging.type) {
         loggingPayload.action = 'USER_ENTERED';
-      } else if (type === initializeTikTakBoom.type && state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom) {
+      } else if (
+        type === initializeTikTakBoom.type
+        && state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom
+      ) {
         loggingPayload.action = 'USER_ENTERED_GAME';
         loggingPayload.message = 'tik-tak-boom';
-      } else if (type === initializePantomime.type && state.websiteRootReducer.website.selectedGame === AvailableGames.pantomime) {
+      } else if (
+        type === initializePantomime.type
+        && state.websiteRootReducer.website.selectedGame === AvailableGames.pantomime
+      ) {
         loggingPayload.action = 'USER_ENTERED_GAME';
         loggingPayload.message = 'pantomime';
-      } else if (type === restartTikTakBoom.type && state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom) {
+      } else if (
+        type === restartTikTakBoom.type
+        && state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom
+      ) {
         loggingPayload.action = 'USER_RESTARTED_GAME';
         loggingPayload.message = 'tik-tak-boom';
-      } else if (type === restartPantomime.type && state.websiteRootReducer.website.selectedGame === AvailableGames.pantomime) {
+      } else if (
+        type === restartPantomime.type
+        && state.websiteRootReducer.website.selectedGame === AvailableGames.pantomime
+      ) {
         loggingPayload.action = 'USER_RESTARTED_GAME';
         loggingPayload.message = 'pantomime';
       } else if (type === setLang.type) {
@@ -99,7 +112,7 @@ const createLogPayloadEpic = (
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const logEpic = action$ => {
+const logEpic = (action$) => {
   return action$.pipe(
     ofType(log.type),
 
@@ -109,6 +122,7 @@ const logEpic = action$ => {
   );
 };
 
-export const loggingEpic = process.env.NODE_ENV === 'development' && !LOGGING_IN_DEV_MODE
-  ? combineEpics()
-  : combineEpics(startEpic, createLogPayloadEpic, logEpic);
+export const loggingEpic
+  = process.env.NODE_ENV === 'development' && !LOGGING_IN_DEV_MODE
+    ? combineEpics()
+    : combineEpics(startEpic, createLogPayloadEpic, logEpic);
