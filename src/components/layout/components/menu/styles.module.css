@@ -30,12 +30,19 @@
   margin-bottom: var(--padding-medium);
 }
 
-.menuContainer > .langSelector > a > .lang,
 .menuContainer > .langSelector > .lang {
   width: var(--menu-button-height);
   margin-right: var(--padding-medium);
   border-radius: 50%;
   padding: 0;
+}
+
+.menuContainer > .langSelector > .lang.selectedLang {
+  background-color: transparent;
+  border-radius: 50% 50% 0 0;
+  border-bottom: 6px solid var(--bg-color-of-selected);
+  filter: unset;
+  -webkit-filter: unset;
 }
 
 .menuContainer > .menuButton {

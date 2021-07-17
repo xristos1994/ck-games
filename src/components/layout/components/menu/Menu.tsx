@@ -107,7 +107,7 @@ const _Menu: FC<IProps> = ({
                 other={{ disabled: isSelectedLang }}
                 onClick={() => setLang(_lang)}
                 key={_lang.code}
-                className={styles.lang}
+                className={classnames(styles.lang, { [styles.selectedLang]: isSelectedLang })}
               >
                 <LangFlagMap langCode={_lang.code} />
               </Button>
