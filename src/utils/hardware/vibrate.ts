@@ -1,5 +1,7 @@
 export const vibrate = (pattern?: number | number[]): void => {
-  if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) {
+  try {
     window.navigator.vibrate(pattern || 200);
+  } catch (error) {
+    // fail silently
   }
 };

@@ -18,18 +18,16 @@ import { IState as IModelState } from './interfaces';
 
 interface IStartClockEpic {
   (
-    action$: ActionsObservable<IActionWithPayload<IModelState['remainingTime']>>,
-    state$: StateObservable<IState>
+    action$: ActionsObservable<IActionWithPayload<IModelState['remainingTime']>>
   ): Observable<
     IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload<IModelState['isRunning']> | IActionWithPayload
   >;
 }
 
-const startClockEpic: IStartClockEpic = (action$, state$) => {
+export const startClockEpic: IStartClockEpic = (action$) => {
   return action$.pipe(
     ofType(startClock.type),
-    withLatestFrom(state$),
-    mergeMap(([{ payload }]) => {
+    mergeMap(({ payload }) => {
       return [updateRemainingTime(payload), updateClockIsRunning(true), reduceRemainingTime(null)];
     })
   );
@@ -43,7 +41,7 @@ interface IReduceRemainingTimeEpic {
   >;
 }
 
-const reduceRemainingTimeEpic: IReduceRemainingTimeEpic = (action$, state$) => {
+export const reduceRemainingTimeEpic: IReduceRemainingTimeEpic = (action$, state$) => {
   return action$.pipe(
     ofType(reduceRemainingTime.type),
     debounceTime(1000),
@@ -69,11 +67,11 @@ interface ISetClockIsRunningEpic {
   (action$: ActionsObservable<IActionWithPayload<boolean>>): Observable<IActionWithPayload<IModelState['isRunning']>>;
 }
 
-const setClockIsRunningEpic: ISetClockIsRunningEpic = (action$) => {
+export const setClockIsRunningEpic: ISetClockIsRunningEpic = (action$) => {
   return action$.pipe(
     ofType(setClockIsRunning.type),
-    map((action) => {
-      return updateClockIsRunning(action.payload);
+    map(({ payload }) => {
+      return updateClockIsRunning(payload);
     })
   );
 };
@@ -86,7 +84,7 @@ interface IResetClockEpic {
   >;
 }
 
-const resetClockEpic: IResetClockEpic = (action$) => {
+export const resetClockEpic: IResetClockEpic = (action$) => {
   return action$.pipe(
     ofType(resetClock.type),
     mergeMap(() => {
