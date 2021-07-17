@@ -3,7 +3,7 @@ const { compilerOptions } = require('./tsconfig.json');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
 const paths = pathsToModuleNameMapper(compilerOptions.paths, {
-  prefix: '<rootDir>/'
+  prefix: '<rootDir>/src/'
 });
 
 module.exports = {

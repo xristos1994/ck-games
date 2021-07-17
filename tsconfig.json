@@ -42,5 +42,5 @@
       "@interfaces": ["interfaces/index.ts"]
     }
   },
-  "exclude": ["node_modules", "public", ".cache", "lazy_dev", "CK-Games-Dev_Helpers"]
+  "exclude": ["node_modules", "public", ".cache"]
 }
