@@ -42,6 +42,10 @@ const createLogPayloadEpic: ICreateLogPayloadEpic = (action$, state$) => {
     delay(1000),
     withLatestFrom(state$),
     map(([{ type, payload }, state]) => {
+      if (typeof localStorage === 'undefined') {
+        return noAction(null);
+      }
+
       if (
         (type === initializeTikTakBoom.type
           && state.websiteRootReducer.website.selectedGame !== AvailableGames.tikTakBoom)

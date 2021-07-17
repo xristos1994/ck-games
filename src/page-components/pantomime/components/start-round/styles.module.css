@@ -24,10 +24,12 @@
 .startRoundContainer > .selectedMovieButton {
   background-color: var(--bg-color-of-selected);
   color: var(--font-color-of-selected);
+  filter: unset;
+  -webkit-filter: unset;
 }
 
 .startRoundContainer > .notSelectedMovieButton {
-  background-color: var(--bg-color-of-not-selected);
+  background-color: var(--secondary);
   color: var(--font-color-of-not-selected);
 }
 

@@ -1,4 +1,8 @@
 export const getRandomInteger = (min: number, max: number, maxInclusive?: boolean): number => {
+  if (typeof min !== 'number' || typeof max !== 'number' || min > max || (min === max && !maxInclusive)) {
+    return -1;
+  }
+
   const _maxInclusive = maxInclusive == null ? true : !!maxInclusive;
 
   const _min = Math.ceil(min);

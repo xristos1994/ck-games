@@ -1,13 +1,29 @@
-import { strConcat } from '@utils/general';
-/**
- * Join classnames together conditionally
- *
- * @param {...[String | Number | Object]} args
- * @returns {String}
- */
-export const classnames = (...classNames: (string | number | Record<string, unknown>)[]): string => {
-  const concatWithWhitespace = strConcat(' ');
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return concatWithWhitespace(...classNames);
+export const classnames = (...args: (string | Record<string, unknown>)[]): string => {
+  const argsLength = args.length;
+  const separator = ' ';
+  let result = '';
+
+  if (!argsLength) {
+    return result;
+  }
+
+  for (let i = 0; i < argsLength; i += 1) {
+    const arg = args[i];
+
+    if (!arg) {
+      continue;
+    }
+
+    if (typeof arg === 'string') {
+      result += (result ? separator : '') + arg;
+    } else if (typeof arg === 'object' && Object.prototype.toString.call(arg) === '[object Object]') {
+      for (const key in arg) {
+        if (Object.prototype.hasOwnProperty.call(arg, key) && arg[key]) {
+          result += (result ? separator : '') + key;
+        }
+      }
+    }
+  }
+
+  return result;
 };

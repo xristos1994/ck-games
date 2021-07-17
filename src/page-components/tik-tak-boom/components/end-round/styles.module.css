@@ -29,6 +29,8 @@
 .endRoundContainer > .playersContainer > .playerNow {
   background-color: var(--bg-color-of-not-selected);
   color: var(--font-color-of-not-selected);
+  filter: unset;
+  -webkit-filter: unset;
 }
 
 .endRoundContainer > .playersContainer > .playerNow > .icon {
