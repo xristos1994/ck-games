@@ -61,6 +61,7 @@ describe('utils/component-utils/classnames', () => {
       { 'empty-string': '' },
       { 'non-empty-string': 'foo' },
       { 'white-space': ' ' },
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       { 'function': () => {} },
       { 'empty-object': {} },
       { 'non-empty-bject': { foo: 'bar' } },
