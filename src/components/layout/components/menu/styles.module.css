@@ -67,7 +67,7 @@
   display: none;
 }
 
-.menuContent {
+.openMenu > .menuContent {
   margin-top: var(--menu-content-margin-top);
   overflow-y: auto;
   height: var(--open-menu-content-height);
