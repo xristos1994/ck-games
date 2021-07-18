@@ -37,7 +37,13 @@ const _Menu: FC<IProps> = ({
   setLang,
   t
 }): ReactElement => {
-  const isSSR = typeof window === 'undefined';
+  const [renderedInClient, setRenderedInClient] = React.useState(false);
+
+  React.useEffect(()=>{
+    setRenderedInClient(true);
+  }, []);
+
+  const isSSR = typeof window === 'undefined' && !renderedInClient;
 
   const h1Title = (
     <h1 className={styles.menuTitle}>
