@@ -4,7 +4,7 @@
   padding: 3.5vh 2vh;
 }
 
-.scoreBoardContainer > .scoreBoardTitle {
+.scoreBoardTitle {
   width: 100%;
   text-align: center;
   color: var(--primary);
@@ -12,14 +12,14 @@
   text-align: center;
 }
 
-.scoreBoardContainer > .scoreBoard {
+.scoreBoard {
   margin-top: 1vh;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   color: var(--primary);
 }
 
-.scoreBoardContainer > .scoreBoard > * {
+.scoreBoard > * {
   margin-top: 1vh;
   margin-bottom: 1vh;
   border-bottom: 2px solid;
@@ -27,6 +27,6 @@
   font-size: var(--text-large);
 }
 
-.scoreBoardContainer > .scoreBoard > .inactive {
+.inactive {
   opacity: 0.5;
 }

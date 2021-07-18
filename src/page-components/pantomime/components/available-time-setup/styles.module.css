@@ -9,14 +9,14 @@
   justify-content: center;
 }
 
-.availableTimeSetupContainer > .availableTimeSetupTitle {
+.availableTimeSetupTitle {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.availableTimeSetupContainer > .availableTimeTargetInput {
+.availableTimeTargetInput {
   margin-top: 3.5vh;
   width: 100%;
   max-width: var(--input-max-width);
@@ -28,20 +28,20 @@
   border-radius: var(--border-radius-small);
 }
 
-.availableTimeSetupContainer > .availableTimeTargetInput:focus {
+.availableTimeTargetInput:focus {
   background-color: var(--input-bg-color-focus);
   color: var(--input-font-color-focus);
   border: var(--input-border-width-focus) solid var(--input-border-color-focus);
 }
 
-.availableTimeSetupContainer > .availableTimeTargetSetupSubmitButton {
+.availableTimeTargetSetupSubmitButton {
   margin-top: 3.5vh;
   background-color: var(--primary);
   color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }
 
-.availableTimeSetupContainer > .backButton {
+.backButton {
   margin-top: 3vh;
   background-color: var(--secondary);
   color: var(--text-on-secondary-background);

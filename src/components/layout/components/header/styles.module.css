@@ -9,11 +9,11 @@
   align-items: center;
 }
 
-.header > .logoContainer {
+.logoContainer {
   height: 100%;
 }
 
-.header > .logoContainer > .logo {
+.logo {
   height: 100%;
   width: auto;
   color: var(--logo-color);

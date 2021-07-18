@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.playerContainer > .removePlayerButton {
+.removePlayerButton {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -21,7 +21,7 @@
   border-radius: 50%;
 }
 
-.playerContainer > .playerNameInput {
+.playerNameInput {
   font-size: var(--text-large);
   width: 100%;
   padding: var(--padding-small);
@@ -31,7 +31,7 @@
   border-radius: var(--border-radius-small);
 }
 
-.playerContainer > .playerNameInput:focus {
+.playerNameInput:focus {
   background-color: var(--input-bg-color-focus);
   color: var(--input-font-color-focus);
   border: var(--input-border-width-focus) solid var(--input-border-color-focus);

@@ -8,36 +8,36 @@
   max-width: var(--input-max-width);
 }
 
-.endRoundContainer > .title {
+.title {
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.endRoundContainer > .movieFoundButtons {
+.movieFoundButtons {
   margin-top: 2vh;
   display: flex;
   flex-direction: column;
 }
 
-.endRoundContainer > .movieFoundButtons > button {
+.movieFoundButtons > button {
   font-size: var(--text-large);
   margin-top: 2vh;
 }
 
-.endRoundContainer > .movieFoundButtons > .movieActionSelected {
+.movieActionSelected {
   background-color: var(--bg-color-of-selected);
   color: var(--font-color-of-selected);
-  filter: unset;
-  -webkit-filter: unset;
+  filter: unset !important;
+  -webkit-filter: unset !important;
 }
 
-.endRoundContainer > .movieFoundButtons > .movieActionNotSelected {
+.movieActionNotSelected {
   background-color: var(--secondary);
   color: var(--font-color-of-not-selected);
 }
 
-.endRoundContainer > .proceedButton {
+.proceedButton {
   margin-top: 3.5vh;
   background-color: var(--primary);
   color: var(--text-on-primary-background);

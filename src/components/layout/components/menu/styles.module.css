@@ -16,12 +16,12 @@
   transition: height 1s ease;
 }
 
-.menuContainer.openMenu {
+.openMenu {
   height: var(--open-menu-height);
   background: var(--sky-color);
 }
 
-.menuContainer > .langSelector {
+.langSelector {
   display: flex;
   flex-direction: row;
   height: var(--menu-button-height);
@@ -30,22 +30,22 @@
   margin-bottom: var(--padding-medium);
 }
 
-.menuContainer > .langSelector > .lang {
+.lang {
   width: var(--menu-button-height);
   margin-right: var(--padding-medium);
   border-radius: 50%;
   padding: 0;
 }
 
-.menuContainer > .langSelector > .lang.selectedLang {
+.selectedLang {
   background-color: transparent;
   border-radius: 50% 50% 0 0;
   border-bottom: 6px solid var(--bg-color-of-selected);
-  filter: unset;
-  -webkit-filter: unset;
+  filter: unset !important;
+  -webkit-filter: unset !important;
 }
 
-.menuContainer > .menuButton {
+.menuButton {
   border-radius: 50%;
   height: var(--menu-button-height);
   float: right;
@@ -53,21 +53,21 @@
   margin-bottom: var(--padding-medium);
 }
 
-.menuContainer.openMenu > .menuButton {
+.menuButton {
   margin-top: 0;
   color: var(--text-on-primary-background);
 }
 
-.menuContainer > .menuButton > .arrowIcon {
+.arrowIcon {
   height: 4vh;
   width: auto;
 }
 
-.menuContainer > .menuContent {
+.menuContent {
   display: none;
 }
 
-.menuContainer.openMenu > .menuContent {
+.menuContent {
   margin-top: var(--menu-content-margin-top);
   overflow-y: auto;
   height: var(--open-menu-content-height);
@@ -78,7 +78,7 @@
   color: var(--primary);
 }
 
-.menuContainer.openMenu > .menuContent > .content {
+.content {
   width: 100%;
   max-width: var(--input-max-width);
   display: flex;
@@ -88,41 +88,41 @@
   padding-bottom: 32px;
 }
 
-.menuContainer.openMenu > .menuContent > .content > hr {
+.content > hr {
   margin-left: 0;
   margin-right: 0;
   align-self: stretch;
 }
 
-.menuContainer.openMenu > .menuContent > .content > h1 {
+.content > h1 {
   font-size: 32px;
   margin-bottom: 16px;
 }
 
-.menuContainer.openMenu > .menuContent > .content > a {
+.content > a {
   margin-top: 24px;
 }
 
-.menuContainer.openMenu > .menuContent > .content > a > .homeButton {
+.homeButton {
   font-size: 24px;
   color: var(--text-on-primary-background);
   min-width: 200px;
   margin-bottom: 16px;
 }
 
-.menuContainer.openMenu > .menuContent > .content > .gameDescription > p {
+.gameDescription > p {
   font-size: 18px;
   line-height: 22px;
   margin-bottom: 12px;
 }
 
-.menuContainer.openMenu > .menuContent > .content > .gameDescription > h2 {
+.gameDescription > h2 {
   font-size: 24px;
   margin-top: 24px;
   margin-bottom: 8px;
 }
 
-.menuContainer.openMenu > .menuContent > .content > .gameDescription > ul > li {
+.gameDescription > ul > li {
   font-size: 18px;
   line-height: 22px;
   margin-bottom: 8px;
