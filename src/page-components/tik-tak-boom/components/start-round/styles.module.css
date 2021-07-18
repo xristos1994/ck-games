@@ -8,21 +8,21 @@
   max-width: var(--input-max-width);
 }
 
-.startRoundContainer > .playsFirst {
+.playsFirst {
   margin-bottom: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.startRoundContainer > .startRoundButton {
+.startRoundButton {
   margin-top: 3.5vh;
   background-color: var(--primary);
   color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }
 
-.startRoundContainer > .backButton {
+.backButton {
   margin-top: 3vh;
   background-color: var(--secondary);
   color: var(--text-on-secondary-background);

@@ -8,26 +8,26 @@
   max-width: var(--input-max-width);
 }
 
-.roundInProgressContainer > .team {
+.team {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-large);
   text-align: center;
 }
 
-.roundInProgressContainer > .movie {
+.movie {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
-.roundInProgressContainer > .remainingTime {
+.remainingTime {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
 }
 
-.roundInProgressContainer > .movieFoundButton {
+.movieFoundButton {
   margin-top: 3.5vh;
   height: 35vh;
   width: 80%;
@@ -37,7 +37,7 @@
   font-size: var(--text-extra-large);
 }
 
-.roundInProgressContainer > .movieNotFoundButton {
+.movieNotFoundButton {
   margin-top: 7vh;
   align-self: flex-start;
   background-color: var(--secondary);

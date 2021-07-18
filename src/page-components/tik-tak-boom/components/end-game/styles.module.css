@@ -8,21 +8,21 @@
   max-width: var(--input-max-width);
 }
 
-.endGameContainer > .gameEndTitle {
+.gameEndTitle {
   margin-bottom: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.endGameContainer > .restartButton {
+.restartButton {
   margin-top: 3.5vh;
   background-color: var(--primary);
   color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }
 
-.endGameContainer > a > .homeButton {
+.homeButton {
   margin-top: 3.5vh;
   background-color: var(--secondary);
   color: var(--text-on-secondary-background);

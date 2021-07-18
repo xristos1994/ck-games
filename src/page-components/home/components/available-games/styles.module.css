@@ -3,7 +3,7 @@
   max-width: 500px;
 }
 
-.availableGamesContainer > a > .gameButton {
+.gameButton {
   width: 100%;
   margin: 6vh 0;
   background-color: var(--primary);

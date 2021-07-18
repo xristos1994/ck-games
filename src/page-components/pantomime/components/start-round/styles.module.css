@@ -8,39 +8,39 @@
   max-width: var(--input-max-width);
 }
 
-.startRoundContainer > .playsNow {
+.playsNow {
   margin-bottom: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.startRoundContainer > .movieButton {
+.movieButton {
   margin-top: 3vh;
   font-size: var(--text-large);
   width: 100%;
 }
 
-.startRoundContainer > .selectedMovieButton {
+.selectedMovieButton {
   background-color: var(--bg-color-of-selected);
   color: var(--font-color-of-selected);
-  filter: unset;
-  -webkit-filter: unset;
+  filter: unset !important;
+  -webkit-filter: unset !important;
 }
 
-.startRoundContainer > .notSelectedMovieButton {
+.notSelectedMovieButton {
   background-color: var(--secondary);
   color: var(--font-color-of-not-selected);
 }
 
-.startRoundContainer > .startRoundButton {
+.startRoundButton {
   margin-top: 3.5vh;
   background-color: var(--primary);
   color: var(--text-on-primary-background);
   font-size: var(--text-extra-large);
 }
 
-.startRoundContainer > .backButton {
+.backButton {
   margin-top: 3vh;
   background-color: var(--secondary);
   color: var(--text-on-secondary-background);

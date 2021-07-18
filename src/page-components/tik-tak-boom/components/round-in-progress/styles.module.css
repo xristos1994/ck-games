@@ -8,35 +8,35 @@
   max-width: var(--input-max-width);
 }
 
-.roundInProgressContainer > .player {
+.player {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-large);
   text-align: center;
 }
 
-.roundInProgressContainer > .mode {
+.mode {
   margin-top: 3.5vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.roundInProgressContainer > .modeDescription {
+.modeDescription {
   margin-top: 0.5vh;
   color: var(--primary);
   font-size: var(--text-normal);
   text-align: center;
 }
 
-.roundInProgressContainer > .syllable {
+.syllable {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.roundInProgressContainer > .goToNextPlayerButton {
+.goToNextPlayerButton {
   margin-top: 3.5vh;
   height: 35vh;
   width: 80%;
@@ -46,7 +46,7 @@
   font-size: var(--text-extra-large);
 }
 
-.roundInProgressContainer > .goToPreviousPlayerButton {
+.goToPreviousPlayerButton {
   margin-top: 7vh;
   align-self: flex-start;
   background-color: var(--secondary);

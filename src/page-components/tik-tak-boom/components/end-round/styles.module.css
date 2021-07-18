@@ -8,41 +8,41 @@
   max-width: var(--input-max-width);
 }
 
-.endRoundContainer > .whoLost {
+.whoLost {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.endRoundContainer > .playersContainer {
+.playersContainer {
   margin-top: 2vh;
   width: 100%;
 }
 
-.endRoundContainer > .playersContainer > .player {
+.player {
   margin-top: 1vh;
   width: 100%;
   font-size: var(--text-large);
 }
 
-.endRoundContainer > .playersContainer > .playerNow {
+.playerNow {
   background-color: var(--bg-color-of-not-selected);
   color: var(--font-color-of-not-selected);
-  filter: unset;
-  -webkit-filter: unset;
+  filter: unset !important;
+  -webkit-filter: unset !important;
 }
 
-.endRoundContainer > .playersContainer > .playerNow > .icon {
+.icon {
   height: var(--text-extra-large);
 }
 
-.endRoundContainer > .playersContainer > .playerNotNow {
+.playerNotNow {
   background-color: var(--bg-color-of-selected);
   color: var(--font-color-of-selected);
 }
 
-.endRoundContainer > .proceedButton {
+.proceedButton {
   margin-top: 3.5vh;
   background-color: var(--primary);
   color: var(--text-on-primary-background);

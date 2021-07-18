@@ -9,14 +9,14 @@
   justify-content: center;
 }
 
-.scoreSetupContainer > .scoreSetupTitle {
+.scoreSetupTitle {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.scoreSetupContainer > .scoreTargetInput {
+.scoreTargetInput {
   margin-top: 3.5vh;
   width: 100%;
   max-width: var(--input-max-width);
@@ -28,13 +28,13 @@
   border-radius: var(--border-radius-small);
 }
 
-.scoreSetupContainer > .scoreTargetInput:focus {
+.scoreTargetInput:focus {
   background-color: var(--input-bg-color-focus);
   color: var(--input-font-color-focus);
   border: var(--input-border-width-focus) solid var(--input-border-color-focus);
 }
 
-.scoreSetupContainer > .scoreTargetSetupSubmitButton {
+.scoreTargetSetupSubmitButton {
   margin-top: 3.5vh;
   min-width: 20vh;
   background-color: var(--primary);
@@ -42,7 +42,7 @@
   font-size: var(--text-extra-large);
 }
 
-.scoreSetupContainer > .backButton {
+.backButton {
   margin-top: 3vh;
   background-color: var(--secondary);
   color: var(--text-on-secondary-background);

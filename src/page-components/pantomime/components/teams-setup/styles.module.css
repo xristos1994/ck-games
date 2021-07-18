@@ -8,21 +8,21 @@
   align-items: center;
 }
 
-.teamsSetupContainer > .teamsSetupTitle {
+.teamsSetupTitle {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.teamsSetupContainer > .teamsContainer {
+.teamsContainer {
   width: 90%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.teamsSetupContainer > .addTeamButton {
+.addTeamButton {
   margin-top: 2vh;
   min-width: 20vh;
   background-color: var(--primary);
@@ -30,7 +30,7 @@
   font-size: var(--text-large);
 }
 
-.teamsSetupContainer > .teamsSetupSubmitButton {
+.teamsSetupSubmitButton {
   margin-top: 3.5vh;
   margin-bottom: 3.5vh;
   background-color: var(--primary);

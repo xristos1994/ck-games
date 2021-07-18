@@ -8,28 +8,28 @@
   align-items: center;
 }
 
-.playersSetupContainer > .playersSetupTitle {
+.playersSetupTitle {
   margin-top: 2vh;
   color: var(--primary);
   font-size: var(--text-extra-large);
   text-align: center;
 }
 
-.playersSetupContainer > .playersContainer {
+.playersContainer {
   width: 90%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.playersSetupContainer > .addPlayerButton {
+.addPlayerButton {
   margin-top: 2vh;
   background-color: var(--primary);
   color: var(--text-on-primary-background);
   font-size: var(--text-large);
 }
 
-.playersSetupContainer > .playersSetupSubmitButton {
+.playersSetupSubmitButton {
   margin-top: 3.5vh;
   margin-bottom: 3.5vh;
   background-color: var(--primary);
