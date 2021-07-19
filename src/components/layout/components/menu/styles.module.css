@@ -129,3 +129,9 @@
   list-style: disc;
   list-style-position: inside;
 }
+
+.lang:before,
+.selectedLang:before,
+.menuButton:before {
+  opacity: 0 !important;
+}
