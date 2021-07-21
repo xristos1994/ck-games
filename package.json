@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "fs-extra": "^9.1.0",
-    "gatsby": "^3.0.0",
+    "gatsby": "^3.10.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-offline": "^4.0.0",
