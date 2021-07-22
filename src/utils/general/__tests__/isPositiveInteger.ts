@@ -6,6 +6,7 @@ describe('utils/general/isPositiveInteger', () => {
     expect(isPositiveInteger(-5)).toBe(false);
     expect(isPositiveInteger('A')).toBe(false);
     expect(isPositiveInteger(1.2)).toBe(false);
+    expect(isPositiveInteger(' ')).toBe(false);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     expect(isPositiveInteger(['5'])).toBe(false);
