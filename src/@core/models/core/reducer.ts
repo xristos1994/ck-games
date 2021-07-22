@@ -1,12 +1,16 @@
 import { startCore } from './actions';
 import { IState } from './interfaces';
-import { IActionWithPayload } from './../../actions/interfaces';
+import { IAction } from './../../actions/interfaces';
 
 const initialState: IState = {
   coreStarted: false
 };
 
-const reducer = (state: IState = initialState, action: IActionWithPayload): IState => {
+interface IReducer {
+  (state: IState, action: IAction): IState;
+}
+
+const reducer: IReducer = (state = initialState, action) => {
   switch (action.type) {
     case startCore.type:
       return { ...state, coreStarted: true };

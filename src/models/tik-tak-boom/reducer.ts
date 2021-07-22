@@ -1,4 +1,4 @@
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import {
   startTikTakBoom,
   updateGameState,
@@ -37,12 +37,14 @@ const initialState: IState = {
   scoreTarget: AvailableScoreTargets.default
 };
 
-const reducer = (
-  state: IState = initialState,
-  action:
-    | IActionWithPayload
-    | IActionWithPayload<IState | IState['gameState' | 'mode' | 'syllable' | 'scoreTarget' | 'players']>
-): IState => {
+interface IReducer {
+  (
+    state: IState,
+    action: IAction | IAction<IState | IState['gameState' | 'mode' | 'syllable' | 'scoreTarget' | 'players']>
+  ): IState;
+}
+
+const reducer: IReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
