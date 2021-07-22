@@ -15,6 +15,7 @@ import {
 import { IState } from '@models/interfaces';
 import { IAction } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
+import { noAction } from '@models/pantomime/actions';
 
 interface IStartClockEpic {
   (action$: ActionsObservable<IAction<IModelState['remainingTime']>>): Observable<
@@ -48,11 +49,12 @@ export const reduceRemainingTimeEpic: IReduceRemainingTimeEpic = (action$, state
       const newRemainingTime = (state.websiteRootReducer.clock.remainingTime || 0) - 1;
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
+      if (!clockIsRunning || newRemainingTime < 0) {
+        return [noAction()];
+      }
+
       if (newRemainingTime === 0) {
         return [updateRemainingTime(newRemainingTime), clockRemainingTimeBecameZero()];
-      }
-      if (!clockIsRunning) {
-        return [updateRemainingTime(newRemainingTime)];
       }
       return [updateRemainingTime(newRemainingTime), reduceRemainingTime(), clockTriggerTikTakSound()];
     })
