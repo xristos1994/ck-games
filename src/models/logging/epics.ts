@@ -5,7 +5,7 @@ import { noAction } from '@core/models/core/actions';
 import { map, withLatestFrom, delay } from 'rxjs/operators';
 import { startLogging, log } from './actions';
 import { IState } from '@models/interfaces';
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { initializeGame as initializeTikTakBoom, restartGame as restartTikTakBoom } from '@models/tik-tak-boom/actions';
 import { initializeGame as initializePantomime, restartGame as restartPantomime } from '@models/pantomime/actions';
 import { setLang } from '@models/i18n/actions';
@@ -18,14 +18,12 @@ const LOGGING_IN_DEV_MODE = false;
 
 const SESSION_ID_KEY = 'ck-games-session-id';
 
-const startEpic = (): Observable<IActionWithPayload> => of(startLogging(null));
+const startEpic = (): Observable<IAction> => of(startLogging());
 
 // --------------------------------------------------------------------
 
 interface ICreateLogPayloadEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<ILoggingPayload | null>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<ILoggingPayload | void>>;
 }
 
 const createLogPayloadEpic: ICreateLogPayloadEpic = (action$, state$) => {
@@ -43,7 +41,7 @@ const createLogPayloadEpic: ICreateLogPayloadEpic = (action$, state$) => {
     withLatestFrom(state$),
     map(([{ type, payload }, state]) => {
       if (typeof localStorage === 'undefined') {
-        return noAction(null);
+        return noAction();
       }
 
       if (
@@ -52,7 +50,7 @@ const createLogPayloadEpic: ICreateLogPayloadEpic = (action$, state$) => {
         || (type === initializePantomime.type
           && state.websiteRootReducer.website.selectedGame !== AvailableGames.pantomime)
       ) {
-        return noAction(null);
+        return noAction();
       }
 
       let sessionId = localStorage.getItem(SESSION_ID_KEY);
@@ -114,7 +112,7 @@ const createLogPayloadEpic: ICreateLogPayloadEpic = (action$, state$) => {
         return log(loggingPayload);
       }
 
-      return noAction(null);
+      return noAction();
     })
   );
 };

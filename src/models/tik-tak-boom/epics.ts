@@ -46,19 +46,17 @@ import { vibrate } from '@utils/hardware';
 import { getRandomInteger } from '@utils/general';
 import { IMode, IPlayer, IScoreTarget, ISyllable } from './interfaces';
 import { IState } from '@models/interfaces';
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
 import { IState as IClock } from '@models/clock/interfaces';
 import { AvailableGames } from '@models/website/interfaces';
 
-const startEpic = (): Observable<IActionWithPayload> => of(startTikTakBoom(null));
+const startEpic = (): Observable<IAction> => of(startTikTakBoom());
 
 // --------------------------------------------------------------------
 
 interface ISetPlayerByIdEpic {
-  (action$: ActionsObservable<IActionWithPayload<IPlayer>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IPlayer[]>
-  >;
+  (action$: ActionsObservable<IAction<IPlayer>>, state$: StateObservable<IState>): Observable<IAction<IPlayer[]>>;
 }
 
 const setPlayerByIdEpic: ISetPlayerByIdEpic = (action$, state$) => {
@@ -81,8 +79,8 @@ const setPlayerByIdEpic: ISetPlayerByIdEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IRemovePlayerByIdEpic {
-  (action$: ActionsObservable<IActionWithPayload<IPlayer['id']>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IPlayer[] | null>
+  (action$: ActionsObservable<IAction<IPlayer['id']>>, state$: StateObservable<IState>): Observable<
+    IAction<IPlayer[] | void>
   >;
 }
 
@@ -93,7 +91,7 @@ const removePlayerByIdEpic: IRemovePlayerByIdEpic = (action$, state$) => {
     map(([{ payload }, state]) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       if (players.length === 2) {
-        return noAction(null);
+        return noAction();
       }
       return updatePlayers(
         players.filter((player) => player.id !== payload).map((player, index) => ({ ...player, id: index }))
@@ -105,9 +103,7 @@ const removePlayerByIdEpic: IRemovePlayerByIdEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IAddPlayerByIdEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IPlayer[]>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<IPlayer[]>>;
 }
 
 const addPlayerByIdEpic: IAddPlayerByIdEpic = (action$, state$) => {
@@ -124,9 +120,7 @@ const addPlayerByIdEpic: IAddPlayerByIdEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IPlayersSetupSubmitEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<GameStates>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<GameStates>>;
 }
 
 const playersSetupSubmitEpic: IPlayersSetupSubmitEpic = (action$, state$) => {
@@ -146,8 +140,8 @@ const playersSetupSubmitEpic: IPlayersSetupSubmitEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface ISetScoreTargetEpic {
-  (action$: ActionsObservable<IActionWithPayload<IScoreTarget>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IScoreTarget>
+  (action$: ActionsObservable<IAction<IScoreTarget>>, state$: StateObservable<IState>): Observable<
+    IAction<IScoreTarget>
   >;
 }
 
@@ -164,8 +158,8 @@ const setScoreTargetEpic: ISetScoreTargetEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IScoreSetupSubmitEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IPlayer[]> | IActionWithPayload<GameStates>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<IPlayer[]> | IAction<GameStates>
   >;
 }
 
@@ -184,12 +178,8 @@ const scoreSetupSubmitEpic: IScoreSetupSubmitEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IStartRoundEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    | IActionWithPayload<IPlayer[]>
-    | IActionWithPayload<IMode>
-    | IActionWithPayload<ISyllable>
-    | IActionWithPayload<GameStates>
-    | IActionWithPayload<IClock['remainingTime']>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<IPlayer[]> | IAction<IMode> | IAction<ISyllable> | IAction<GameStates> | IAction<IClock['remainingTime']>
   >;
 }
 
@@ -218,9 +208,7 @@ const startRoundEpic: IStartRoundEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IGoToNextPlayerEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IPlayer[]>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<IPlayer[]>>;
 }
 
 const goToNextPlayerEpic: IGoToNextPlayerEpic = (action$, state$) => {
@@ -239,9 +227,7 @@ const goToNextPlayerEpic: IGoToNextPlayerEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IGoToPreviousPlayerEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IPlayer[]>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<IPlayer[]>>;
 }
 
 const goToPreviousPlayerEpic: IGoToPreviousPlayerEpic = (action$, state$) => {
@@ -260,7 +246,7 @@ const goToPreviousPlayerEpic: IGoToPreviousPlayerEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IClockRemainingTimeBecameZeroEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<IActionWithPayload>;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction>;
 }
 
 const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (action$, state$) => {
@@ -271,7 +257,7 @@ const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (act
       const isTikTakBoomSelected = state.websiteRootReducer.website.selectedGame === AvailableGames.tikTakBoom;
 
       if (!isTikTakBoomSelected) {
-        return noAction(null);
+        return noAction();
       }
 
       const newRemainingTime = (state.websiteRootReducer.clock.remainingTime || 0) - 1;
@@ -285,7 +271,7 @@ const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (act
         }
       }
 
-      return endRound(null);
+      return endRound();
     })
   );
 };
@@ -293,7 +279,7 @@ const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (act
 // --------------------------------------------------------------------
 
 interface IClockTriggerTikTakSoundEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<IActionWithPayload>;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction>;
 }
 
 const clockTriggerTikTakSoundEpic: IClockTriggerTikTakSoundEpic = (action$, state$) => {
@@ -306,7 +292,7 @@ const clockTriggerTikTakSoundEpic: IClockTriggerTikTakSoundEpic = (action$, stat
         audio && audio.play();
       }
 
-      return noAction(null);
+      return noAction();
     })
   );
 };
@@ -314,8 +300,8 @@ const clockTriggerTikTakSoundEpic: IClockTriggerTikTakSoundEpic = (action$, stat
 // --------------------------------------------------------------------
 
 interface IEndRoundEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload | IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<GameStates | IPlayer[] | void>
   >;
 }
 
@@ -327,7 +313,7 @@ const endRoundEpic: IEndRoundEpic = (action$, state$) => {
       const players = state.websiteRootReducer.tikTakBoom.players;
       const newPlayers = assignScoreAfterRoundEnds(players);
 
-      return [updatePlayers(newPlayers), resetClock(null), updateGameState(GameStates.roundEnded)];
+      return [updatePlayers(newPlayers), resetClock(), updateGameState(GameStates.roundEnded)];
     })
   );
 };
@@ -335,8 +321,8 @@ const endRoundEpic: IEndRoundEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IGoToNextRoundEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<GameStates> | IActionWithPayload<IPlayer[]>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<GameStates> | IAction<IPlayer[]>
   >;
 }
 
@@ -367,9 +353,7 @@ const goToNextRoundEpic: IGoToNextRoundEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IRestartGameEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState> | IActionWithPayload
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<IModelState | void>>;
 }
 
 const restartGameEpic: IRestartGameEpic = (action$, state$) => {
@@ -380,7 +364,7 @@ const restartGameEpic: IRestartGameEpic = (action$, state$) => {
       const tikTakBoomState = state.websiteRootReducer.tikTakBoom;
       const newTikTakBoomState = restartGameState(tikTakBoomState);
 
-      return [updateGameReduxState(newTikTakBoomState), resetClock(null)];
+      return [updateGameReduxState(newTikTakBoomState), resetClock()];
     })
   );
 };
@@ -388,9 +372,7 @@ const restartGameEpic: IRestartGameEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface ISetWhoLostEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IPlayer[]>
-  >;
+  (action$: ActionsObservable<IAction<IPlayer['id']>>, state$: StateObservable<IState>): Observable<IAction<IPlayer[]>>;
 }
 
 const setWhoLostEpic: ISetWhoLostEpic = (action$, state$) => {
@@ -410,9 +392,7 @@ const setWhoLostEpic: ISetWhoLostEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IGoBackEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<GameStates>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<GameStates>>;
 }
 
 const goBackEpic: IGoBackEpic = (action$, state$) => {

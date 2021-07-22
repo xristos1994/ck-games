@@ -13,14 +13,12 @@ import {
 } from './actions';
 
 import { IState } from '@models/interfaces';
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
 
 interface IStartClockEpic {
-  (
-    action$: ActionsObservable<IActionWithPayload<IModelState['remainingTime']>>
-  ): Observable<
-    IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload<IModelState['isRunning']> | IActionWithPayload
+  (action$: ActionsObservable<IAction<IModelState['remainingTime']>>): Observable<
+    IAction<IModelState['remainingTime']> | IAction<IModelState['isRunning']> | IAction
   >;
 }
 
@@ -28,7 +26,7 @@ export const startClockEpic: IStartClockEpic = (action$) => {
   return action$.pipe(
     ofType(startClock.type),
     mergeMap(({ payload }) => {
-      return [updateRemainingTime(payload), updateClockIsRunning(true), reduceRemainingTime(null)];
+      return [updateRemainingTime(payload), updateClockIsRunning(true), reduceRemainingTime()];
     })
   );
 };
@@ -36,8 +34,8 @@ export const startClockEpic: IStartClockEpic = (action$) => {
 // --------------------------------------------------------------------
 
 interface IReduceRemainingTimeEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['remainingTime']> | IAction
   >;
 }
 
@@ -51,12 +49,12 @@ export const reduceRemainingTimeEpic: IReduceRemainingTimeEpic = (action$, state
       const clockIsRunning = state.websiteRootReducer.clock.isRunning;
 
       if (newRemainingTime === 0) {
-        return [updateRemainingTime(newRemainingTime), clockRemainingTimeBecameZero(null)];
+        return [updateRemainingTime(newRemainingTime), clockRemainingTimeBecameZero()];
       }
       if (!clockIsRunning) {
         return [updateRemainingTime(newRemainingTime)];
       }
-      return [updateRemainingTime(newRemainingTime), reduceRemainingTime(null), clockTriggerTikTakSound(null)];
+      return [updateRemainingTime(newRemainingTime), reduceRemainingTime(), clockTriggerTikTakSound()];
     })
   );
 };
@@ -64,7 +62,7 @@ export const reduceRemainingTimeEpic: IReduceRemainingTimeEpic = (action$, state
 // --------------------------------------------------------------------
 
 interface ISetClockIsRunningEpic {
-  (action$: ActionsObservable<IActionWithPayload<boolean>>): Observable<IActionWithPayload<IModelState['isRunning']>>;
+  (action$: ActionsObservable<IAction<boolean>>): Observable<IAction<IModelState['isRunning']>>;
 }
 
 export const setClockIsRunningEpic: ISetClockIsRunningEpic = (action$) => {
@@ -79,8 +77,8 @@ export const setClockIsRunningEpic: ISetClockIsRunningEpic = (action$) => {
 // --------------------------------------------------------------------
 
 interface IResetClockEpic {
-  (action$: ActionsObservable<IActionWithPayload>): Observable<
-    IActionWithPayload<IModelState['remainingTime']> | IActionWithPayload<IModelState['isRunning']>
+  (action$: ActionsObservable<IAction>): Observable<
+    IAction<IModelState['remainingTime']> | IAction<IModelState['isRunning']>
   >;
 }
 

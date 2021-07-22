@@ -3,16 +3,16 @@ import { ActionsObservable, combineEpics, ofType } from 'redux-observable';
 import { map } from 'rxjs/operators';
 import { updateLang, setLang, initI18n } from './actions';
 
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
 import { availableLangs, setLocalStorageLang, getLocalStorageLang, getlangFromPathname } from './utils';
 
-const startEpic = (): Observable<IActionWithPayload> => of(initI18n(null));
+const startEpic = (): Observable<IAction> => of(initI18n());
 
 // --------------------------------------------------------------------
 
 interface IInitI18nEpic {
-  (action$: ActionsObservable<IActionWithPayload>): Observable<IActionWithPayload<IModelState['lang']>>;
+  (action$: ActionsObservable<IAction>): Observable<IAction<IModelState['lang']>>;
 }
 
 const initI18nEpic: IInitI18nEpic = (action$) => {
@@ -30,9 +30,7 @@ const initI18nEpic: IInitI18nEpic = (action$) => {
 // --------------------------------------------------------------------
 
 interface ISetLangEpic {
-  (action$: ActionsObservable<IActionWithPayload<IModelState['lang']>>): Observable<
-    IActionWithPayload<IModelState['lang']>
-  >;
+  (action$: ActionsObservable<IAction<IModelState['lang']>>): Observable<IAction<IModelState['lang']>>;
 }
 
 const setLangEpic: ISetLangEpic = (action$) => {

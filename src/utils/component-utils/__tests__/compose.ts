@@ -3,11 +3,11 @@
 import { compose } from './..';
 
 describe('utils/component-utils/compose', () => {
-  const capitalize = a => a.toUpperCase();
-  const head = a => a[0];
-  const reverse = a => a.split('').reverse().join('');
-  const inc = x => x + 1;
-  const double = x => x * 2;
+  const capitalize = (a) => a.toUpperCase();
+  const head = (a) => a[0];
+  const reverse = (a) => a.split('').reverse().join('');
+  const inc = (x) => x + 1;
+  const double = (x) => x * 2;
 
   it('should perform right-to-left function composition', () => {
     expect(compose()()).toBeUndefined();

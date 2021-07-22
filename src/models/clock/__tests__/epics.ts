@@ -1,5 +1,4 @@
-
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { ActionsObservable } from 'redux-observable';
 import { of } from 'rxjs';
 import { toArray } from 'rxjs/operators';
@@ -10,18 +9,12 @@ import { startClockEpic } from './../epics';
 
 describe('epic', () => {
   it('tests epic', (done) => {
-    const action$ = of(startClock(50)) as ActionsObservable<IActionWithPayload<IRemainingTime>>;
+    const action$ = of(startClock(50)) as ActionsObservable<IAction<IRemainingTime>>;
 
     startClockEpic(action$)
       .pipe(toArray())
-      .subscribe(actions => {
-        expect(actions).toMatchObject(
-          [
-            updateRemainingTime(50),
-            updateClockIsRunning(true),
-            reduceRemainingTime(null)
-          ]
-        );
+      .subscribe((actions) => {
+        expect(actions).toMatchObject([updateRemainingTime(50), updateClockIsRunning(true), reduceRemainingTime()]);
         done();
       });
   });

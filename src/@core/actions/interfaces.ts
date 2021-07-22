@@ -1,16 +1,16 @@
-export interface IAction<IPayload = null> {
+export interface IActionCreator<IPayload> {
   type: string;
   (payload: IPayload): { type: string; payload: IPayload };
 }
 
-export interface IActions<IPayload = null, ISucceededPayload = null, IFailedPayload = null> {
-  succeeded: IAction<ISucceededPayload>;
-  failed: IAction<IFailedPayload>;
+export interface IActionsCreator<IPayload, ISucceededPayload, IFailedPayload> {
+  succeeded: IActionCreator<ISucceededPayload>;
+  failed: IActionCreator<IFailedPayload>;
   type: string;
   (payload: IPayload): { type: string; payload: IPayload };
 }
 
-export interface IActionWithPayload<IPayload = null> {
+export interface IAction<IPayload = void> {
   type: string;
   payload: IPayload;
 }

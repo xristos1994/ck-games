@@ -43,20 +43,20 @@ import {
 import { vibrate } from '@utils/hardware';
 import { ITeam, IScoreTarget } from './interfaces';
 import { IState } from '@models/interfaces';
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
 import { IState as IClock } from '@models/clock/interfaces';
 import { AvailableGames } from '@models/website/interfaces';
 import { setLang } from '@models/i18n/actions';
 import { availableLangs } from '@models/i18n/utils';
 
-const startEpic = (): Observable<IActionWithPayload> => of(startPantomime(null));
+const startEpic = (): Observable<IAction> => of(startPantomime());
 
 // --------------------------------------------------------------------
 
 interface ISetTeamByIdEpic {
-  (action$: ActionsObservable<IActionWithPayload<ITeam>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState['teams']>
+  (action$: ActionsObservable<IAction<ITeam>>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['teams']>
   >;
 }
 
@@ -80,8 +80,8 @@ const setTeamByIdEpic: ISetTeamByIdEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IRemoveTeamByIdEpic {
-  (action$: ActionsObservable<IActionWithPayload<ITeam['id']>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState['teams'] | null>
+  (action$: ActionsObservable<IAction<ITeam['id']>>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['teams'] | void>
   >;
 }
 
@@ -92,7 +92,7 @@ const removeTeamByIdEpic: IRemoveTeamByIdEpic = (action$, state$) => {
     map(([{ payload }, state]) => {
       const teams = state.websiteRootReducer.pantomime.teams;
       if (teams.length === 2) {
-        return noAction(null);
+        return noAction();
       }
       return updateTeams(teams.filter((team) => team.id !== payload).map((team, index) => ({ ...team, id: index })));
     })
@@ -102,9 +102,7 @@ const removeTeamByIdEpic: IRemoveTeamByIdEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IAddTeamByIdEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState['teams']>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<IModelState['teams']>>;
 }
 
 const addTeamByIdEpic: IAddTeamByIdEpic = (action$, state$) => {
@@ -121,8 +119,8 @@ const addTeamByIdEpic: IAddTeamByIdEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface ITeamsSetupSubmitEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<GameStates> | IActionWithPayload<IModelState['selectedMovieIndex']>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<GameStates> | IAction<IModelState['selectedMovieIndex']>
   >;
 }
 
@@ -146,8 +144,8 @@ const teamsSetupSubmitEpic: ITeamsSetupSubmitEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface ISetScoreTargetEpic {
-  (action$: ActionsObservable<IActionWithPayload<IScoreTarget>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IScoreTarget>
+  (action$: ActionsObservable<IAction<IScoreTarget>>, state$: StateObservable<IState>): Observable<
+    IAction<IScoreTarget>
   >;
 }
 
@@ -164,7 +162,7 @@ const setScoreTargetEpic: ISetScoreTargetEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IScoreSetupSubmitEpic {
-  (action$: ActionsObservable<IActionWithPayload>): Observable<IActionWithPayload<GameStates>>;
+  (action$: ActionsObservable<IAction>): Observable<IAction<GameStates>>;
 }
 
 const scoreSetupSubmitEpic: IScoreSetupSubmitEpic = (action$) => {
@@ -179,10 +177,9 @@ const scoreSetupSubmitEpic: IScoreSetupSubmitEpic = (action$) => {
 // --------------------------------------------------------------------
 
 interface ISetAvailableTimeEpic {
-  (
-    action$: ActionsObservable<IActionWithPayload<IModelState['availableTime']>>,
-    state$: StateObservable<IState>
-  ): Observable<IActionWithPayload<IModelState['availableTime']>>;
+  (action$: ActionsObservable<IAction<IModelState['availableTime']>>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['availableTime']>
+  >;
 }
 
 const setAvailableTimeEpic: ISetAvailableTimeEpic = (action$, state$) => {
@@ -198,10 +195,8 @@ const setAvailableTimeEpic: ISetAvailableTimeEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IAvailableTimeSetupSubmitEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    | IActionWithPayload<IModelState['teams']>
-    | IActionWithPayload<GameStates>
-    | IActionWithPayload<IModelState['selectedMovieIndex']>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['teams']> | IAction<GameStates> | IAction<IModelState['selectedMovieIndex']>
   >;
 }
 
@@ -227,8 +222,8 @@ const availableTimeSetupSubmitEpic: IAvailableTimeSetupSubmitEpic = (action$, st
 // --------------------------------------------------------------------
 
 interface IStartRoundEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<GameStates> | IActionWithPayload<IClock['remainingTime']>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<GameStates> | IAction<IClock['remainingTime']>
   >;
 }
 
@@ -248,8 +243,8 @@ const startRoundEpic: IStartRoundEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IClockRemainingTimeBecameZeroEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<ITeam['movieFound']>
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<
+    IAction<ITeam['movieFound'] | void>
   >;
 }
 
@@ -261,7 +256,7 @@ const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (act
       const isPantomimeSelected = state.websiteRootReducer.website.selectedGame === AvailableGames.pantomime;
 
       if (!isPantomimeSelected) {
-        return noAction(null);
+        return noAction();
       }
 
       const newRemainingTime = (state.websiteRootReducer.clock.remainingTime || 0) - 1;
@@ -283,16 +278,14 @@ const clockRemainingTimeBecameZeroEpic: IClockRemainingTimeBecameZeroEpic = (act
 // --------------------------------------------------------------------
 
 interface IEndRoundEpic {
-  (action$: ActionsObservable<IActionWithPayload>): Observable<
-    IActionWithPayload<GameStates | ITeam['movieFound']> | IActionWithPayload
-  >;
+  (action$: ActionsObservable<IAction>): Observable<IAction<GameStates | ITeam['movieFound']> | IAction>;
 }
 
 const endRoundEpic: IEndRoundEpic = (action$) => {
   return action$.pipe(
     ofType(endRound.type),
     mergeMap(() => {
-      return [resetClock(null), updateGameState(GameStates.roundEnded)];
+      return [resetClock(), updateGameState(GameStates.roundEnded)];
     })
   );
 };
@@ -300,9 +293,7 @@ const endRoundEpic: IEndRoundEpic = (action$) => {
 // --------------------------------------------------------------------
 
 interface IRestartGameEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState> | IActionWithPayload
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<IModelState> | IAction>;
 }
 
 const restartGameEpic: IRestartGameEpic = (action$, state$) => {
@@ -313,7 +304,7 @@ const restartGameEpic: IRestartGameEpic = (action$, state$) => {
       const pantomimeState = state.websiteRootReducer.pantomime;
       const newPantomimeState = restartGameState(pantomimeState);
 
-      return [updateGameReduxState(newPantomimeState), resetClock(null)];
+      return [updateGameReduxState(newPantomimeState), resetClock()];
     })
   );
 };
@@ -321,8 +312,8 @@ const restartGameEpic: IRestartGameEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface ISetMovieEpic {
-  (action$: ActionsObservable<IActionWithPayload<IModelState['movie']>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState['movie']>
+  (action$: ActionsObservable<IAction<IModelState['movie']>>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['movie']>
   >;
 }
 
@@ -340,9 +331,9 @@ const setMovieEpic: ISetMovieEpic = (action$, state$) => {
 
 interface ISetMovieWhenChangeLangEpic {
   (
-    action$: ActionsObservable<IActionWithPayload<IState['websiteRootReducer']['i18n']['lang']>>,
+    action$: ActionsObservable<IAction<IState['websiteRootReducer']['i18n']['lang']>>,
     state$: StateObservable<IState>
-  ): Observable<IActionWithPayload<IModelState['movie'] | null>>;
+  ): Observable<IAction<IModelState['movie'] | void>>;
 }
 
 const setMovieWhenChangeLangEpic: ISetMovieWhenChangeLangEpic = (action$, state$) => {
@@ -353,7 +344,7 @@ const setMovieWhenChangeLangEpic: ISetMovieWhenChangeLangEpic = (action$, state$
       const currentMovie = state.websiteRootReducer.pantomime.movie;
 
       if (!currentMovie) {
-        return noAction(null);
+        return noAction();
       }
 
       const currentLangCode = payload.code;
@@ -373,8 +364,8 @@ const setMovieWhenChangeLangEpic: ISetMovieWhenChangeLangEpic = (action$, state$
 // --------------------------------------------------------------------
 
 interface ISetIfMovieFoundEpic {
-  (action$: ActionsObservable<IActionWithPayload<ITeam['movieFound']>>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState['teams']> | IActionWithPayload
+  (action$: ActionsObservable<IAction<ITeam['movieFound']>>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['teams']> | IAction
   >;
 }
 
@@ -389,7 +380,7 @@ const setIfMovieFoundEpic: ISetIfMovieFoundEpic = (action$, state$) => {
 
       return [
         updateTeams(newTeams),
-        ...(state.websiteRootReducer.pantomime.gameState === GameStates.roundInProgress ? [endRound(null)] : [])
+        ...(state.websiteRootReducer.pantomime.gameState === GameStates.roundInProgress ? [endRound()] : [])
       ];
     })
   );
@@ -398,9 +389,7 @@ const setIfMovieFoundEpic: ISetIfMovieFoundEpic = (action$, state$) => {
 // --------------------------------------------------------------------
 
 interface IGoBackEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<GameStates>
-  >;
+  (action$: ActionsObservable<IAction>, state$: StateObservable<IState>): Observable<IAction<GameStates>>;
 }
 
 const goBackEpic: IGoBackEpic = (action$, state$) => {
