@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 import { combineEpics, ActionsObservable, ofType } from 'redux-observable';
 import { mergeMap } from 'rxjs/operators';
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { startWebsite, updateSelectedGame, restartAllGames } from './actions';
 import { IState, AvailableGames } from './interfaces';
 import { IState as ILayoutState } from '@models/layout/interfaces';
@@ -9,21 +9,19 @@ import { initializeGame as initializePantomime, restartGame as restartPantomime 
 import { initializeGame as initializeTikTakBoom, restartGame as restartTikTakBoom } from '@models/tik-tak-boom/actions';
 import { setIsMenuOpen } from '@models/layout/actions';
 
-const startEpic = (): Observable<IActionWithPayload> => of(startWebsite(null));
+const startEpic = (): Observable<IAction> => of(startWebsite());
 
 // --------------------------------------------------------------------
 
 interface IInitializePantomimeEpic {
-  (action$: ActionsObservable<IActionWithPayload>): Observable<
-    IActionWithPayload | IActionWithPayload<IState['selectedGame']>
-  >;
+  (action$: ActionsObservable<IAction>): Observable<IAction<IState['selectedGame'] | void>>;
 }
 
 const initializePantomimeEpic: IInitializePantomimeEpic = (action$) => {
   return action$.pipe(
     ofType(initializePantomime.type),
     mergeMap(() => {
-      return [restartTikTakBoom(null), updateSelectedGame(AvailableGames.pantomime)];
+      return [restartTikTakBoom(), updateSelectedGame(AvailableGames.pantomime)];
     })
   );
 };
@@ -31,16 +29,14 @@ const initializePantomimeEpic: IInitializePantomimeEpic = (action$) => {
 // --------------------------------------------------------------------
 
 interface IInitializeTikTakBoomEpic {
-  (action$: ActionsObservable<IActionWithPayload>): Observable<
-    IActionWithPayload | IActionWithPayload<IState['selectedGame']>
-  >;
+  (action$: ActionsObservable<IAction>): Observable<IAction<IState['selectedGame'] | void>>;
 }
 
 const initializeTikTakBoomEpic: IInitializeTikTakBoomEpic = (action$) => {
   return action$.pipe(
     ofType(initializeTikTakBoom.type),
     mergeMap(() => {
-      return [restartPantomime(null), updateSelectedGame(AvailableGames.tikTakBoom)];
+      return [restartPantomime(), updateSelectedGame(AvailableGames.tikTakBoom)];
     })
   );
 };
@@ -48,8 +44,8 @@ const initializeTikTakBoomEpic: IInitializeTikTakBoomEpic = (action$) => {
 // --------------------------------------------------------------------
 
 interface IRestartAllGamesEpic {
-  (action$: ActionsObservable<IActionWithPayload>): Observable<
-    IActionWithPayload | IActionWithPayload<IState['selectedGame']> | IActionWithPayload<ILayoutState['isMenuOpen']>
+  (action$: ActionsObservable<IAction>): Observable<
+    IAction<IState['selectedGame'] | ILayoutState['isMenuOpen'] | void>
   >;
 }
 
@@ -57,7 +53,7 @@ const restartAllGamesEpic: IRestartAllGamesEpic = (action$) => {
   return action$.pipe(
     ofType(restartAllGames.type),
     mergeMap(() => {
-      return [restartPantomime(null), restartTikTakBoom(null), updateSelectedGame(null), setIsMenuOpen(false)];
+      return [restartPantomime(), restartTikTakBoom(), updateSelectedGame(null), setIsMenuOpen(false)];
     })
   );
 };

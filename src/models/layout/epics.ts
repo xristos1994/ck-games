@@ -3,20 +3,20 @@ import { combineEpics, ActionsObservable, StateObservable, ofType } from 'redux-
 import { mergeMap, withLatestFrom } from 'rxjs/operators';
 import { startLayout, updateIsMenuOpen, setIsMenuOpen } from './actions';
 import { IState } from '@models/interfaces';
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
 import { IState as IClockState } from '@models/clock/interfaces';
 import { setClockIsRunning, reduceRemainingTime } from '@models/clock/actions';
 import { GameStates as PantomimeGameStates } from '@models/pantomime/config';
 import { GameStates as TikTakBoomGameStates } from '@models/tik-tak-boom/config';
 
-const startEpic = (): Observable<IActionWithPayload> => of(startLayout(null));
+const startEpic = (): Observable<IAction> => of(startLayout());
 
 // --------------------------------------------------------------------
 
 interface ISetIsMenuOpenEpic {
-  (action$: ActionsObservable<IActionWithPayload>, state$: StateObservable<IState>): Observable<
-    IActionWithPayload<IModelState['isMenuOpen']> | IActionWithPayload<IClockState['isRunning']> | IActionWithPayload
+  (action$: ActionsObservable<IAction<IModelState['isMenuOpen']>>, state$: StateObservable<IState>): Observable<
+    IAction<IModelState['isMenuOpen']> | IAction<IClockState['isRunning']> | IAction
   >;
 }
 
@@ -34,7 +34,7 @@ const setIsMenuOpenEpic: ISetIsMenuOpenEpic = (action$, state$) => {
           ? [setClockIsRunning(false)]
           : []),
         ...(!payload && !!state.websiteRootReducer.website.selectedGame && isRoundInProgress
-          ? [setClockIsRunning(true), reduceRemainingTime(null)]
+          ? [setClockIsRunning(true), reduceRemainingTime()]
           : []),
         updateIsMenuOpen(payload || false)
       ];

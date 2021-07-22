@@ -1,4 +1,4 @@
-import { IActionWithPayload } from '@core/actions/interfaces';
+import { IAction } from '@core/actions/interfaces';
 import {
   startPantomime,
   updateGameState,
@@ -37,12 +37,16 @@ const initialState: IState = {
   selectedMovieIndex: -2
 };
 
-const reducer = (
-  state: IState = initialState,
-  action: IActionWithPayload<
-    IState | IState['gameState' | 'scoreTarget' | 'availableTime' | 'teams' | 'movie' | 'selectedMovieIndex']
-  >
-): IState => {
+interface IReducer {
+  (
+    state: IState,
+    action: IAction<
+      IState | IState['gameState' | 'scoreTarget' | 'availableTime' | 'teams' | 'movie' | 'selectedMovieIndex']
+    >
+  ): IState;
+}
+
+const reducer: IReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
