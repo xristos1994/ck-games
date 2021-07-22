@@ -2,7 +2,7 @@ import { startCore } from './actions';
 import { IState } from './interfaces';
 import { IAction } from './../../actions/interfaces';
 
-const initialState: IState = {
+export const initialState: IState = {
   coreStarted: false
 };
 
@@ -10,7 +10,7 @@ interface IReducer {
   (state: IState, action: IAction): IState;
 }
 
-const reducer: IReducer = (state = initialState, action) => {
+export const reducer: IReducer = (state = initialState, action) => {
   switch (action.type) {
     case startCore.type:
       return { ...state, coreStarted: true };
