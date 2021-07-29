@@ -1,4 +1,4 @@
-const localStoaragelangKey = 'lang';
+export const localStoaragelangKey = 'lang';
 
 export const getLocalStorageLang = (): string => {
   if (typeof localStorage === 'undefined') {

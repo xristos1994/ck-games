@@ -3,3 +3,5 @@ global.___loader = {
 };
 
 global.window = {};
+
+global.localStorage = {};

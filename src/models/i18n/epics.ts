@@ -5,7 +5,7 @@ import { updateLang, setLang, initI18n } from './actions';
 
 import { IAction } from '@core/actions/interfaces';
 import { IState as IModelState } from './interfaces';
-import { availableLangs, setLocalStorageLang, getLocalStorageLang, getlangFromPathname } from './utils';
+import { availableLangs, setLocalStorageLang, getLocalStorageLang, getLangFromPathname } from './utils';
 
 const startEpic = (): Observable<IAction> => of(initI18n());
 
@@ -19,7 +19,7 @@ const initI18nEpic: IInitI18nEpic = (action$) => {
   return action$.pipe(
     ofType(initI18n.type),
     map(() => {
-      const langInLocalStorage = getlangFromPathname() || getLocalStorageLang();
+      const langInLocalStorage = getLangFromPathname() || getLocalStorageLang();
       const selectedLang = availableLangs[langInLocalStorage] || availableLangs.default;
 
       return setLang(selectedLang);
