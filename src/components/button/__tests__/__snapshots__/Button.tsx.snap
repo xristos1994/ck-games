@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Button renders correctly 1`] = `
+<button
+  className="main-button-hover-effect"
+>
+  Test Label
+</button>
+`;
+
+exports[`components/Button renders correctly 2`] = `
+<button
+  className="main-button-hover-effect Test-class-name"
+>
+  Test Label
+</button>
+`;
+
+exports[`components/Button renders correctly 3`] = `
+<button
+  className="main-button-hover-effect Test-class-name"
+  disabled={true}
+>
+  Test Label
+</button>
+`;
+
+exports[`components/Button renders correctly 4`] = `
+<button
+  className="main-button-hover-effect Test-class-name"
+  disabled={true}
+  onClick={[Function]}
+>
+  Test Label
+</button>
+`;

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/home/AvailableGames renders correctly 1`] = `
+<div
+  className="availableGamesContainer"
+>
+  <a
+    href="/tik-tak-boom"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <button
+      className="main-button-hover-effect gameButton"
+    >
+      Tik-Tak-Boom
+    </button>
+  </a>
+  <a
+    href="/pantomime"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <button
+      className="main-button-hover-effect gameButton"
+    >
+      Pantomime
+    </button>
+  </a>
+</div>
+`;

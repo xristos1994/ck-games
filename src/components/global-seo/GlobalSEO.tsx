@@ -7,7 +7,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _GlobalSEO: FC<IProps> = ({ t }): ReactElement => {
+export const _GlobalSEO: FC<IProps> = ({ t }): ReactElement => {
   return (
     <Helmet>
       <meta charSet="utf-8" />
