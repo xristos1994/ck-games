@@ -3,7 +3,6 @@ export enum GameStates {
   setScoreTarget = 'setScoreTarget',
   waitForRoundStart = 'waitForRoundStart',
   roundInProgress = 'roundInProgress',
-  setPlayersWhileInProgress = 'setPlayersWhileInProgress',
   roundEnded = 'roundEnded',
   gameEnded = 'gameEnded'
 }
@@ -13,6 +12,5 @@ export enum GameStates {
 //   | "setScoreTarget"
 //   | "waitForRoundStart"
 //   | "roundInProgress"
-//   | "setPlayersWhileInProgress"
 //   | "roundEnded"
 //   | "gameEnded";

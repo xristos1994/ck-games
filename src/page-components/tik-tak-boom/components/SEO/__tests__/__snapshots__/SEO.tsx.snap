@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/TikTakBoom/StartRound renders correctly 1`] = `
+Array [
+  <div>
+    GlobalSEO
+  </div>,
+  <div>
+    Tik-Tak-Boom Meta Title
+    https://ck-test.com/Tik-Tak-Boom Meta Canonical Pathname
+    https://ck-test.com/Tik-Tak-Boom Meta Canonical Pathname
+    Tik-Tak-Boom Meta Description
+    Tik-Tak-Boom Meta Keywords
+    https://ck-test.comundefined
+    el - https://ck-test.com/el/Tik-Tak-Boom Meta Canonical Pathname
+    en - https://ck-test.com/en/Tik-Tak-Boom Meta Canonical Pathname
+  </div>,
+]
+`;

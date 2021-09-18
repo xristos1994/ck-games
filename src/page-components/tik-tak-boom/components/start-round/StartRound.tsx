@@ -19,7 +19,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _StartRound: FC<IProps> = ({ startRound, playerNameThatStartsRound, canGoBack, goBack, t }): ReactElement => {
+export const _StartRound: FC<IProps> = ({ startRound, playerNameThatStartsRound, canGoBack, goBack, t }): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
       <div className={classnames(styles.playsFirst)}>

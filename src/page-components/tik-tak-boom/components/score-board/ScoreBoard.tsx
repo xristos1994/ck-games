@@ -18,7 +18,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
+export const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
   return (
     <div className={classnames(styles.scoreBoardContainer)}>
       <div className={classnames(styles.scoreBoardTitle)}>{t('Scoreboard')}</div>

@@ -13,7 +13,7 @@ const ogImage = `${getCanonicalBaseUrl()}${
   require('@images/og/tikTakBoom.png').default
 }`;
 
-const _SEO: FC<IProps> = ({ t }): ReactElement => {
+export const _SEO: FC<IProps> = ({ t }): ReactElement => {
   const title = t('Tik-Tak-Boom Meta Title');
   const canonicalUrl = `${getCanonicalBaseUrl()}/${t('Tik-Tak-Boom Meta Canonical Pathname')}`;
   const description = t('Tik-Tak-Boom Meta Description');
