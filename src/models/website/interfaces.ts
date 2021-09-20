@@ -1,6 +1,6 @@
 export enum AvailableGames {
   pantomime = 'pantomime',
-  tikTakBoom = 'tikTakBoom'
+  tikTakBoom = 'tik-tak-boom'
 }
 export interface IState {
   websiteStarted: boolean;
