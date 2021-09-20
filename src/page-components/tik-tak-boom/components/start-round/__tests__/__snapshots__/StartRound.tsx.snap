@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/TikTakBoom/StartRound renders correctly 1`] = `
+<div
+  className="startRoundContainer"
+>
+  <div
+    className="playsFirst"
+  >
+    Player, it is your turnPlayer X
+  </div>
+  <div>
+    ScoreBoard
+  </div>
+  <button
+    className="startRoundButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+  <button
+    className="backButton"
+    onClick={[Function]}
+  >
+    BACK
+  </button>
+</div>
+`;
+
+exports[`page-components/TikTakBoom/StartRound renders correctly 2`] = `
+<div
+  className="startRoundContainer"
+>
+  <div
+    className="playsFirst"
+  >
+    Player, it is your turnPlayer X
+  </div>
+  <div>
+    ScoreBoard
+  </div>
+  <button
+    className="startRoundButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+</div>
+`;

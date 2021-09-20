@@ -14,7 +14,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
+export const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
   return (
     <div className={styles.endGameContainer}>
       <div className={classnames(styles.gameEndTitle)}>{t('Game Completed')}</div>

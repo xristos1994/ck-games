@@ -12,7 +12,7 @@ const LangFlagMap: FC<IProps> = ({ langCode }): ReactElement => {
     case availableLangs.el.code:
       return <GreekFlagIcon />;
     default:
-      return <span>langCode</span>;
+      return <span>{langCode}</span>;
   }
 };
 

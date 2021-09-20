@@ -1,6 +1,6 @@
 import { availableLangs } from './availableLangs';
 
-export const getlangFromPathname = (pathname?: string): string => {
+export const getLangFromPathname = (pathname?: string): string => {
   let tempPathname = pathname || '';
 
   if (typeof window !== 'undefined') {

@@ -11,7 +11,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _AvailableGames: FC<IProps> = ({ t }): ReactElement => {
+export const _AvailableGames: FC<IProps> = ({ t }): ReactElement => {
   const games = availableGames.map(({ url, name }) => (
     <Link to={url} key={name}>
       <Button className={styles.gameButton}>{t(name)}</Button>

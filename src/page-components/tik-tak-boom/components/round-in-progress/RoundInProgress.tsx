@@ -20,7 +20,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _RoundInProgress: FC<IProps> = ({
+export const _RoundInProgress: FC<IProps> = ({
   goToNextPlayer,
   goToPreviousPlayer,
   mode,

@@ -5,11 +5,11 @@ import './styles.module.css';
 interface IProps {
   children: ReactChild | ReactChild[];
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  className: string;
+  className?: string;
   other?: Record<string, unknown>;
 }
 
-const Button: FC<IProps> = ({ children, onClick, className = '', other }): ReactElement => {
+const Button: FC<IProps> = ({ children, onClick, className = '', other = {} }): ReactElement => {
   return (
     <button
       className={classnames('main-button-hover-effect', {

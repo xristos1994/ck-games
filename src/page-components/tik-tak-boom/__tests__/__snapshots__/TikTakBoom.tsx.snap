@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/TikTakBoom renders correctly 1`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    PlayersSetup
+  </div>
+</div>
+`;
+
+exports[`page-components/TikTakBoom renders correctly 2`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    ScoreSetup
+  </div>
+</div>
+`;
+
+exports[`page-components/TikTakBoom renders correctly 3`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    StartRound
+  </div>
+</div>
+`;
+
+exports[`page-components/TikTakBoom renders correctly 4`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    RoundInProgress
+  </div>
+</div>
+`;
+
+exports[`page-components/TikTakBoom renders correctly 5`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    EndRound
+  </div>
+</div>
+`;
+
+exports[`page-components/TikTakBoom renders correctly 6`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    ScoreSetup
+  </div>
+</div>
+`;

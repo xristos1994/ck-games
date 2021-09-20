@@ -25,7 +25,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t }): ReactElement => {
+export const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t }): ReactElement => {
   const playerNow = (players.find((player) => player.playsNow) || {}) as IPlayer;
 
   return (

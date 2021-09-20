@@ -15,14 +15,12 @@ interface IProps {
   initializeGame: () => void;
 }
 
-const _TikTakBoom: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
+export const _TikTakBoom: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);
 
-  const playerSetup = (gameState === GameStates.setPlayers || gameState === GameStates.setPlayersWhileInProgress) && (
-    <PlayersSetup />
-  );
+  const playerSetup = gameState === GameStates.setPlayers && <PlayersSetup />;
 
   const scoreSetup = gameState === GameStates.setScoreTarget && <ScoreSetup />;
 
