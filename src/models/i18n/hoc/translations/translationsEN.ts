@@ -1,6 +1,6 @@
 export const translationsEN: Record<string, string> = {
   'Meta Author': 'Christos Korompokis',
-  'Meta Content': 'English',
+  'Meta Content': 'en',
   'html lang': 'en',
   'Menu Title SSR': 'CK-Games pantomime Tik-Tak-Boom',
   'CK-Games': 'CK-Games',
