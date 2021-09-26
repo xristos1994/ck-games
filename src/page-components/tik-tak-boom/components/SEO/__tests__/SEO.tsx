@@ -27,12 +27,12 @@ const LocalSEO = (
   );
 };
 
-jest.mock('./../../../../../utils/general', () => ({
+jest.mock('@utils/general', () => ({
   __esModule: true,
   getCanonicalBaseUrl: () => 'https://ck-test.com'
 }));
 
-jest.mock('./../../../../../components/', () => ({
+jest.mock('@components/', () => ({
   __esModule: true,
   GlobalSEO: GlobalSEO,
   LocalSEO: LocalSEO

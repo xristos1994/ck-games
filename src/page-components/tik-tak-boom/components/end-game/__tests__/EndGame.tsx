@@ -26,7 +26,7 @@ jest.mock('./../../score-board', () => ({
   ScoreBoard: ScoreBoard
 }));
 
-jest.mock('./../../../../../components/', () => ({
+jest.mock('@components/', () => ({
   __esModule: true,
   Button: Button
 }));

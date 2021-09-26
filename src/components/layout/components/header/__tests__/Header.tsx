@@ -10,7 +10,7 @@ const FlatLogoIcon = () => {
   );
 };
 
-jest.mock('./../../../../icons', () => ({
+jest.mock('@components/icons', () => ({
   __esModule: true,
   FlatLogoIcon: FlatLogoIcon
 }));

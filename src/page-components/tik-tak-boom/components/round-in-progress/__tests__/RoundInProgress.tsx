@@ -13,7 +13,7 @@ const Button = (
   );
 };
 
-jest.mock('./../../../../../components/', () => ({
+jest.mock('@components/', () => ({
   __esModule: true,
   Button: Button
 }));
