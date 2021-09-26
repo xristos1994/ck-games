@@ -21,7 +21,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _ScoreSetup: FC<IProps> = ({
+export const _ScoreSetup: FC<IProps> = ({
   scoreTarget,
   canGoBack,
   availableScoreTargets,
