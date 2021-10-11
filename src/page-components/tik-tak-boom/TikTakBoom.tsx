@@ -8,7 +8,7 @@ import { initializeGame } from '@models/tik-tak-boom/actions';
 import { GameStates } from '@models/tik-tak-boom/config';
 import { IState } from '@models/interfaces';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./TikTakBoom.module.css');
 
 interface IProps {
   gameState: GameStates;

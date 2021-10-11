@@ -4,7 +4,7 @@ import { classnames, compose } from '@utils/component-utils';
 import { Button } from '@components';
 import { setPlayerById, removePlayerById } from '@models/tik-tak-boom/actions';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./Player.module.css');
 
 interface IProps {
   player: {

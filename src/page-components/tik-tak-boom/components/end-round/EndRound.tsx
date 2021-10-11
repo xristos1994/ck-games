@@ -9,7 +9,7 @@ import { players } from '@models/tik-tak-boom/props';
 import { IState } from '@models/interfaces';
 import { BombIcon } from '@components/icons';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./EndRound.module.css');
 
 interface IPlayer {
   id: number;

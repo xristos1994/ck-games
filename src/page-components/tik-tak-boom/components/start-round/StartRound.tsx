@@ -9,7 +9,7 @@ import { playerNameThatStartsRound, canGoBack } from '@models/tik-tak-boom/props
 import { IState } from '@models/interfaces';
 import { ScoreBoard } from './../score-board'; // Alias "page-components/tik-tak-boom/components";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./StartRound.module.css');
 
 interface IProps {
   canGoBack: boolean;

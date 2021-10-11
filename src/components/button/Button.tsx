@@ -1,6 +1,6 @@
 import React, { FC, MouseEventHandler, ReactElement, ReactChild } from 'react';
 import { classnames } from '@utils/component-utils';
-import './styles.module.css';
+import './Button.module.css';
 
 interface IProps {
   children: ReactChild | ReactChild[];

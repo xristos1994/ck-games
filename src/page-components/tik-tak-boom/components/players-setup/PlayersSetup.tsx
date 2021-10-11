@@ -10,7 +10,7 @@ import { addPlayer, playersSetupSubmit } from '@models/tik-tak-boom/actions';
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./PlayersSetup.module.css');
 
 interface IProps {
   players: {

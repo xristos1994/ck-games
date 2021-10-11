@@ -7,7 +7,7 @@ import { Button } from '@components';
 import { restartGame } from '@models/tik-tak-boom/actions';
 import { ScoreBoard } from './../score-board'; // Alias "page-components/tik-tak-boom/components";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./EndGame.module.css');
 
 interface IProps {
   restartGame: () => void;

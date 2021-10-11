@@ -9,7 +9,7 @@ import { setScoreTarget, scoreSetupSubmit, goBack } from '@models/tik-tak-boom/a
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./ScoreSetup.module.css');
 
 interface IProps {
   scoreTarget: number;

@@ -9,7 +9,7 @@ import { goToNextPlayer, goToPreviousPlayer } from '@models/tik-tak-boom/actions
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./RoundInProgress.module.css');
 
 interface IProps {
   goToNextPlayer: () => void;
