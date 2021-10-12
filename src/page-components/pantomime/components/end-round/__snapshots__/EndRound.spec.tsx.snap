@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/EndRound renders correctly 1`] = `
+<div
+  className="endRoundContainer"
+>
+  <div
+    className="title"
+  >
+    Team, your turn completedTeam 1
+  </div>
+  <div>
+    ScoreBoard
+  </div>
+  <div
+    className="movieFoundButtons"
+  >
+    <button
+      className="movieActionSelected"
+      onClick={[Function]}
+    >
+      Movie Found
+    </button>
+    <button
+      className="movieActionNotSelected"
+      onClick={[Function]}
+    >
+      Movie Not Found
+    </button>
+  </div>
+  <button
+    className="proceedButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+</div>
+`;
+
+exports[`page-components/Pantomime/EndRound renders correctly 2`] = `
+<div
+  className="endRoundContainer"
+>
+  <div
+    className="title"
+  >
+    Team, your turn completedTeam 1
+  </div>
+  <div>
+    ScoreBoard
+  </div>
+  <div
+    className="movieFoundButtons"
+  >
+    <button
+      className="movieActionNotSelected"
+      onClick={[Function]}
+    >
+      Movie Found
+    </button>
+    <button
+      className="movieActionSelected"
+      onClick={[Function]}
+    >
+      Movie Not Found
+    </button>
+  </div>
+  <button
+    className="proceedButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+</div>
+`;

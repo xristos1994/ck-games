@@ -9,7 +9,7 @@ import { teams } from '@models/pantomime/props';
 import { IState } from '@models/interfaces';
 import { ScoreBoard } from '../score-board';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./EndRound.module.css');
 
 interface ITeam {
   id: number;
@@ -26,7 +26,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _EndRound: FC<IProps> = ({ teams, goToNextRound, setIfMovieFound, t }): ReactElement => {
+export const _EndRound: FC<IProps> = ({ teams, goToNextRound, setIfMovieFound, t }): ReactElement => {
   const teamNow = teams.find((team) => team.playsNow) || ({} as ITeam);
 
   return (

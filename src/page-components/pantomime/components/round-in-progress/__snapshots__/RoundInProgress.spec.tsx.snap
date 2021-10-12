@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/RoundInProgress renders correctly 1`] = `
+<div
+  className="roundInProgressContainer"
+>
+  <div
+    className="team"
+  >
+    Team, it is your turnTeam name
+  </div>
+  <div
+    className="movie"
+  >
+    Movie name
+  </div>
+  <div
+    className="remainingTime"
+  >
+    15
+  </div>
+  <button
+    className="movieFoundButton"
+    onClick={[Function]}
+  >
+    Movie Found
+  </button>
+  <button
+    className="movieNotFoundButton"
+    onClick={[Function]}
+  >
+    Movie Not Found
+  </button>
+</div>
+`;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`page-components/TikTakBoom/StartRound renders correctly 1`] = `
+exports[`page-components/TikTakBoom/SEO renders correctly 1`] = `
 Array [
   <div>
     GlobalSEO

@@ -7,14 +7,14 @@ import { Button } from '@components';
 import { restartGame } from '@models/pantomime/actions';
 import { ScoreBoard } from './../score-board'; // Alias "page-components/pantomime/components";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./EndGame.module.css');
 
 interface IProps {
   restartGame: () => void;
   t: ITranslate;
 }
 
-const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
+export const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
   return (
     <div className={styles.endGameContainer}>
       <div className={classnames(styles.gameEndTitle)}>{t('Game Completed')}</div>

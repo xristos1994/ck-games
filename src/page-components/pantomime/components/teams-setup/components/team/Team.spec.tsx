@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, ReactChild } from 'react';
 import renderer from 'react-test-renderer';
-import { _Player as Player } from './Player';
+import { _Team as Team } from './Team';
 
 const Button = (
   { children, onClick, className='' } :
@@ -18,16 +18,16 @@ jest.mock('@components', () => ({
   Button: Button
 }));
 
-const setPlayerById = (player: {id: number; name: string}) => void player;
-const removePlayerById = (id: number) => void id;
+const setTeamById = (team: {id: number; name: string}) => void team;
+const removeTeamById = (id: number) => void id;
 
-describe('page-components/TikTakBoom/PlayersSetup/Player', () => {
+describe('page-components/Pantomime/TeamsSetup/Team', () => {
   it('renders correctly', () => {
     let tree = renderer.create(
-      <Player
-        setPlayerById={() => setPlayerById({ id: 1, name: 'Name 1' })}
-        removePlayerById={() => removePlayerById(1)}
-        player={{
+      <Team
+        setTeamById={() => setTeamById({ id: 1, name: 'Name 1' })}
+        removeTeamById={() => removeTeamById(1)}
+        team={{
           id: 1,
           name: 'Name 1'
         }}
@@ -37,10 +37,10 @@ describe('page-components/TikTakBoom/PlayersSetup/Player', () => {
     expect(tree).toMatchSnapshot();
 
     tree = renderer.create(
-      <Player
-        setPlayerById={() => setPlayerById({ id: 1, name: '' })}
-        removePlayerById={() => removePlayerById(1)}
-        player={{
+      <Team
+        setTeamById={() => setTeamById({ id: 1, name: '' })}
+        removeTeamById={() => removeTeamById(1)}
+        team={{
           id: 1,
           name: ''
         }}
@@ -50,10 +50,10 @@ describe('page-components/TikTakBoom/PlayersSetup/Player', () => {
     expect(tree).toMatchSnapshot();
 
     tree = renderer.create(
-      <Player
-        setPlayerById={() => setPlayerById({ id: 1, name: 'Name 1' })}
-        removePlayerById={() => removePlayerById(1)}
-        player={{
+      <Team
+        setTeamById={() => setTeamById({ id: 1, name: 'Name 1' })}
+        removeTeamById={() => removeTeamById(1)}
+        team={{
           id: 1,
           name: 'Name 1'
         }}

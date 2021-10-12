@@ -40,7 +40,7 @@ jest.mock('@components/', () => ({
 
 const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
 
-describe('page-components/TikTakBoom/SEO', () => {
+describe('page-components/Pantomime/SEO', () => {
   it('renders correctly', () => {
     const tree = renderer.create(
       <SEO

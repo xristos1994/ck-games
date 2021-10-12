@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/StartRound renders correctly 1`] = `
+<div
+  className="startRoundContainer"
+>
+  <div
+    className="playsNow"
+  >
+    Team, it is your turnTeam X
+  </div>
+  <button
+    className="movieButton selectedMovieButton"
+    onClick={[Function]}
+  >
+    Movie 1
+  </button>
+  <button
+    className="movieButton notSelectedMovieButton"
+    onClick={[Function]}
+  >
+    Movie 2
+  </button>
+  <button
+    className="startRoundButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+  <button
+    className="backButton"
+    onClick={[Function]}
+  >
+    BACK
+  </button>
+</div>
+`;
+
+exports[`page-components/Pantomime/StartRound renders correctly 2`] = `
+<div
+  className="startRoundContainer"
+>
+  <div
+    className="playsNow"
+  >
+    Team, it is your turnTeam X
+  </div>
+  <button
+    className="movieButton notSelectedMovieButton"
+    onClick={[Function]}
+  >
+    Movie 1
+  </button>
+  <button
+    className="movieButton selectedMovieButton"
+    onClick={[Function]}
+  >
+    Movie 2
+  </button>
+  <button
+    className="startRoundButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+</div>
+`;

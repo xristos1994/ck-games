@@ -9,7 +9,7 @@ import { teamNameThatPlaysNow, canGoBack, availableMovies, movie } from '@models
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./StartRound.module.css');
 
 interface IProps {
   canGoBack: boolean;
@@ -22,7 +22,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _StartRound: FC<IProps> = ({
+export const _StartRound: FC<IProps> = ({
   startRound,
   teamNameThatPlaysNow,
   availableMovies,

@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/TeamsSetup renders correctly 1`] = `
+<div
+  className="teamsSetupContainer"
+>
+  <div
+    className="teamsSetupTitle"
+  >
+    Team Setup
+  </div>
+  <div
+    className="teamsContainer"
+  >
+    <div>
+      1_Name 1_true
+    </div>
+    <div>
+      2_Name 2_true
+    </div>
+    <div>
+      3_Name 3_true
+    </div>
+  </div>
+  <button
+    className="addTeamButton"
+    onClick={[Function]}
+  >
+    Add Team
+  </button>
+  <button
+    className="teamsSetupSubmitButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+</div>
+`;
+
+exports[`page-components/Pantomime/TeamsSetup renders correctly 2`] = `
+<div
+  className="teamsSetupContainer"
+>
+  <div
+    className="teamsSetupTitle"
+  >
+    Team Setup
+  </div>
+  <div
+    className="teamsContainer"
+  >
+    <div>
+      1_Name 1_true
+    </div>
+    <div>
+      2__true
+    </div>
+    <div>
+      3_Name 3_true
+    </div>
+  </div>
+  <button
+    className="addTeamButton"
+    onClick={[Function]}
+  >
+    Add Team
+  </button>
+  <button
+    className="teamsSetupSubmitButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+</div>
+`;

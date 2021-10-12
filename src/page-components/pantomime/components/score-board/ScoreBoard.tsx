@@ -6,7 +6,7 @@ import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { teams } from '@models/pantomime/props';
 import { IState } from '@models/interfaces';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./ScoreBoard.module.css');
 
 interface IProps {
   teams: {
@@ -17,7 +17,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _ScoreBoard: FC<IProps> = ({ teams, t }): ReactElement => {
+export const _ScoreBoard: FC<IProps> = ({ teams, t }): ReactElement => {
   return (
     <div className={classnames(styles.scoreBoardContainer)}>
       <div className={classnames(styles.scoreBoardTitle)}>{t('Scoreboard')}</div>

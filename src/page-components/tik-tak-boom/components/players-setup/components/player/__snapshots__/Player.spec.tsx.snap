@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`page-components/TikTakBoom/PlayersSetup renders correctly 1`] = `
+exports[`page-components/TikTakBoom/PlayersSetup/Player renders correctly 1`] = `
 <div
   className="playerContainer"
 >
@@ -14,7 +14,7 @@ exports[`page-components/TikTakBoom/PlayersSetup renders correctly 1`] = `
 </div>
 `;
 
-exports[`page-components/TikTakBoom/PlayersSetup renders correctly 2`] = `
+exports[`page-components/TikTakBoom/PlayersSetup/Player renders correctly 2`] = `
 <div
   className="playerContainer"
 >
@@ -28,7 +28,7 @@ exports[`page-components/TikTakBoom/PlayersSetup renders correctly 2`] = `
 </div>
 `;
 
-exports[`page-components/TikTakBoom/PlayersSetup renders correctly 3`] = `
+exports[`page-components/TikTakBoom/PlayersSetup/Player renders correctly 3`] = `
 <div
   className="playerContainer"
 >

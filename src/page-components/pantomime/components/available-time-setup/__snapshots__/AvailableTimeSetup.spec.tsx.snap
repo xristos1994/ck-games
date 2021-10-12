@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/AvailableTimeSetup renders correctly 1`] = `
+<div
+  className="availableTimeSetupContainer"
+>
+  <div
+    className="availableTimeSetupTitle"
+  >
+    Choose Available Time
+  </div>
+  <select
+    className="availableTimeTargetInput"
+    onChange={[Function]}
+    value={30}
+  >
+    <option
+      value={30}
+    >
+      30 Seconds
+    </option>
+    <option
+      value={60}
+    >
+      60 Seconds
+    </option>
+    <option
+      value={90}
+    >
+      90 Seconds
+    </option>
+    <option
+      value={120}
+    >
+      120 Seconds
+    </option>
+  </select>
+  <button
+    className="availableTimeTargetSetupSubmitButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+  <button
+    className="backButton"
+    onClick={[Function]}
+  >
+    BACK
+  </button>
+</div>
+`;
+
+exports[`page-components/Pantomime/AvailableTimeSetup renders correctly 2`] = `
+<div
+  className="availableTimeSetupContainer"
+>
+  <div
+    className="availableTimeSetupTitle"
+  >
+    Choose Available Time
+  </div>
+  <select
+    className="availableTimeTargetInput"
+    onChange={[Function]}
+    value={60}
+  >
+    <option
+      value={30}
+    >
+      30 Seconds
+    </option>
+    <option
+      value={60}
+    >
+      60 Seconds
+    </option>
+    <option
+      value={90}
+    >
+      90 Seconds
+    </option>
+    <option
+      value={120}
+    >
+      120 Seconds
+    </option>
+  </select>
+  <button
+    className="availableTimeTargetSetupSubmitButton"
+    onClick={[Function]}
+  >
+    CONTINUE
+  </button>
+  <button
+    className="backButton"
+    onClick={[Function]}
+  >
+    BACK
+  </button>
+</div>
+`;

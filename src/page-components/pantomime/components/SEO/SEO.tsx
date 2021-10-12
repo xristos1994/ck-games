@@ -13,7 +13,7 @@ const ogImage = `${getCanonicalBaseUrl()}${
   require('@images/og/pantomime.png').default
 }`;
 
-const _SEO: FC<IProps> = ({ t }): ReactElement => {
+export const _SEO: FC<IProps> = ({ t }): ReactElement => {
   const title = t('Pantomime Meta Title');
   const canonicalUrl = `${getCanonicalBaseUrl()}/${t('Pantomime Meta Canonical Pathname')}`;
   const description = t('Pantomime Meta Description');
