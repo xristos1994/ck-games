@@ -4,13 +4,13 @@ import { SEO, AvailableGames } from './components';
 import { compose } from '@utils/component-utils';
 import { restartAllGames } from '@models/website/actions';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./Home.module.css');
 
 interface IProps {
   restartAllGames: () => void;
 }
 
-const _Home: FC<IProps> = ({ restartAllGames }): ReactElement => {
+export const _Home: FC<IProps> = ({ restartAllGames }): ReactElement => {
   useEffect(() => {
     restartAllGames();
   }, [restartAllGames]);

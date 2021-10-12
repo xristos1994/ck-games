@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { _AvailableGames } from './../AvailableGames';
+import { _AvailableGames as AvailableGames } from './AvailableGames';
 
-jest.mock('./../config', () => ({
+jest.mock('./config', () => ({
   __esModule: true,
   availableGames: [
     { name: 'Tik-Tak-Boom', url: '/tik-tak-boom' },
@@ -22,7 +22,7 @@ describe('page-components/home/AvailableGames', () => {
 
     const t = (name: string) => name;
 
-    const tree = renderer.create(<_AvailableGames t={t} />).toJSON();
+    const tree = renderer.create(<AvailableGames t={t} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
