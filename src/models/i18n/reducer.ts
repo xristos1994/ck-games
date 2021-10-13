@@ -3,7 +3,7 @@ import { updateLang } from './actions';
 import { IState } from './interfaces';
 import { availableLangs } from './utils';
 
-const initialState: IState = {
+export const initialState: IState = {
   lang: availableLangs.default
 };
 
@@ -11,7 +11,7 @@ interface IReducer {
   (state: IState, action: IAction<IState['lang']>): IState;
 }
 
-const reducer: IReducer = (state = initialState, action) => {
+export const reducer: IReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
