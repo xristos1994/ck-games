@@ -66,7 +66,7 @@ describe('page-components/Pantomime/TeamsSetup/Team', () => {
   it('has the right event handlers', () => {
     const teamName = 'Name 1';
 
-    const tree = renderer.create(
+    let tree = renderer.create(
       <Team
         setTeamById={setTeamById}
         removeTeamById={removeTeamById}
@@ -83,9 +83,30 @@ describe('page-components/Pantomime/TeamsSetup/Team', () => {
     expect(removeTeamById).toHaveBeenCalledTimes(1);
     expect(removeTeamById).toHaveBeenLastCalledWith(1);
 
-    const teamNameInput = tree.root.findByType('input');
+    let teamNameInput = tree.root.findByType('input');
     teamNameInput.props.onChange({ target: { value: teamName } });
     expect(setTeamById).toHaveBeenCalledTimes(1);
+    expect(setTeamById).toHaveBeenLastCalledWith({ id: 1, name: teamName });
+
+    teamNameInput.props.onBlur();
+    expect(setTeamById).toHaveBeenCalledTimes(1);
+
+    tree = renderer.create(
+      <Team
+        setTeamById={setTeamById}
+        removeTeamById={removeTeamById}
+        team={{
+          id: 1,
+          name: teamName + '    '
+        }}
+        canBeRemoved={true}
+      />
+    );
+
+    teamNameInput = tree.root.findByType('input');
+
+    teamNameInput.props.onBlur();
+    expect(setTeamById).toHaveBeenCalledTimes(2);
     expect(setTeamById).toHaveBeenLastCalledWith({ id: 1, name: teamName });
   });
 });
