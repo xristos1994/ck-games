@@ -31,10 +31,10 @@ jest.mock('@components/', () => ({
   Button: Button
 }));
 
-const startRound = () => void 0;
+const startRound = jest.fn();
 const playerNameThatStartsRound = 'Player X';
-const goBack = () => void 0;
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
+const goBack = jest.fn();
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
 
 describe('page-components/TikTakBoom/StartRound', () => {
   it('renders correctly', () => {
@@ -63,5 +63,26 @@ describe('page-components/TikTakBoom/StartRound', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const tree = renderer.create(
+      <StartRound
+        startRound={startRound}
+        playerNameThatStartsRound={playerNameThatStartsRound}
+        canGoBack={true}
+        goBack={goBack}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        t={t}
+      />
+    );
+
+    const buttons = tree.root.findAllByType('button');
+    buttons[0].props.onClick();
+    expect(startRound).toHaveBeenCalledTimes(1);
+
+    buttons[1].props.onClick();
+    expect(goBack).toHaveBeenCalledTimes(1);
   });
 });

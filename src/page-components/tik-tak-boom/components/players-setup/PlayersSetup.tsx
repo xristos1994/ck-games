@@ -38,13 +38,13 @@ export const _PlayersSetup: FC<IProps> = ({
           <Player key={player.id} player={player} canBeRemoved={players.length > 2} />
         ))}
       </div>
-      <Button onClick={() => addPlayer()} className={classnames(styles.addPlayerButton)}>
+      <Button onClick={addPlayer} className={classnames(styles.addPlayerButton)}>
         {t('Add Player')}
       </Button>
 
       <Button
         other={{ disabled: !isPlayersSetupValid }}
-        onClick={() => playersSetupSubmit()}
+        onClick={playersSetupSubmit}
         className={classnames(styles.playersSetupSubmitButton)}
       >
         {t('CONTINUE')}

@@ -24,9 +24,9 @@ const players = [
   { id: 3, isActive: true, numOfBooms: 1, name: 'Player 3', playsNow: true },
   { id: 4, isActive: true, numOfBooms: 0, name: 'Player 4', playsNow: false }
 ];
-const goToNextRound = () => void 0;
-const setWhoLost = (id: number) => void id;
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
+const goToNextRound = jest.fn();
+const setWhoLost = jest.fn();
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
 
 describe('page-components/TikTakBoom/EndRound', () => {
   it('renders correctly', () => {
@@ -41,5 +41,37 @@ describe('page-components/TikTakBoom/EndRound', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const tree = renderer.create(
+      <EndRound
+        players={players}
+        goToNextRound={goToNextRound}
+        setWhoLost={setWhoLost}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        t={t}
+      />
+    );
+
+    const buttons = tree.root.findAllByType('button');
+    buttons[0].props.onClick();
+    expect(setWhoLost).toHaveBeenCalledTimes(0);
+
+    buttons[1].props.onClick();
+    expect(setWhoLost).toHaveBeenCalledTimes(1);
+    expect(setWhoLost).toHaveBeenLastCalledWith(players[1].id);
+
+    buttons[2].props.onClick();
+    expect(setWhoLost).toHaveBeenCalledTimes(2);
+    expect(setWhoLost).toHaveBeenLastCalledWith(players[2].id);
+
+    buttons[3].props.onClick();
+    expect(setWhoLost).toHaveBeenCalledTimes(3);
+    expect(setWhoLost).toHaveBeenLastCalledWith(players[3].id);
+
+    buttons[4].props.onClick();
+    expect(goToNextRound).toHaveBeenCalledTimes(1);
   });
 });

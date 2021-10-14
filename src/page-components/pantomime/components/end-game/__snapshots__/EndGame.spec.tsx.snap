@@ -14,7 +14,7 @@ exports[`page-components/Pantomime/EndGame renders correctly 1`] = `
   </div>
   <button
     className="restartButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Restart Game
   </button>

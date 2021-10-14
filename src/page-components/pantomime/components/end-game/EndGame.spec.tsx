@@ -31,8 +31,8 @@ jest.mock('@components/', () => ({
   Button: Button
 }));
 
-const restartGame = () => void 0;
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
+const restartGame = jest.fn();
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
 
 describe('page-components/Pantomime/EndGame', () => {
   it('renders correctly', () => {

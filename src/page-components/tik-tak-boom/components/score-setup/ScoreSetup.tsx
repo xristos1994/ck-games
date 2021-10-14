@@ -44,11 +44,11 @@ export const _ScoreSetup: FC<IProps> = ({
           </option>
         ))}
       </select>
-      <Button onClick={() => scoreSetupSubmit()} className={classnames(styles.scoreTargetSetupSubmitButton)}>
+      <Button onClick={scoreSetupSubmit} className={classnames(styles.scoreTargetSetupSubmitButton)}>
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
+        <Button onClick={goBack} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

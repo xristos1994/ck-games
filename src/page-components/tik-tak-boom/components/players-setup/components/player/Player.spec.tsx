@@ -18,8 +18,8 @@ jest.mock('@components', () => ({
   Button: Button
 }));
 
-const setPlayerById = (player: {id: number; name: string}) => void player;
-const removePlayerById = (id: number) => void id;
+const setPlayerById = jest.fn();
+const removePlayerById = jest.fn();
 
 describe('page-components/TikTakBoom/PlayersSetup/Player', () => {
   it('renders correctly', () => {
@@ -38,8 +38,8 @@ describe('page-components/TikTakBoom/PlayersSetup/Player', () => {
 
     tree = renderer.create(
       <Player
-        setPlayerById={() => setPlayerById({ id: 1, name: '' })}
-        removePlayerById={() => removePlayerById(1)}
+        setPlayerById={setPlayerById}
+        removePlayerById={removePlayerById}
         player={{
           id: 1,
           name: ''
@@ -51,8 +51,8 @@ describe('page-components/TikTakBoom/PlayersSetup/Player', () => {
 
     tree = renderer.create(
       <Player
-        setPlayerById={() => setPlayerById({ id: 1, name: 'Name 1' })}
-        removePlayerById={() => removePlayerById(1)}
+        setPlayerById={setPlayerById}
+        removePlayerById={removePlayerById}
         player={{
           id: 1,
           name: 'Name 1'
@@ -61,5 +61,52 @@ describe('page-components/TikTakBoom/PlayersSetup/Player', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const playerName = 'Name 1';
+
+    let tree = renderer.create(
+      <Player
+        setPlayerById={setPlayerById}
+        removePlayerById={removePlayerById}
+        player={{
+          id: 1,
+          name: playerName
+        }}
+        canBeRemoved={true}
+      />
+    );
+
+    const removeButton = tree.root.findByType('button');
+    removeButton.props.onClick();
+    expect(removePlayerById).toHaveBeenCalledTimes(1);
+    expect(removePlayerById).toHaveBeenLastCalledWith(1);
+
+    let playerNameInput = tree.root.findByType('input');
+    playerNameInput.props.onChange({ target: { value: playerName } });
+    expect(setPlayerById).toHaveBeenCalledTimes(1);
+    expect(setPlayerById).toHaveBeenLastCalledWith({ id: 1, name: playerName });
+
+    playerNameInput.props.onBlur();
+    expect(setPlayerById).toHaveBeenCalledTimes(1);
+
+    tree = renderer.create(
+      <Player
+        setPlayerById={setPlayerById}
+        removePlayerById={removePlayerById}
+        player={{
+          id: 1,
+          name: playerName + '   '
+        }}
+        canBeRemoved={true}
+      />
+    );
+
+    playerNameInput = tree.root.findByType('input');
+
+    playerNameInput.props.onBlur();
+    expect(setPlayerById).toHaveBeenCalledTimes(2);
+    expect(setPlayerById).toHaveBeenLastCalledWith({ id: 1, name: playerName });
   });
 });

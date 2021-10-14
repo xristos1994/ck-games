@@ -24,13 +24,13 @@ exports[`page-components/TikTakBoom/PlayersSetup renders correctly 1`] = `
   </div>
   <button
     className="addPlayerButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Add Player
   </button>
   <button
     className="playersSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
@@ -61,13 +61,13 @@ exports[`page-components/TikTakBoom/PlayersSetup renders correctly 2`] = `
   </div>
   <button
     className="addPlayerButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Add Player
   </button>
   <button
     className="playersSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>

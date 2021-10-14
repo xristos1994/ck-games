@@ -111,7 +111,7 @@ exports[`page-components/TikTakBoom/EndRound renders correctly 1`] = `
   </div>
   <button
     className="proceedButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>

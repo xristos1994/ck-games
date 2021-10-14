@@ -26,7 +26,7 @@ interface IProps {
 }
 
 export const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t }): ReactElement => {
-  const playerNow = (players.find((player) => player.playsNow) || {}) as IPlayer;
+  const playerNow = players.find((player) => player.playsNow) as IPlayer;
 
   return (
     <div className={styles.endRoundContainer}>
@@ -54,7 +54,7 @@ export const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t })
           </Button>
         ))}
       </div>
-      <Button onClick={() => goToNextRound()} className={classnames(styles.proceedButton)}>
+      <Button onClick={goToNextRound} className={classnames(styles.proceedButton)}>
         {t('CONTINUE')}
       </Button>
     </div>

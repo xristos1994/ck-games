@@ -14,13 +14,13 @@ exports[`page-components/TikTakBoom/StartRound renders correctly 1`] = `
   </div>
   <button
     className="startRoundButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
   <button
     className="backButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     BACK
   </button>
@@ -41,7 +41,7 @@ exports[`page-components/TikTakBoom/StartRound renders correctly 2`] = `
   </div>
   <button
     className="startRoundButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>

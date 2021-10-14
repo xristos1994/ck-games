@@ -33,9 +33,9 @@ jest.mock('./components/', () => ({
   Player: Player
 }));
 
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
-const playersSetupSubmit = () => void 0;
-const addPlayer = () => void 0;
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
+const playersSetupSubmit = jest.fn();
+const addPlayer = jest.fn();
 
 describe('page-components/TikTakBoom/PlayersSetup', () => {
   it('renders correctly', () => {
@@ -72,5 +72,31 @@ describe('page-components/TikTakBoom/PlayersSetup', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const tree = renderer.create(
+      <PlayersSetup
+        isPlayersSetupValid={false}
+        playersSetupSubmit={playersSetupSubmit}
+        addPlayer={addPlayer}
+        players={[
+          { id: 1, name: 'Name 1' },
+          { id: 2, name: '' },
+          { id: 3, name: 'Name 3' }
+        ]}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        t={t}
+      />
+    );
+
+    const buttons = tree.root.findAllByType('button');
+    buttons[0].props.onClick();
+    buttons[0].props.onClick();
+    expect(addPlayer).toHaveBeenCalledTimes(2);
+
+    buttons[1].props.onClick();
+    expect(playersSetupSubmit).toHaveBeenCalledTimes(1);
   });
 });

@@ -18,12 +18,12 @@ jest.mock('@components/', () => ({
   Button: Button
 }));
 
-const goToNextPlayer = () => void 0;
-const goToPreviousPlayer = () => void 0;
+const goToNextPlayer = jest.fn();
+const goToPreviousPlayer = jest.fn();
 const mode = { id: 'mode 1', name: 'mode name 1', description: 'mode description 1' };
 const syllable = 'ABC';
 const playerNameThatPlaysNow = 'Player 1';
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
 
 describe('page-components/TikTakBoom/RoundInProgress', () => {
   it('renders correctly', () => {
@@ -40,5 +40,27 @@ describe('page-components/TikTakBoom/RoundInProgress', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const tree = renderer.create(
+      <RoundInProgress
+        goToNextPlayer={goToNextPlayer}
+        goToPreviousPlayer={goToPreviousPlayer}
+        mode={mode}
+        syllable={syllable}
+        playerNameThatPlaysNow={playerNameThatPlaysNow}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        t={t}
+      />
+    );
+
+    const buttons = tree.root.findAllByType('button');
+    buttons[0].props.onClick();
+    expect(goToNextPlayer).toHaveBeenCalledTimes(1);
+
+    buttons[1].props.onClick();
+    expect(goToPreviousPlayer).toHaveBeenCalledTimes(1);
   });
 });

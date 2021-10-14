@@ -13,9 +13,25 @@ exports[`page-components/TikTakBoom/ScoreBoard renders correctly 1`] = `
     className="scoreBoard"
   >
     <div
-      className=""
+      className="inactive"
     >
       1
+      .
+    </div>
+    <div
+      className="inactive"
+    >
+      Player 4
+    </div>
+    <div
+      className="inactive"
+    >
+      4
+    </div>
+    <div
+      className=""
+    >
+      2
       .
     </div>
     <div
@@ -27,22 +43,6 @@ exports[`page-components/TikTakBoom/ScoreBoard renders correctly 1`] = `
       className=""
     >
       3
-    </div>
-    <div
-      className="inactive"
-    >
-      2
-      .
-    </div>
-    <div
-      className="inactive"
-    >
-      Player 2
-    </div>
-    <div
-      className="inactive"
-    >
-      0
     </div>
     <div
       className=""
@@ -69,12 +69,12 @@ exports[`page-components/TikTakBoom/ScoreBoard renders correctly 1`] = `
     <div
       className="inactive"
     >
-      Player 4
+      Player 2
     </div>
     <div
       className="inactive"
     >
-      4
+      0
     </div>
   </div>
 </div>

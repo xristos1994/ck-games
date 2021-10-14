@@ -27,13 +27,13 @@ exports[`page-components/TikTakBoom/RoundInProgress renders correctly 1`] = `
   </div>
   <button
     className="goToNextPlayerButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Next Player
   </button>
   <button
     className="goToPreviousPlayerButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Previous Player
   </button>

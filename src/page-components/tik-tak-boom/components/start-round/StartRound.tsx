@@ -26,11 +26,11 @@ export const _StartRound: FC<IProps> = ({ startRound, playerNameThatStartsRound,
         {t('Player, it is your turn', [playerNameThatStartsRound as string])}
       </div>
       <ScoreBoard />
-      <Button onClick={() => startRound()} className={classnames(styles.startRoundButton)}>
+      <Button onClick={startRound} className={classnames(styles.startRoundButton)}>
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
+        <Button onClick={goBack} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}
