@@ -36,9 +36,9 @@ const teams = [
   { id: 2, score: 2, name: 'Team 2', playsNow: false, movieFound: false },
   { id: 3, score: 1, name: 'Team 3', playsNow: false, movieFound: false }
 ];
-const goToNextRound = () => void 0;
-const setIfMovieFound = (found: boolean) => void found;
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
+const goToNextRound = jest.fn();
+const setIfMovieFound = jest.fn();
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
 
 describe('page-components/Pantomime/EndRound', () => {
   it('renders correctly', () => {
@@ -65,5 +65,30 @@ describe('page-components/Pantomime/EndRound', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const tree = renderer.create(
+      <EndRound
+        teams={teams}
+        goToNextRound={goToNextRound}
+        setIfMovieFound={setIfMovieFound}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        t={t}
+      />
+    );
+
+    const buttons = tree.root.findAllByType('button');
+    buttons[0].props.onClick();
+    expect(setIfMovieFound).toHaveBeenCalledTimes(1);
+    expect(setIfMovieFound).toHaveBeenLastCalledWith(true);
+
+    buttons[1].props.onClick();
+    expect(setIfMovieFound).toHaveBeenCalledTimes(2);
+    expect(setIfMovieFound).toHaveBeenLastCalledWith(false);
+
+    buttons[2].props.onClick();
+    expect(goToNextRound).toHaveBeenCalledTimes(1);
   });
 });

@@ -32,13 +32,13 @@ export const _TeamsSetup: FC<IProps> = ({ teams, teamsSetupSubmit, addTeam, isTe
           <Team key={team.id} team={team} canBeRemoved={teams.length > 2}/>
         ))}
       </div>
-      <Button onClick={() => addTeam()} className={classnames(styles.addTeamButton)}>
+      <Button onClick={addTeam} className={classnames(styles.addTeamButton)}>
         {t('Add Team')}
       </Button>
 
       <Button
         other={{ disabled: !isTeamsSetupValid }}
-        onClick={() => teamsSetupSubmit()}
+        onClick={teamsSetupSubmit}
         className={classnames(styles.teamsSetupSubmitButton)}
       >
         {t('CONTINUE')}

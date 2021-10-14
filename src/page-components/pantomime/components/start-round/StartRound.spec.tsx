@@ -32,10 +32,10 @@ jest.mock('@components/', () => ({
 }));
 
 const teamNameThatPlaysNow = 'Team X';
-const goBack = () => void 0;
-const startRound = () => void 0;
-const setMovie = (movie: string) => void movie;
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
+const goBack = jest.fn();
+const startRound = jest.fn();
+const setMovie = jest.fn();
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
 const availableMovies: [string, string] = ['Movie 1', 'Movie 2'];
 
 describe('page-components/Pantomime/StartRound', () => {
@@ -71,5 +71,37 @@ describe('page-components/Pantomime/StartRound', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const tree = renderer.create(
+      <StartRound
+        canGoBack={true}
+        teamNameThatPlaysNow={teamNameThatPlaysNow}
+        goBack={goBack}
+        setMovie={setMovie}
+        startRound={startRound}
+        availableMovies={availableMovies}
+        movie={availableMovies[1]}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        t={t}
+      />
+    );
+
+    const buttons = tree.root.findAllByType('button');
+    buttons[0].props.onClick();
+    expect(setMovie).toHaveBeenCalledTimes(1);
+    expect(setMovie).toHaveBeenLastCalledWith(availableMovies[0]);
+
+    buttons[1].props.onClick();
+    expect(setMovie).toHaveBeenCalledTimes(2);
+    expect(setMovie).toHaveBeenLastCalledWith(availableMovies[1]);
+
+    buttons[2].props.onClick();
+    expect(startRound).toHaveBeenCalledTimes(1);
+
+    buttons[3].props.onClick();
+    expect(goBack).toHaveBeenCalledTimes(1);
   });
 });

@@ -24,13 +24,13 @@ exports[`page-components/Pantomime/TeamsSetup renders correctly 1`] = `
   </div>
   <button
     className="addTeamButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Add Team
   </button>
   <button
     className="teamsSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
@@ -61,13 +61,13 @@ exports[`page-components/Pantomime/TeamsSetup renders correctly 2`] = `
   </div>
   <button
     className="addTeamButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     Add Team
   </button>
   <button
     className="teamsSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>

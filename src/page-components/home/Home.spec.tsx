@@ -24,7 +24,7 @@ jest.mock('./components/', () => ({
   AvailableGames: AvailableGames
 }));
 
-const restartAllGames = () => void 0;
+const restartAllGames = jest.fn().mockImplementation(() => void 0);
 
 describe('page-components/Home', () => {
   it('renders correctly', () => {

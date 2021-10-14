@@ -49,13 +49,13 @@ export const _AvailableTimeSetup: FC<IProps> = ({
         ))}
       </select>
       <Button
-        onClick={() => availableTimeSetupSubmit()}
+        onClick={availableTimeSetupSubmit}
         className={classnames(styles.availableTimeTargetSetupSubmitButton)}
       >
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
+        <Button onClick={goBack} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

@@ -50,13 +50,13 @@ export const _StartRound: FC<IProps> = ({
       ))}
       <Button
         other={{ disabled: availableMovies.indexOf(movie) === -1 }}
-        onClick={() => startRound()}
+        onClick={startRound}
         className={classnames(styles.startRoundButton)}
       >
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
+        <Button onClick={goBack} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

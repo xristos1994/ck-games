@@ -23,13 +23,13 @@ exports[`page-components/Pantomime/StartRound renders correctly 1`] = `
   </button>
   <button
     className="startRoundButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
   <button
     className="backButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     BACK
   </button>
@@ -59,7 +59,7 @@ exports[`page-components/Pantomime/StartRound renders correctly 2`] = `
   </button>
   <button
     className="startRoundButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>

@@ -37,13 +37,13 @@ exports[`page-components/Pantomime/AvailableTimeSetup renders correctly 1`] = `
   </select>
   <button
     className="availableTimeTargetSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
   <button
     className="backButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     BACK
   </button>
@@ -87,13 +87,13 @@ exports[`page-components/Pantomime/AvailableTimeSetup renders correctly 2`] = `
   </select>
   <button
     className="availableTimeTargetSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
   <button
     className="backButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     BACK
   </button>

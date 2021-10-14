@@ -19,7 +19,7 @@ export const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
     <div className={styles.endGameContainer}>
       <div className={classnames(styles.gameEndTitle)}>{t('Game Completed')}</div>
       <ScoreBoard />
-      <Button onClick={() => restartGame()} className={classnames(styles.restartButton)}>
+      <Button onClick={restartGame} className={classnames(styles.restartButton)}>
         {t('Restart Game')}
       </Button>
       <Link to={'/'}>

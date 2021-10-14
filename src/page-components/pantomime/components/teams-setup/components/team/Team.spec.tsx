@@ -18,15 +18,15 @@ jest.mock('@components', () => ({
   Button: Button
 }));
 
-const setTeamById = (team: {id: number; name: string}) => void team;
-const removeTeamById = (id: number) => void id;
+const setTeamById = jest.fn();
+const removeTeamById = jest.fn();
 
 describe('page-components/Pantomime/TeamsSetup/Team', () => {
   it('renders correctly', () => {
     let tree = renderer.create(
       <Team
-        setTeamById={() => setTeamById({ id: 1, name: 'Name 1' })}
-        removeTeamById={() => removeTeamById(1)}
+        setTeamById={setTeamById}
+        removeTeamById={removeTeamById}
         team={{
           id: 1,
           name: 'Name 1'
@@ -38,8 +38,8 @@ describe('page-components/Pantomime/TeamsSetup/Team', () => {
 
     tree = renderer.create(
       <Team
-        setTeamById={() => setTeamById({ id: 1, name: '' })}
-        removeTeamById={() => removeTeamById(1)}
+        setTeamById={setTeamById}
+        removeTeamById={removeTeamById}
         team={{
           id: 1,
           name: ''
@@ -51,8 +51,8 @@ describe('page-components/Pantomime/TeamsSetup/Team', () => {
 
     tree = renderer.create(
       <Team
-        setTeamById={() => setTeamById({ id: 1, name: 'Name 1' })}
-        removeTeamById={() => removeTeamById(1)}
+        setTeamById={setTeamById}
+        removeTeamById={removeTeamById}
         team={{
           id: 1,
           name: 'Name 1'
@@ -61,5 +61,31 @@ describe('page-components/Pantomime/TeamsSetup/Team', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const teamName = 'Name 1';
+
+    const tree = renderer.create(
+      <Team
+        setTeamById={setTeamById}
+        removeTeamById={removeTeamById}
+        team={{
+          id: 1,
+          name: teamName
+        }}
+        canBeRemoved={true}
+      />
+    );
+
+    const removeButton = tree.root.findByType('button');
+    removeButton.props.onClick();
+    expect(removeTeamById).toHaveBeenCalledTimes(1);
+    expect(removeTeamById).toHaveBeenLastCalledWith(1);
+
+    const teamNameInput = tree.root.findByType('input');
+    teamNameInput.props.onChange({ target: { value: teamName } });
+    expect(setTeamById).toHaveBeenCalledTimes(1);
+    expect(setTeamById).toHaveBeenLastCalledWith({ id: 1, name: teamName });
   });
 });

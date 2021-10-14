@@ -33,9 +33,9 @@ jest.mock('./components/', () => ({
   Team: Team
 }));
 
-const t = (label: string, param?: string[]) => label + (param ? param[0] : '');
-const teamsSetupSubmit = () => void 0;
-const addTeam = () => void 0;
+const t = jest.fn().mockImplementation((label: string, param?: string[]) => label + (param ? param[0] : ''));
+const teamsSetupSubmit = jest.fn();
+const addTeam = jest.fn();
 
 describe('page-components/Pantomime/TeamsSetup', () => {
   it('renders correctly', () => {
@@ -72,5 +72,31 @@ describe('page-components/Pantomime/TeamsSetup', () => {
       />
     ).toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('has the right event handlers', () => {
+    const tree = renderer.create(
+      <TeamsSetup
+        isTeamsSetupValid={false}
+        teamsSetupSubmit={teamsSetupSubmit}
+        addTeam={addTeam}
+        teams={[
+          { id: 1, name: 'Name 1' },
+          { id: 2, name: '' },
+          { id: 3, name: 'Name 3' }
+        ]}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        t={t}
+      />
+    );
+
+    const buttons = tree.root.findAllByType('button');
+    buttons[0].props.onClick();
+    buttons[0].props.onClick();
+    expect(addTeam).toHaveBeenCalledTimes(2);
+
+    buttons[1].props.onClick();
+    expect(teamsSetupSubmit).toHaveBeenCalledTimes(1);
   });
 });

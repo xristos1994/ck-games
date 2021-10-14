@@ -37,13 +37,13 @@ exports[`page-components/Pantomime/ScoreSetup renders correctly 1`] = `
   </select>
   <button
     className="scoreTargetSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
   <button
     className="backButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     BACK
   </button>
@@ -87,7 +87,7 @@ exports[`page-components/Pantomime/ScoreSetup renders correctly 2`] = `
   </select>
   <button
     className="scoreTargetSetupSubmitButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>

@@ -30,7 +30,7 @@ exports[`page-components/Pantomime/EndRound renders correctly 1`] = `
   </div>
   <button
     className="proceedButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
@@ -67,7 +67,7 @@ exports[`page-components/Pantomime/EndRound renders correctly 2`] = `
   </div>
   <button
     className="proceedButton"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     CONTINUE
   </button>
