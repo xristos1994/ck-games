@@ -1,47 +1,14 @@
-import React, { FC, ReactElement, useLayoutEffect, useState } from 'react';
-import { classnames } from '@utils/component-utils';
+import React, { FC, ReactElement } from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
-
-const starClasses: Record<string, string> = {
-  smallStar: 'smallStar',
-  mediumStar: 'mediumStar',
-  bigStar: 'bigStar'
-};
+const styles = require('./Background.module.css');
 
 const Background: FC = (): ReactElement => {
-  const [renderedOnce, setRenderedOnce] = useState(false);
-
-  useLayoutEffect(() => {
-    setRenderedOnce(true);
-  }, [setRenderedOnce]);
-
-  const width = typeof window !== 'undefined' && renderedOnce ? window.innerWidth : 1024;
-  const height = typeof window !== 'undefined' && renderedOnce ? window.innerHeight : 1500;
-
   return (
     <div className={styles.backgroundContainer}>
-      {Array.from(' '.repeat(width / 10)).map((item, index) => {
-        const randomNumber = Math.random();
-        const starClass
-          = randomNumber < 0.1
-            ? starClasses.bigStar
-            : randomNumber < 0.3
-              ? starClasses.mediumStar
-              : starClasses.smallStar;
-
-        return (
-          <div
-            key={index}
-            className={classnames(styles.star, styles[starClass])}
-            style={{
-              left: Math.random() * width,
-              top: Math.random() * height
-            }}
-          ></div>
-        );
-      })}
+      <div className={styles.stars1}></div>
+      <div className={styles.stars2}></div>
+      <div className={styles.stars3}></div>
     </div>
   );
 };
