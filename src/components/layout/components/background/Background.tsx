@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect, useState } from 'react';
+import React, { FC, ReactElement, useLayoutEffect, useState } from 'react';
 import { classnames } from '@utils/component-utils';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -13,7 +13,7 @@ const starClasses: Record<string, string> = {
 const Background: FC = (): ReactElement => {
   const [renderedOnce, setRenderedOnce] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setRenderedOnce(true);
   }, [setRenderedOnce]);
 

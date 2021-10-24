@@ -37,13 +37,23 @@ exports[`page-components/Pantomime/ScoreBoard renders correctly 1`] = `
       .
     </div>
     <div>
+      Player 5
+    </div>
+    <div>
+      2
+    </div>
+    <div>
+      4
+      .
+    </div>
+    <div>
       Player 1
     </div>
     <div>
       1
     </div>
     <div>
-      4
+      5
       .
     </div>
     <div>

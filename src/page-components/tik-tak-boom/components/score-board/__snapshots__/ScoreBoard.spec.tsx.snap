@@ -53,6 +53,22 @@ exports[`page-components/TikTakBoom/ScoreBoard renders correctly 1`] = `
     <div
       className=""
     >
+      Player 5
+    </div>
+    <div
+      className=""
+    >
+      3
+    </div>
+    <div
+      className=""
+    >
+      4
+      .
+    </div>
+    <div
+      className=""
+    >
       Player 3
     </div>
     <div
@@ -63,7 +79,7 @@ exports[`page-components/TikTakBoom/ScoreBoard renders correctly 1`] = `
     <div
       className="inactive"
     >
-      4
+      5
       .
     </div>
     <div

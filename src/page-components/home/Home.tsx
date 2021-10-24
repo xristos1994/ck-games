@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useEffect } from 'react';
+import React, { FC, ReactElement, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import { SEO, AvailableGames } from './components';
 import { compose } from '@utils/component-utils';
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export const _Home: FC<IProps> = ({ restartAllGames }): ReactElement => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     restartAllGames();
   }, [restartAllGames]);
 
