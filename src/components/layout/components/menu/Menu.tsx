@@ -1,7 +1,8 @@
-import React, { FC, ReactElement } from 'react';
-import { classnames, compose } from '@utils/component-utils';
+import React, { FC, ReactElement, useLayoutEffect } from 'react';
+import { Link } from 'gatsby';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { classnames, compose } from '@utils/component-utils';
 import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { Button } from '@components';
 import { isMenuOpen } from '@models/layout/props';
@@ -13,11 +14,10 @@ import { setLang } from '@models/i18n/actions';
 import { IState } from '@models/interfaces';
 import { ArrowUpIcon, ArrowDownIcon } from '@components/icons';
 import { AvailableGames } from '@models/website/interfaces';
-import { Link } from 'gatsby';
 import { LangFlagMap } from '@models/i18n/utils';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./Menu.module.css');
 
 interface IProps {
   selectedGame: string | null;
@@ -29,7 +29,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _Menu: FC<IProps> = ({
+export const _Menu: FC<IProps> = ({
   isMenuOpen,
   setIsMenuOpen,
   selectedGame,
@@ -38,12 +38,13 @@ const _Menu: FC<IProps> = ({
   setLang,
   t
 }): ReactElement => {
-  React.useEffect(() => {
+  useLayoutEffect(() => {
     const initialLang = { ...lang };
-    setLang(_availableLangs.default);
-    setTimeout(() => {
-      setLang(initialLang);
-    }, 1);
+    setLang(initialLang);
+    // setLang(_availableLangs.default);
+    // setTimeout(() => {
+    //   setLang(initialLang);
+    // }, 1);
   }, []);
 
   const isSSR = typeof window === 'undefined';
@@ -107,23 +108,26 @@ const _Menu: FC<IProps> = ({
         [styles.openMenu]: isMenuOpen
       })}
     >
-      {(isMenuOpen || !selectedGame) && (
-        <div className={styles.langSelector}>
-          {availableLangs.map((_lang) => {
-            const isSelectedLang = _lang.code === lang.code;
-            return (
-              <Button
-                other={{ disabled: isSelectedLang }}
-                onClick={() => setLang(_lang)}
-                key={_lang.code}
-                className={classnames(styles.lang, { [styles.selectedLang]: isSelectedLang })}
-              >
-                <LangFlagMap langCode={_lang.code} />
-              </Button>
-            );
-          })}
-        </div>
-      )}
+      {
+        (isMenuOpen || !selectedGame) ? (
+          <div className={styles.langSelector}>
+            {availableLangs.map((_lang) => {
+              const isSelectedLang = _lang.code === lang.code;
+              return (
+                <Button
+                  other={{ disabled: isSelectedLang }}
+                  onClick={() => setLang(_lang)}
+                  key={_lang.code}
+                  className={classnames(styles.lang, { [styles.selectedLang]: isSelectedLang })}
+                >
+                  <LangFlagMap langCode={_lang.code} />
+                </Button>
+              );
+            })}
+          </div>
+        ) : null
+      }
+
       <Button onClick={() => setIsMenuOpen(!isMenuOpen)} className={styles.menuButton}>
         {isMenuOpen ? <ArrowDownIcon className={styles.arrowIcon} /> : <ArrowUpIcon className={styles.arrowIcon} />}
       </Button>
