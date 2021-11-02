@@ -58,14 +58,6 @@ const availableLangs = [
   { code: 'EL', label: 'Ελληνικά' }
 ];
 
-// selectedGame: string | null;
-// isMenuOpen: boolean;
-// setIsMenuOpen: (isMenuOpen: boolean) => void;
-// availableLangs: { code: string; label: string }[];
-// lang: { code: string; label: string };
-// setLang: (lang: IProps['lang']) => void;
-// t: ITranslate;
-
 describe('components/Menu', () => {
   it('renders correctly', () => {
     const initialWindow = { ...global.window };

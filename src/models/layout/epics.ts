@@ -10,7 +10,7 @@ import { setClockIsRunning, reduceRemainingTime } from '@models/clock/actions';
 import { GameStates as PantomimeGameStates } from '@models/pantomime/config';
 import { GameStates as TikTakBoomGameStates } from '@models/tik-tak-boom/config';
 
-const startEpic = (): Observable<IAction> => of(startLayout());
+export const startLayoutEpic = (): Observable<IAction> => of(startLayout());
 
 // --------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ interface ISetIsMenuOpenEpic {
   >;
 }
 
-const setIsMenuOpenEpic: ISetIsMenuOpenEpic = (action$, state$) => {
+export const setIsMenuOpenEpic: ISetIsMenuOpenEpic = (action$, state$) => {
   return action$.pipe(
     ofType(setIsMenuOpen.type),
     withLatestFrom(state$),
@@ -44,4 +44,4 @@ const setIsMenuOpenEpic: ISetIsMenuOpenEpic = (action$, state$) => {
 
 // --------------------------------------------------------------------
 
-export const layoutEpic = combineEpics(startEpic, setIsMenuOpenEpic);
+export const layoutEpic = combineEpics(startLayoutEpic, setIsMenuOpenEpic);
