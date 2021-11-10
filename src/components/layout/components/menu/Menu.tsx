@@ -9,7 +9,7 @@ import { isMenuOpen } from '@models/layout/props';
 import { selectedGame } from '@models/website/props';
 import { setIsMenuOpen } from '@models/layout/actions';
 import { availableLangs, lang } from '@models/i18n/props';
-import { availableLangs as _availableLangs } from '@models/i18n//utils';
+// import { availableLangs as _availableLangs } from '@models/i18n//utils';
 import { setLang } from '@models/i18n/actions';
 import { IState } from '@models/interfaces';
 import { ArrowUpIcon, ArrowDownIcon } from '@components/icons';

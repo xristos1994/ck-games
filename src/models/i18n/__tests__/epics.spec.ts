@@ -1,5 +1,4 @@
 import { testEpic } from '@utils/test-utils';
-import { noAction } from '@models/pantomime/actions';
 import { updateLang, setLang, initI18n } from './../actions';
 import { startI18nEpic, initI18nEpic, setLangEpic } from './../epics';
 import { Action } from '@core/actions';
