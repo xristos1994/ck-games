@@ -125,5 +125,7 @@ export const translationsEN: Record<string, string> = {
   'Home Meta Canonical Pathname': 'en',
   'Home Meta Description': 'You choose how you will have fun with your friends. Play Pantomime or Tik-Tak-Boom.',
   'Home Meta Keywords':
-    'games, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb'
+    'games, entertainment, fun, friends, company, pantomime, mime, movie, win, lose, draw, tik-tak-boom, tik, tak, boom, bomb',
+  'Open Menu': 'Open Menu',
+  'Close Menu': 'Close Menu'
 };

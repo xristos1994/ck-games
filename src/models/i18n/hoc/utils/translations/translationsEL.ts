@@ -129,5 +129,7 @@ export const translationsEL: Record<string, string> = {
   'Home Meta Canonical Pathname': '',
   'Home Meta Description': 'Εσύ επιλέγεις πως θα διασκεδάσεις με την παρέα σου. Παίξτε Παντομίμα ή Tik-Tak-Boom.',
   'Home Meta Keywords':
-    'παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα'
+    'παιχνίδι, διασκέδαση, φίλοι, παρέα, παντομίμα, μίμηση, ταινία, νίκη, ήττα, ισοπαλία, tik-tak-boom, tik, tak, boom, βόμβα',
+  'Open Menu': 'Άνοιξε το Μενού',
+  'Close Menu': 'Κλείσε το Μενού'
 };

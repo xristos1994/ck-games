@@ -116,6 +116,7 @@ export const _Menu: FC<IProps> = ({
               return (
                 <Button
                   other={{ disabled: isSelectedLang }}
+                  ariaLabel={_lang.label}
                   onClick={() => setLang(_lang)}
                   key={_lang.code}
                   className={classnames(styles.lang, { [styles.selectedLang]: isSelectedLang })}
@@ -128,7 +129,11 @@ export const _Menu: FC<IProps> = ({
         ) : null
       }
 
-      <Button onClick={() => setIsMenuOpen(!isMenuOpen)} className={styles.menuButton}>
+      <Button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className={styles.menuButton}
+        ariaLabel={isMenuOpen ? t('Close Menu') : t('Open Menu')}
+      >
         {isMenuOpen ? <ArrowDownIcon className={styles.arrowIcon} /> : <ArrowUpIcon className={styles.arrowIcon} />}
       </Button>
       <div className={styles.menuContent}>
