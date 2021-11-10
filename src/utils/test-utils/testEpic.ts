@@ -10,7 +10,7 @@ interface ITestEpic {
       action$: ActionsObservable<IAction<any | void>>,
       state$: StateObservable<any>
     ) => Observable<IAction<any | void>>,
-    action: IAction<any | void>,
+    action: IAction<any | void> | null,
     state: any,
     expectedActions: IAction<any | void>[],
     done: () => void

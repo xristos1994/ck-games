@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, ReactChild } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./ElevatedWithBlurBackGround.module.css');
 
 interface IProps {
   children: ReactChild | ReactChild[];

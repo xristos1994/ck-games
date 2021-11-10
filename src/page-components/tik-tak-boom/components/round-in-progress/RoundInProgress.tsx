@@ -9,12 +9,12 @@ import { goToNextPlayer, goToPreviousPlayer } from '@models/tik-tak-boom/actions
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./RoundInProgress.module.css');
 
 interface IProps {
   goToNextPlayer: () => void;
   goToPreviousPlayer: () => void;
-  mode: { id: string; name: string; description: string } | null;
+  mode: { id: string; name: string; description: string };
   syllable: string | null;
   playerNameThatPlaysNow: string | null;
   t: ITranslate;
@@ -34,12 +34,12 @@ export const _RoundInProgress: FC<IProps> = ({
         {t('Player, it is your turn', [playerNameThatPlaysNow as string])}
       </div>
       <div className={classnames(styles.mode)}>{mode && mode.name}</div>
-      <div className={classnames(styles.modeDescription)}>*{t((mode && mode.description) || '')}</div>
+      <div className={classnames(styles.modeDescription)}>*{t(mode.description)}</div>
       <div className={classnames(styles.syllable)}>{syllable}</div>
-      <Button onClick={() => goToNextPlayer()} className={classnames(styles.goToNextPlayerButton)}>
+      <Button onClick={goToNextPlayer} className={classnames(styles.goToNextPlayerButton)}>
         {t('Next Player')}
       </Button>
-      <Button onClick={() => goToPreviousPlayer()} className={classnames(styles.goToPreviousPlayerButton)}>
+      <Button onClick={goToPreviousPlayer} className={classnames(styles.goToPreviousPlayerButton)}>
         {t('Previous Player')}
       </Button>
     </div>
@@ -51,12 +51,12 @@ const RoundInProgress = compose(
     createStructuredSelector<
       IState,
       {
-        mode: IProps['mode'];
+        mode: IProps['mode'] | null;
         syllable: IProps['syllable'];
         playerNameThatPlaysNow: IProps['playerNameThatPlaysNow'];
       },
       {
-        mode: IProps['mode'];
+        mode: IProps['mode'] | null;
         syllable: IProps['syllable'];
         playerNameThatPlaysNow: IProps['playerNameThatPlaysNow'];
       }

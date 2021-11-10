@@ -1,8 +1,10 @@
-import React, { FC, ReactElement, useEffect } from 'react';
+import React, { FC, ReactElement, useLayoutEffect } from 'react';
 
 const PageNotFound: FC = (): ReactElement => {
-  useEffect(() => {
-    window.location.href = '/';
+  useLayoutEffect(() => {
+    if (window && window.location) {
+      window.location.href = '/';
+    }
   }, []);
 
   return <>Page Not Found</>;

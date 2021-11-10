@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/TeamsSetup/Team renders correctly 1`] = `
+<div
+  className="teamContainer"
+>
+  <input
+    className="teamNameInput"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="text"
+    value="Name 1"
+  />
+</div>
+`;
+
+exports[`page-components/Pantomime/TeamsSetup/Team renders correctly 2`] = `
+<div
+  className="teamContainer"
+>
+  <input
+    className="teamNameInput"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`page-components/Pantomime/TeamsSetup/Team renders correctly 3`] = `
+<div
+  className="teamContainer"
+>
+  <input
+    className="teamNameInput"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="text"
+    value="Name 1"
+  />
+  <button
+    className="removeTeamButton"
+    onClick={[Function]}
+  >
+    X
+  </button>
+</div>
+`;

@@ -17,14 +17,14 @@ import { initializeGame } from '@models/pantomime/actions';
 import { GameStates } from '@models/pantomime/config';
 import { IState } from '@models/interfaces';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./Pantomime.module.css');
 
 interface IProps {
   gameState: GameStates;
   initializeGame: () => void;
 }
 
-const _Pantomime: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
+export const _Pantomime: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);

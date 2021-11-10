@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Background renders correctly 1`] = `
+<div
+  className="backgroundContainer"
+>
+  <div
+    className="stars1"
+  />
+  <div
+    className="stars2"
+  />
+  <div
+    className="stars3"
+  />
+</div>
+`;

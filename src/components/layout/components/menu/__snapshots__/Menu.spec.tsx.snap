@@ -1,0 +1,472 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Menu renders correctly 1`] = `
+<div
+  className="menuContainer"
+>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowUpIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      >
+        Pantomime
+      </h1>
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Tik-Tak-Boom
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Tik-Tak-Boom Description HTML",
+          }
+        }
+      />
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Pantomime
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Pantomime Description HTML",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Menu renders correctly 2`] = `
+<div
+  className="menuContainer"
+>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowUpIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      >
+        Tik-Tak-Boom
+      </h1>
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Tik-Tak-Boom
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Tik-Tak-Boom Description HTML",
+          }
+        }
+      />
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Pantomime
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Pantomime Description HTML",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Menu renders correctly 3`] = `
+<div
+  className="menuContainer"
+>
+  <div
+    className="langSelector"
+  >
+    <button
+      className="lang selectedLang"
+      onClick={[Function]}
+    >
+      <span>
+        EN
+      </span>
+    </button>
+    <button
+      className="lang"
+      onClick={[Function]}
+    >
+      <span>
+        EL
+      </span>
+    </button>
+  </div>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowUpIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      >
+        Menu Title SSR
+      </h1>
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Tik-Tak-Boom
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Tik-Tak-Boom Description HTML",
+          }
+        }
+      />
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Pantomime
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Pantomime Description HTML",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Menu renders correctly 4`] = `
+<div
+  className="menuContainer openMenu"
+>
+  <div
+    className="langSelector"
+  >
+    <button
+      className="lang selectedLang"
+      onClick={[Function]}
+    >
+      <span>
+        EN
+      </span>
+    </button>
+    <button
+      className="lang"
+      onClick={[Function]}
+    >
+      <span>
+        EL
+      </span>
+    </button>
+  </div>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowDownIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      >
+        CK-Games
+      </h1>
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Tik-Tak-Boom
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Tik-Tak-Boom Description HTML",
+          }
+        }
+      />
+      <hr />
+      <div
+        className="gameDescription"
+      >
+        <h2>
+          Pantomime
+        </h2>
+      </div>
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Pantomime Description HTML",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Menu renders correctly 5`] = `
+<div
+  className="menuContainer openMenu"
+>
+  <div
+    className="langSelector"
+  >
+    <button
+      className="lang selectedLang"
+      onClick={[Function]}
+    >
+      <span>
+        EN
+      </span>
+    </button>
+    <button
+      className="lang"
+      onClick={[Function]}
+    >
+      <span>
+        EL
+      </span>
+    </button>
+  </div>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowDownIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      >
+        Pantomime
+      </h1>
+      <div
+        className="gameDescription"
+      />
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Pantomime Description HTML",
+          }
+        }
+      />
+      <a
+        aria-current="page"
+        className=""
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        style={Object {}}
+      >
+        <button
+          className="homeButton"
+        >
+          Home
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Menu renders correctly 6`] = `
+<div
+  className="menuContainer openMenu"
+>
+  <div
+    className="langSelector"
+  >
+    <button
+      className="lang selectedLang"
+      onClick={[Function]}
+    >
+      <span>
+        EN
+      </span>
+    </button>
+    <button
+      className="lang"
+      onClick={[Function]}
+    >
+      <span>
+        EL
+      </span>
+    </button>
+  </div>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowDownIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      >
+        Tik-Tak-Boom
+      </h1>
+      <div
+        className="gameDescription"
+      />
+      <div
+        className="gameDescription"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Tik-Tak-Boom Description HTML",
+          }
+        }
+      />
+      <a
+        aria-current="page"
+        className=""
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        style={Object {}}
+      >
+        <button
+          className="homeButton"
+        >
+          Home
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Menu renders correctly 7`] = `
+<div
+  className="menuContainer"
+>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowUpIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Menu renders correctly 8`] = `
+<div
+  className="menuContainer"
+>
+  <button
+    className="menuButton"
+    onClick={[Function]}
+  >
+    <div>
+      ArrowUpIcon
+    </div>
+  </button>
+  <div
+    className="menuContent"
+  >
+    <div
+      className="content"
+    >
+      <h1
+        className="menuTitle"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -13,7 +13,7 @@ const ogImage = `${getCanonicalBaseUrl()}${
   require('@images/og/home.png').default
 }`;
 
-const _SEO: FC<IProps> = ({ t }): ReactElement => {
+export const _SEO: FC<IProps> = ({ t }): ReactElement => {
   const title = t('Home Meta Title');
   const canonicalUrl = `${getCanonicalBaseUrl()}/${t('Home Meta Canonical Pathname')}`;
   const description = t('Home Meta Description');

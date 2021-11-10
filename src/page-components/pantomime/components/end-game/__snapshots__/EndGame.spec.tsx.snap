@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/EndGame renders correctly 1`] = `
+<div
+  className="endGameContainer"
+>
+  <div
+    className="gameEndTitle"
+  >
+    Game Completed
+  </div>
+  <div>
+    ScoreBoard
+  </div>
+  <button
+    className="restartButton"
+    onClick={[MockFunction]}
+  >
+    Restart Game
+  </button>
+  <a
+    aria-current="page"
+    className=""
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    style={Object {}}
+  >
+    <button
+      className="homeButton"
+    >
+      Home
+    </button>
+  </a>
+</div>
+`;

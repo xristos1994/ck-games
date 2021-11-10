@@ -10,15 +10,12 @@ import { addPlayer, playersSetupSubmit } from '@models/tik-tak-boom/actions';
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./PlayersSetup.module.css');
 
 interface IProps {
   players: {
     id: number;
-    isActive: boolean;
-    numOfBooms: number;
     name: string;
-    playsNow: boolean | null;
   }[];
   playersSetupSubmit: () => void;
   addPlayer: () => void;
@@ -26,7 +23,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _PlayersSetup: FC<IProps> = ({
+export const _PlayersSetup: FC<IProps> = ({
   players,
   playersSetupSubmit,
   addPlayer,
@@ -38,16 +35,16 @@ const _PlayersSetup: FC<IProps> = ({
       <div className={classnames(styles.playersSetupTitle)}>{t('Player Setup')}</div>
       <div className={styles.playersContainer}>
         {players.map((player) => (
-          <Player key={player.id} player={player} />
+          <Player key={player.id} player={player} canBeRemoved={players.length > 2} />
         ))}
       </div>
-      <Button onClick={() => addPlayer()} className={classnames(styles.addPlayerButton)}>
+      <Button onClick={addPlayer} className={classnames(styles.addPlayerButton)}>
         {t('Add Player')}
       </Button>
 
       <Button
         other={{ disabled: !isPlayersSetupValid }}
-        onClick={() => playersSetupSubmit()}
+        onClick={playersSetupSubmit}
         className={classnames(styles.playersSetupSubmitButton)}
       >
         {t('CONTINUE')}

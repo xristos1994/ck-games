@@ -9,7 +9,7 @@ import { teamNameThatPlaysNow, canGoBack, availableMovies, movie } from '@models
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./StartRound.module.css');
 
 interface IProps {
   canGoBack: boolean;
@@ -22,7 +22,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _StartRound: FC<IProps> = ({
+export const _StartRound: FC<IProps> = ({
   startRound,
   teamNameThatPlaysNow,
   availableMovies,
@@ -50,13 +50,13 @@ const _StartRound: FC<IProps> = ({
       ))}
       <Button
         other={{ disabled: availableMovies.indexOf(movie) === -1 }}
-        onClick={() => startRound()}
+        onClick={startRound}
         className={classnames(styles.startRoundButton)}
       >
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
+        <Button onClick={goBack} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

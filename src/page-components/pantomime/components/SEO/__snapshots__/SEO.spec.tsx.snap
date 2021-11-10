@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/SEO renders correctly 1`] = `
+Array [
+  <div>
+    GlobalSEO
+  </div>,
+  <div>
+    Pantomime Meta Title
+    https://ck-test.com/Pantomime Meta Canonical Pathname
+    https://ck-test.com/Pantomime Meta Canonical Pathname
+    Pantomime Meta Description
+    Pantomime Meta Keywords
+    https://ck-test.comundefined
+    el - https://ck-test.com/el/Pantomime Meta Canonical Pathname
+    en - https://ck-test.com/en/Pantomime Meta Canonical Pathname
+  </div>,
+]
+`;

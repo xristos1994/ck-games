@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime renders correctly 1`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    TeamsSetup
+  </div>
+</div>
+`;
+
+exports[`page-components/Pantomime renders correctly 2`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    ScoreSetup
+  </div>
+</div>
+`;
+
+exports[`page-components/Pantomime renders correctly 3`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    AvailableTimeSetup
+  </div>
+</div>
+`;
+
+exports[`page-components/Pantomime renders correctly 4`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    StartRound
+  </div>
+</div>
+`;
+
+exports[`page-components/Pantomime renders correctly 5`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    RoundInProgress
+  </div>
+</div>
+`;
+
+exports[`page-components/Pantomime renders correctly 6`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    EndRound
+  </div>
+</div>
+`;
+
+exports[`page-components/Pantomime renders correctly 7`] = `
+<div
+  className="pageBody"
+>
+  <div>
+    SEO
+  </div>
+  <div>
+    ScoreSetup
+  </div>
+</div>
+`;

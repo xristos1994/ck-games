@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/ScoreSetup renders correctly 1`] = `
+<div
+  className="scoreSetupContainer"
+>
+  <div
+    className="scoreSetupTitle"
+  >
+    Choose Winning Score
+  </div>
+  <select
+    className="scoreTargetInput"
+    onChange={[Function]}
+    value={5}
+  >
+    <option
+      value={5}
+    >
+      5
+    </option>
+    <option
+      value={10}
+    >
+      10
+    </option>
+    <option
+      value={15}
+    >
+      15
+    </option>
+    <option
+      value={20}
+    >
+      20
+    </option>
+  </select>
+  <button
+    className="scoreTargetSetupSubmitButton"
+    onClick={[MockFunction]}
+  >
+    CONTINUE
+  </button>
+  <button
+    className="backButton"
+    onClick={[MockFunction]}
+  >
+    BACK
+  </button>
+</div>
+`;
+
+exports[`page-components/Pantomime/ScoreSetup renders correctly 2`] = `
+<div
+  className="scoreSetupContainer"
+>
+  <div
+    className="scoreSetupTitle"
+  >
+    Choose Winning Score
+  </div>
+  <select
+    className="scoreTargetInput"
+    onChange={[Function]}
+    value={10}
+  >
+    <option
+      value={5}
+    >
+      5
+    </option>
+    <option
+      value={10}
+    >
+      10
+    </option>
+    <option
+      value={15}
+    >
+      15
+    </option>
+    <option
+      value={20}
+    >
+      20
+    </option>
+  </select>
+  <button
+    className="scoreTargetSetupSubmitButton"
+    onClick={[MockFunction]}
+  >
+    CONTINUE
+  </button>
+</div>
+`;
