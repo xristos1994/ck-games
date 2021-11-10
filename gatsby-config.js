@@ -74,7 +74,7 @@ module.exports = {
       resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
       options: {
         analyzerMode: 'static',
-        reportFilename: '../bundle-analyzer/index.html'
+        reportFilename: './bundle-analyzer/index.html'
       }
     }
   ]
