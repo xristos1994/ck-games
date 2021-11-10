@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import { FlatLogoIcon } from '@components/icons';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./Header.module.css');
 
 const Header: FC = (): ReactElement => {
   return (

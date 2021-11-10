@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/Home renders correctly 1`] = `
+<div>
+  TikTakBoom
+</div>
+`;
+
+exports[`pages/Home renders correctly 2`] = `
+<div>
+  TikTakBoom
+</div>
+`;
+
+exports[`pages/Home renders correctly 3`] = `
+<div>
+  TikTakBoom
+</div>
+`;

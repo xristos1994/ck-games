@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Header renders correctly 1`] = `
+<header
+  className="header"
+>
+  <a
+    aria-current="page"
+    className="logoContainer"
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    style={Object {}}
+  >
+    <div>
+      FlatLogoIcon
+    </div>
+  </a>
+</header>
+`;

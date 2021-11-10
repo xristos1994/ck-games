@@ -7,19 +7,19 @@ import { Button } from '@components';
 import { restartGame } from '@models/tik-tak-boom/actions';
 import { ScoreBoard } from './../score-board'; // Alias "page-components/tik-tak-boom/components";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./EndGame.module.css');
 
 interface IProps {
   restartGame: () => void;
   t: ITranslate;
 }
 
-const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
+export const _EndGame: FC<IProps> = ({ restartGame, t }): ReactElement => {
   return (
     <div className={styles.endGameContainer}>
       <div className={classnames(styles.gameEndTitle)}>{t('Game Completed')}</div>
       <ScoreBoard />
-      <Button onClick={() => restartGame()} className={classnames(styles.restartButton)}>
+      <Button onClick={restartGame} className={classnames(styles.restartButton)}>
         {t('Restart Game')}
       </Button>
       <Link to={'/'}>

@@ -2,7 +2,7 @@ import { IAction } from '@core/actions/interfaces';
 import { updateRemainingTime, updateClockIsRunning } from './actions';
 import { IState } from './interfaces';
 
-const initialState: IState = {
+export const initialState: IState = {
   remainingTime: null,
   isRunning: false
 };
@@ -11,7 +11,7 @@ interface IReducer {
   (state: IState, action: IAction<IState['remainingTime' | 'isRunning']>): IState;
 }
 
-const reducer: IReducer = (state = initialState, action) => {
+export const reducer: IReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {

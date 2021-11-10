@@ -9,7 +9,7 @@ import { players } from '@models/tik-tak-boom/props';
 import { IState } from '@models/interfaces';
 import { BombIcon } from '@components/icons';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./EndRound.module.css');
 
 interface IPlayer {
   id: number;
@@ -25,8 +25,8 @@ interface IProps {
   t: ITranslate;
 }
 
-const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t }): ReactElement => {
-  const playerNow = (players.find((player) => player.playsNow) || {}) as IPlayer;
+export const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t }): ReactElement => {
+  const playerNow = players.find((player) => player.playsNow) as IPlayer;
 
   return (
     <div className={styles.endRoundContainer}>
@@ -54,7 +54,7 @@ const _EndRound: FC<IProps> = ({ players, goToNextRound, setWhoLost, t }): React
           </Button>
         ))}
       </div>
-      <Button onClick={() => goToNextRound()} className={classnames(styles.proceedButton)}>
+      <Button onClick={goToNextRound} className={classnames(styles.proceedButton)}>
         {t('CONTINUE')}
       </Button>
     </div>

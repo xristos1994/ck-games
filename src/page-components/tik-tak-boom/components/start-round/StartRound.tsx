@@ -9,7 +9,7 @@ import { playerNameThatStartsRound, canGoBack } from '@models/tik-tak-boom/props
 import { IState } from '@models/interfaces';
 import { ScoreBoard } from './../score-board'; // Alias "page-components/tik-tak-boom/components";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./StartRound.module.css');
 
 interface IProps {
   canGoBack: boolean;
@@ -19,18 +19,18 @@ interface IProps {
   t: ITranslate;
 }
 
-const _StartRound: FC<IProps> = ({ startRound, playerNameThatStartsRound, canGoBack, goBack, t }): ReactElement => {
+export const _StartRound: FC<IProps> = ({ startRound, playerNameThatStartsRound, canGoBack, goBack, t }): ReactElement => {
   return (
     <div className={styles.startRoundContainer}>
       <div className={classnames(styles.playsFirst)}>
         {t('Player, it is your turn', [playerNameThatStartsRound as string])}
       </div>
       <ScoreBoard />
-      <Button onClick={() => startRound()} className={classnames(styles.startRoundButton)}>
+      <Button onClick={startRound} className={classnames(styles.startRoundButton)}>
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
+        <Button onClick={goBack} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

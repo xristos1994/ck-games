@@ -6,7 +6,7 @@ import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { players } from '@models/tik-tak-boom/props';
 import { IState } from '@models/interfaces';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./ScoreBoard.module.css');
 
 interface IProps {
   players: {
@@ -18,12 +18,21 @@ interface IProps {
   t: ITranslate;
 }
 
-const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
+export const _ScoreBoard: FC<IProps> = ({ players, t }): ReactElement => {
+  const orderedPlayers = [...players]
+    .sort((p1, p2) => (p1.numOfBooms < p2.numOfBooms ? 1 : p1.numOfBooms > p2.numOfBooms ? -1 : 0))
+    .map(({ id, isActive, numOfBooms, name }) => ({
+      id,
+      isActive,
+      numOfBooms,
+      name
+    }));
+
   return (
     <div className={classnames(styles.scoreBoardContainer)}>
       <div className={classnames(styles.scoreBoardTitle)}>{t('Scoreboard')}</div>
       <div className={classnames(styles.scoreBoard)}>
-        {players.map((player, index) => [
+        {orderedPlayers.map((player, index) => [
           <div
             key={`index_${player.id}`}
             className={classnames({
@@ -65,15 +74,7 @@ const ScoreBoard = compose(
         players: IProps['players'];
       }
     >({
-      players: (state: IState): IProps['players'] =>
-        [...players(state)]
-          .sort((p1, p2) => (p1.numOfBooms < p2.numOfBooms ? 1 : p1.numOfBooms > p2.numOfBooms ? -1 : 0))
-          .map(({ id, isActive, numOfBooms, name }) => ({
-            id,
-            isActive,
-            numOfBooms,
-            name
-          }))
+      players
     })
   ),
   withTranslation

@@ -10,7 +10,7 @@ import { setIfMovieFound } from '@models/pantomime/actions';
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./RoundInProgress.module.css');
 
 interface IProps {
   setIfMovieFound: (arg0: boolean) => void;
@@ -20,7 +20,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _RoundInProgress: FC<IProps> = ({
+export const _RoundInProgress: FC<IProps> = ({
   setIfMovieFound,
   movie,
   clockRemainingTime,

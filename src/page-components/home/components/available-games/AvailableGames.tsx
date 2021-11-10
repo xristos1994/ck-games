@@ -5,13 +5,13 @@ import { withTranslation, ITranslate } from '@models/i18n/hoc';
 import { Button } from '@components';
 import { availableGames } from './config';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./AvailableGames.module.css');
 
 interface IProps {
   t: ITranslate;
 }
 
-const _AvailableGames: FC<IProps> = ({ t }): ReactElement => {
+export const _AvailableGames: FC<IProps> = ({ t }): ReactElement => {
   const games = availableGames.map(({ url, name }) => (
     <Link to={url} key={name}>
       <Button className={styles.gameButton}>{t(name)}</Button>

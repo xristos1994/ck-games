@@ -1,26 +1,22 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { classnames, compose } from '@utils/component-utils';
 import { Button } from '@components';
 import { setPlayerById, removePlayerById } from '@models/tik-tak-boom/actions';
-import { players } from '@models/tik-tak-boom/props';
-import { IState } from '@models/interfaces';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./Player.module.css');
 
 interface IProps {
   player: {
     id: number;
-    isActive: boolean;
     name: string;
   };
   setPlayerById: (player: IProps['player']) => void;
-  numOfPlayers: number;
+  canBeRemoved: boolean;
   removePlayerById: (id: IProps['player']['id']) => void;
 }
 
-const _Player: FC<IProps> = ({ player, setPlayerById, numOfPlayers, removePlayerById }): ReactElement => {
+export const _Player: FC<IProps> = ({ player, setPlayerById, canBeRemoved, removePlayerById }): ReactElement => {
   const onChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
     setPlayerById({ ...player, name: e.target.value });
   };
@@ -45,28 +41,20 @@ const _Player: FC<IProps> = ({ player, setPlayerById, numOfPlayers, removePlayer
         onChange={onChangeName}
         onBlur={onBlurName}
       />
-      {numOfPlayers === 2 ? null : (
-        <Button onClick={removePlayer} className={classnames('main-button-hover-effect', styles.removePlayerButton)}>
-          X
-        </Button>
-      )}
+      {
+        canBeRemoved ? (
+          <Button onClick={removePlayer} className={classnames('main-button-hover-effect', styles.removePlayerButton)}>
+            X
+          </Button>
+        ) : null
+      }
     </div>
   );
 };
 
 const Player = compose(
   connect(
-    createStructuredSelector<
-      IState,
-      {
-        numOfPlayers: IProps['numOfPlayers'];
-      },
-      {
-        numOfPlayers: IProps['numOfPlayers'];
-      }
-    >({
-      numOfPlayers: (state: IState): IProps['numOfPlayers'] => players(state).length
-    }),
+    null,
     { setPlayerById: setPlayerById, removePlayerById }
   )
 )(_Player);

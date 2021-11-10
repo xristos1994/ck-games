@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/TikTakBoom/PlayersSetup/Player renders correctly 1`] = `
+<div
+  className="playerContainer"
+>
+  <input
+    className="playerNameInput"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="text"
+    value="Name 1"
+  />
+</div>
+`;
+
+exports[`page-components/TikTakBoom/PlayersSetup/Player renders correctly 2`] = `
+<div
+  className="playerContainer"
+>
+  <input
+    className="playerNameInput"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`page-components/TikTakBoom/PlayersSetup/Player renders correctly 3`] = `
+<div
+  className="playerContainer"
+>
+  <input
+    className="playerNameInput"
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="text"
+    value="Name 1"
+  />
+  <button
+    className="main-button-hover-effect removePlayerButton"
+    onClick={[Function]}
+  >
+    X
+  </button>
+</div>
+`;

@@ -9,7 +9,7 @@ import { setAvailableTime, availableTimeSetupSubmit, goBack } from '@models/pant
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./AvailableTimeSetup.module.css');
 
 interface IProps {
   availableTime: number;
@@ -21,7 +21,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _AvailableTimeSetup: FC<IProps> = ({
+export const _AvailableTimeSetup: FC<IProps> = ({
   availableTime,
   availableTimes,
   canGoBack,
@@ -40,7 +40,7 @@ const _AvailableTimeSetup: FC<IProps> = ({
       <select
         className={classnames(styles.availableTimeTargetInput)}
         value={availableTime}
-        onChange={() => onAvailableTimeChange}
+        onChange={onAvailableTimeChange}
       >
         {availableTimes.map((time) => (
           <option key={time} value={time}>
@@ -49,13 +49,13 @@ const _AvailableTimeSetup: FC<IProps> = ({
         ))}
       </select>
       <Button
-        onClick={() => availableTimeSetupSubmit()}
+        onClick={availableTimeSetupSubmit}
         className={classnames(styles.availableTimeTargetSetupSubmitButton)}
       >
         {t('CONTINUE')}
       </Button>
       {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
+        <Button onClick={goBack} className={classnames(styles.backButton)}>
           {t('BACK')}
         </Button>
       )}

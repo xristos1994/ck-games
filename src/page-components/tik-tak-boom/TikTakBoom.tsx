@@ -8,21 +8,19 @@ import { initializeGame } from '@models/tik-tak-boom/actions';
 import { GameStates } from '@models/tik-tak-boom/config';
 import { IState } from '@models/interfaces';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./TikTakBoom.module.css');
 
 interface IProps {
   gameState: GameStates;
   initializeGame: () => void;
 }
 
-const _TikTakBoom: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
+export const _TikTakBoom: FC<IProps> = ({ gameState, initializeGame }): ReactElement => {
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);
 
-  const playerSetup = (gameState === GameStates.setPlayers || gameState === GameStates.setPlayersWhileInProgress) && (
-    <PlayersSetup />
-  );
+  const playerSetup = gameState === GameStates.setPlayers && <PlayersSetup />;
 
   const scoreSetup = gameState === GameStates.setScoreTarget && <ScoreSetup />;
 

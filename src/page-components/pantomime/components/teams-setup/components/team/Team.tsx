@@ -1,26 +1,22 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { classnames, compose } from '@utils/component-utils';
 import { Button } from '@components';
 import { setTeamById, removeTeamById } from '@models/pantomime/actions';
-import { teams } from '@models/pantomime/props';
-import { IState } from '@models/interfaces';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./Team.module.css');
 
 interface IProps {
   team: {
     id: number;
-    score: number;
     name: string;
   };
   setTeamById: (team: IProps['team']) => void;
-  numOfTeams: number;
+  canBeRemoved: boolean;
   removeTeamById: (id: IProps['team']['id']) => void;
 }
 
-const _Team: FC<IProps> = ({ team, setTeamById, numOfTeams, removeTeamById }): ReactElement => {
+export const _Team: FC<IProps> = ({ team, setTeamById, canBeRemoved, removeTeamById }): ReactElement => {
   const onChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
     setTeamById({ ...team, name: e.target.value });
   };
@@ -45,28 +41,20 @@ const _Team: FC<IProps> = ({ team, setTeamById, numOfTeams, removeTeamById }): R
         onChange={onChangeName}
         onBlur={onBlurName}
       />
-      {numOfTeams === 2 ? null : (
-        <Button onClick={removeTeam} className={classnames(styles.removeTeamButton)}>
-          X
-        </Button>
-      )}
+      {
+        canBeRemoved ? (
+          <Button onClick={removeTeam} className={classnames(styles.removeTeamButton)}>
+            X
+          </Button>
+        ) : null
+      }
     </div>
   );
 };
 
 const Team = compose(
   connect(
-    createStructuredSelector<
-      IState,
-      {
-        numOfTeams: IProps['numOfTeams'];
-      },
-      {
-        numOfTeams: IProps['numOfTeams'];
-      }
-    >({
-      numOfTeams: (state: IState): IProps['numOfTeams'] => teams(state).length
-    }),
+    null,
     { setTeamById: setTeamById, removeTeamById }
   )
 )(_Team);

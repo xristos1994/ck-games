@@ -10,7 +10,7 @@ import { setScoreTarget, scoreSetupSubmit, goBack } from '@models/pantomime/acti
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./ScoreSetup.module.css');
 
 interface IProps {
   scoreTarget: number;
@@ -22,7 +22,7 @@ interface IProps {
   t: ITranslate;
 }
 
-const _ScoreSetup: FC<IProps> = ({
+export const _ScoreSetup: FC<IProps> = ({
   scoreTarget,
   canGoBack,
   availableScoreTargets,
@@ -45,14 +45,16 @@ const _ScoreSetup: FC<IProps> = ({
           </option>
         ))}
       </select>
-      <Button onClick={() => scoreSetupSubmit()} className={classnames(styles.scoreTargetSetupSubmitButton)}>
+      <Button onClick={scoreSetupSubmit} className={classnames(styles.scoreTargetSetupSubmitButton)}>
         {t('CONTINUE')}
       </Button>
-      {canGoBack && (
-        <Button onClick={() => goBack()} className={classnames(styles.backButton)}>
-          {t('BACK')}
-        </Button>
-      )}
+      {
+        canGoBack ? (
+          <Button onClick={goBack} className={classnames(styles.backButton)}>
+            {t('BACK')}
+          </Button>
+        ) : null
+      }
     </div>
   );
 };

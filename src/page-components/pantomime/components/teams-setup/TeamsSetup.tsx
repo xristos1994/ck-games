@@ -10,12 +10,11 @@ import { addTeam, teamsSetupSubmit } from '@models/pantomime/actions';
 import { IState } from '@models/interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const styles = require('./styles.module.css');
+const styles = require('./TeamsSetup.module.css');
 
 interface IProps {
   teams: {
     id: number;
-    score: number;
     name: string;
   }[];
   teamsSetupSubmit: () => void;
@@ -24,22 +23,22 @@ interface IProps {
   t: ITranslate;
 }
 
-const _TeamsSetup: FC<IProps> = ({ teams, teamsSetupSubmit, addTeam, isTeamsSetupValid, t }): ReactElement => {
+export const _TeamsSetup: FC<IProps> = ({ teams, teamsSetupSubmit, addTeam, isTeamsSetupValid, t }): ReactElement => {
   return (
     <div className={classnames(styles.teamsSetupContainer)}>
       <div className={classnames(styles.teamsSetupTitle)}>{t('Team Setup')}</div>
       <div className={styles.teamsContainer}>
         {teams.map((team) => (
-          <Team key={team.id} team={team} />
+          <Team key={team.id} team={team} canBeRemoved={teams.length > 2}/>
         ))}
       </div>
-      <Button onClick={() => addTeam()} className={classnames(styles.addTeamButton)}>
+      <Button onClick={addTeam} className={classnames(styles.addTeamButton)}>
         {t('Add Team')}
       </Button>
 
       <Button
         other={{ disabled: !isTeamsSetupValid }}
-        onClick={() => teamsSetupSubmit()}
+        onClick={teamsSetupSubmit}
         className={classnames(styles.teamsSetupSubmitButton)}
       >
         {t('CONTINUE')}

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`page-components/Pantomime/ScoreBoard renders correctly 1`] = `
+<div
+  className="scoreBoardContainer"
+>
+  <div
+    className="scoreBoardTitle"
+  >
+    Scoreboard
+  </div>
+  <div
+    className="scoreBoard"
+  >
+    <div>
+      1
+      .
+    </div>
+    <div>
+      Player 3
+    </div>
+    <div>
+      3
+    </div>
+    <div>
+      2
+      .
+    </div>
+    <div>
+      Player 2
+    </div>
+    <div>
+      2
+    </div>
+    <div>
+      3
+      .
+    </div>
+    <div>
+      Player 5
+    </div>
+    <div>
+      2
+    </div>
+    <div>
+      4
+      .
+    </div>
+    <div>
+      Player 1
+    </div>
+    <div>
+      1
+    </div>
+    <div>
+      5
+      .
+    </div>
+    <div>
+      Player 4
+    </div>
+    <div>
+      0
+    </div>
+  </div>
+</div>
+`;

@@ -1,20 +1,22 @@
 import React, { FC, MouseEventHandler, ReactElement, ReactChild } from 'react';
 import { classnames } from '@utils/component-utils';
-import './styles.module.css';
+import './Button.module.css';
 
 interface IProps {
   children: ReactChild | ReactChild[];
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  className: string;
+  className?: string;
+  ariaLabel?: string;
   other?: Record<string, unknown>;
 }
 
-const Button: FC<IProps> = ({ children, onClick, className = '', other }): ReactElement => {
+const Button: FC<IProps> = ({ children, onClick, className = '', ariaLabel, other = {} }): ReactElement => {
   return (
     <button
       className={classnames('main-button-hover-effect', {
         [className]: !!className
       })}
+      aria-label={ariaLabel}
       {...other}
       onClick={onClick}
     >
