@@ -2,7 +2,7 @@ import { startLayout, updateIsMenuOpen } from './actions';
 import { IState } from './interfaces';
 import { IAction } from '@core/actions/interfaces';
 
-const initialState: IState = {
+export const initialState: IState = {
   layoutStarted: false,
   isMenuOpen: false
 };
@@ -11,7 +11,7 @@ interface IReducer {
   (state: IState, action: IAction<IState['isMenuOpen']>): IState;
 }
 
-const reducer: IReducer = (state = initialState, action) => {
+export const reducer: IReducer = (state = initialState, action) => {
   switch (action.type) {
     case startLayout.type:
       return { ...state, layoutStarted: true };
