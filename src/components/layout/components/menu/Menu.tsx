@@ -38,15 +38,6 @@ export const _Menu: FC<IProps> = ({
   setLang,
   t
 }): ReactElement => {
-  useLayoutEffect(() => {
-    const initialLang = { ...lang };
-    setLang(initialLang);
-    // setLang(_availableLangs.default);
-    // setTimeout(() => {
-    //   setLang(initialLang);
-    // }, 1);
-  }, []);
-
   const isSSR = typeof window === 'undefined';
 
   const h1Title = (
