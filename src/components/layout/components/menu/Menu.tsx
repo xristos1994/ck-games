@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useLayoutEffect } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -38,15 +38,6 @@ export const _Menu: FC<IProps> = ({
   setLang,
   t
 }): ReactElement => {
-  useLayoutEffect(() => {
-    const initialLang = { ...lang };
-    setLang(initialLang);
-    // setLang(_availableLangs.default);
-    // setTimeout(() => {
-    //   setLang(initialLang);
-    // }, 1);
-  }, []);
-
   const isSSR = typeof window === 'undefined';
 
   const h1Title = (
