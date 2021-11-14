@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useLayoutEffect } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
