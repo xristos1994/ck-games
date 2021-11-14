@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "app.netlify.ck_games.twa",
+                     "sha256_cert_fingerprints": ["04:23:3E:F2:D9:A9:C7:A2:47:45:F3:36:19:96:3B:39:6F:D7:91:6A:1C:55:3B:27:55:5C:62:FD:23:A2:50:2D"] }
+      }
+]
