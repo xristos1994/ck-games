@@ -69,14 +69,14 @@ module.exports = {
           include: /svg/
         }
       }
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        analyzerMode: 'static',
+        openAnalyzer: false,
+        reportFilename: './../bundle-analyzer/index.html'
+      }
     }
-    // {
-    //   resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-    //   options: {
-    //     analyzerMode: 'static',
-    //     openAnalyzer: false,
-    //     reportFilename: './bundle-analyzer/index.html'
-    //   }
-    // }
   ]
 };
