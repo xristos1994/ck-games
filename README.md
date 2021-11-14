@@ -93,3 +93,9 @@ CK-Games is deployed using Netlify
 </a>
 
 URL: [https://ck-games.netlify.app/](https://ck-games.netlify.app/)
+
+Test coverage Report: [https://ck-games-test-coverage-report.netlify.app/](https://ck-games-test-coverage-report.netlify.app/)
+
+Bundle Analyzer: [https://ck-games-bundle-analyzer.netlify.app/](https://ck-games-bundle-analyzer.netlify.app/)
+
+
